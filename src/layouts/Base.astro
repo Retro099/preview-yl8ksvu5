@@ -3,7 +3,7 @@ const { lang, page, title } = Astro.props;
 const other = lang === 'en' ? 'ja' : 'en';
 const slug = page ? page + '/' : '';
 const base = 'https://retro099.github.io/preview-yl8ksvu5';
-const B = import.meta.env.BASE_URL.replace(/\/$/, '');
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const nav = [['', lang==='ja'?'ホーム':'Home'],['projects', lang==='ja'?'プロジェクト':'Projects'],['agent', lang==='ja'?'エージェント':'Agent'],['now', lang==='ja'?'いま':'Now'],['services', lang==='ja'?'相談':'Services'],['about', lang==='ja'?'わたしについて':'About']];
 ---
 <!doctype html>

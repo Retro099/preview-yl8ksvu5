@@ -1,8 +1,8 @@
 ---
-const B = import.meta.env.BASE_URL.replace(/\/$/, "");
 import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
 import Sub from '../../components/SubstackPlaceholder.astro'; import repos from '../../data/repos.json';
 export { paths as getStaticPaths } from '../../data/paths';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const { lang } = Astro.params;
 ---
 <Base lang={lang} page="">

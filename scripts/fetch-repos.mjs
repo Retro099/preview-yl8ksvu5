@@ -10,7 +10,7 @@ try {
   const ctl = new AbortController(); setTimeout(() => ctl.abort(), 8000);
   const r = await fetch('https://api.github.com/users/Retro099/repos?sort=pushed&per_page=6&type=owner', { signal: ctl.signal, headers: { 'User-Agent': 'site-build' } });
   if (!r.ok) throw new Error('HTTP ' + r.status);
-  const data = (await r.json()).filter(x => !x.fork && !x.archived && !x.private)
+  const data = (await r.json()).filter(x => !x.name.startsWith('preview-') && !x.fork && !x.archived && !x.private)
     .map(x => ({ name: x.name, url: x.html_url, updated: x.pushed_at?.slice(0,10) ?? null }));
   if (!data.length) throw new Error('empty');
   fs.writeFileSync(out, JSON.stringify(data, null, 2));
