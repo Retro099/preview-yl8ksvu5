@@ -1,9 +1,11 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from '../layouts/Base.astro'; import Avatar from '../components/Avatar.astro';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
 <Base lang="en" title="Page not found" description="This page does not exist.">
-<h1>Page not found</h1>
-<p>This page doesn't exist or has moved.</p>
-<p><a class="btn" href={`${B}/en/`}>Go to the home page</a> <a class="tlink" href={`${B}/ja/`} lang="ja" style="margin-left:1rem">日本語のホーム</a></p>
+<script is:inline define:vars={{B}}>if(location.pathname.startsWith(B+'/ja/'))location.replace(B+'/ja/404/');</script>
+<div class="nf"><Avatar size={140}/>
+<h1>Page not found</h1><p>This page doesn't exist or has moved.</p>
+<p><a class="btn" href={`${B}/en/`}>Go to the home page</a></p></div>
+<style is:inline>.nf{text-align:center;padding:2rem 0}.nf .av{margin:0 auto 1rem}</style>
 </Base>

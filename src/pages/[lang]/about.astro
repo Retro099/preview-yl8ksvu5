@@ -1,7 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
 export { paths as getStaticPaths } from '../../data/paths';
-import Contact from '../../components/Contact.astro';
+import Contact from '../../components/Contact.astro'; import Avatar from '../../components/Avatar.astro'; import latest from '../../data/latest.json';
+const days=[...new Set(latest.map(x=>x.date))].sort(); const end=new Date(days[days.length-1]+'T00:00:00Z');
+const span=Array.from({length:14},(_,i)=>{const d=new Date(end.getTime()-(13-i)*864e5).toISOString().slice(0,10);return [d,latest.filter(x=>x.date===d).length]});
+const mx=Math.max(1,...span.map(x=>x[1]));
 const { lang } = Astro.params; const ja = lang==='ja';
 ---
 <Base lang={lang} page="about" title={ja?'自己紹介':'About'}>
@@ -24,6 +27,14 @@ const { lang } = Astro.params; const ja = lang==='ja';
 </>}
 <Contact lang={lang}/>
 </div>
-<aside class="mnote"><h2>{ja?'いま（2026年10月25日）':'Now (25 Oct 2026)'}</h2><ul>{(ja?['JLPT N2の教材を勉強中。2026年12月6日に受験します。','CRMプロジェクトの大きな評価を実行中です。']:['Studying the JLPT N2 syllabus. Taking N2 on 6 Dec 2026.','CRM project: a larger evaluation run is in progress.']).map(t => <li>{t}</li>)}</ul></aside>
+<aside class="side" aria-label={ja?'サイドの情報':'Side notes'}>
+<Avatar size={96}/>
+<div class="mnote"><h2>{ja?'いま（2026年10月25日）':'Now (25 Oct 2026)'}</h2><ul>{(ja?['JLPT N2の教材を勉強中。2026年12月6日に受験します。','CRMプロジェクトの大きな評価を実行中です。']:['Studying the JLPT N2 syllabus. Taking N2 on 6 Dec 2026.','CRM project: a larger evaluation run is in progress.']).map(t => <li>{t}</li>)}</ul></div>
+<p class="cd" data-d="2026-12-06" data-ja={ja?'1':''}>{ja?'N2の試験：2026年12月6日':'N2 exam: 6 Dec 2026'}</p>
+<div class="gh"><h2>{ja?'最近のGitHubの更新':'Recent GitHub activity'}</h2>
+<svg viewBox="0 0 140 40" role="img" aria-label={ja?`${span[0][0]}から${span[13][0]}までに、公開された更新が${latest.length}件あります。`:`${latest.length} public updates between ${span[0][0]} and ${span[13][0]}.`}>{span.map(([d,n],i)=><rect x={i*10+1} y={n?36-30*n/mx:34} width="8" height={n?30*n/mx:2} rx="1.5" fill={n?'var(--acc)':'var(--line)'}><title>{d}: {n}</title></rect>)}</svg>
+<p>{ja?`最近の${latest.length}件（日ごと、${span[13][0]}まで）`:`Last ${latest.length} public updates, by day (to ${span[13][0]})`} · <a href="https://github.com/Retro099">GitHub</a></p></div>
+</aside>
+<script is:inline>(()=>{const c=document.querySelector('.cd');if(!c)return;const t=new Date(c.dataset.d+'T00:00:00+05:30'),n=Math.ceil((t-Date.now())/864e5);if(n<0)return;c.textContent=c.dataset.ja?`N2の試験：あと${n}日（2026年12月6日）`:`N2 exam: ${n} days (6 Dec 2026)`;})();</script>
 </div>
 </Base>

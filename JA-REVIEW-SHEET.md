@@ -653,3 +653,17 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | Topmateですべて見る | See all on Topmate |
 | （新しいタブで開きます） | (opens in a new tab), for screen readers |
 | おすすめの3つ | Three featured ones (section label for screen readers) |
+
+## v4.9 (2026-10-25)
+| JA | English meaning |
+|---|---|
+| ダークモード | Dark mode (theme button label, for screen readers) |
+| サイドの情報 | Side information (About page side column label) |
+| N2の試験：2026年12月6日 | N2 exam: 6 Dec 2026 (no-JS version) |
+| N2の試験：あと◯日（2026年12月6日） | N2 exam: ◯ days left (6 Dec 2026) |
+| 最近のGitHubの更新 | Recent GitHub updates |
+| ◯から◯までに、公開された更新が◯件あります。 | There are ◯ public updates from ◯ to ◯ (chart description for screen readers) |
+| 最近の◯件（日ごと、◯まで） | The latest ◯ (by day, up to ◯) |
+| ページが見つかりません | Page not found |
+| このページはありません。または、場所が変わりました。 | This page doesn't exist, or it has moved. |
+| ホームへ戻る | Back to home |

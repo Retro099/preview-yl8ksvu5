@@ -117,3 +117,6 @@ Backup: /workspace/site-backup-v47-start-2026-10-25.tgz · start commit 2b3fb84 
 
 ## v4.8 (2026-10-25)
 Talk page rebuilt: 3 featured Topmate offer cards (phone, recruiter bubbles, guide booklet SVGs), no prices, one See all button (new tab, rel=noopener). Old lead, How it works list and written-question card removed. Dark-mode .btn text changed to dark for contrast (sitewide fix).
+
+## v4.9 (2026-10-25)
+At 1024px and wider: the Projects skills list is a bento grid, the About page has a sticky side column (Now note, avatar, N2 countdown, GitHub activity from latest.json), and Home Experience is shown as 3 cards. Touch petals, an ambient background, card spotlight, a theme toggle, EN/JA 404 pages and a blob easter egg (5 taps) were added. Mobile page heights are the same as v4.8.

@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro'; import Avatar from '../../components/Avatar.astro';
+export { paths as getStaticPaths } from '../../data/paths';
+const { lang } = Astro.params; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+---
+<Base lang={lang} title={ja?'ページが見つかりません':'Page not found'} description={ja?'このページはありません。':'This page does not exist.'}>
+<div class="nf"><Avatar size={140}/>
+<h1>{ja?'ページが見つかりません':'Page not found'}</h1>
+<p>{ja?'このページはありません。または、場所が変わりました。':"This page doesn't exist or has moved."}</p>
+<p><a class="btn" href={`${B}/${lang}/`}>{ja?'ホームへ戻る':'Go to the home page'}</a></p></div>
+<meta name="robots" content="noindex">
+<style is:inline>.nf{text-align:center;padding:2rem 0}.nf .av{margin:0 auto 1rem}</style>
+</Base>
