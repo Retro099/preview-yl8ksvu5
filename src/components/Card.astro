@@ -1,0 +1,14 @@
+---
+const { p, lang } = Astro.props; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+const rows = ja ? p.tableJa : p.table;
+---
+<article class="card">
+{ja ? <h3 set:html={p.ja.title}/> : <h3>{p.en.title}</h3>}
+<p class="repo">{p.repo}</p>
+{ja ? <><p class="jp" set:html={p.ja.line}/><p class="en">{p.ja.lineEn}</p></> : <p>{p.en.line}</p>}
+<table class="res"><thead><tr><th>{ja?'指標':'Metric'}</th><th>{ja?'結果':'Result'}</th><th>{ja?'テスト':'Test size'}</th></tr></thead>
+<tbody>{rows.map(([a,b,c]) => <tr><td>{a}</td><td class="v">{b}</td><td>{c}</td></tr>)}</tbody></table>
+{ja && <p class="en">{p.table.map(([a,b,c]) => `${a}: ${b} (${c})`).join(' · ')}</p>}
+<p class="links"><a href={`${B}/${lang}/projects/${p.slug}/`}>{ja?'くわしく見る':'Read the case study'} →</a><a href={`https://github.com/Retro099/${p.repo}`}>GitHub</a></p>
+</article>

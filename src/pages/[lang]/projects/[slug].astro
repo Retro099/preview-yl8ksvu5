@@ -13,7 +13,9 @@ const rows = ja ? [['目的','Purpose','purpose'],['技術選定の理由','Why 
 <h1 set:html={t.title}/>
 <p class="repo">{p.repo}</p>
 {ja ? <><p class="jp" set:html={t.line}/><p class="en">{t.lineEn}</p></> : <p>{t.line}</p>}
-<section><dl class="cs">
+<table class="res"><thead><tr><th>{ja?'指標':'Metric'}</th><th>{ja?'結果':'Result'}</th><th>{ja?'テスト':'Test size'}</th></tr></thead><tbody>{(ja?p.tableJa:p.table).map(([a,b,c]) => <tr><td>{a}</td><td class="v">{b}</td><td>{c}</td></tr>)}</tbody></table>
+{ja && <p class="en">{p.table.map(([a,b,c]) => `${a}: ${b} (${c})`).join(' · ')}</p>}
+<section class="narrow" style="margin-top:2rem"><dl class="cs">
 {rows.map(([h,he,k]) => <><dt>{h}{he && <span class="mut" style="font-weight:400"> · {he}</span>}</dt>
 <dd>{ja ? <><p class="jp" style="margin:0" set:html={t[k]}/><p class="en" style="margin:.2rem 0 0">{t[k+'En']}</p></> : t[k]}</dd></>)}
 <dt>{ja?'リンク':'Links'}</dt>

@@ -1,7 +1,7 @@
 import m from './metrics.json';
 const c=m.crm, r=m.rag, f=m.fraud;
 export const projects = [
-{ slug:'meeting-notes-to-crm', repo:'jp-meeting-to-crm-fields', demo:'https://retro-jp-meeting-to-crm-fields.streamlit.app',
+{ slug:'meeting-notes-to-crm', table:[['Exact match',c.exact_match,`${c.exact_hits}/${c.exact_total} fields`],['Attacks through (defenses on)',`${c.attack_before} → ${c.attack_after}`,`${c.attacks} self-written`]], tableJa:[['完全一致',c.exact_match,`${c.exact_hits}/${c.exact_total}項目`],['攻撃が通る割合（対策あり）',`${c.attack_before} → ${c.attack_after}`,`自作${c.attacks}件`]], repo:'jp-meeting-to-crm-fields', demo:'https://retro-jp-meeting-to-crm-fields.streamlit.app',
   en:{ title:'Turning Japanese sales meetings into CRM fields — safely',
     line:'An AI reads notes from a sales meeting and fills in the customer record, while refusing hidden instructions in the text.',
     nums:[`${c.exact_match} exact match (${c.exact_hits}/${c.exact_total} fields, ${c.notes} synthetic notes)`,`Attacks that get through: ${c.attack_before} → ${c.attack_after} with defenses on (${c.attacks} attacks I wrote)`],
@@ -23,7 +23,7 @@ export const projects = [
     resultEn:`Exact match was ${c.exact_match} (${c.exact_hits}/${c.exact_total}, ${c.notes} test notes). With defenses on, attacks that got through fell from ${c.attack_before} to ${c.attack_after} (${c.attacks} attacks I wrote).`,
     next:'次のバージョン1.1では、項目ごとの評価と、1件あたりのコストと速さを測ります。',
     nextEn:'In version 1.1 I will add a check per field and measure cost and speed per note.'}},
-{ slug:'japanese-document-search', repo:'japanese-rag-eval', demo:null,
+{ slug:'japanese-document-search', table:[['Right passage in top 5',r.hit5,`${r.questions} questions`],['MRR',r.mrr,`${r.questions} questions`]], tableJa:[['上位5件に正解',r.hit5,`${r.questions}問`],['MRR',r.mrr,`${r.questions}問`]], repo:'japanese-rag-eval', demo:null,
   en:{ title:'Finding the right page in Japanese documents',
     line:'A test of whether an AI search tool finds the right passage in a long Japanese government report.',
     nums:[`Right passage in the top 5: ${r.hit5}`,`MRR ${r.mrr} (${r.questions} questions on the 2025 情報通信白書)`],
@@ -45,7 +45,7 @@ export const projects = [
     resultEn:`On ${r.questions} questions about the 2025 情報通信白書, the right part was in the top 5 for ${r.hit5}, with MRR ${r.mrr}.`,
     next:'自分で確認する問題を増やし、小さなデモを作ります。',
     nextEn:'I will check more questions by hand and make a small demo.'}},
-{ slug:'credit-card-fraud', repo:'credit-card-fraud-detection', demo:null,
+{ slug:'credit-card-fraud', table:[['Recall',f.recall,'Kaggle ULB'],['Precision',f.precision,`${f.fraud_rate} fraud`]], tableJa:[['再現率',f.recall,'Kaggle ULB'],['適合率',f.precision,`不正${f.fraud_rate}`]], repo:'credit-card-fraud-detection', demo:null,
   en:{ title:'Spotting credit-card fraud',
     line:'A model that flags fraudulent card payments in data where almost every payment is honest.',
     nums:[`Recall ${f.recall} (finds 84% of frauds)`,`Precision ${f.precision} (88% of flags are real fraud)`],

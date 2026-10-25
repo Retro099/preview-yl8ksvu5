@@ -5,7 +5,7 @@ import { projects } from '../../data/projects';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
-<Base lang={lang} page="now" title={ja?'いま':'Now'}>
+<Base lang={lang} recruiter={false} page="now" title={ja?'いま':'Now'}>
 <h1>{ja?'いま、していること':'Now'}</h1>
 <p class="when"><time datetime="2026-10-25">{ja?'2026年10月25日 更新':'Updated Oct 25, 2026'}</time></p>
 {ja ? <ul>

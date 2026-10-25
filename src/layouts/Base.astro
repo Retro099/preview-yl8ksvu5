@@ -1,5 +1,8 @@
 ---
-const { lang, page = '', title } = Astro.props;
+import { SHOW_RUBY_ON_RECRUITER_PAGES, GOATCOUNTER } from '../config';
+const { lang, page = '', title, recruiter = true } = Astro.props;
+const noruby = recruiter && !SHOW_RUBY_ON_RECRUITER_PAGES;
+const built = new Date().toISOString().slice(0,10);
 const ja = lang === 'ja';
 const other = ja ? 'en' : 'ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
@@ -16,47 +19,63 @@ const nav = [['projects', ja?'プロジェクト':'Projects'],['writing', ja?'�
 <meta name="color-scheme" content="light dark">
 <link rel="alternate" hreflang="en" href={`${site}/en/${slug}`}><link rel="alternate" hreflang="ja" href={`${site}/ja/${slug}`}>
 <style is:global>
-:root{--bg:#fafaf8;--fg:#17181c;--mut:#5a5c65;--card:#fff;--line:#e4e2dc;--acc:#0a58a8;--soft:#eef3fa}
-@media (prefers-color-scheme:dark){:root{--bg:#111215;--fg:#ecebe7;--mut:#a3a5ad;--card:#1a1b1f;--line:#2b2c32;--acc:#82b8ff;--soft:#18243a}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16.5px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif}
-a{color:var(--acc);text-underline-offset:3px}a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.wrap{max-width:720px;margin:0 auto;padding:0 1.1rem}
-header{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:2}
-header .wrap{display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:center;padding:.7rem 1.1rem}
-.brand{font-weight:700;color:var(--fg);text-decoration:none;margin-right:auto}
-nav{display:flex;flex-wrap:wrap;gap:.1rem .9rem;font-size:.95rem}nav a{color:var(--mut);text-decoration:none}nav a[aria-current],nav a:hover{color:var(--fg);text-decoration:underline}
-.lang{font-size:.88rem;border:1px solid var(--line);border-radius:99px;padding:.05rem .6rem;text-decoration:none}
-main{padding:2.2rem 0 3rem}
-h1{font-size:clamp(1.55rem,5.2vw,2.15rem);line-height:1.3;margin:0 0 1rem;letter-spacing:-.01em}
-h2{font-size:1.2rem;margin:2.6rem 0 .8rem}h3{font-size:1.05rem;margin:0 0 .3rem;line-height:1.45}
-.facts{display:grid;grid-template-columns:1fr;gap:.15rem;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;background:var(--card);font-size:.95rem;margin:0}
-@media (min-width:600px){.facts{grid-template-columns:8.5rem 1fr}}
-.facts dt{color:var(--mut)}.facts dd{margin:0 0 .35rem}
-.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;margin:.8rem 0;color:var(--fg);text-decoration:none}
-a.card:hover{border-color:var(--acc)}
-.repo{font:.8rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mut);margin:0 0 .4rem}
-.card ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.93rem}
-.tl{list-style:none;padding:0;margin:0}.tl li{display:grid;grid-template-columns:1fr;padding:.5rem 0;border-bottom:1px solid var(--line)}
-@media (min-width:600px){.tl li{grid-template-columns:9.5rem 1fr}}
-.tl time,.when{color:var(--mut);font-size:.9rem}
-.mut{color:var(--mut)}.en{color:var(--mut);font-size:.9rem;margin:-.55rem 0 1rem}
-li .en{margin:.1rem 0 .3rem}
-.btn{display:inline-block;padding:.65rem 1.1rem;border-radius:10px;background:var(--acc);color:var(--bg);text-decoration:none;font-weight:600}
-rt{font-size:.55em;color:var(--mut)}
-section dl.cs dt{font-weight:700;margin-top:1.1rem}section dl.cs dd{margin:.2rem 0 0}
-footer{border-top:1px solid var(--line);color:var(--mut);font-size:.9rem;padding:1.2rem 0 2.2rem}footer a{margin-right:1rem}
+:root{--bg:#FAFAF7;--card:#fff;--fg:#1B1F23;--mut:#5C6670;--line:#E4E4DE;--acc:#2B4C7E;--warm:#C8553D;--soft:#EEF2F8}
+@media (prefers-color-scheme:dark){:root{--bg:#121417;--card:#1A1D21;--fg:#E9EAEC;--mut:#A3ABB3;--line:#2C3036;--acc:#8FB0E0;--warm:#E58A75;--soft:#1C2533}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16.5px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;overflow-wrap:anywhere}
+html[lang=ja] body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,system-ui,sans-serif;line-height:1.85;letter-spacing:.02em}
+a{color:var(--acc);text-underline-offset:3px;transition:color .15s,border-color .15s,background .15s}a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}.narrow{max-width:68ch}
+header{border-bottom:1px solid var(--line);background:var(--bg)}
+@media (min-width:800px){header{position:sticky;top:0;z-index:2}}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:0 .5rem;padding:.25rem 1.25rem}
+.brand{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto;min-height:44px;display:flex;align-items:center;gap:.5rem}
+.brand small{font-weight:400;color:var(--mut);font-size:.8rem}
+nav{display:flex;flex-wrap:wrap}nav a,.lang{min-height:44px;display:inline-flex;align-items:center;padding:0 .55rem;color:var(--mut);text-decoration:none;font-size:.95rem}
+nav a[aria-current],nav a:hover{color:var(--acc);text-decoration:underline}
+.lang{border:1px solid var(--line);border-radius:99px;margin-left:.3rem;color:var(--acc)}
+main{padding:3.5rem 0 4rem}section{margin-top:3.5rem}@media (min-width:800px){main{padding-top:5rem}section{margin-top:6rem}}
+h1{font-size:clamp(1.6rem,4.6vw,2.4rem);line-height:1.35;margin:0 0 1rem;font-weight:700}
+h2{font-size:1.3rem;margin:0 0 1rem;color:var(--acc)}h3{font-size:1.08rem;margin:0 0 .25rem;line-height:1.5}
+.hero{display:grid;gap:1.5rem;align-items:center}@media (min-width:800px){.hero{grid-template-columns:1fr 180px}}
+.hero img{width:140px;height:140px;border-radius:50%;border:1px solid var(--line);order:-1}@media (min-width:800px){.hero img{width:180px;height:180px;order:0}}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1.5rem 0 0;padding:0}@media (min-width:800px){.facts{grid-template-columns:repeat(4,1fr)}}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.7rem .85rem}
+.facts dt{color:var(--mut);font-size:.82rem}.facts dd{margin:0;font-weight:600;font-size:.95rem}
+.chip{color:var(--warm)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center;margin-top:1.5rem}
+.btn{min-height:44px;display:inline-flex;align-items:center;padding:0 1.2rem;border-radius:8px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600}
+.btn:hover{background:#1f3a62}.tlink{min-height:44px;display:inline-flex;align-items:center}
+.grid3{display:grid;gap:1rem}@media (min-width:800px){.grid3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.25rem;margin:0 0 1rem}
+.card:hover{border-color:var(--acc)}
+.door h3{color:var(--acc)}.door.warm{border-top:3px solid var(--warm)}.door.warm h3{color:var(--warm)}
+.door a{min-height:44px;display:inline-flex;align-items:center}
+.repo{font-size:.8rem;color:var(--mut);margin:0 0 .6rem}
+.res{width:100%;border-collapse:collapse;font-size:.9rem;margin:.75rem 0}
+.res th{text-align:left;color:var(--mut);font-weight:500;font-size:.78rem;border-bottom:1px solid var(--line);padding:.3rem .4rem .3rem 0}
+.res td{border-bottom:1px solid var(--line);padding:.45rem .4rem .45rem 0;vertical-align:top}.res td.v{color:var(--acc);font-weight:700;white-space:nowrap}
+.links{display:flex;flex-wrap:wrap;gap:0 1.2rem;margin:0}.links a{min-height:44px;display:inline-flex;align-items:center}
+.tl{list-style:none;padding:0;margin:0}.tl li{display:grid;gap:.1rem;padding:.75rem 0;border-bottom:1px solid var(--line)}@media (min-width:600px){.tl li{grid-template-columns:11rem 1fr}}
+.tl time,.when,.mut{color:var(--mut)}
+.en{color:var(--mut);font-size:.92rem;margin:-.5rem 0 1rem;letter-spacing:0;line-height:1.6}li .en{margin:.1rem 0 .4rem}
+rt{font-size:.55em;color:var(--mut)}.noruby rt,.noruby rp{display:none}
+dl.cs dt{font-weight:700;margin-top:1.4rem;color:var(--acc)}dl.cs dd{margin:.25rem 0 0}
+footer{border-top:1px solid var(--line);color:var(--mut);font-size:.9rem;padding:1.5rem 0 2.5rem}
+footer nav a{padding:0 .8rem 0 0}footer p{margin:.4rem 0}
 </style>
+{GOATCOUNTER && <script is:inline data-goatcounter={`https://${GOATCOUNTER}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
 </head>
-<body>
+<body class={noruby ? 'noruby' : undefined}>
 <header><div class="wrap">
-<a class="brand" href={`${B}/${lang}/`}>Prithivi Raj Mohanta</a>
+<a class="brand" href={`${B}/${lang}/`}>Prithivi Raj Mohanta <small lang="ja">プリティヴィ・ラージ・モハンタ</small></a>
 <nav aria-label="Main">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}</nav>
 <a class="lang" href={`${B}/${other}/${slug}`} hreflang={other} lang={other}>{other==='ja'?'日本語':'EN'}</a>
 </div></header>
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
-<a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">Topmate</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a>
+<nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">Topmate</a></nav>
+<p>{ja?'最終更新':'Last updated'}: <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
 <p>© 2026 Prithivi Raj Mohanta</p>
 </div></footer>
 </body></html>
