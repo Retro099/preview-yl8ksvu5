@@ -1,0 +1,22 @@
+---
+import Base from '../../../layouts/Base.astro'; import J from '../../../components/J.astro';
+export { projectPaths as getStaticPaths } from '../../../data/paths';
+import { projects } from '../../../data/projects';
+const { lang, slug } = Astro.params; const ja = lang==='ja';
+const p = projects.find(x => x.slug === slug); const t = ja ? p.ja : p.en;
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+const rows = ja ? [['目的','Purpose','purpose'],['技術選定の理由','Why this tech','why'],['工夫','What I did myself','did'],['結果','Result','result'],['今後','Next','next']]
+ : [['Purpose','','purpose'],['Why this tech','','why'],['What I did myself','','did'],['Result','','result'],['Next','','next']];
+---
+<Base lang={lang} page={`projects/${slug}`} title={p.repo}>
+<p><a href={`${B}/${lang}/projects/`}>← {ja?'プロジェクト一覧':'All projects'}</a></p>
+<h1 set:html={t.title}/>
+<p class="repo">{p.repo}</p>
+{ja ? <><p class="jp" set:html={t.line}/><p class="en">{t.lineEn}</p></> : <p>{t.line}</p>}
+<section><dl class="cs">
+{rows.map(([h,he,k]) => <><dt>{h}{he && <span class="mut" style="font-weight:400"> · {he}</span>}</dt>
+<dd>{ja ? <><p class="jp" style="margin:0" set:html={t[k]}/><p class="en" style="margin:.2rem 0 0">{t[k+'En']}</p></> : t[k]}</dd></>)}
+<dt>{ja?'リンク':'Links'}</dt>
+<dd><a href={`https://github.com/Retro099/${p.repo}`}>GitHub</a>{p.demo && <> · <a href={p.demo}>{ja?'デモ':'Live demo'}</a></>}</dd>
+</dl></section>
+</Base>

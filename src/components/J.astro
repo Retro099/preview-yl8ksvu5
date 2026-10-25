@@ -1,5 +1,5 @@
 ---
-// Japanese paragraph with faithful English line beneath (shown only on /ja/).
-const { en } = Astro.props;
+// Japanese block with its English meaning right beneath.
+const { en, tag='p' } = Astro.props; const T = tag;
 ---
-<p><slot/></p><p class="en" lang="en">{en}</p>
+<T class="jp"><slot/></T><p class="en" lang="en">{en}</p>

@@ -1,0 +1,22 @@
+{
+  "crm": {
+    "exact_match": "60.0%",
+    "exact_hits": 90,
+    "exact_total": 150,
+    "notes": 30,
+    "attack_before": "45%",
+    "attack_after": "6.7%",
+    "attacks": 40
+  },
+  "rag": {
+    "hit5": "0.98",
+    "mrr": "0.87",
+    "questions": 42,
+    "hand_checked": 15
+  },
+  "fraud": {
+    "recall": "0.84",
+    "precision": "0.88",
+    "fraud_rate": "0.172%"
+  }
+}

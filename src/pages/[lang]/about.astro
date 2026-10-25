@@ -1,18 +1,30 @@
 ---
 import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
 export { paths as getStaticPaths } from '../../data/paths';
+import { projects } from '../../data/projects';
 const { lang } = Astro.params; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
-<Base lang={lang} page="about" title={ja?'わたしについて':'About'}>
-<h1>{ja?'わたしについて':'About'}</h1>
+<Base lang={lang} page="about" title={ja?'自己紹介':'About'}>
 {ja ? <>
-<J en="I grew up in a military family, so we moved around India often. Each time, I learned to adapt to a new place.">軍人の家族で育ったので、インドの中で何度も引っこしました。そのたびに、新しい場所になれることを学びました。</J>
-<J en="I speak Hindi, Bengali, Odia and English. I am learning Japanese, and I have talked with Japanese friends on HelloTalk since 2024.">ヒンディー語、ベンガル語、オディア語、英語を話します。日本語をべんきょう中で、2024年からHelloTalkで日本の友だちと話しています。</J>
-<J en="My first tech job was making games. Then I moved into AI. Since June 2024, I have worked remotely on AI evaluation and safety.">さいしょの仕事はゲーム作りでした。そのあとAIの仕事にうつりました。2024年6月から、リモートでAIの評価と安全性の仕事をしています。</J>
+<h1>自己紹介</h1><p class="en">About me</p>
+<J en="Nice to meet you. My name is Prithivi Raj Mohanta. I am an AI engineer in India.">はじめまして。プリティヴィ・ラージ・モハンタと申します。インドのAIエンジニアです。</J>
+<J en="I build systems that check whether AI works correctly.">AIが正しく動いているかを<ruby>確<rt>たし</rt></ruby>かめる仕組みを作っています。</J>
+<J en="I want to work on improving AI quality with a team in Japan.">日本のチームで、AIの品質を上げる仕事がしたいです。</J>
+<h2>技術スキル</h2><p class="en">Technical skills</p>
+<ul>
+<li><J tag="span" en="LLM evaluation and safety tests">LLMの評価と安全性テスト</J></li>
+<li><J tag="span" en="Search and RAG for Japanese text (bge-m3, BM25)">日本語の検索とRAG（bge-m3、BM25）</J></li>
+<li><J tag="span" en="Python, machine learning, automatic tests (CI)">Python、機械学習、自動テスト（CI）</J></li>
+</ul>
+<h2>言語</h2><p class="en">Languages</p>
+<J en="English: I use it every day at work. Japanese: taking JLPT N2 on December 6, 2026. I also speak Hindi, Bengali and Odia.">英語：毎日仕事で使っています。日本語：2026年12月6日にJLPT N2を受験します。ヒンディー語、ベンガル語、オディア語も話します。</J>
 </> : <>
-<p>I grew up in a military family that moved around India, so adapting to new places became normal.</p>
-<p>I speak Hindi, Bengali, Odia and English, and I'm learning Japanese (HelloTalk conversations since March 2024).</p>
-<p>Game development was my way into tech: at GodSpeed Games (2022–2023) I worked on "Bunny Park" for Xbox, PS4 and PC in Unreal Engine and C++. I always followed ML and moved fully into AI. Since June 2024 I've worked remotely as an AI Engineer (contract) on LLM evaluation, safety/red-teaming and multimodal work, with teams across Europe.</p>
-<p>B.Tech in Computer Science & Engineering (Honours), GIFT Bhubaneswar, 2021.</p>
+<h1>About</h1>
+<p>I'm Prithivi Raj Mohanta, an AI engineer in India. I build systems that check whether AI works correctly, and I want to do that with a team in Japan.</p>
+<h2>Technical skills</h2>
+<ul><li>LLM evaluation and safety testing</li><li>Search and RAG for Japanese text (bge-m3, BM25)</li><li>Python, machine learning, automated tests (CI)</li></ul>
+<h2>Languages</h2>
+<p>English for daily work. Japanese: taking JLPT N2 on Dec 6, 2026. I also speak Hindi, Bengali and Odia.</p>
 </>}
 </Base>

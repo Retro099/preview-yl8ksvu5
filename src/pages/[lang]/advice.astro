@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
+export { paths as getStaticPaths } from '../../data/paths';
+import { projects } from '../../data/projects';
+const { lang } = Astro.params; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+---
+<Base lang={lang} page="advice" title={ja?'相談':'Advice'}>
+<h1>{ja?'相談':'Advice'}</h1>
+{ja ? <>
+<J en="A short one-to-one call for people in India who want to work in Japan as engineers.">インドから日本でエンジニアとして働きたい人のための、短い1対1の相談です。</J>
+<ul>
+<li><J tag="span" en="How to write a Japanese-style CV (職務経歴書)">日本の<ruby>職務経歴書<rt>しょくむけいれきしょ</rt></ruby>の書き方</J></li>
+<li><J tag="span" en="How to show projects with clear numbers">プロジェクトを数字でわかりやすく見せる方法</J></li>
+<li><J tag="span" en="How I study Japanese alongside work">仕事をしながら日本語を勉強する方法</J></li>
+</ul>
+<J en="I share what I learned while in the hiring process with Japanese companies.">日本の会社の<ruby>採用<rt>さいよう</rt></ruby>の流れの中で、私が学んだことをお話しします。</J>
+</> : <>
+<p>A short one-to-one call for engineers in India who want to work in Japan.</p>
+<ul>
+<li>Writing a Japanese-style CV (職務経歴書)</li>
+<li>Presenting projects with clear, honest numbers</li>
+<li>Studying Japanese alongside full-time work</li>
+</ul>
+<p>I share what I have learned while in the hiring process with Japanese companies.</p>
+</>}
+<p><a class="btn" href="https://topmate.io/prithivi_raj_mohanta">{ja?'Topmateで予約する':'Book on Topmate'}</a></p>
+</Base>
