@@ -1,45 +1,57 @@
 ---
-// Hand-drawn SVG character. Decorative (aria-hidden). Static without JS or with reduced motion.
-const { size = 160, mark = false } = Astro.props;
+// Soft cream blob character. Decorative (aria-hidden). Static without JS or with reduced motion.
+const { size = 112, mark = false } = Astro.props;
+const BLOB = "M31 52C26 36 43 24 57 30C65 18 88 21 90 39C101 43 104 60 100 72C100 92 84 104 60 104C36 104 18 92 20 72C18 63 22 56 31 52Z";
+const S = 'fill="#FFF8EC" stroke="#2B4C7E" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"';
 ---
 {mark ? (
-<svg class="mark" width="28" height="28" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-<circle cx="60" cy="60" r="58" fill="#2B4C7E"/><rect x="30" y="34" width="60" height="54" rx="24" fill="#FAFAF7"/>
-<circle cx="47" cy="60" r="9" fill="none" stroke="#C8553D" stroke-width="4"/><circle cx="73" cy="60" r="9" fill="none" stroke="#C8553D" stroke-width="4"/>
-<circle cx="47" cy="60" r="3.5" fill="#1B1F23"/><circle cx="73" cy="60" r="3.5" fill="#1B1F23"/>
+<svg class="mark" width="32" height="32" viewBox="14 14 92 96" aria-hidden="true" focusable="false">
+<path d={BLOB} fill="#FFF8EC" stroke="#2B4C7E" stroke-width="5" stroke-linejoin="round"/>
+<ellipse cx="48" cy="70" rx="5" ry="3.4" fill="#1E2A3A"/><ellipse cx="72" cy="70" rx="5" ry="3.4" fill="#1E2A3A"/>
+<circle cx="38" cy="80" r="5" fill="#C8553D" opacity=".4"/><circle cx="82" cy="80" r="5" fill="#C8553D" opacity=".4"/>
 </svg>
 ) : (
 <div class="av" style={`width:${size}px;height:${size}px`}>
 <svg id="av" viewBox="0 0 120 120" width={size} height={size} aria-hidden="true" focusable="false">
-<circle cx="60" cy="60" r="58" fill="var(--soft)"/>
-<g id="av-body"><path d="M24 120c0-24 16-36 36-36s36 12 36 36z" fill="#2B4C7E"/><path d="M52 86l8 10 8-10" fill="none" stroke="#FAFAF7" stroke-width="3" stroke-linecap="round"/></g>
-<g id="av-head">
-<line x1="60" y1="20" x2="60" y2="10" stroke="#2B4C7E" stroke-width="3"/><circle cx="60" cy="9" r="4.5" fill="#C8553D"/>
-<rect x="28" y="20" width="64" height="62" rx="26" fill="#FAFAF7" stroke="#2B4C7E" stroke-width="3"/>
-<g id="av-eyes">
-<circle cx="46" cy="50" r="11" fill="#fff" stroke="#C8553D" stroke-width="3.5"/><circle cx="74" cy="50" r="11" fill="#fff" stroke="#C8553D" stroke-width="3.5"/>
-<line x1="57" y1="50" x2="63" y2="50" stroke="#C8553D" stroke-width="3.5"/>
-<g id="av-pupils"><circle cx="46" cy="50" r="4.2" fill="#1B1F23"/><circle cx="74" cy="50" r="4.2" fill="#1B1F23"/><circle cx="47.5" cy="48.5" r="1.3" fill="#fff"/><circle cx="75.5" cy="48.5" r="1.3" fill="#fff"/></g>
-<g id="av-lids" fill="#FAFAF7" opacity="0"><circle cx="46" cy="50" r="9.4"/><circle cx="74" cy="50" r="9.4"/><path d="M38 51q8 4 16 0M66 51q8 4 16 0" stroke="#1B1F23" stroke-width="2" fill="none"/></g>
+<ellipse id="av-shadow" cx="60" cy="110" rx="34" ry="5" fill="#2B4C7E" opacity=".14"/>
+<g id="av-char">
+<g class="sh" data-s="blob" data-f="0 0 1"><path d={BLOB} fill="#FFF8EC" stroke="#2B4C7E" stroke-width="3.2" stroke-linejoin="round"/><path d="M34 60C34 50 40 44 47 42" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/></g>
+<g class="sh" data-s="plane" data-f="2 -6 .8" style="display:none"><g set:html={`<path d="M12 66L108 34L66 100L54 76Z" ${S}/><path d="M108 34L54 76L48 92L60 80" ${S}/>`}/></g>
+<g class="sh" data-s="book" data-f="0 2 .95" style="display:none"><g set:html={`<path d="M60 48Q40 34 16 44V96Q40 86 60 98Z" ${S}/><path d="M60 48Q80 34 104 44V96Q80 86 60 98Z" ${S}/><path d="M24 54Q40 48 52 56M68 56Q80 48 96 54" fill="none" stroke="#2B4C7E" stroke-width="1.6" opacity=".35"/>`}/></g>
+<g class="sh" data-s="torii" data-f="0 -31 .62" style="display:none"><g set:html={`<path d="M34 48H44V104H34ZM76 48H86V104H76Z" ${S}/><path d="M26 58H94V66H26Z" ${S}/><path d="M10 30Q60 18 110 30L106 48Q60 40 14 48Z" ${S}/>`}/></g>
+<g id="av-face">
+<g id="av-eyes"><ellipse cx="48" cy="70" rx="4.6" ry="5.6" fill="#1E2A3A"/><ellipse cx="72" cy="70" rx="4.6" ry="5.6" fill="#1E2A3A"/><circle cx="49.6" cy="68" r="1.4" fill="#fff"/><circle cx="73.6" cy="68" r="1.4" fill="#fff"/></g>
+<g id="av-lids"><path d="M41 62H55V67Q48 64 41 67Z" fill="#FFF8EC"/><path d="M65 62H79V67Q72 64 65 67Z" fill="#FFF8EC"/><path d="M43 66.4Q48 63.8 53 66.4M67 66.4Q72 63.8 77 66.4" fill="none" stroke="#2B4C7E" stroke-width="2" stroke-linecap="round"/></g>
+<path id="av-mouth" d="M55.5 79.5Q60 84 64.5 79.5" fill="none" stroke="#2B4C7E" stroke-width="2.4" stroke-linecap="round"/>
+<circle cx="38" cy="79" r="4.5" fill="#C8553D" opacity=".32"/><circle cx="82" cy="79" r="4.5" fill="#C8553D" opacity=".32"/>
 </g>
-<path id="av-mouth" d="M51 68q9 7 18 0" fill="none" stroke="#2B4C7E" stroke-width="3" stroke-linecap="round"/>
-<circle cx="36" cy="66" r="4" fill="#C8553D" opacity=".25"/><circle cx="84" cy="66" r="4" fill="#C8553D" opacity=".25"/>
 </g>
 </svg>
 </div>
 )}
 {!mark && <script is:inline>
-(()=>{const s=document.getElementById('av');if(!s||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-const p=s.querySelector('#av-pupils'),h=s.querySelector('#av-head'),b=s.querySelector('#av-body'),l=s.querySelector('#av-lids');
-let t=0,last=Date.now();
-function look(x,y){const r=s.getBoundingClientRect(),dx=x-(r.left+r.width/2),dy=y-(r.top+r.height*.42),d=Math.hypot(dx,dy)||1,k=Math.min(1,d/300);
-const ux=dx/d*k,uy=dy/d*k;p.setAttribute('transform',`translate(${(ux*5).toFixed(2)} ${(uy*4).toFixed(2)})`);
-h.setAttribute('transform',`rotate(${(ux*7).toFixed(2)} 60 82) translate(${(ux*2).toFixed(2)} ${(uy*1.5).toFixed(2)})`);
-b.setAttribute('transform',`translate(60 120) scale(${(1+Math.abs(ux)*.04).toFixed(3)} ${(1-Math.abs(ux)*.03+uy*.02).toFixed(3)}) skewX(${(ux*-4).toFixed(2)}) translate(-60 -120)`);}
-const mv=e=>{last=Date.now();look(e.clientX,e.clientY)};
+(()=>{const s=document.getElementById('av');if(!s)return;
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches,$=q=>s.querySelector(q);
+const ch=$('#av-char'),eyes=$('#av-eyes'),lids=$('#av-lids'),face=$('#av-face'),shadow=$('#av-shadow'),shapes=[...s.querySelectorAll('.sh')];
+const story=['plane','book','torii'];let si=0,cur='blob',busy=false,back=0;
+function show(n){cur=n;shapes.forEach(g=>{const on=g.dataset.s===n;g.style.display=on?'':'none';if(on){const[x,y,k]=g.dataset.f.split(' ').map(Number);face.setAttribute('transform',`translate(${60+x} ${70+y}) scale(${k}) translate(-60 -70)`)}})}
+let squ=0;
+function morph(n){if(rm){show(n);return}if(busy)return;busy=true;squ=1;setTimeout(()=>{show(n);setTimeout(()=>{squ=0;busy=false},60)},260)}
+s.parentNode.addEventListener('click',()=>{const n=cur==='blob'?story[si++%3]:'blob';if(rm){show(n);return}if(busy)return;clearTimeout(back);morph(n);if(n!=='blob')back=setTimeout(()=>morph('blob'),2600)});
+s.parentNode.style.cursor='pointer';if(rm)return;
+let tx=0,ty=0,ux=0,uy=0,last=-1e9,lid=0,blinkAt=performance.now()+2000,sighAt=performance.now()+9000,sq=0;
+const mv=e=>{const r=s.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height*.58),d=Math.hypot(dx,dy)||1,k=Math.min(1,d/260);tx=dx/d*k;ty=dy/d*k;last=performance.now()};
 addEventListener('pointermove',mv,{passive:true});addEventListener('pointerdown',mv,{passive:true});
-function blink(){l.setAttribute('opacity','1');setTimeout(()=>l.setAttribute('opacity','0'),140);setTimeout(blink,2500+Math.random()*3500)}
-setTimeout(blink,1800);
-setInterval(()=>{if(Date.now()-last<4000)return;t+=.05;const r=s.getBoundingClientRect();look(r.left+r.width/2+Math.sin(t)*160,r.top+r.height/2+Math.sin(t*.7)*60)},50);
-})();
+function f(t){if(t-last>4000){tx=Math.sin(t/2600)*.6;ty=Math.sin(t/3700)*.3}
+ux+=(tx-ux)*.06;uy+=(ty-uy)*.06;sq+=(squ-sq)*.18;
+let lidT=0;if(t>blinkAt){lidT=1;if(t>blinkAt+220)blinkAt=t+3000+Math.random()*4000}
+let sigh=0,sp=(t-sighAt)/2200;if(sp>0&&sp<1){sigh=Math.sin(sp*Math.PI)}else if(sp>=1)sighAt=t+14000+Math.random()*8000;
+lid+=((lidT?1:sigh*.45)-lid)*.25;
+const br=Math.sin(t/1400)*.018,shrug=sp>0&&sp<1?Math.sin(sp*Math.PI*2)*.05:0;
+const sy=1+br-sq*.38+shrug+uy*-.03,sx=1-br*.6+sq*.25-shrug*.5+Math.abs(ux)*.04;
+ch.setAttribute('transform',`translate(60 106) skewX(${(ux*-9).toFixed(2)}) rotate(${(ux*5).toFixed(2)}) scale(${sx.toFixed(3)} ${sy.toFixed(3)}) translate(-60 -106) translate(${(ux*3).toFixed(2)} 0)`);
+eyes.setAttribute('transform',`translate(${(ux*3.2).toFixed(2)} ${(uy*2.2).toFixed(2)})`);
+lids.setAttribute('transform',`translate(0 62) scale(1 ${(1+lid*2.6).toFixed(3)}) translate(0 -62)`);
+shadow.setAttribute('rx',(34*sx).toFixed(1));requestAnimationFrame(f)}
+requestAnimationFrame(f)})();
 </script>}
