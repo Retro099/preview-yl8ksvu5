@@ -128,3 +128,8 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - Nav: "Work with me" (JA 依頼) added; fits at 390 px in EN and JA. Footer: Work with me + Team of agents.
 - Home: Work with me strip + team teaser (3 mini characters) side by side on desktop.
 - axe 0 issues on home/talk/work/team, EN+JA, light+dark, 390+1440. No horizontal scroll.
+
+## v5.1 (26 Oct 2026)
+- Light is now the default for every visitor; the system dark setting is ignored. Dark appears only after the toggle (stored in localStorage 'theme'). The head script sets data-theme before paint, so there is no flash. The prefers-color-scheme dark CSS is removed.
+- Dark polish: ambient glows about half as strong, seigaiha at .035 in a light stroke (it was invisible indigo), lighter card surfaces (#1E2228), clearer borders (#3A4049), soft card shadows, brighter turmeric/saffron, flashcard and offer cards get a tint-coloured bottom edge, SVG art slightly desaturated.
+- axe 0 on Home/Projects/About/Talk/Work/Team, EN+JA, light+dark, 390+1440; no horizontal scroll.
