@@ -149,6 +149,18 @@ main>section+section::before{content:"";display:block;height:18px;max-width:168p
 .withnote{display:block}.mnote{display:none}
 @media (min-width:1100px){.withnote{display:grid;grid-template-columns:minmax(0,68ch) 240px;gap:3rem;align-items:start}.mnote{display:block;position:sticky;top:5rem;font-size:.9rem;border-left:3px solid var(--warm);padding:.2rem 0 .2rem 1rem;color:var(--mut)}.mnote h2{font-size:.85rem;margin:0 0 .4rem;color:var(--fg)}.mnote h2::after{display:none}.mnote ul{padding-left:1rem;margin:0}}
 @media (min-width:800px){footer .wrap{display:grid;grid-template-columns:1fr auto;gap:0 2rem;align-items:end}footer nav{grid-column:1/-1}}
+
+/* v4.8 talk offers */
+.offers{display:grid;gap:1rem;margin-top:1.5rem}@media (min-width:800px){.offers{grid-template-columns:repeat(3,1fr)}}
+.offer{display:flex;flex-direction:column;gap:.3rem;position:relative;background:linear-gradient(var(--t,var(--card)),var(--t,var(--card)));border-bottom:3px solid var(--line);transition:transform .2s ease}
+.offer::after{content:"";position:absolute;right:0;top:0;width:64px;height:40px;background:var(--wave);border-top-right-radius:14px;pointer-events:none;-webkit-mask:linear-gradient(225deg,#000,transparent 70%);mask:linear-gradient(225deg,#000,transparent 70%)}
+.offer h2{font-size:1.1rem;margin:0;line-height:1.4}.offer h2::after{display:none}.offer p{margin:0 0 .4rem}
+.og{font-size:.8rem;font-weight:600;color:var(--warm);letter-spacing:.03em}
+.olink{margin-top:auto;min-height:44px;display:inline-flex;align-items:center}
+.olink:focus-visible,.btn:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.offer:hover{transform:translateY(-3px)}}
+@media (prefers-color-scheme:dark){.btn{color:#121417}.btn:hover{background:#B7CDEE}}
+.allw{margin-top:2rem}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 {GOATCOUNTER && <script is:inline data-goatcounter={`https://${GOATCOUNTER}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
 </head>

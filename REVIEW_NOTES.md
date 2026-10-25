@@ -1,0 +1,119 @@
+# REVIEW NOTES — v2 (2026-10-25)
+Live (unlisted, noindex): https://retro099.github.io/preview-yl8ksvu5/en/ · https://retro099.github.io/preview-yl8ksvu5/ja/
+Backup of v1: /workspace/site-backup-v1-2026-10-25.tgz
+
+## What changed
+- New nav: Projects · Writing · About · Advice · EN/日本語. Agent and Services pages removed.
+- Home: hero (option A) → facts strip → 3 plain-title project cards (repo name small) → How I work → experience timeline → Writing ("starts after N2") → Contact.
+- Case studies at /projects/<slug>: purpose / why this tech / what I did / result with test size / next / links (JA: 目的/技術選定の理由/工夫/結果/今後).
+- New /now, /advice (single Topmate link, no prices), /writing, /about (自己紹介 / 技術スキル).
+- All numbers come from src/data/metrics.json (hand-edited); copy reads from it.
+- JA: です・ます, short sentences, ruby on hard kanji, English under every JA block.
+- Daily rebuild already in the workflow (cron 06:00 IST); it does not touch metrics.
+
+## DRAFT — please check
+- ALL Japanese text is a DRAFT for your check (or the JLPT bot / a native checker).
+- Hero wording (EN option A and the JA line).
+- Education line is OMITTED: brief said "BPUT", source file says "GIFT, Bhubaneswar, May 2021". Which wording do you want, if any?
+- Email: none in the source file marked public, so none on site. Want one?
+- LinkedIn: no URL in the source file, so it's not linked yet. Send the URL.
+- Military-family wording: not on the site. Book vs Social bot disagree; your call.
+- Topmate pricing stays off the site (prices only on Topmate). Confirm.
+- EN titles contain "Japanese" (one bot advised avoiding it); kept per your brief.
+- CRM: unseen-attack result not shown on the card; mentioned only in words on the case study.
+
+---
+## v3 — "Washi Calm" (2026-10-25)
+Backup of v2: /workspace/site-backup-v2-2026-10-25.tgz
+- Palette cream #FAFAF7 / indigo #2B4C7E / warm #C8553D (N2 chip + learners door only); system fonts, body ≥16px, JA line-height 1.8, 44px tap targets, slim header, footer with build date.
+- Home: one hero + portrait → facts strip → three doors (Recruiters: "Projects and contact" — no CV file exists; Learners: journey/now + quiet Advice/Topmate; Engineers: projects + GitHub).
+- Project cards and case studies now have Metric/Result/Test size tables from metrics.json.
+- Ruby: hidden on recruiter pages via SHOW_RUBY_ON_RECRUITER_PAGES in src/config.ts (CSS only, markup kept). /now and /writing keep ruby.
+- GoatCounter: script loads only if PUBLIC_GOATCOUNTER_CODE is set (workflow reads repo variable GOATCOUNTER_CODE). Unset; no account made.
+- Portrait: public/portrait.webp, 400px, 11.4KB, shoulders-up from src.jpg, background blurred via cutout mask; visually checked: no signs/cars/people. Has alt text.
+- Verified: Actions success; 200 + noindex on EN/JA home and a project page; no horizontal overflow at 390px on 9 pages.
+### Decisions needed
+Education line (GIFT vs BPUT) · public email/LinkedIn URL · CV file · hero wording · military-family wording (currently omitted) · Topmate prices stay off · portrait OK? · GoatCounter sign-up if wanted.
+
+---
+## v3.1 — fix pass from Prithivi's phone review (2026-10-25)
+Backup of v3: /workspace/site-backup-v3-2026-10-25.tgz
+- Portrait off (config `showPortrait=false`; file kept). Redo later with an unblurred crop that keeps the ears.
+- One name: header brand = "Prithivi" / 「プリティヴィ」; hero h1 = full name once (katakana on JA only). Other pages: h1 is the page title, no repeat.
+- Hero: name → title line → one plain sentence. Facts strip: "Currently: In the hiring process with Japanese companies". "Visa sponsorship needed" moved to the recruiter door.
+- Contact card (components/Contact.astro) on home + /about: retro099@protonmail.com, LinkedIn /in/retro099, GitHub, Topmate. No phone. The "GitHub is best" sentence was removed.
+- Experience (data/profile.ts), newest first: Outlier AI Engineer (Contract) Jun 2024–present; self-employed Jul 2023–May 2024; GodSpeed Games Game Developer and Tester Jun 2022–Jun 2023 (Bunny Park, UE4/C++). The JLPT row was removed from the timeline. Education removed.
+- Skills moved to the Projects page (includes game development).
+- About rewritten (first person, facts only) and ends with the contact card.
+- Writing: neutral "coming soon" line; hidden from the main nav (`SHOW_WRITING_IN_NAV=false`), still linked in the footer.
+- JA pages are Japanese only. The J component keeps the English as an unrendered `en` prop. Translations are in JA-REVIEW-SHEET.md (not published).
+- Now strip on home; /now says the CRM v1.1 evaluation run is in progress.
+- Mobile spacing tightened; self-praise trimmed ("honest numbers" → "clear numbers").
+- Verified: Actions success; 200 + noindex; no overflow at 390px on home/about/projects EN+JA.
+### Notes / open
+- Email: the public email was chosen from Notion (apply email and signature). Notion also lists Retro099@proton.me; confirm which one.
+- LinkedIn URL is from the Social bot's Oct 14 snapshot (LinkedIn blocks automated checks, so it was not verified live).
+- Sources say HelloTalk friends since Mar 2024; the brief's "learning Japanese since 2025" is not in the sources, so it was not used.
+
+---
+## v4 — living home page (2026-10-25)
+Backup: /workspace/site-backup-v4-start-2026-10-25.tgz · git tag v3.1 (45adfd4) pushed · v4 commit 4167ab4.
+- Header: small avatar mark + "Prithivi". Hero: hand-drawn SVG avatar (eyes follow pointer/touch, blink, head tilt, body shift; idles after 4 s; static with reduced motion or no JS) + full name once + title + plain sentence with the "Retro / old-fashioned" line.
+- Three number tiles from metrics.json linking to project pages, with caveat line. Compact status line. Dated Now + "Latest on GitHub" (merged PRs via public search API at build time, scripts/fetch-latest.mjs, falls back to last file or a message).
+- Doors, Experience, text contact row; footer "Updated <build date>". Projects grid and "How I work" removed from home (still on Projects pages).
+- Revert: `git checkout v3.1` or restore the tarball.
+
+---
+## v4.2 — feedback pass (2026-10-25)
+Backup: /workspace/site-backup-v41-2026-10-25.tgz · git tag v4.1 (9b2e5f4) pushed.
+- Hero sentence: removed Retro / old-fashioned / social-media lines (EN+JA). Now: "I evaluate AI answers as a contractor and build small AI tools for Japanese text, and each project page shows how I tested it."
+- Status strip: bordered label/value rows (label above value ≤420px, beside it 421–799px, 3 columns on desktop).
+- Header on phones: brand + 日本語/EN pill on row 1, nav on row 2 (no wrap, scrolls if needed).
+- Advice → "Talk with me" nav / "Book a 1:1 chat" page at /talk/ (JA 相談する / 1対1の相談), content from topmate.io/prithivi_raj_mohanta (route check 20 min, recruiter-call practice 30 min, written question 2-day reply; resumes & scout profiles). No prices. /advice/ meta-refreshes to /talk/.
+- Favicon (svg + 32px png + apple-touch), OG/Twitter 1200x630 cards og-en.png / og-ja.png, per-page descriptions, canonical + x-default/en/ja hreflang (absolute with base path), 404 page. noindex kept.
+- Verified (Playwright): 360/390/430/1280 × EN/JA × light/dark, all pages 200, no horizontal overflow, lang pill on brand row, status labels never wrap, name once in main.
+- Not used from Topmate: "3+ years in AI/ML", "AI Engineer at Outlier" title wording, Wantedly link, "No fluff, bro".
+
+---
+## v4.3 — shorter number-tile labels (2026-10-25)
+Backup: /workspace/site-backup-v43-start-2026-10-25.tgz · start commit 3895f4b (v4.2).
+- Home tile labels shortened so each fits on one line at 390px (EN+JA, light+dark, checked with Playwright):
+  - CRM: "Attacks that got through (before → after)" / 「攻撃が通った割合（対策の前→後）」
+  - Search: "Japanese search: right passage in top 5" / 「文書検索で正解が上位5件に入った割合」
+  - Fraud: "Fraud caught / alerts correct" / 「不正の検出率 / 警告の正しさ」
+- Recall/precision wording stays on the project page. Numbers unchanged (metrics.json).
+- Screenshots: site/screenshots/v43/. Revert: `git checkout v4.2`-equivalent commit 3895f4b or restore the tarball.
+
+---
+## v4.4 — dated Now items with verified facts (2026-10-25)
+Backup: /workspace/site-backup-v44-start-2026-10-25.tgz · start commit a9af545 (v4.3).
+- Home Now card and /now: heading "Updated 25 Oct 2026" / 「2026年10月25日 更新」.
+- N2: started syllabus 2026-10-25 (Lesson 1); taking N2 on 6 Dec 2026 (from JLPT bot / Prithivi; not checked against admit card). No scores, no lesson counts, no study-since wording.
+- CRM: larger evaluation with more tests in progress, currently paused; results later. As of 2026-10-25. No finish date, billing, or cost. "v1.1" wording removed.
+- "Building this site" kept with no date (start date not verified).
+- NowStrip component (not used on any page) updated to match.
+- Screenshots: site/screenshots/v44/ (390px, EN/JA home + now, no overflow).
+- Not changed: About still says "study Japanese every day" (EN/JA) — unverified "daily" claim; review.
+
+## v4.5 — CRM Now item is running (2026-10-25)
+Backup: /workspace/site-backup-v45-start-2026-10-25.tgz · start commit 0d64134 (v4.4).
+- CRM Now item (home, /now, NowStrip; EN+JA): evaluation resumed 2026-10-25 and is running; all "paused"/一時停止 wording removed. As-of date kept 2026-10-25. No finish date, error, or cost.
+
+## v4.6 — game developer role detail (2026-10-25)
+Backup: /workspace/site-backup-v46-start-2026-10-25.tgz · start commit 607bddf (v4.5).
+- Experience → GodSpeed Games line (data/profile.ts, EN+JA), from Prithivi's own words 2026-10-25: localization, testing whether the game worked on handheld devices, porting to handheld devices incl. touch controls. Kept existing role, dates, Remote/full-time, platforms.
+- Confidentiality: Bunny Park named only as the game; no numbers, features, team size, shipped/sales claims.
+- Projects skills row ('Game development (Unreal Engine 4, C++)') and About paragraph unchanged. About "every day" Japanese line confirmed by Prithivi 2026-10-25, stays.
+- Screenshots: site/screenshots/v46/.
+
+## v4.7 — flashcards + light Japanese-Indian theme (2026-10-25)
+Backup: /workspace/site-backup-v47-start-2026-10-25.tgz · start commit 2b3fb84 (v4.6).
+- Flashcards (components/FlashDeck.astro; home replaces number tiles, Projects replaces Card grid). Data: `flash` in data/projects.ts + metrics.json. Inline SVG art: meishi+hanko (CRM), book+bookmark+hanamaru (search), guard cat with magnifier (fraud). Tints indigo/sakura/turmeric, seigaiha corner. Flip: button + aria-pressed, inert on hidden face, focus moves; phones scroll-snap row + hint + dots; no-JS stacked; reduced motion crossfade.
+- Chomp (components/Chomp.astro) above Say hello: blob eats dots, IO-paused, static with reduced motion/no JS, click restarts.
+- Theme: paper grain, wave+marigold-dot dividers, hanko-square on h2, scroll tint ≤5% (CSS scroll-timeline, where supported), cursor petals (mouse only, ≤7, every 5th marigold).
+- Space: hero two-column with 220px blob right (≥800px); side rail with section dots (home, ≥1280px); About margin note with Now facts (≥1100px); section gap 6rem→4.5rem; footer two-column.
+- --warm light #C8553D→#B84C35 for AA text contrast (axe: 0 WCAG A/AA violations).
+- Card element Card.astro kept but unused. Screenshots: screenshots/v47/ (before/ = v4.6 live).
+
+## v4.8 (2026-10-25)
+Talk page rebuilt: 3 featured Topmate offer cards (phone, recruiter bubbles, guide booklet SVGs), no prices, one See all button (new tab, rel=noopener). Old lead, How it works list and written-question card removed. Dark-mode .btn text changed to dark for contrast (sitewide fix).
