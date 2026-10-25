@@ -10,14 +10,14 @@ const P = (s) => `${B}/${lang}/projects/${s}/`;
 const fmt = (d) => { const [y,mo,da] = d.split('-').map(Number); return ja ? `${mo}月${da}日` : new Date(Date.UTC(y,mo-1,da)).toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}); };
 const nums = [
  { slug:'meeting-notes-to-crm', v:`${m.crm.attack_before} → ${m.crm.attack_after}`,
-   en:['Attacks that got through my CRM tool, before and after defenses', `On ${m.crm.attacks} attacks I wrote myself`],
-   ja:['CRMツールで攻撃が通った割合（対策の前→後）', `自作の攻撃${m.crm.attacks}件での結果`] },
+   en:['Attacks that got through (before → after)', `On ${m.crm.attacks} attacks I wrote myself`],
+   ja:['攻撃が通った割合（対策の前→後）', `自作の攻撃${m.crm.attacks}件での結果`] },
  { slug:'japanese-document-search', v:m.rag.hit5,
-   en:['Right passage in the top 5 for Japanese document search', `${m.rag.questions} questions on one government report`],
-   ja:['日本語文書検索で、正解が上位5件に入った割合', `政府の報告書1冊、${m.rag.questions}問での結果`] },
+   en:['Japanese search: right passage in top 5', `${m.rag.questions} questions on one government report`],
+   ja:['文書検索で正解が上位5件に入った割合', `政府の報告書1冊、${m.rag.questions}問での結果`] },
  { slug:'credit-card-fraud', v:`${m.fraud.recall} / ${m.fraud.precision}`,
-   en:['Fraud found / alerts that were right (recall / precision)', `Public dataset where ${m.fraud.fraud_rate} of payments are fraud`],
-   ja:['不正の検出率 / 警告の正しさ（再現率 / 適合率）', `不正が${m.fraud.fraud_rate}しかない公開データでの結果`] },
+   en:['Fraud caught / alerts correct', `Public dataset where ${m.fraud.fraud_rate} of payments are fraud`],
+   ja:['不正の検出率 / 警告の正しさ', `不正が${m.fraud.fraud_rate}しかない公開データでの結果`] },
 ];
 const now = ja
  ? [['2026-10-25','JLPT N2の勉強を毎日しています（試験は12月6日）。'],['2026-10-25','CRMツール v1.1 の評価を実行中です。'],['2026-10-25','このサイトを作り直しています。']]
