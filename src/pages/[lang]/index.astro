@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 import Experience from '../../components/Experience.astro'; import Avatar from '../../components/Avatar.astro';
 import m from '../../data/metrics.json'; import latest from '../../data/latest.json';
-import { CONTACT as C } from '../../config';
+import { CONTACT as C } from '../../config'; import FlashDeck from '../../components/FlashDeck.astro'; import Chomp from '../../components/Chomp.astro';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const P = (s) => `${B}/${lang}/projects/${s}/`;
@@ -24,6 +24,7 @@ const now = ja
  : [['2026-10-25','Started the JLPT N2 syllabus (Lesson 1). Taking N2 on 6 Dec 2026.'],['2026-10-25','CRM project: a larger evaluation run with more tests is in progress. Results will be added when it is done.'],['','Building this site.']];
 ---
 <Base lang={lang} title={ja?'ホーム':'Home'}>
+<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
 <div class="hero4">
 <Avatar size={112}/>
 <div>
@@ -40,9 +41,7 @@ const now = ja
 </>}
 </div></div>
 
-<section class="nums" aria-label={ja?'数字で見る':'In numbers'}>
-{nums.map(n => <a class="num card" href={P(n.slug)}><strong>{n.v}</strong><span>{ja?n.ja[0]:n.en[0]}</span><small>{ja?n.ja[1]:n.en[1]} →</small></a>)}
-</section>
+<section id="projects" aria-label={ja?'プロジェクト':'Projects'}><FlashDeck lang={lang}/></section>
 <p class="mut small">{ja?'どれも小さなテストでの数字です。条件と弱い点は各プロジェクトのページに書いています。':'All three come from small tests. Each project page explains the setup and the weak spots.'}</p>
 
 <dl class="status">
@@ -51,7 +50,7 @@ const now = ja
 <div><dt>{ja?'現在':'Currently'}</dt><dd>{ja?'日本企業の選考を受けています':'In the hiring process with Japanese companies'}</dd></div>
 </dl>
 
-<section class="split">
+<section class="split" id="now">
 <div class="card"><h2>{ja?'いま':'Now'}</h2>
 <p class="mut"><time datetime="2026-10-25">{ja?'2026年10月25日 更新':'Updated 25 Oct 2026'}</time></p>
 <ul class="dated">{now.map(([d,t]) => <li>{d ? <time datetime={d}>{fmt(d)}</time> : <span></span>}<span>{t}</span></li>)}</ul>
@@ -70,6 +69,6 @@ const now = ja
 
 <section class="narrow" id="work"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>
 
-<section class="narrow" id="contact"><h2>{ja?'連絡先':'Say hello'}</h2>
+<section class="narrow" id="contact"><Chomp/><h2>{ja?'連絡先':'Say hello'}</h2>
 <p class="crow"><a href={`mailto:${C.email}`}>{C.email}</a><a href={C.linkedin}>LinkedIn</a><a href={C.github}>GitHub</a><a href={C.topmate}>{ja?'1対1の相談（Topmate）':'1:1 chat (Topmate)'}</a></p></section>
 </Base>

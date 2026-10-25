@@ -1,0 +1,42 @@
+---
+// Anki-style flashcards. No JS: front + back stacked. JS adds .fx (3D flip), inert on hidden face, dots.
+import { projects, flash } from '../data/projects';
+const { lang } = Astro.props; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+const ART = {'meeting-notes-to-crm': '<svg class="art" viewBox="0 0 160 90" aria-hidden="true" focusable="false"><rect x="10" y="14" width="86" height="56" rx="5" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><path d="M20 28h40M20 36h52M20 44h30" stroke="#2B4C7E" stroke-width="2" stroke-linecap="round" opacity=".5"/><circle cx="80" cy="54" r="9" fill="none" stroke="#C8553D" stroke-width="2"/><text x="80" y="58.5" font-size="11" text-anchor="middle" fill="#C8553D">印</text><path d="M100 42h10" stroke="#2B4C7E" stroke-width="2" stroke-dasharray="2 3"/><rect x="114" y="18" width="36" height="12" rx="3" fill="#EEF2F8" stroke="#2B4C7E" stroke-width="1.5"/><rect x="114" y="36" width="36" height="12" rx="3" fill="#EEF2F8" stroke="#2B4C7E" stroke-width="1.5"/><rect x="114" y="54" width="36" height="12" rx="3" fill="#FBE9E4" stroke="#C8553D" stroke-width="1.5"/><path d="M119 24h14M119 42h20M119 60h10" stroke="#2B4C7E" stroke-width="1.5" stroke-linecap="round"/></svg>', 'japanese-document-search': '<svg class="art" viewBox="0 0 160 90" aria-hidden="true" focusable="false"><path d="M80 24Q60 14 32 20V74Q60 68 80 78Z" fill="#fff" stroke="#2B4C7E" stroke-width="2" stroke-linejoin="round"/><path d="M80 24Q100 14 128 20V74Q100 68 80 78Z" fill="#fff" stroke="#2B4C7E" stroke-width="2" stroke-linejoin="round"/><path d="M40 32q16-4 32 0M40 42q16-4 32 0M40 52q16-4 32 0M88 32q16-4 32 0M88 42q12-3 20 0" stroke="#2B4C7E" stroke-width="1.6" fill="none" opacity=".4"/><path d="M108 18v26l5-5 5 5V18" fill="#C8553D" opacity=".85"/><g transform="translate(102 58)" fill="none" stroke="#C8553D" stroke-width="2"><circle r="10"/><path d="M0-4a4 4 0 1 1-3 6"/><path d="M-10 0q-4-8 4-11M10 0q4-8-4-11M0 10q8 4 11-4" opacity=".7"/></g></svg>', 'credit-card-fraud': '<svg class="art" viewBox="0 0 160 90" aria-hidden="true" focusable="false"><rect x="96" y="44" width="52" height="32" rx="4" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><rect x="96" y="51" width="52" height="6" fill="#2B4C7E" opacity=".25"/><path d="M103 68h16" stroke="#2B4C7E" stroke-width="2" stroke-linecap="round"/><ellipse cx="52" cy="62" rx="24" ry="18" fill="#FFF8EC" stroke="#2B4C7E" stroke-width="2"/><path d="M34 34l4-12 9 8M70 34l-4-12-9 8" fill="#FFF8EC" stroke="#2B4C7E" stroke-width="2" stroke-linejoin="round"/><circle cx="52" cy="40" r="17" fill="#FFF8EC" stroke="#2B4C7E" stroke-width="2"/><path d="M45 39q2-2 4 0M55 39q2-2 4 0" stroke="#1E2A3A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M50 46q2 2 4 0" stroke="#1E2A3A" stroke-width="1.5" fill="none"/><circle cx="42" cy="45" r="3" fill="#C8553D" opacity=".35"/><circle cx="62" cy="45" r="3" fill="#C8553D" opacity=".35"/><path d="M30 58q-8-10-4-20" stroke="#2B4C7E" stroke-width="2" fill="#FFF8EC"/><circle cx="27" cy="36" r="5" fill="#FFF8EC" stroke="#2B4C7E" stroke-width="2"/><path d="M42 70h20" stroke="#C8553D" stroke-width="3" stroke-linecap="round"/><circle cx="52" cy="73" r="3" fill="#D9A93A"/><path d="M72 58l14 4" stroke="#2B4C7E" stroke-width="3" stroke-linecap="round"/><circle cx="96" cy="64" r="11" fill="#EEF2F8" fill-opacity=".6" stroke="#2B4C7E" stroke-width="2.5"/></svg>'};
+const TINT = {'meeting-notes-to-crm':'t-ai','japanese-document-search':'t-sakura','credit-card-fraud':'t-gold'};
+const strip = (h) => h.replace(/<rt>.*?<\/rt>/g,'').replace(/<[^>]+>/g,'');
+---
+<div class="deckw">
+<p class="hint mut small" aria-hidden="true">{ja?'← 左右にスワイプ · タップで裏返す →':'← Swipe · tap a card to flip →'}</p>
+<div class="deck" data-deck>
+{projects.map(p => { const F = flash[p.slug]; const t = ja ? F.ja : F.en; const name = ja ? strip(p.ja.title) : p.en.title; const rows = ja ? p.tableJa : p.table; return (
+<div class={`fc ${TINT[p.slug]}`}>
+<div class="fc-in">
+<button type="button" class="face front" aria-pressed="false" aria-label={ja?`${name}：カードを裏返して説明を見る`:`${name}: flip card for details`}>
+<span class="artw" set:html={ART[p.slug]}/>
+<span class="fname" set:html={ja ? p.ja.title : p.en.title}/>
+<span class="big">{F.big}</span><span class="blabel">{t.label}</span>
+<span class="helps">{t.helps}</span>
+<span class="flip mut small" aria-hidden="true">{ja?'タップで裏返す ↻':'Tap to flip ↻'}</span>
+</button>
+<div class="face back">
+<p class="bt">{ja?'何をするか':'What it does'}</p>
+{ja ? <p class="jp" set:html={p.ja.line}/> : <p>{p.en.line}</p>}
+<ul class="kn">{rows.map(([a,b,c]) => <li><strong>{b}</strong> {a} <span class="mut">({c})</span></li>)}</ul>
+<p class="bt">{ja?'弱い点':'Where it falls short'}</p><p class="lim">{t.limit}</p>
+<p class="fl"><a href={`${B}/${lang}/projects/${p.slug}/`}>{ja?'くわしく見る':'Full details'} →</a><a href={`https://github.com/Retro099/${p.repo}`}>GitHub</a>{p.demo && <a href={p.demo}>{ja?'デモ':'Demo'}</a>}</p>
+<button type="button" class="unflip" aria-pressed="true" aria-label={ja?`${name}：表にもどす`:`${name}: flip back to front`}>{ja?'↺ 表にもどす':'↺ Front'}</button>
+</div>
+</div></div>)})}
+</div>
+<p class="dots" aria-hidden="true">{projects.map((_,i) => <span class={i===0?'on':''}></span>)}</p>
+</div>
+<script is:inline>
+(()=>{document.querySelectorAll('[data-deck]').forEach(d=>{d.classList.add('fx');const cards=[...d.querySelectorAll('.fc')];
+cards.forEach(c=>{const f=c.querySelector('.front'),b=c.querySelector('.back'),u=c.querySelector('.unflip');b.inert=true;
+const set=(on)=>{c.classList.toggle('on',on);f.setAttribute('aria-pressed',on);f.inert=on;b.inert=!on;(on?u:f).focus({preventScroll:true});};
+f.addEventListener('click',()=>set(true));u.addEventListener('click',()=>set(false));});
+const dots=[...d.parentNode.querySelectorAll('.dots span')];
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.intersectionRatio>.6){const i=cards.indexOf(e.target);dots.forEach((s,j)=>s.classList.toggle('on',i===j));}}),{root:d,threshold:[.6]});cards.forEach(c=>io.observe(c));}});})();
+</script>

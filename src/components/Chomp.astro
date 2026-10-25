@@ -1,0 +1,21 @@
+---
+// Decorative: the site blob slowly eats a row of dots. Static without JS / with reduced motion.
+const BLOB = "M31 52C26 36 43 24 57 30C65 18 88 21 90 39C101 43 104 60 100 72C100 92 84 104 60 104C36 104 18 92 20 72C18 63 22 56 31 52Z";
+const xs = [70,110,150,190,230,270,310];
+---
+<div class="chomp" aria-hidden="true" data-chomp>
+<svg viewBox="0 0 340 44" height="44" focusable="false">
+{xs.map((x,i) => <circle class="dot" cx={x} cy="26" r="3.2" style={`animation-delay:${(i*0.97+1.21).toFixed(2)}s`}/>)}
+<g class="cb"><g transform="translate(0 4) scale(.36)">
+<path d={BLOB} fill="#FFF8EC" stroke="#2B4C7E" stroke-width="5" stroke-linejoin="round"/>
+<ellipse cx="50" cy="66" rx="5" ry="6" fill="#1E2A3A"/><ellipse cx="74" cy="66" rx="5" ry="6" fill="#1E2A3A"/>
+<circle cx="40" cy="80" r="5" fill="#C8553D" opacity=".4"/>
+<ellipse class="mouth" cx="84" cy="84" rx="8" ry="6" fill="#1E2A3A"/>
+</g></g>
+</svg>
+</div>
+<script is:inline>
+(()=>{const el=document.querySelector('[data-chomp]');if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const io=new IntersectionObserver(es=>es.forEach(e=>el.classList.toggle('run',e.isIntersecting)));io.observe(el);
+el.addEventListener('click',()=>{el.classList.remove('go');void el.offsetWidth;el.classList.add('go');});el.classList.add('go');})();
+</script>

@@ -1,5 +1,17 @@
 import m from './metrics.json';
 const c=m.crm, r=m.rag, f=m.fraud;
+// Flashcard fields (v4.7). Numbers come from metrics.json only.
+export const flash = {
+ 'meeting-notes-to-crm': { big:c.attack_after,
+   en:{ label:'of attacks got through with defenses on', helps:'Helps sales teams who copy meeting notes into a CRM.', limit:`A small test: ${c.notes} synthetic notes, and I wrote the ${c.attacks} attacks myself.` },
+   ja:{ label:'対策ありで通った攻撃の割合', helps:'商談メモをCRMに書き写す営業チームのためのツールです。', limit:`小さなテストです。メモ${c.notes}件は作ったもので、攻撃${c.attacks}件も自分で書きました。` } },
+ 'japanese-document-search': { big:r.hit5,
+   en:{ label:'right passage in the top 5 results', helps:'Helps teams building AI search over Japanese documents.', limit:`The ${r.questions} questions were drafted with AI help, and only ${r.hand_checked} were checked by hand. One report only.` },
+   ja:{ label:'正解が上位5件に入った割合', helps:'日本語の文書でAI検索を作るチームのための評価です。', limit:`${r.questions}問はAIの助けで作り、自分で確認したのは${r.hand_checked}問だけです。報告書は1冊だけです。` } },
+ 'credit-card-fraud': { big:f.recall,
+   en:{ label:'share of frauds caught (recall)', helps:'Helps fraud and risk teams at payment companies.', limit:'One public dataset only. Not yet tested on newer data.' },
+   ja:{ label:'見つけた不正の割合（再現率）', helps:'支払いの不正を防ぐチームのためのモデルです。', limit:'公開データ1つだけで、新しいデータではまだ試していません。' } },
+};
 export const projects = [
 { slug:'meeting-notes-to-crm', table:[['Exact match',c.exact_match,`${c.exact_hits}/${c.exact_total} fields`],['Attacks through (defenses on)',`${c.attack_before} → ${c.attack_after}`,`${c.attacks} self-written`]], tableJa:[['完全一致',c.exact_match,`${c.exact_hits}/${c.exact_total}項目`],['攻撃が通る割合（対策あり）',`${c.attack_before} → ${c.attack_after}`,`自作${c.attacks}件`]], repo:'jp-meeting-to-crm-fields', demo:'https://retro-jp-meeting-to-crm-fields.streamlit.app',
   en:{ title:'Turning Japanese sales meetings into CRM fields — safely',
