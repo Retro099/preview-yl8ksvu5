@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
+export { paths as getStaticPaths } from '../../data/paths';
+const { lang } = Astro.params; const ja = lang==='ja';
+---
+<Base lang={lang} page="now" title={ja?'いま':'Now'}>
+<h1>{ja?'いま、していること':'Now'}</h1>
+<p class="muted"><time datetime="2026-10-25">{ja?'2026年10月25日':'Updated 25 Oct 2026'}</time></p>
+{ja ? <ul class="card">
+<li><J en="Studying for JLPT N2 (test on December 6, 2026). Japanese comes first every day.">JLPT N2のべんきょう（2026年12月6日に受けます）。毎日、日本語をいちばん先にします。</J></li>
+<li><J en="Upgrading the CRM project to version 1.1 and testing it.">CRMプロジェクトをバージョン1.1にして、テストしています。</J></li>
+<li><J en="The visual inspection project is paused until after N2.">画像検査のプロジェクトは、N2のあとまでお休みです。</J></li>
+<li><J en="Building this website.">このサイトを作っています。</J></li>
+</ul> : <ul class="card">
+<li>Preparing for JLPT N2 on 6 Dec 2026. Japanese study comes first each day, then coding.</li>
+<li>Evaluating CRM extractor v1.1 (per-field judge, guardrails, cost and latency).</li>
+<li>Visual-inspection bench (YOLO vs PatchCore on MVTec AD) is parked until after N2.</li>
+<li>Building this site.</li>
+</ul>}
+</Base>

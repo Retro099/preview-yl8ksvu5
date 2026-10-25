@@ -1,0 +1,25 @@
+---
+const B = import.meta.env.BASE_URL.replace(/\/$/, "");
+import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
+import Sub from '../../components/SubstackPlaceholder.astro'; import repos from '../../data/repos.json';
+export { paths as getStaticPaths } from '../../data/paths';
+const { lang } = Astro.params;
+---
+<Base lang={lang} page="">
+{lang==='en' ? <>
+<h1>I build small, tested tools for my own problems, and I measure them.</h1>
+<p>AI/ML engineer in Odisha, India, preparing for work in Japan. Each project here starts from a real need and ends with a number you can check.</p>
+</> : <>
+<h1>自分のこまりごとを、小さなツールで解いています。</h1>
+<p class="en" lang="en">I solve my own problems with small tools.</p>
+<J en="I am an AI engineer in Odisha, India, preparing to work in Japan. Every project has a number you can check.">インドのオディシャ州にいるAIエンジニアです。日本で働くために準備しています。どのプロジェクトにも、たしかめられる数字があります。</J>
+</>}
+<div class="btns">
+<a class="btn primary" href={`${B}/${lang}/projects/`}>{lang==='ja'?'プロジェクト':'Projects'}</a>
+<a class="btn" href={`${B}/${lang}/now/`}>{lang==='ja'?'いま':'Now'}</a>
+<a class="btn" href="https://topmate.io/prithivi_raj_mohanta">{lang==='ja'?'相談を予約':'Book a call'}</a>
+</div>
+<section class="card"><h2>{lang==='ja'?'さいきんのリポジトリ':'Latest public repos'}</h2>
+<ul>{repos.map(r => <li><a href={r.url}>{r.name}</a>{r.updated && <small> · {r.updated}</small>}</li>)}</ul></section>
+<Sub lang={lang}/>
+</Base>

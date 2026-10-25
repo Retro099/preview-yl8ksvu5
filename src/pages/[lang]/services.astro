@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
+export { paths as getStaticPaths } from '../../data/paths';
+const { lang } = Astro.params; const ja = lang==='ja';
+const s = [['₹99','Priority DM','優先メッセージ'],['₹299','Japan route check','日本への道のチェック'],['₹499','Recruiter call prep','面談の準備']];
+---
+<Base lang={lang} page="services" title={ja?'相談':'Services'}>
+<h1>{ja?'相談（Topmate）':'Services on Topmate'}</h1>
+{ja && <J en="For people in India who want to work in Japan. Book on Topmate.">日本で働きたいインドの人のための相談です。Topmateで予約できます。</J>}
+{s.map(([p,e,j]) => <div class="card"><h2>{ja?j:e}</h2><p><span class="num">{p}</span></p></div>)}
+<p><a class="btn primary" href="https://topmate.io/prithivi_raj_mohanta">{ja?'Topmateで予約':'Book on Topmate'}</a></p>
+</Base>

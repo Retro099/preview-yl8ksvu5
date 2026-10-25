@@ -1,0 +1,5 @@
+---
+// Japanese paragraph with faithful English line beneath (shown only on /ja/).
+const { en } = Astro.props;
+---
+<p><slot/></p><p class="en" lang="en">{en}</p>
