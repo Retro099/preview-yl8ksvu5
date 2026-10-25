@@ -4,6 +4,7 @@ const { lang, page = '', title, recruiter = true } = Astro.props;
 const noruby = recruiter && !SHOW_RUBY_ON_RECRUITER_PAGES;
 const built = new Date().toISOString().slice(0,10);
 const ja = lang === 'ja';
+const pageTitle = (title ? `${title} · ` : '') + 'Prithivi Raj Mohanta';
 const other = ja ? 'en' : 'ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const site = (Astro.site?.href ?? '').replace(/\/$/, '') + B;
@@ -14,7 +15,7 @@ const nav = [['projects', ja?'プロジェクト':'Projects'],...(SHOW_WRITING_I
 <html lang={lang}>
 <head>
 <meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title ? `${title} · ` : ''}Prithivi Raj Mohanta</title>
+<title>{pageTitle}</title>
 <meta name="description" content={ja?'AI / MLエンジニア — LLMの評価、日本語AI、ゲーム開発':'AI / ML engineer — LLM evaluation, Japanese-language AI, game development'}>
 <meta name="color-scheme" content="light dark">
 <link rel="alternate" hreflang="en" href={`${site}/en/${slug}`}><link rel="alternate" hreflang="ja" href={`${site}/ja/${slug}`}>
