@@ -1,0 +1,32 @@
+[
+  {
+    "repo": "jp-meeting-to-crm-fields",
+    "title": "docs: remove outdated English screenshot (demo GIF covers it)",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/9",
+    "date": "2026-10-12"
+  },
+  {
+    "repo": "credit-card-fraud-detection",
+    "title": "docs: final README polish",
+    "url": "https://github.com/Retro099/credit-card-fraud-detection/pull/3",
+    "date": "2026-10-12"
+  },
+  {
+    "repo": "japanese-rag-eval",
+    "title": "docs: final README polish",
+    "url": "https://github.com/Retro099/japanese-rag-eval/pull/3",
+    "date": "2026-10-12"
+  },
+  {
+    "repo": "jp-meeting-to-crm-fields",
+    "title": "docs: final README polish",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/8",
+    "date": "2026-10-12"
+  },
+  {
+    "repo": "japanese-rag-eval",
+    "title": "README: author hand-check result (15/42, 15 correct)",
+    "url": "https://github.com/Retro099/japanese-rag-eval/pull/2",
+    "date": "2026-10-12"
+  }
+]

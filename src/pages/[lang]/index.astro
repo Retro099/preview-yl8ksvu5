@@ -1,41 +1,74 @@
 ---
 import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
-import { projects } from '../../data/projects'; import Card from '../../components/Card.astro';
-import Contact from '../../components/Contact.astro'; import Experience from '../../components/Experience.astro'; import NowStrip from '../../components/NowStrip.astro';
-import { showPortrait } from '../../config';
+import Experience from '../../components/Experience.astro'; import Avatar from '../../components/Avatar.astro';
+import m from '../../data/metrics.json'; import latest from '../../data/latest.json';
+import { CONTACT as C } from '../../config';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+const P = (s) => `${B}/${lang}/projects/${s}/`;
+const fmt = (d) => { const [y,mo,da] = d.split('-').map(Number); return ja ? `${mo}月${da}日` : new Date(Date.UTC(y,mo-1,da)).toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}); };
+const nums = [
+ { slug:'meeting-notes-to-crm', v:`${m.crm.attack_before} → ${m.crm.attack_after}`,
+   en:['Attacks that got through my CRM tool, before and after defenses', `On ${m.crm.attacks} attacks I wrote myself`],
+   ja:['CRMツールで攻撃が通った割合（対策の前→後）', `自作の攻撃${m.crm.attacks}件での結果`] },
+ { slug:'japanese-document-search', v:m.rag.hit5,
+   en:['Right passage in the top 5 for Japanese document search', `${m.rag.questions} questions on one government report`],
+   ja:['日本語文書検索で、正解が上位5件に入った割合', `政府の報告書1冊、${m.rag.questions}問での結果`] },
+ { slug:'credit-card-fraud', v:`${m.fraud.recall} / ${m.fraud.precision}`,
+   en:['Fraud found / alerts that were right (recall / precision)', `Public dataset where ${m.fraud.fraud_rate} of payments are fraud`],
+   ja:['不正の検出率 / 警告の正しさ（再現率 / 適合率）', `不正が${m.fraud.fraud_rate}しかない公開データでの結果`] },
+];
+const now = ja
+ ? [['2026-10-25','JLPT N2の勉強を毎日しています（試験は12月6日）。'],['2026-10-25','CRMツール v1.1 の評価を実行中です。'],['2026-10-25','このサイトを作り直しています。']]
+ : [['2026-10-25','Studying for JLPT N2 every day. Test day is Dec 6.'],['2026-10-25','Running the evaluation for my CRM tool, v1.1.'],['2026-10-25','Rebuilding this site, avatar included.']];
 ---
 <Base lang={lang} title={ja?'ホーム':'Home'}>
-<div class="hero"><div>
+<div class="hero4">
+<Avatar size={150}/>
+<div>
 {ja ? <>
+<p class="hi">こんにちは。</p>
 <h1>プリティヴィ・ラージ・モハンタ</h1>
 <p class="title">AI / MLエンジニア — LLMの評価、日本語AI、ゲーム開発</p>
-<p class="lead">業務委託でLLMの回答を評価しています。個人では日本語の文書を扱う小さなAIツールを作り、テストの方法と結果を公開しています。</p>
+<p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱う小さなAIツールを作っています。テストの方法と結果も公開しています。ネットでは「Retro」と名乗っています。少し昔気質で、SNSはほとんど使いません。</p>
 </> : <>
+<p class="hi">Hello, I'm</p>
 <h1>Prithivi Raj Mohanta</h1>
 <p class="title">AI / ML engineer — LLM evaluation, Japanese-language AI, game development</p>
-<p class="lead">I evaluate large language model answers as a contractor, and I build small AI tools for Japanese text and publish how I tested them.</p>
+<p class="lead">I evaluate AI answers as a contractor, build small AI tools for Japanese text, and publish how I tested them. Online I go by Retro, because I'm a little old-fashioned: I hardly use social media.</p>
 </>}
-</div>{showPortrait && <img src={`${B}/portrait.webp`} width="180" height="180" alt={ja?'プリティヴィ・ラージ・モハンタの顔写真':'Portrait of Prithivi Raj Mohanta'}>}</div>
-<dl class="facts">
-<div><dt>{ja?'拠点':'Based'}</dt><dd>{ja?'インド（オディシャ州）':'Odisha, India'}</dd></div>
-<div><dt>{ja?'専門':'Focus'}</dt><dd>{ja?'LLMの評価、日本語AI':'LLM evaluation, Japanese-language AI'}</dd></div>
-<div><dt>{ja?'日本語':'Japanese'}</dt><dd class="chip">{ja?'2026年12月6日 JLPT N2受験':'Taking JLPT N2 on Dec 6, 2026'}</dd></div>
+</div></div>
+
+<section class="nums" aria-label={ja?'数字で見る':'In numbers'}>
+{nums.map(n => <a class="num card" href={P(n.slug)}><strong>{n.v}</strong><span>{ja?n.ja[0]:n.en[0]}</span><small>{ja?n.ja[1]:n.en[1]} →</small></a>)}
+</section>
+<p class="mut small">{ja?'どれも小さなテストでの数字です。条件と弱い点は各プロジェクトのページに書いています。':'All three come from small tests. Each project page explains the setup and the weak spots.'}</p>
+
+<dl class="status">
+<div><dt>{ja?'拠点':'Based'}</dt><dd>{ja?'インド・オディシャ州（リモート）':'Odisha, India (remote)'}</dd></div>
+<div><dt>{ja?'日本語':'Japanese'}</dt><dd class="chip">{ja?'2026年12月6日にJLPT N2受験':'Taking JLPT N2 on Dec 6, 2026'}</dd></div>
 <div><dt>{ja?'現在':'Currently'}</dt><dd>{ja?'日本企業の選考を受けています':'In the hiring process with Japanese companies'}</dd></div>
 </dl>
-<NowStrip lang={lang}/>
-<section class="doors"><div class="grid3">
-<div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、職務経歴、連絡先。':'Projects with measured results, work history and contact details.'}</p><p class="mut small">{ja?'就労ビザのスポンサーが必要です。':'Visa sponsorship needed.'}</p><a href="#contact">{ja?'プロジェクトと連絡先 →':'Projects and contact →'}</a></div>
-<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners and followers'}</h3><p>{ja?'インドから日本で働くまでの記録と、日本語の勉強。':'My path from India to working in Japan, and how I study Japanese.'}</p><a href={`${B}/${lang}/now/`}>{ja?'いまの様子 →':'What I\'m doing now →'}</a><br><a href={`${B}/${lang}/advice/`} class="mut">{ja?'相談（Topmate）':'Advice calls (Topmate)'}</a></div>
-<div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was evaluated, with test sizes and code.'}</p><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト →':'Projects →'}</a><br><a href="https://github.com/Retro099">GitHub →</a></div>
-</div></section>
-<section><h2>{ja?'プロジェクト':'Projects'}</h2><div class="grid3">{projects.map(p => <Card p={p} lang={lang}/>)}</div></section>
-<section class="narrow"><h2>{ja?'仕事の進め方':'How I work'}</h2>
-{ja ? <ol><li>作る前に、何で成功を測るかを決めます。</li><li>数字には、テストの件数と弱いところを書きます。</li><li>一人で作っています。調査と下書きはAIエージェントが手伝い、最後の判断とチェックは私が行います。</li></ol>
- : <ol><li>I decide how success will be measured before I build anything.</li><li>Every number comes with its test size and its weak points.</li><li>I work alone with AI agents for research and drafts; final decisions and checks are mine.</li></ol>}
+
+<section class="split">
+<div class="card"><h2>{ja?'いま':'Now'}</h2>
+<ul class="dated">{now.map(([d,t]) => <li><time datetime={d}>{fmt(d)}</time><span>{t}</span></li>)}</ul>
+<a href={`${B}/${lang}/now/`}>{ja?'くわしく →':'More on the Now page →'}</a></div>
+<div class="card"><h2>{ja?'最近の更新（GitHub）':'Latest on GitHub'}</h2>
+{latest.length ? <ul class="dated">{latest.map(i => <li><time datetime={i.date}>{fmt(i.date)}</time><span>{ja ? <><a href={i.url}>{i.repo}</a> の変更をマージ</> : <><a href={i.url}>{i.title}</a> <span class="mut">· {i.repo}</span></>}</span></li>)}</ul>
+ : <p class="mut">{ja?'更新の一覧を読み込めませんでした。':'The list could not be loaded at build time.'}</p>}
+<a href={C.github}>{ja?'GitHubで見る →':'All activity on GitHub →'}</a></div>
 </section>
-<section class="narrow"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>
-<section class="narrow"><Contact lang={lang}/></section>
+
+<section class="doors"><div class="grid3">
+<div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、職務経歴、連絡先。':'Projects with measured results, work history and contact details.'}</p><p class="mut small">{ja?'就労ビザのスポンサーが必要です。':'Visa sponsorship needed.'}</p><a href="#work">{ja?'職務経歴 →':'Work history →'}</a></div>
+<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'インドから日本で働くまでの記録と、日本語の勉強。':'My path from India toward work in Japan, and how I study Japanese.'}</p><a href={`${B}/${lang}/now/`}>{ja?'いまの様子 →':'What I\'m doing now →'}</a><br><a href={`${B}/${lang}/advice/`} class="mut">{ja?'相談（Topmate）':'Advice calls (Topmate)'}</a></div>
+<div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト →':'Projects →'}</a><br><a href={C.github}>GitHub →</a></div>
+</div></section>
+
+<section class="narrow" id="work"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>
+
+<section class="narrow" id="contact"><h2>{ja?'連絡先':'Say hello'}</h2>
+<p class="crow"><a href={`mailto:${C.email}`}>{C.email}</a><a href={C.linkedin}>LinkedIn</a><a href={C.github}>GitHub</a><a href={C.topmate}>Topmate</a></p></section>
 </Base>

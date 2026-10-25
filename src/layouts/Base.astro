@@ -1,4 +1,5 @@
 ---
+import Avatar from '../components/Avatar.astro';
 import { SHOW_RUBY_ON_RECRUITER_PAGES, GOATCOUNTER, SHOW_WRITING_IN_NAV } from '../config';
 const { lang, page = '', title, recruiter = true } = Astro.props;
 const noruby = recruiter && !SHOW_RUBY_ON_RECRUITER_PAGES;
@@ -68,6 +69,15 @@ dl.cs dt{font-weight:700;margin-top:1.4rem;color:var(--acc)}dl.cs dd{margin:.25r
 .xp{list-style:none;margin:0;padding:0}.xp li{padding:.8rem 0;border-bottom:1px solid var(--line)}.xp p{margin:0}.xd{font-size:.9rem}.xl{margin-top:.2rem!important}
 .skills{padding-left:1.1rem}
 @media (max-width:799px){.wrap{padding:0 1rem}main{padding:1.75rem 0 2.5rem}section{margin-top:2.25rem}.card{padding:1rem;margin:0 0 .75rem}.grid3{gap:.75rem}.doors .card{margin:0}.facts{margin-top:1rem}h1{margin-bottom:.4rem}}
+.hero4{display:grid;gap:1rem;align-items:center}@media (min-width:800px){.hero4{grid-template-columns:170px 1fr;gap:2rem}}
+.av{flex:none}.av svg{display:block;overflow:visible}.hi{margin:0;color:var(--mut)}
+.nums{display:grid;gap:.75rem;margin-top:2rem}@media (min-width:800px){.nums{grid-template-columns:repeat(3,1fr);margin-top:3rem}}
+.num{display:flex;flex-direction:column;gap:.2rem;text-decoration:none;color:var(--fg);margin:0}.num strong{font-size:1.7rem;color:var(--acc);line-height:1.2}.num small{color:var(--mut);font-size:.82rem}
+.status{display:flex;flex-wrap:wrap;gap:.3rem 1.5rem;margin:1.5rem 0 0;font-size:.92rem}.status div{display:flex;gap:.4rem}.status dt{color:var(--mut)}.status dd{margin:0;font-weight:600}
+.split{display:grid;gap:.75rem}@media (min-width:800px){.split{grid-template-columns:1fr 1fr;gap:1rem}.split .card{margin:0}}
+.dated{list-style:none;margin:0 0 .5rem;padding:0}.dated li{display:grid;grid-template-columns:4.2rem 1fr;gap:.5rem;padding:.35rem 0;border-bottom:1px solid var(--line);font-size:.93rem}.dated time{color:var(--mut);font-size:.85rem}
+.crow{display:flex;flex-wrap:wrap;gap:0 1.25rem}.crow a{min-height:44px;display:inline-flex;align-items:center}
+.mark{flex:none}@media (max-width:799px){.av,.av svg{width:112px!important;height:112px!important}}
 footer{border-top:1px solid var(--line);color:var(--mut);font-size:.9rem;padding:1.5rem 0 2.5rem}
 footer nav a{padding:0 .8rem 0 0}footer p{margin:.4rem 0}
 </style>
@@ -75,14 +85,14 @@ footer nav a{padding:0 .8rem 0 0}footer p{margin:.4rem 0}
 </head>
 <body class={noruby ? 'noruby' : undefined}>
 <header><div class="wrap">
-<a class="brand" href={`${B}/${lang}/`}>{ja?'プリティヴィ':'Prithivi'}</a>
+<a class="brand" href={`${B}/${lang}/`}><Avatar mark/>{ja?'プリティヴィ':'Prithivi'}</a>
 <nav aria-label="Main">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}</nav>
 <a class="lang" href={`${B}/${other}/${slug}`} hreflang={other} lang={other}>{other==='ja'?'日本語':'EN'}</a>
 </div></header>
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
 <nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">Topmate</a></nav>
-<p>{ja?'最終更新':'Last updated'}: <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
+<p>{ja?'更新日':'Updated'} <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
 <p>© 2026 Prithivi Raj Mohanta</p>
 </div></footer>
 </body></html>
