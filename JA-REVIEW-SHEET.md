@@ -693,3 +693,23 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 - AIのツール、AIのテスト、小さなウェブサイトなど、小さな有料のプロジェクトも受けています。 = I also take on small paid projects, such as AI tools, AI testing and small websites.
 ### Talk
 - 仕事の依頼はこちら。 = For project work, see here.
+
+## v5.2 new JA text
+| JA | English meaning |
+|---|---|
+| 日本の友だちの声 | Voices of Japanese friends |
+| ご本人の許可を得てのせています。 | Published with her permission. |
+| (quotes) 日本人30歳女性 — verbatim from the friend, do not edit | Japanese woman, 30 |
+| ひと目でわかる自己紹介 / 名前 / 住んでいる所 / いまの仕事 / これまで / 言葉 / 勉強 / 主な道具 / プロジェクト / 連絡先 | At a glance / Name / Based / Current work / Before / Languages / Studying / Main tools / Projects / Contact |
+| インド・オディシャ州（リモートで仕事） | Odisha, India (works remotely) |
+| AIエンジニア（契約）。Outlier（Scale AI）で、LLMの答えの評価と安全性テスト（2024年6月から） | AI Engineer (contract) at Outlier: LLM answer evaluation and safety tests (since Jun 2024) |
+| ゲーム開発・テスト担当（2022〜2023年）、個人でデータの仕事（2023〜2024年） | Game dev/tester; self-employed data work |
+| ヒンディー語、英語、ベンガル語、オリヤー語。日本語は勉強中 | Hindi, English, Bengali, Odia. Studying Japanese |
+| 2026年12月6日にJLPT N2を受験します | Taking JLPT N2 on 6 Dec 2026 |
+| 会議メモからCRMの項目へ・日本語の文書検索・クレジットカードの不正検出 | the three project names |
+| 会社での使い方： / プロジェクトを見る | How this helps a company: / See the project |
+| 会社がAIツールを使う前に、まちがった答えや危ない答えをテストします。CRMのプロジェクトでは、通ってしまう攻撃が45%から6.7%に減りました（自作の攻撃40件）。 | Test AI for wrong/unsafe answers; attacks 45%→6.7% (40 self-written) |
+| 社員が日本語の文書から、必要な部分を見つけられるようにします。…上位5件に入った割合は0.98でした。 | Help staff find the right part; top-5 0.98 on 42 questions |
+| 日本語の会議メモを、手で入力せずにCRMの項目に入れます。…150項目のうち90項目が完全に一致しました（60.0%、テスト用メモ30件）。 | Notes→CRM fields; 90/150 exact |
+| 不正かもしれないカードの支払いを見つけます。…再現率0.84、適合率0.88でした。 | Flag possible fraud; recall 0.84, precision 0.88 |
+| チームがブラウザでツールを試せて、テストも続けられるようにします。…Streamlitのデモがあり、変更のたびに自動テストが動きます。 | Try tools in the browser, keep them tested |

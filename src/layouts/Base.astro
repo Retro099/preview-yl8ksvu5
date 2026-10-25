@@ -254,6 +254,17 @@ html[data-theme=dark] .art{filter:brightness(.88) saturate(.9)}
 html[data-theme=dark] .blob{filter:brightness(.95)}
 html[data-theme=dark] .chip{color:#F2A08C}
 html[data-theme=dark] header{background:rgba(20,23,27,.92)}
+ 
+/* v5.2 voices, glance, skill use */
+.voices{margin:2rem 0}.vgrid{display:grid;gap:.75rem}@media (min-width:800px){.vgrid{grid-template-columns:1fr 1fr;gap:1rem}}
+.vnote{position:relative;margin:0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warm);border-radius:14px;padding:1rem 3.4rem 1rem 1.1rem;background-image:linear-gradient(transparent calc(1.65em - 1px),color-mix(in srgb,var(--line) 70%,transparent) 1.65em);background-size:100% 1.65em;background-origin:content-box}
+.vnote blockquote{margin:0}.vnote blockquote p{margin:0;font-size:1.02rem}.vtr{margin:.5rem 0 0!important}.vnote figcaption{margin-top:.5rem;font-size:.9rem;color:var(--warm);font-weight:600}
+.hanko{position:absolute;right:.8rem;top:.8rem;width:2.1rem;height:2.1rem;border:2px solid var(--warm);border-radius:50%;color:var(--warm);display:grid;place-items:center;font-weight:700;font-size:.95rem;transform:rotate(-10deg);opacity:.85}
+.glance{margin:1rem 0 1.5rem;padding:0;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.glance div{display:grid;grid-template-columns:7.5rem 1fr;gap:.75rem;padding:.55rem .9rem;border-bottom:1px solid var(--line)}.glance div:last-child{border:0}
+.glance dt{color:var(--mut);font-size:.88rem;font-weight:600}.glance dd{margin:0}
+@media (max-width:479px){.glance div{grid-template-columns:1fr;gap:.1rem}}
+.skills.bento li{display:flex;flex-direction:column;gap:.4rem}.skills .use{font-size:.9rem;color:var(--fg)}.skills .ul{display:block;font-size:.8rem;font-weight:700;color:var(--warm)}
 </style>
 {GOATCOUNTER && <script is:inline data-goatcounter={`https://${GOATCOUNTER}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
 </head>

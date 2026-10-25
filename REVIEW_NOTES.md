@@ -133,3 +133,9 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - Light is now the default for every visitor; the system dark setting is ignored. Dark appears only after the toggle (stored in localStorage 'theme'). The head script sets data-theme before paint, so there is no flash. The prefers-color-scheme dark CSS is removed.
 - Dark polish: ambient glows about half as strong, seigaiha at .035 in a light stroke (it was invisible indigo), lighter card surfaces (#1E2228), clearer borders (#3A4049), soft card shadows, brighter turmeric/saffron, flashcard and offer cards get a tint-coloured bottom edge, SVG art slightly desaturated.
 - axe 0 on Home/Projects/About/Talk/Work/Team, EN+JA, light+dark, 390+1440; no horizontal scroll.
+
+## v5.2 (2026-10-26 IST)
+- Home: "From a Japanese friend" / 日本の友だちの声 block (src/data/voices.ts, components/Voices.astro). Two quotes, word for word, credited to 日本人30歳女性 with her permission. The EN page adds an English meaning marked as a translation. Styled as a lined stationery card with a 声 hanko stamp.
+- About: an "At a glance" dl near the top (EN and JA). It stacks on narrow screens.
+- Projects/Skills: each skill gets a "How this helps a company" line built from metrics.json, with a link to its project. Python and Game development have no line (no real example).
+- Checks: 48 screenshots in screenshots/v52; axe 0 issues; no overflow at 390.

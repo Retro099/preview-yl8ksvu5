@@ -1,4 +1,5 @@
 ---
+import Voices from '../../components/Voices.astro';
 import Blob from '../../components/Blob.astro';
 import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
@@ -68,6 +69,7 @@ const now = ja
 <div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト →':'Projects →'}</a><br><a href={C.github}>GitHub →</a></div>
 </div></section>
 
+<Voices lang={lang}/>
 <div class="hrow">
 <section class="card hstrip" aria-label={ja?'仕事の依頼':'Work with me'}><p>{ja?'AIのツール、AIのテスト、小さなウェブサイトなど、小さな有料のプロジェクトも受けています。':'I also take on small paid projects: AI tools, AI testing and small websites.'}</p><a class="btn" href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a></section>
 <section class="card hstrip" aria-label={ja?'わたしを手伝うAIエージェント':'AI agents that help me'}><div class="mini"><a href={`${B}/${lang}/team/`}><span class="chw"><Blob fill="#F6CFD8" acc="study"/></span><span class="chw"><Blob fill="#D9E3F3" acc="github"/></span><span class="chw"><Blob fill="#FFF8EC" acc="site"/></span><span class="lk">{ja?'わたしを手伝うAIエージェント →':'AI agents that help me →'}</span></a></div></section>

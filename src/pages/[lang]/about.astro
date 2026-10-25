@@ -10,6 +10,28 @@ const { lang } = Astro.params; const ja = lang==='ja';
 <Base lang={lang} page="about" title={ja?'自己紹介':'About'}>
 <div class="withnote"><div class="narrow">
 <h1>{ja?'自己紹介':'About me'}</h1>
+<dl class="glance" aria-label={ja?'ひと目でわかる自己紹介':'At a glance'}>
+{(ja?[
+ ['名前','プリティヴィ・ラージ・モハンタ'],
+ ['住んでいる所','インド・オディシャ州（リモートで仕事）'],
+ ['いまの仕事','AIエンジニア（契約）。Outlier（Scale AI）で、LLMの答えの評価と安全性テスト（2024年6月から）'],
+ ['これまで','ゲーム開発・テスト担当（2022〜2023年）、個人でデータの仕事（2023〜2024年）'],
+ ['言葉','ヒンディー語、英語、ベンガル語、オリヤー語。日本語は勉強中'],
+ ['勉強','2026年12月6日にJLPT N2を受験します'],
+ ['主な道具','Python、日本語の検索とRAG（bge-m3、BM25）、LLMによる情報抽出、XGBoost、Streamlit、Docker'],
+ ['プロジェクト','会議メモからCRMの項目へ・日本語の文書検索・クレジットカードの不正検出'],
+]:[
+ ['Name','Prithivi Raj Mohanta'],
+ ['Based','Odisha, India (works remotely)'],
+ ['Current work','AI Engineer (Contract) at Outlier (Scale AI): evaluating LLM answers, including safety tests (since Jun 2024)'],
+ ['Before','Game developer and tester (2022–2023); self-employed data work (2023–2024)'],
+ ['Languages','Hindi, English, Bengali, Odia. Studying Japanese'],
+ ['Studying','Taking JLPT N2 on 6 Dec 2026'],
+ ['Main tools','Python, Japanese search and RAG (bge-m3, BM25), LLM information extraction, XGBoost, Streamlit, Docker'],
+ ['Projects','Meeting notes to CRM fields · Japanese document search · Credit-card fraud detection'],
+]).map(([k,v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+<div><dt>{ja?'連絡先':'Contact'}</dt><dd><a href="mailto:retro099@protonmail.com">retro099@protonmail.com</a></dd></div>
+</dl>
 {ja ? <>
 <J en="I'm Prithivi Raj Mohanta, an engineer from Baripada in Odisha, India. All of my work so far has been remote.">プリティヴィ・ラージ・モハンタです。インドのオディシャ州バリパダ出身のエンジニアです。これまでの仕事は、すべてリモートです。</J>
 <J en="I got into technology through games. As a child I loved Tekken, a Japanese arcade fighting game, and that led to my first job: game developer and tester at GodSpeed Games (Jun 2022 – Jun 2023). There I worked on Bunny Park for Xbox, PS4 and PC in Unreal Engine 4 and C++.">技術の世界に入ったきっかけはゲームです。子どものころ、日本のアーケード格闘ゲーム「鉄拳」が大好きでした。それが最初の仕事につながり、GodSpeed Gamesでゲーム開発とテストを担当しました（2022年6月〜2023年6月）。Unreal Engine 4とC++で「Bunny Park」（Xbox、PS4、PC）を作りました。</J>

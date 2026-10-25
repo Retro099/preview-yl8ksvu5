@@ -1,0 +1,13 @@
+---
+import { voices } from '../data/voices';
+const { lang } = Astro.props; const ja = lang==='ja';
+---
+<section class="voices" aria-labelledby="vh"><h2 id="vh">{ja?'日本の友だちの声':'From a Japanese friend'}</h2>
+<div class="vgrid">{voices.map(v => <figure class="vnote">
+<span class="hanko" aria-hidden="true">声</span>
+<blockquote lang="ja"><p>「{v.ja}」</p></blockquote>
+{!ja && <p class="vtr small"><span class="mut">English meaning (translation):</span> {v.en}</p>}
+<figcaption lang="ja">— {v.by}{!ja && <span lang="en" class="mut"> ({v.byEn})</span>}</figcaption>
+</figure>)}</div>
+<p class="mut small">{ja?'ご本人の許可を得てのせています。':'Shared with her permission.'}</p>
+</section>
