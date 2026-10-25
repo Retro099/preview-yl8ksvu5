@@ -238,9 +238,15 @@ const r=document.querySelector('.rail');if(r&&'IntersectionObserver' in window){
 </script>
 <script is:inline>
 (()=>{const h=document.documentElement,b=document.querySelector('.theme');if(b){const set=()=>b.setAttribute('aria-pressed',h.dataset.theme==='dark');set();b.addEventListener('click',()=>{h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('theme',h.dataset.theme)}catch(e){}set();});}
-const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;let live=0;
-const petal=(x,y,m,dx,cls)=>{if(live>=12&&cls!=='egg')return;live++;const d=document.createElement('i');d.className='tp'+(m?' m':'');d.style.left=x+'px';d.style.top=y+'px';d.style.setProperty('--dx',dx+'px');d.addEventListener('animationend',()=>{d.remove();live--;});document.body.appendChild(d);};
-if(!rm){let t=0,k=0;const sp=ev=>{const e=ev.touches?ev.touches[0]:ev;if(!e||ev.pointerType==='mouse')return;const n=performance.now();if(n-t<90)return;t=n;for(let i=0;i<2;i++)petal(e.clientX+(Math.random()*30-15),e.clientY+(Math.random()*20-10),++k%6===0,Math.random()*40-20);};if(matchMedia('(pointer:coarse)').matches||'ontouchstart' in window){addEventListener('touchstart',sp,{passive:true});addEventListener('touchmove',sp,{passive:true});}}
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;const pool=[];
+const kill=d=>{const i=pool.indexOf(d);if(i>-1)pool.splice(i,1);d.remove();};
+const petal=(x,y,m,dx,cls)=>{if(cls!=='egg'&&pool.length>=13)kill(pool[0]);const d=document.createElement('i');d.className='tp'+(m?' m':'');d.style.left=x+'px';d.style.top=y+'px';d.style.setProperty('--dx',dx+'px');d.addEventListener('animationend',()=>kill(d));setTimeout(()=>kill(d),1700);if(cls!=='egg')pool.push(d);document.body.appendChild(d);};
+if(!rm&&(matchMedia('(pointer:coarse)').matches||'ontouchstart' in window)){let lx=0,ly=0,acc=0,k=0,hold=0,cx=0,cy=0;
+const drop=(x,y)=>petal(x+(Math.random()*16-8),y+(Math.random()*12-6),++k%6===0,Math.random()*40-20);
+const stop=()=>{clearInterval(hold);hold=0;};
+addEventListener('touchstart',e=>{const t=e.touches[0];if(!t)return;lx=cx=t.clientX;ly=cy=t.clientY;acc=0;drop(cx,cy);stop();hold=setInterval(()=>drop(cx,cy),220);},{passive:true});
+addEventListener('touchmove',e=>{const t=e.touches[0];if(!t)return;cx=t.clientX;cy=t.clientY;const dx=cx-lx,dy=cy-ly,d=Math.hypot(dx,dy);acc+=d;let n=0;while(acc>=28&&n<4){acc-=28;n++;const f=1-acc/(d||1);drop(lx+dx*Math.max(0,Math.min(1,f)),ly+dy*Math.max(0,Math.min(1,f)));}lx=cx;ly=cy;},{passive:true});
+['touchend','touchcancel'].forEach(v=>addEventListener(v,e=>{if(!e.touches.length)stop();},{passive:true}));}
 document.querySelectorAll('.deck,.offers').forEach(g=>{g.classList.add('spot');let tm=0,el=null;const off=()=>{clearTimeout(tm);g.classList.remove('pressing');el&&el.classList.remove('held');el=null;};
 g.addEventListener('touchstart',e=>{const c=[...g.children].find(x=>x.contains(e.target));if(!c)return;off();tm=setTimeout(()=>{el=c;c.classList.add('held');g.classList.add('pressing');},140);},{passive:true});
 ['touchend','touchcancel','touchmove'].forEach(v=>g.addEventListener(v,off,{passive:true}));addEventListener('scroll',off,{passive:true});g.addEventListener('scroll',off,{passive:true});});
