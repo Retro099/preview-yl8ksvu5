@@ -120,3 +120,11 @@ Talk page rebuilt: 3 featured Topmate offer cards (phone, recruiter bubbles, gui
 
 ## v4.9 (2026-10-25)
 At 1024px and wider: the Projects skills list is a bento grid, the About page has a sticky side column (Now note, avatar, N2 countdown, GitHub activity from latest.json), and Home Experience is shown as 3 cards. Touch petals, an ambient background, card spotlight, a theme toggle, EN/JA 404 pages and a blob easter egg (5 taps) were added. Mobile page heights are the same as v4.8.
+
+## v5.0 (25 Oct 2026)
+- Talk: each featured card links to its own Topmate offer (2372881, 2374750, 2374571). "See all on Topmate" still goes to the profile. Added a small link to Work with me.
+- New /work/ page (Work with me): intro, 5 service cards with SVG art and "Shown in:" proof links, How it works (3 steps), the no-logins/databases line, email + LinkedIn buttons. No prices, no response times.
+- New /team/ page (AI agents that help me): 7 blob-character flip cards (owner's wording verbatim), What agents do here / What I do, and a real version history from git tags (times IST). No vendor names.
+- Nav: "Work with me" (JA 依頼) added; fits at 390 px in EN and JA. Footer: Work with me + Team of agents.
+- Home: Work with me strip + team teaser (3 mini characters) side by side on desktop.
+- axe 0 issues on home/talk/work/team, EN+JA, light+dark, 390+1440. No horizontal scroll.

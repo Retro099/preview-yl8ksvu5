@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import { CONTACT as C } from '../../config';
+export { paths as getStaticPaths } from '../../data/paths';
+const { lang } = Astro.params; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+const P = (s) => `${B}/${lang}/projects/${s}/`;
+const sv = (b) => `<svg class="art" viewBox="0 0 160 90" aria-hidden="true" focusable="false">${b}</svg>`;
+const ART = {
+ fields: sv('<path d="M14 22q20-6 40 2t36-2" stroke="#2B4C7E" stroke-width="2" fill="none" opacity=".45"/><path d="M14 36q16 6 30-2t44 4M14 50q24-6 46 2" stroke="#2B4C7E" stroke-width="2" fill="none" opacity=".45"/><text x="30" y="72" font-size="13" fill="#B84C35">あ A</text><path d="M94 46h12" stroke="#B84C35" stroke-width="2.5" stroke-linecap="round"/><path d="M102 41l5 5-5 5" stroke="#B84C35" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="114" y="18" width="34" height="12" rx="3" fill="#EEF2F8" stroke="#2B4C7E" stroke-width="1.5"/><rect x="114" y="38" width="34" height="12" rx="3" fill="#EEF2F8" stroke="#2B4C7E" stroke-width="1.5"/><rect x="114" y="58" width="34" height="12" rx="3" fill="#FBE9E4" stroke="#B84C35" stroke-width="1.5"/>'),
+ search: sv('<rect x="20" y="20" width="44" height="56" rx="4" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><rect x="30" y="14" width="44" height="56" rx="4" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><path d="M38 28h28M38 36h22M38 44h26" stroke="#2B4C7E" stroke-width="1.6" opacity=".45"/><circle cx="108" cy="44" r="16" fill="#EEF2F8" fill-opacity=".7" stroke="#B84C35" stroke-width="2.5"/><path d="M120 56l14 14" stroke="#B84C35" stroke-width="4" stroke-linecap="round"/><path d="M101 44l5 5 9-10" stroke="#2B4C7E" stroke-width="2" fill="none" stroke-linecap="round"/>'),
+ test: sv('<rect x="34" y="12" width="64" height="68" rx="5" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><rect x="52" y="8" width="28" height="9" rx="3" fill="#D9A441"/><path d="M44 32l4 4 7-8M44 48l4 4 7-8" stroke="#2B4C7E" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M44 62l8 8M52 62l-8 8" stroke="#B84C35" stroke-width="2" stroke-linecap="round"/><path d="M62 32h26M62 48h22M62 66h24" stroke="#2B4C7E" stroke-width="1.6" opacity=".45"/><rect x="108" y="54" width="10" height="22" fill="#2B4C7E" opacity=".5"/><rect x="122" y="40" width="10" height="36" fill="#2B4C7E" opacity=".75"/><rect x="136" y="62" width="10" height="14" fill="#B84C35" opacity=".8"/>'),
+ site: sv('<rect x="22" y="14" width="116" height="64" rx="6" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><path d="M22 26h116" stroke="#2B4C7E" stroke-width="2"/><circle cx="30" cy="20" r="2" fill="#B84C35"/><circle cx="37" cy="20" r="2" fill="#D9A441"/><text x="40" y="52" font-size="14" fill="#2B4C7E">EN</text><text x="68" y="52" font-size="14" fill="#B84C35">日本</text><path d="M108 40q6-8 12 0q-6 8-12 0" fill="#F2B8C6"/><path d="M40 64h40" stroke="#2B4C7E" stroke-width="2" opacity=".4" stroke-linecap="round"/>'),
+ fraud: sv('<rect x="30" y="26" width="70" height="44" rx="5" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><rect x="30" y="36" width="70" height="8" fill="#2B4C7E" opacity=".25"/><path d="M38 58h22" stroke="#2B4C7E" stroke-width="2" stroke-linecap="round"/><path d="M118 22l20 36h-40Z" fill="#FFF3D6" stroke="#D9A441" stroke-width="2.5" stroke-linejoin="round"/><path d="M118 34v12" stroke="#B84C35" stroke-width="3" stroke-linecap="round"/><circle cx="118" cy="52" r="1.8" fill="#B84C35"/>'),
+};
+const T = ja ? {
+ title:'仕事の依頼', intro:'小さな有料のプロジェクトを受けています。やりたいことを教えてください。一つ一つの依頼に、見積もりをお返しします。',
+ can:'できること', shown:'見られる場所：', ask:'ご相談ください', how:'進め方', note:'いまは、ログイン機能やデータベースがあるサイトは作っていません。', contact:'連絡する', mail:'メールを送る',
+ steps:['やりたいことを教えてください。','作業の内容と見積もりをお返しします。','作りながら、進み具合をお見せします。'],
+ s:[
+  ['fields','t-ai','バラバラの文章を、きれいな項目にする','日本語や英語の仕事のメモをAIが読んで、決まった項目に入れます。テストの報告もつけます。',[['CRMのプロジェクト',P('meeting-notes-to-crm')]]],
+  ['search','t-sakura','あなたの文書を検索する','あなたの文書をAIで検索できるようにします。テスト用の質問で、どれくらい正しいかを測ります。',[['日本語の文書検索',P('japanese-document-search')]]],
+  ['test','t-gold','AIの回答をテストする','テスト用の質問を作って実行し、何がどのくらいの割合で失敗したかを書いてまとめます。',[['CRMの安全性テスト',P('meeting-notes-to-crm')],['検索のテスト',P('japanese-document-search')]]],
+  ['site','t-ai','小さな動きのあるウェブサイト','このサイトのようなサイトです。英語と日本語、だれでも使いやすく、動きもあります。',[['このサイト（作り方）',`${B}/${lang}/team/#history`]]],
+  ['fraud','t-sakura','支払いデータの不正を見つける','モデルの試作です。できないことも、正直に書きます。',[['クレジットカード不正検出',P('credit-card-fraud')]]],
+ ]} : {
+ title:'Work with me', intro:'I take on small paid projects. Tell me what you need, and I reply to each request with a quote.',
+ can:'What I can make', shown:'Shown in:', ask:'Ask me', how:'How it works', note:'Right now I do not build sites with user logins and databases.', contact:'Get in touch', mail:'Email me',
+ steps:['You tell me what you need.','I reply with the scope and a quote.','I build it and show you progress.'],
+ s:[
+  ['fields','t-ai','Turn messy text into clean fields','AI that reads Japanese or English business notes and fills structured fields, with a test report.',[['Meeting notes to CRM project',P('meeting-notes-to-crm')]]],
+  ['search','t-sakura','Search over your documents','AI search over your set of documents, measured on a test set.',[['Japanese document search project',P('japanese-document-search')]]],
+  ['test','t-gold',"Test your AI's answers",'I build a test set, run it, and write up what failed and how often.',[['CRM security test',P('meeting-notes-to-crm')],['Search test',P('japanese-document-search')]]],
+  ['site','t-ai','A small interactive website','English and Japanese, accessible and animated, like this one.',[['This site (how it was built)',`${B}/${lang}/team/#history`]]],
+  ['fraud','t-sakura','Spot fraud in payment data','A model prototype, with its limits written down honestly.',[['Credit-card fraud project',P('credit-card-fraud')]]],
+ ]};
+---
+<Base lang={lang} page="work" title={T.title} description={T.intro}>
+<h1>{T.title}</h1>
+<p class="lead">{T.intro}</p>
+<h2>{T.can}</h2>
+<section class="offers svc" aria-label={T.can}>
+{T.s.map(([a,t,name,line,proof],i) => <article class={`offer card ${t}`}>
+<span class="artw" set:html={ART[a]}/>
+{a==='fraud' && <p class="og">{T.ask}</p>}
+<h3>{name}</h3>
+<p>{line}</p>
+<p class="small proof">{T.shown} {proof.map(([l,h],j) => <>{j>0 && ' · '}<a href={h}>{l}</a></>)}</p>
+</article>)}
+</section>
+<section class="how"><h2>{T.how}</h2>
+<ol class="steps">{T.steps.map((s,i) => <li><span class="n" aria-hidden="true">{i+1}</span><span>{s}</span></li>)}</ol>
+<p class="mut">{T.note}</p></section>
+<section class="cta"><h2>{T.contact}</h2>
+<p class="btns"><a class="btn" href={`mailto:${C.email}`}>{T.mail}</a><a class="btn ghost" href="https://www.linkedin.com/in/retro099">LinkedIn</a></p></section>
+</Base>

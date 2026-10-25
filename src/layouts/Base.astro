@@ -11,7 +11,7 @@ const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1
 const site = (Astro.site?.href ?? '').replace(/\/$/, '') + B;
 const slug = page ? page + '/' : '';
 const desc = Astro.props.description ?? (ja?'AI / MLエンジニア。LLMの評価、日本語の文書を扱うAIツール、ゲーム開発。プロジェクトごとにテストの方法と結果を公開しています。':'AI / ML engineer working on LLM evaluation, AI tools for Japanese text and game development. Each project shows how it was tested.');
-const nav = [['projects', ja?'プロジェクト':'Projects'],...(SHOW_WRITING_IN_NAV?[['writing', ja?'記事':'Writing']]:[]),['about', ja?'自己紹介':'About'],['talk', ja?'相談する':'Talk with me']];
+const nav = [['projects', ja?'プロジェクト':'Projects'],...(SHOW_WRITING_IN_NAV?[['writing', ja?'記事':'Writing']]:[]),['about', ja?'自己紹介':'About'],['talk', ja?'相談する':'Talk with me'],['work', ja?'依頼':'Work with me']];
 ---
 <!doctype html>
 <html lang={lang}>
@@ -214,6 +214,37 @@ html[data-theme=dark] .amb::after{opacity:.045}
 .gh{font-size:.8rem;color:var(--mut)}.gh svg{display:block;width:100%;height:auto}.gh p{margin:.3rem 0 0}
 #work{max-width:none}#work .xp{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}#work .xp li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem}
 }
+
+/* v5.0 work + team */
+.btn.ghost{background:transparent;color:var(--acc);border:2px solid var(--acc)}.btn.ghost:hover{background:var(--card)}
+html[data-theme=dark] .btn.ghost{color:var(--acc)}@media (prefers-color-scheme:dark){html:not([data-theme=light]) .btn.ghost{color:var(--acc)}}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem}
+.svc h3{margin:.3rem 0;font-size:1.08rem}.proof{margin-top:auto;padding-top:.5rem;border-top:1px dashed var(--line)}
+.steps{list-style:none;padding:0;display:grid;gap:.6rem;counter-reset:s}.steps li{display:flex;gap:.7rem;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem}
+.steps .n{flex:0 0 2rem;height:2rem;border-radius:50%;background:var(--warm);color:#fff;display:grid;place-items:center;font-weight:700}
+@media (min-width:800px){.steps{grid-template-columns:repeat(3,1fr)}}
+.blob{width:100%;height:100%;overflow:visible}.chw{display:block;width:96px;height:90px;margin:.2rem auto .4rem}
+.tm .front{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;min-height:200px}.tm .fname{font-weight:700;color:var(--acc)}
+.bb{transform-origin:60px 104px;transform-box:view-box}.ey{transform-origin:60px 66px;transform-box:view-box}
+@media (prefers-reduced-motion:no-preference){.bb{animation:br 3.6s ease-in-out infinite}.ey{animation:bk 5s infinite}
+.tm:nth-child(2n) .bb{animation-delay:-1.2s}.tm:nth-child(3n) .ey{animation-delay:-2.1s}
+.tm .front:hover .blob,.tm .front:active .blob,.mini a:hover .blob{animation:wg .6s ease}.tm .front:hover .chw,.mini a:hover .chw{transform:translateY(-4px)}.chw{transition:transform .25s ease}}
+@keyframes br{50%{transform:scale(1.03,.97)}}@keyframes bk{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes wg{25%{transform:rotate(-6deg)}50%{transform:rotate(5deg)}75%{transform:rotate(-3deg)}}
+@media (min-width:800px) and (max-width:1023px){.deck.team .fc:last-child{grid-column:1/-1}}
+@media (min-width:1024px){.deck.team{grid-template-columns:repeat(4,1fr)}.deck.team .fc:last-child{grid-column:span 2}}
+.roles{display:grid;gap:.75rem;margin:1.5rem 0}@media (min-width:800px){.roles{grid-template-columns:1fr 1fr;gap:1rem}.roles .card{margin:0}}
+.tm .back{font-size:.9rem}.tm .back p{margin:.25rem 0 .5rem}
+@media (min-width:1024px){.offers.svc{grid-template-columns:repeat(6,1fr)}.offers.svc .offer{grid-column:span 2}.offers.svc .offer:nth-child(n+4){grid-column:span 3}}
+.roles::before{grid-column:1/-1}@media (min-width:800px){.tm .front .chw{width:150px;height:140px}.tm .front{justify-content:center;gap:.6rem}.tm .flip{margin-top:1.5rem}}.tm .fc-in{height:100%}.tm .fc-in>.face{height:100%;box-sizing:border-box}
+.roles ul{margin:.3rem 0 0;padding-left:1.2rem}
+.tl{list-style:none;padding:0;margin:.8rem 0;border-left:3px solid var(--line)}.tl li{display:grid;grid-template-columns:3.6rem 1fr;gap:0 .6rem;padding:.35rem 0 .35rem .9rem;position:relative}
+.tl li::before{content:"";position:absolute;left:-7px;top:.75rem;width:11px;height:11px;border-radius:50%;background:var(--warm)}
+.tl .tv{font-weight:700;color:var(--acc);grid-row:span 2}.tl .tt{font-size:.85rem;color:var(--mut)}
+@media (min-width:1024px){.tl{columns:2;column-gap:2.5rem;border-left:0}.tl li{break-inside:avoid;border-left:3px solid var(--line)}.tl li::before{left:-7px}}
+.hstrip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 1rem;margin:1.2rem 0}.hstrip p{margin:0}
+.mini{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}.mini a{display:flex;align-items:center;gap:.4rem;text-decoration:none;min-height:44px}.mini .chw{width:52px;height:48px;margin:0}.mini .lk{text-decoration:underline}
+@media (min-width:1024px){.hrow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.hrow .card{margin:0}}
 </style>
 {GOATCOUNTER && <script is:inline data-goatcounter={`https://${GOATCOUNTER}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
 </head>
@@ -227,7 +258,7 @@ html[data-theme=dark] .amb::after{opacity:.045}
 </div></header>
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
-<nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">{ja?'相談（Topmate）':'1:1 chat (Topmate)'}</a></nav>
+<nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a><a href={`${B}/${lang}/team/`}>{ja?'AIエージェント':'Team of agents'}</a><a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">{ja?'相談（Topmate）':'1:1 chat (Topmate)'}</a></nav>
 <p>{ja?'更新日':'Updated'} <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
 <p>© 2026 Prithivi Raj Mohanta</p>
 </div></footer>

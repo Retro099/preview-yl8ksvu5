@@ -1,0 +1,22 @@
+---
+// Small cloud-blob character (same blob as the avatar) with a colour and an accessory. Decorative.
+const { fill='#FFF8EC', acc='site', cls='' } = Astro.props;
+const BLOB = "M31 52C26 36 43 24 57 30C65 18 88 21 90 39C101 43 104 60 100 72C100 92 84 104 60 104C36 104 18 92 20 72C18 63 22 56 31 52Z";
+const S = 'stroke="#2B4C7E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"';
+const A = {
+ study:`<g ${S}><path d="M86 96l12-4 12 4V80l-12-4-12 4Z" fill="#fff"/><path d="M98 76v20"/><path d="M104 54l10-14" stroke="#B84C35" stroke-width="4"/></g>`,
+ docs:`<g ${S}><path d="M82 82h12l4 5h16v21H82Z" fill="#F2C14E"/><path d="M88 96h18" opacity=".6"/></g>`,
+ github:`<g ${S} fill="none"><path d="M36 33l2-14 11 9M78 25l8-11 3 14" fill="currentColor"/><circle cx="96" cy="82" r="4" fill="#fff"/><circle cx="96" cy="104" r="4" fill="#fff"/><circle cx="112" cy="90" r="4" fill="#fff"/><path d="M96 86v14M112 94q0 6-14 8"/></g>`,
+ programs:`<g ${S}><circle cx="100" cy="92" r="13" fill="#fff"/><path d="M100 82l4 10-4 10-4-10Z" fill="#B84C35" stroke-width="1.5"/></g>`,
+ overseas:`<g ${S} fill="none"><circle cx="100" cy="92" r="13" fill="#DCE7F5"/><path d="M87 92h26M100 79q-9 13 0 26M100 79q9 13 0 26"/></g>`,
+ topmate:`<g ${S}><path d="M86 88l18-10v28l-18-10Z" fill="#B84C35"/><path d="M80 88h6v8h-6Z" fill="#fff"/><path d="M110 86l5-3M110 92h6M110 98l5 3"/></g>`,
+ site:`<g ${S}><rect x="82" y="78" width="32" height="24" rx="3" fill="#fff"/><path d="M82 85h32" /><circle cx="87" cy="81.5" r="1" fill="#B84C35"/><path d="M89 93l-3 2 3 2M107 93l3 2-3 2" stroke-width="2"/></g>`
+};
+---
+<svg class={`blob ${cls}`} viewBox="10 10 112 104" aria-hidden="true" focusable="false" style={`color:${fill}`}>
+<g class="bb"><path d={BLOB} fill={fill} stroke="#2B4C7E" stroke-width="2.5"/>
+<g class="ey"><ellipse cx="48" cy="66" rx="4" ry="5" fill="#1E2A3A"/><ellipse cx="72" cy="66" rx="4" ry="5" fill="#1E2A3A"/></g>
+<circle cx="40" cy="77" r="4.5" fill="#B84C35" opacity=".3"/><circle cx="80" cy="77" r="4.5" fill="#B84C35" opacity=".3"/>
+<path d="M55 78q5 5 10 0" fill="none" stroke="#1E2A3A" stroke-width="2.2" stroke-linecap="round"/></g>
+<g class="acc" set:html={A[acc]}/>
+</svg>

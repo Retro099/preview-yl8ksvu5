@@ -17,6 +17,8 @@ const offers = ja ? [
  ['recruiter','t-sakura','Japan job prep','Recruiter call ready','The 25-question Recruiter Call Kit plus a 30-minute practice call, for people preparing for a conversation with a Japanese company.'],
  ['guide','t-gold','Japan routes','Japan from India: Route Guide','A 4-page guide to the main ways into Japan from India (work, JET, MEXT, language school), with steps and official sources.'],
 ];
+const URL = {call:'https://topmate.io/prithivi_raj_mohanta/2372881', recruiter:'https://topmate.io/prithivi_raj_mohanta/2374750', guide:'https://topmate.io/prithivi_raj_mohanta/2374571'};
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const nt = ja ? '（新しいタブで開きます）' : ' (opens in a new tab)';
 ---
 <Base lang={lang} page="talk" title={ja?'1対1の相談':'Book a 1:1 chat'} description={ja?'Topmateで受けられる相談とガイドから、3つを紹介します。':'Three featured 1:1 chats and guides on Topmate.'}>
@@ -27,9 +29,10 @@ const nt = ja ? '（新しいタブで開きます）' : ' (opens in a new tab)'
 <p class="og">{g}</p>
 <h2>{name}</h2>
 <p>{line}</p>
-<a class="olink" href={C.topmate} target="_blank" rel="noopener" aria-label={`${name}${ja?'：Topmateで見る':': view on Topmate'}${nt}`}>{ja?'Topmateで見る ↗':'View on Topmate ↗'}</a>
+<a class="olink" href={URL[a]} target="_blank" rel="noopener" aria-label={`${name}${ja?'：Topmateで見る':': view on Topmate'}${nt}`}>{ja?'Topmateで見る ↗':'View on Topmate ↗'}</a>
 </article>)}
 </section>
 <p class="allw"><a class="btn" href={C.topmate} target="_blank" rel="noopener">{ja?'Topmateですべて見る':'See all on Topmate'} ↗<span class="sr">{nt}</span></a></p>
 <p class="mut small">{ja?'予約と支払いはTopmateで行います。':'Booking and payment happen on Topmate.'}</p>
+<p class="mut small">{ja?'仕事の依頼は':'For paid project work, see '}<a href={`${B}/${lang}/work/`}>{ja?'こちら':'Work with me'}</a>{ja?'。':'.'}</p>
 </Base>

@@ -667,3 +667,29 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | ページが見つかりません | Page not found |
 | このページはありません。または、場所が変わりました。 | This page doesn't exist, or it has moved. |
 | ホームへ戻る | Back to home |
+
+## v5.0
+### Nav / footer
+- 依頼 = Work with me (nav, short so it fits at 390 px) · 仕事の依頼 = Work with me (page title, footer, button) · AIエージェント = Team of agents (footer)
+### Work page (仕事の依頼)
+- 小さな有料のプロジェクトを受けています。やりたいことを教えてください。一つ一つの依頼に、見積もりをお返しします。 = I take on small paid projects. Tell me what you need. I reply to each request with a quote.
+- できること = What I can make · 見られる場所： = Shown in: · ご相談ください = Ask me
+- バラバラの文章を、きれいな項目にする = Turn messy text into clean fields / 日本語や英語の仕事のメモをAIが読んで、決まった項目に入れます。テストの報告もつけます。 = AI reads Japanese or English work notes and fills set fields. A test report is included.
+- あなたの文書を検索する = Search over your documents / あなたの文書をAIで検索できるようにします。テスト用の質問で、どれくらい正しいかを測ります。 = I make your documents searchable with AI and measure accuracy with test questions.
+- AIの回答をテストする = Test your AI's answers / テスト用の質問を作って実行し、何がどのくらいの割合で失敗したかを書いてまとめます。 = I make and run test questions and write up what failed and how often.
+- 小さな動きのあるウェブサイト = A small interactive website / このサイトのようなサイトです。英語と日本語、だれでも使いやすく、動きもあります。 = A site like this one: English and Japanese, easy for everyone to use, with movement.
+- 支払いデータの不正を見つける = Spot fraud in payment data / モデルの試作です。できないことも、正直に書きます。 = A model prototype. I write honestly what it cannot do.
+- 進め方 = How it works: やりたいことを教えてください。 = Tell me what you need. / 作業の内容と見積もりをお返しします。 = I reply with the scope and a quote. / 作りながら、進み具合をお見せします。 = I show you progress as I build.
+- いまは、ログイン機能やデータベースがあるサイトは作っていません。 = Right now I do not build sites with logins or databases.
+- 連絡する = Get in touch · メールを送る = Email me
+### Team page (わたしを手伝うAIエージェント = AI agents that help me)
+- すべて自分で決めて、仕事の確認も自分でしています。 = I decide everything and check the work myself.
+- 実際にしたこと = One real thing · タップで裏返す = Tap to flip · 表にもどす = Back to front
+- 勉強 = Study / 日本の就職書類 = Japan job documents / プログラム = Programs / 海外向けCV = Overseas CVs / ウェブサイト = Website (card texts: JA versions of the owner's EN texts, same dates; see src/data/team.ts)
+- エージェントがすること = What agents do here: 調べものと出典さがし (research and sourcing), 書類の下書き (drafting documents), 勉強とまちがいの記録 (tracking study and mistakes), コードを作ってテストする (building and testing code)
+- わたしがすること = What I do: 決める (decide), すべての内容を確認する (check every claim), 送るものは、すべて自分で送る (I send everything myself)
+- このサイトの作り方 = How this site was built · 時間はすべてインド時間（IST）です = All times are IST · この版 = this version
+### Home
+- AIのツール、AIのテスト、小さなウェブサイトなど、小さな有料のプロジェクトも受けています。 = I also take on small paid projects, such as AI tools, AI testing and small websites.
+### Talk
+- 仕事の依頼はこちら。 = For project work, see here.
