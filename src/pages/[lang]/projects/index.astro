@@ -1,12 +1,12 @@
 ---
 import Base from '../../../layouts/Base.astro'; import J from '../../../components/J.astro';
 export { paths as getStaticPaths } from '../../../data/paths';
-import { projects } from '../../../data/projects'; import Card from '../../../components/Card.astro';
+import { projects } from '../../../data/projects'; import Card from '../../../components/Card.astro'; import { skills } from '../../../data/profile';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
 <Base lang={lang} page="projects" title={ja?'プロジェクト':'Projects'}>
 <h1>{ja?'プロジェクト':'Projects'}</h1>
-{ja && <p class="en">Projects</p>}
 <div class="grid3">{projects.map(p => <Card p={p} lang={lang}/>)}</div>
+<section class="narrow"><h2>{ja?'スキル':'Skills'}</h2><ul class="skills">{skills.map(([e,j]) => <li>{ja?j:e}</li>)}</ul></section>
 </Base>

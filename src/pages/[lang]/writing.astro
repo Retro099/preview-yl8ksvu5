@@ -1,12 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
 export { paths as getStaticPaths } from '../../data/paths';
-import { projects } from '../../data/projects';
 const { lang } = Astro.params; const ja = lang==='ja';
-const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
 <Base lang={lang} recruiter={false} page="writing" title={ja?'記事':'Writing'}>
 <h1>{ja?'記事':'Writing'}</h1>
-{ja ? <><J en="Writing starts after the N2 exam on December 6, 2026. I plan to write about my projects and my Japanese study.">記事は、2026年12月6日のN2の試験のあとに始めます。プロジェクトと日本語の勉強について書く予定です。</J></>
- : <p>Writing starts after the N2 exam on Dec 6, 2026. The first posts will be about the projects on this site and how I study Japanese.</p>}
+{ja ? <J en="Weekly JLPT study notes and project write-ups. The first posts are coming soon.">JLPTの勉強ノート（毎週）と、プロジェクトの記録を書きます。最初の記事は近日公開です。</J>
+ : <p>Weekly JLPT study notes and project write-ups. The first posts are coming soon.</p>}
 </Base>

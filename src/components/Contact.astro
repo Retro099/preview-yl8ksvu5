@@ -1,0 +1,13 @@
+---
+import { CONTACT as C } from '../config';
+const { lang } = Astro.props; const ja = lang==='ja';
+---
+<div class="card contact" id="contact">
+<h2>{ja?'連絡先':'Contact'}</h2>
+<ul class="clist">
+<li><span>{ja?'メール':'Email'}</span><a href={`mailto:${C.email}`}>{C.email}</a></li>
+<li><span>LinkedIn</span><a href={C.linkedin}>linkedin.com/in/retro099</a></li>
+<li><span>GitHub</span><a href={C.github}>github.com/Retro099</a></li>
+<li><span>Topmate</span><a href={C.topmate}>{ja?'相談の予約':'Book a call'}</a></li>
+</ul>
+</div>

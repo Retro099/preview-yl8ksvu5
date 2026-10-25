@@ -1,0 +1,8 @@
+---
+import { experience } from '../data/profile';
+const { lang } = Astro.props; const ja = lang==='ja';
+---
+<ul class="xp">{experience.map(x => <li>
+<p class="xr"><strong>{ja?x.roleJa:x.role}</strong> · {ja?(x.orgJa??x.org):x.org}</p>
+<p class="mut xd">{ja?x.whenJa:x.when}</p>
+<p class="xl">{ja?x.lineJa:x.line}</p></li>)}</ul>

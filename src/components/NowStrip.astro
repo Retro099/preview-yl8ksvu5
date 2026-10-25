@@ -1,0 +1,10 @@
+---
+const { lang } = Astro.props; const ja = lang==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+---
+<a class="card nowstrip" href={`${B}/${lang}/now/`}>
+<strong>{ja?'いま':'Now'}</strong>
+{ja ? <ul><li>JLPT N2の勉強（毎日）</li><li>このサイトの制作</li><li>CRMプロジェクトv1.1の評価を実行中</li></ul>
+ : <ul><li>Studying for JLPT N2 daily</li><li>Building this site</li><li>CRM project v1.1 evaluation run in progress</li></ul>}
+<span class="mut">{ja?'くわしく →':'More →'}</span>
+</a>

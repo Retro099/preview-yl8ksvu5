@@ -1,5 +1,5 @@
 ---
-// Japanese block with its English meaning right beneath.
-const { en, tag='p' } = Astro.props; const T = tag;
+// Japanese block. The `en` prop is kept only as review metadata (see JA-REVIEW-SHEET.md); it is NOT rendered.
+const { tag='p' } = Astro.props; const T = tag;
 ---
-<T class="jp"><slot/></T><p class="en" lang="en">{en}</p>
+<T class="jp"><slot/></T>

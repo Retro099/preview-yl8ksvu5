@@ -1,76 +1,41 @@
 ---
-import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
+import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 import { projects } from '../../data/projects'; import Card from '../../components/Card.astro';
+import Contact from '../../components/Contact.astro'; import Experience from '../../components/Experience.astro'; import NowStrip from '../../components/NowStrip.astro';
+import { showPortrait } from '../../config';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
 <Base lang={lang} title={ja?'ホーム':'Home'}>
+<div class="hero"><div>
 {ja ? <>
-<div class="hero"><div>
-<h1>日本語の業務文書を扱うAIシステム（<ruby>検索<rt>けんさく</rt></ruby>・情報<ruby>抽出<rt>ちゅうしゅつ</rt></ruby>・安全対策）を開発し、<ruby>精度<rt>せいど</rt></ruby>を数値で<ruby>検証<rt>けんしょう</rt></ruby>しています。</h1>
-<p class="en">I build AI systems for Japanese business documents (search, extraction and safety) and check their accuracy with numbers.</p>
-</div><img src={`${B}/portrait.webp`} width="180" height="180" alt="プリティヴィ・ラージ・モハンタの顔写真 (portrait of Prithivi Raj Mohanta, smiling)"></div>
-<dl class="facts">
-<div><dt>拠点 · Based</dt><dd>インド<br><span class="mut">India</span></dd></div>
-<div><dt>専門 · Focus</dt><dd>RAG・LLMの評価<br><span class="mut">RAG / LLM evaluation</span></dd></div>
-<div><dt>日本語 · Japanese</dt><dd class="chip">2026年12月6日 JLPT N2受験<br><span class="mut">Taking N2 on Dec 6, 2026</span></dd></div>
-<div><dt>希望 · Looking for</dt><dd>日本でのAI/MLエンジニア職（技術・人文知識・国際業務のビザが必要）<br><span class="mut">AI/ML role in Japan; visa sponsorship needed</span></dd></div>
-</dl>
-<div class="btns"><a class="btn" href={`${B}/ja/projects/`}>プロジェクトを見る</a><a class="tlink" href="https://github.com/Retro099">GitHub</a></div>
-<section><div class="grid3">
-<div class="card door"><h3>採用担当の方へ</h3><p class="en" style="margin:0 0 .4rem">For recruiters</p><J en="Projects with numbers, my experience, and how to contact me.">数字つきのプロジェクト、経歴、連絡先をご覧ください。</J><a href="#contact">プロジェクトと連絡先 →</a></div>
-<div class="card door warm"><h3>これから挑戦する方へ</h3><p class="en" style="margin:0 0 .4rem">For learners and followers</p><J en="My path to Japan, step by step. JLPT study posts will start after N2.">日本への道のりを書いています。JLPTの勉強記事はN2のあとに始めます。</J><a href={`${B}/ja/now/`}>いまの様子 →</a><br><a href={`${B}/ja/advice/`} class="mut">相談（Topmate）</a></div>
-<div class="card door"><h3>エンジニアの方へ</h3><p class="en" style="margin:0 0 .4rem">For engineers</p><J en="Evaluation methods, test sizes and code.">評価の方法、テストの件数、コードを公開しています。</J><a href={`${B}/ja/projects/`}>プロジェクト →</a><br><a href="https://github.com/Retro099">GitHub →</a></div>
-</div></section>
-<section><h2>プロジェクト</h2><p class="en">Projects</p><div class="grid3">{projects.map(p => <Card p={p} lang={lang}/>)}</div></section>
-<section class="narrow"><h2>仕事の進め方</h2><p class="en">How I work</p>
-<ol>
-<li><J tag="span" en="I decide how to measure success before I build.">作る前に、何で成功を測るかを決めます。</J></li>
-<li><J tag="span" en="I always show the test size and the weak points with each number.">数字には、テストの件数と弱いところを必ず書きます。</J></li>
-<li><J tag="span" en="I work alone. AI agents help with research and drafts; I make the final decisions and checks.">一人で活動しています。調査と下書きはAIエージェントが手伝い、最後の判断とチェックは私が行います。</J></li>
-</ol></section>
-<section class="narrow"><h2>職務経歴</h2><p class="en">Experience</p>
-<ul class="tl">
-<li><time>2024年6月〜</time><span>AIエンジニア（リモート）。大規模言語モデル（LLM）の答えを評価し、安全性をテストする仕事です。<br><span class="mut">Remote AI engineer: I evaluate the answers of large language models and test their safety.</span></span></li>
-<li><time>2023年7月〜2024年5月</time><span>個人事業主。データの整理や分析など、小さなデータ・MLの仕事。<br><span class="mut">Self-employed: small data and ML jobs such as data cleaning and analysis.</span></span></li>
-<li><time>2026年12月6日</time><span class="chip">JLPT N2を受験予定。<br><span class="mut">Preparing for JLPT N2 — Dec 6, 2026</span></span></li>
-</ul></section>
-<section class="narrow"><h2>記事</h2><p class="en">Writing</p>
-<J en="Writing starts after the N2 exam.">記事は、N2の試験のあとに始めます。</J></section>
-<section class="narrow" id="contact"><h2>連絡先</h2><p class="en">Contact</p>
-<J en="Please feel free to contact me on GitHub.">お気軽にGitHubからご連絡ください。</J>
-<p><a href="https://github.com/Retro099">github.com/Retro099</a></p></section>
+<h1>プリティヴィ・ラージ・モハンタ</h1>
+<p class="title">AI / MLエンジニア — LLMの評価、日本語AI、ゲーム開発</p>
+<p class="lead">業務委託でLLMの回答を評価しています。個人では日本語の文書を扱う小さなAIツールを作り、テストの方法と結果を公開しています。</p>
 </> : <>
-<div class="hero"><div>
-<h1>I build Japanese-language AI systems — search, extraction and safety checks — and measure whether they work.</h1>
-</div><img src={`${B}/portrait.webp`} width="180" height="180" alt="Portrait of Prithivi Raj Mohanta, smiling"></div>
-<dl class="facts">
-<div><dt>Based</dt><dd>India</dd></div>
-<div><dt>Focus</dt><dd>RAG / LLM evaluation</dd></div>
-<div><dt>Japanese</dt><dd class="chip">Taking JLPT N2 on Dec 6, 2026</dd></div>
-<div><dt>Looking for</dt><dd>AI/ML engineer role in Japan; visa sponsorship (技術・人文知識・国際業務) needed</dd></div>
-</dl>
-<div class="btns"><a class="btn" href={`${B}/en/projects/`}>See projects</a><a class="tlink" href="https://github.com/Retro099">GitHub</a></div>
-<section><div class="grid3">
-<div class="card door"><h3>For recruiters</h3><p>Projects with measured results, a short work history and how to reach me.</p><a href="#contact">Projects and contact →</a></div>
-<div class="card door warm"><h3>For learners and followers</h3><p>I'm learning Japanese in public on my way to working in Japan. JLPT study posts start after N2.</p><a href={`${B}/en/now/`}>What I'm doing now →</a><br><a href={`${B}/en/advice/`} class="mut">Advice calls (Topmate)</a></div>
-<div class="card door"><h3>For engineers</h3><p>How each system was evaluated, with test sizes and code.</p><a href={`${B}/en/projects/`}>Projects →</a><br><a href="https://github.com/Retro099">GitHub →</a></div>
-</div></section>
-<section><h2>Projects</h2><div class="grid3">{projects.map(p => <Card p={p} lang={lang}/>)}</div></section>
-<section class="narrow"><h2>How I work</h2>
-<ol>
-<li>I decide how success will be measured before I build anything.</li>
-<li>Every number comes with its test size and its weak points.</li>
-<li>I work alone with AI agents for research and drafts; final decisions and quality checks are mine.</li>
-</ol></section>
-<section class="narrow"><h2>Experience</h2>
-<ul class="tl">
-<li><time>Jun 2024 –</time><span>Remote AI engineer: I evaluate large language model answers and test their safety.</span></li>
-<li><time>Jul 2023 – May 2024</time><span>Self-employed: small data and ML jobs such as data cleaning and analysis.</span></li>
-<li><time>Dec 6, 2026</time><span class="chip">Preparing for JLPT N2.</span></li>
-</ul></section>
-<section class="narrow"><h2>Writing</h2><p class="mut">Writing starts after the N2 exam.</p></section>
-<section class="narrow" id="contact"><h2>Contact</h2><p>The best way to reach me right now is <a href="https://github.com/Retro099">GitHub</a>.</p></section>
+<h1>Prithivi Raj Mohanta</h1>
+<p class="title">AI / ML engineer — LLM evaluation, Japanese-language AI, game development</p>
+<p class="lead">I evaluate large language model answers as a contractor, and I build small AI tools for Japanese text and publish how I tested them.</p>
 </>}
+</div>{showPortrait && <img src={`${B}/portrait.webp`} width="180" height="180" alt={ja?'プリティヴィ・ラージ・モハンタの顔写真':'Portrait of Prithivi Raj Mohanta'}>}</div>
+<dl class="facts">
+<div><dt>{ja?'拠点':'Based'}</dt><dd>{ja?'インド（オディシャ州）':'Odisha, India'}</dd></div>
+<div><dt>{ja?'専門':'Focus'}</dt><dd>{ja?'LLMの評価、日本語AI':'LLM evaluation, Japanese-language AI'}</dd></div>
+<div><dt>{ja?'日本語':'Japanese'}</dt><dd class="chip">{ja?'2026年12月6日 JLPT N2受験':'Taking JLPT N2 on Dec 6, 2026'}</dd></div>
+<div><dt>{ja?'現在':'Currently'}</dt><dd>{ja?'日本企業の選考を受けています':'In the hiring process with Japanese companies'}</dd></div>
+</dl>
+<NowStrip lang={lang}/>
+<section class="doors"><div class="grid3">
+<div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、職務経歴、連絡先。':'Projects with measured results, work history and contact details.'}</p><p class="mut small">{ja?'就労ビザのスポンサーが必要です。':'Visa sponsorship needed.'}</p><a href="#contact">{ja?'プロジェクトと連絡先 →':'Projects and contact →'}</a></div>
+<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners and followers'}</h3><p>{ja?'インドから日本で働くまでの記録と、日本語の勉強。':'My path from India to working in Japan, and how I study Japanese.'}</p><a href={`${B}/${lang}/now/`}>{ja?'いまの様子 →':'What I\'m doing now →'}</a><br><a href={`${B}/${lang}/advice/`} class="mut">{ja?'相談（Topmate）':'Advice calls (Topmate)'}</a></div>
+<div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was evaluated, with test sizes and code.'}</p><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト →':'Projects →'}</a><br><a href="https://github.com/Retro099">GitHub →</a></div>
+</div></section>
+<section><h2>{ja?'プロジェクト':'Projects'}</h2><div class="grid3">{projects.map(p => <Card p={p} lang={lang}/>)}</div></section>
+<section class="narrow"><h2>{ja?'仕事の進め方':'How I work'}</h2>
+{ja ? <ol><li>作る前に、何で成功を測るかを決めます。</li><li>数字には、テストの件数と弱いところを書きます。</li><li>一人で作っています。調査と下書きはAIエージェントが手伝い、最後の判断とチェックは私が行います。</li></ol>
+ : <ol><li>I decide how success will be measured before I build anything.</li><li>Every number comes with its test size and its weak points.</li><li>I work alone with AI agents for research and drafts; final decisions and checks are mine.</li></ol>}
+</section>
+<section class="narrow"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>
+<section class="narrow"><Contact lang={lang}/></section>
 </Base>

@@ -1,30 +1,27 @@
 ---
 import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
 export { paths as getStaticPaths } from '../../data/paths';
-import { projects } from '../../data/projects';
+import Contact from '../../components/Contact.astro';
 const { lang } = Astro.params; const ja = lang==='ja';
-const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 ---
 <Base lang={lang} page="about" title={ja?'自己紹介':'About'}>
+<div class="narrow">
+<h1>{ja?'自己紹介':'About me'}</h1>
 {ja ? <>
-<h1>自己紹介</h1><p class="en">About me</p>
-<J en="Nice to meet you. My name is Prithivi Raj Mohanta. I am an AI engineer in India.">はじめまして。プリティヴィ・ラージ・モハンタと申します。インドのAIエンジニアです。</J>
-<J en="I build systems that check whether AI works correctly.">AIが正しく動いているかを<ruby>確<rt>たし</rt></ruby>かめる仕組みを作っています。</J>
-<J en="I want to work on improving AI quality with a team in Japan.">日本のチームで、AIの品質を上げる仕事がしたいです。</J>
-<h2>技術スキル</h2><p class="en">Technical skills</p>
-<ul>
-<li><J tag="span" en="LLM evaluation and safety tests">LLMの評価と安全性テスト</J></li>
-<li><J tag="span" en="Search and RAG for Japanese text (bge-m3, BM25)">日本語の検索とRAG（bge-m3、BM25）</J></li>
-<li><J tag="span" en="Python, machine learning, automatic tests (CI)">Python、機械学習、自動テスト（CI）</J></li>
-</ul>
-<h2>言語</h2><p class="en">Languages</p>
-<J en="English: I use it every day at work. Japanese: taking JLPT N2 on December 6, 2026. I also speak Hindi, Bengali and Odia.">英語：毎日仕事で使っています。日本語：2026年12月6日にJLPT N2を受験します。ヒンディー語、ベンガル語、オディア語も話します。</J>
+<J en="I'm Prithivi Raj Mohanta, an engineer from Baripada in Odisha, India. All of my work so far has been remote.">プリティヴィ・ラージ・モハンタです。インドのオディシャ州バリパダ出身のエンジニアです。これまでの仕事は、すべてリモートです。</J>
+<J en="I got into technology through games. As a child I loved Tekken, a Japanese arcade fighting game, and that led to my first job: game developer and tester at GodSpeed Games (Jun 2022 – Jun 2023). There I worked on Bunny Park for Xbox, PS4 and PC in Unreal Engine 4 and C++.">技術の世界に入ったきっかけはゲームです。子どものころ、日本のアーケード格闘ゲーム「鉄拳」が大好きでした。それが最初の仕事につながり、GodSpeed Gamesでゲーム開発とテストを担当しました（2022年6月〜2023年6月）。Unreal Engine 4とC++で「Bunny Park」（Xbox、PS4、PC）を作りました。</J>
+<J en="I had always followed machine learning, and when AI began to move fast I moved into it fully. From Jul 2023 to May 2024 I worked self-employed on small data-science and data-cleaning projects.">機械学習にはずっと関心があり、AIが急に進んだときに、AIの仕事に移りました。2023年7月から2024年5月までは、個人事業主としてデータ分析とデータ整理の案件をしました。</J>
+<J en="Since Jun 2024 I have worked on contract with Outlier (Scale AI), evaluating the answers of large language models, including safety tests, with a remote team. In my own time I build small AI tools for Japanese text and publish how I tested them.">2024年6月からは、Outlier（Scale AI）の業務委託で、大規模言語モデルの回答を評価しています（安全性テストを含む）。チームはリモートです。個人では、日本語の文書を扱う小さなAIツールを作り、テストの方法を公開しています。</J>
+<J en="Anime showed me that Japan's places and culture are real. Since Mar 2024 I have talked with Japanese friends on HelloTalk, and I respect the care for others and punctuality I see in Japan.">アニメを見て、日本の町や文化に興味を持ちました。2024年3月からHelloTalkで日本人の友だちと話していて、相手を大切にすることや時間を守ることを尊敬しています。</J>
+<J en="Now I study Japanese every day and am taking JLPT N2 on Dec 6, 2026. I am in the hiring process with Japanese companies. I speak Hindi, English, Bengali and Odia.">いまは毎日日本語を勉強していて、2026年12月6日にJLPT N2を受験します。日本企業の選考を受けています。ヒンディー語、英語、ベンガル語、オディア語を話します。</J>
 </> : <>
-<h1>About</h1>
-<p>I'm Prithivi Raj Mohanta, an AI engineer in India. I build systems that check whether AI works correctly, and I want to do that with a team in Japan.</p>
-<h2>Technical skills</h2>
-<ul><li>LLM evaluation and safety testing</li><li>Search and RAG for Japanese text (bge-m3, BM25)</li><li>Python, machine learning, automated tests (CI)</li></ul>
-<h2>Languages</h2>
-<p>English for daily work. Japanese: taking JLPT N2 on Dec 6, 2026. I also speak Hindi, Bengali and Odia.</p>
+<p>I'm Prithivi Raj Mohanta, an engineer from Baripada in Odisha, India. All of my work so far has been remote.</p>
+<p>I got into technology through games. As a child I loved Tekken, a Japanese arcade fighting game, and that led to my first job: game developer and tester at GodSpeed Games (Jun 2022 – Jun 2023). There I worked on Bunny Park for Xbox, PS4 and PC in Unreal Engine 4 and C++.</p>
+<p>I had always followed machine learning, and when AI began to move fast I moved into it fully. From Jul 2023 to May 2024 I worked self-employed on small data-science and data-cleaning projects.</p>
+<p>Since Jun 2024 I have worked on contract with Outlier (Scale AI), evaluating the answers of large language models, including safety tests, with a remote team. In my own time I build small AI tools for Japanese text and publish how I tested them.</p>
+<p>Anime showed me that Japan's places and culture are real. Since Mar 2024 I have talked with Japanese friends on HelloTalk, and I respect the care for others and punctuality I see in Japan.</p>
+<p>Now I study Japanese every day and am taking JLPT N2 on Dec 6, 2026. I am in the hiring process with Japanese companies. I speak Hindi, English, Bengali and Odia.</p>
 </>}
+<Contact lang={lang}/>
+</div>
 </Base>
