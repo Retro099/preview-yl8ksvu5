@@ -1,4 +1,4 @@
-// Toggle furigana on recruiter-facing JA pages (home, about, projects, advice).
+// Toggle furigana on recruiter-facing JA pages (home, about, projects, talk).
 export const SHOW_RUBY_ON_RECRUITER_PAGES = false;
 // Portrait on home. Off until a new unblurred crop (ears included) is approved. File kept at public/portrait.webp.
 export const showPortrait = false;

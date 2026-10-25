@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { CONTACT as C } from '../../config';
+export { paths as getStaticPaths } from '../../data/paths';
+const { lang } = Astro.params; const ja = lang==='ja';
+---
+<Base lang={lang} page="talk" title={ja?'1対1の相談':'Book a 1:1 chat'} description={ja?'インドから日本で働きたい人のための1対1の相談（Topmate）。進路の確認、採用面談の練習、書面での質問。':'1:1 chats on Topmate for people in India who want to work or study in Japan: route check, recruiter-call practice, or a written question.'}>
+<div class="talk narrow">
+{ja ? <>
+<h1>1対1の相談</h1>
+<p class="lead">インドから日本で働きたい方、日本で勉強したい方のための相談です。エンジニアでなくても大丈夫です。私自身、インドから日本企業の選考を受けています。その中でわかったことをお話しします。</p>
+<section><h2>相談できること</h2>
+<div class="card"><h3>進路の確認（オンライン20分）</h3><p>今のあなたに合う、日本への道を一緒に考えます。</p></div>
+<div class="card"><h3>採用担当者との面談の練習（オンライン30分）</h3><p>本番の前に、模擬面談をして直すところをお伝えします。</p></div>
+<div class="card"><h3>書面での質問</h3><p>質問を送っていただくと、2日以内に文章でお答えします。</p></div>
+<p class="mut small">日本語の履歴書・職務経歴書や、スカウトサイトのプロフィールについても相談できます。</p></section>
+<section><h2>流れ</h2><ol>
+<li>下のボタンからTopmateを開き、内容を選んで予約します。</li>
+<li>履歴書（言語は問いません）と、気になっている仕事や学校を用意してください。</li>
+<li>まず何を直せばよいかをお伝えします。日本語がまだできなくても大丈夫です。</li>
+</ol></section>
+</> : <>
+<h1>Book a 1:1 chat</h1>
+<p class="lead">For people in India who want to work or study in Japan and don't know where to start, engineer or not. I'm going through the hiring process with Japanese companies from India myself, and I share what I've learned.</p>
+<section><h2>What you can book</h2>
+<div class="card"><h3>Route check · 20-min video call</h3><p>Find out which route into Japan fits you right now.</p></div>
+<div class="card"><h3>Recruiter-call practice · 30-min video call</h3><p>A mock call before your real one, then what to fix.</p></div>
+<div class="card"><h3>Written question</h3><p>Send a question and get a written answer within 2 days.</p></div>
+<p class="mut small">You can also ask about Japanese resumes (履歴書 and 職務経歴書) and scout profiles.</p></section>
+<section><h2>How it works</h2><ol>
+<li>Open Topmate with the button below and pick one.</li>
+<li>Bring your resume (any language) and the roles or programs you're looking at.</li>
+<li>I'll tell you what to fix first. You don't need Japanese yet.</li>
+</ol></section>
+</>}
+<p style="margin-top:2rem"><a class="btn" href={C.topmate}>{ja?'Topmateで予約する':'Book on Topmate'}</a></p>
+<p class="mut small">{ja?'予約と支払いはTopmateで行います。':'Booking and payment happen on Topmate.'}</p>
+</div>
+</Base>

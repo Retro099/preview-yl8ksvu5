@@ -31,12 +31,12 @@ const now = ja
 <p class="hi">こんにちは。</p>
 <h1>プリティヴィ・ラージ・モハンタ</h1>
 <p class="title">AI / MLエンジニア — LLMの評価、日本語AI、ゲーム開発</p>
-<p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱う小さなAIツールを作っています。テストの方法と結果も公開しています。ネットでは「Retro」と名乗っています。少し昔気質で、SNSはほとんど使いません。</p>
+<p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱う小さなAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
 <h1>Prithivi Raj Mohanta</h1>
 <p class="title">AI / ML engineer — LLM evaluation, Japanese-language AI, game development</p>
-<p class="lead">I evaluate AI answers as a contractor, build small AI tools for Japanese text, and publish how I tested them. Online I go by Retro, because I'm a little old-fashioned: I hardly use social media.</p>
+<p class="lead">I evaluate AI answers as a contractor and build small AI tools for Japanese text, and each project page shows how I tested it.</p>
 </>}
 </div></div>
 
@@ -63,12 +63,12 @@ const now = ja
 
 <section class="doors"><div class="grid3">
 <div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、職務経歴、連絡先。':'Projects with measured results, work history and contact details.'}</p><p class="mut small">{ja?'就労ビザのスポンサーが必要です。':'Visa sponsorship needed.'}</p><a href="#work">{ja?'職務経歴 →':'Work history →'}</a></div>
-<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'インドから日本で働くまでの記録と、日本語の勉強。':'My path from India toward work in Japan, and how I study Japanese.'}</p><a href={`${B}/${lang}/now/`}>{ja?'いまの様子 →':'What I\'m doing now →'}</a><br><a href={`${B}/${lang}/advice/`} class="mut">{ja?'相談（Topmate）':'Advice calls (Topmate)'}</a></div>
+<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'インドから日本で働くまでの記録と、日本語の勉強。':'My path from India toward work in Japan, and how I study Japanese.'}</p><a href={`${B}/${lang}/now/`}>{ja?'いまの様子 →':'What I\'m doing now →'}</a><br><a href={`${B}/${lang}/talk/`}>{ja?'日本での就職について相談する →':'Book a 1:1 chat about Japan →'}</a></div>
 <div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト →':'Projects →'}</a><br><a href={C.github}>GitHub →</a></div>
 </div></section>
 
 <section class="narrow" id="work"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>
 
 <section class="narrow" id="contact"><h2>{ja?'連絡先':'Say hello'}</h2>
-<p class="crow"><a href={`mailto:${C.email}`}>{C.email}</a><a href={C.linkedin}>LinkedIn</a><a href={C.github}>GitHub</a><a href={C.topmate}>Topmate</a></p></section>
+<p class="crow"><a href={`mailto:${C.email}`}>{C.email}</a><a href={C.linkedin}>LinkedIn</a><a href={C.github}>GitHub</a><a href={C.topmate}>{ja?'1対1の相談（Topmate）':'1:1 chat (Topmate)'}</a></p></section>
 </Base>

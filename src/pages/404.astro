@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+---
+<Base lang="en" title="Page not found" description="This page does not exist.">
+<h1>Page not found</h1>
+<p>This page doesn't exist or has moved.</p>
+<p><a class="btn" href={`${B}/en/`}>Go to the home page</a> <a class="tlink" href={`${B}/ja/`} lang="ja" style="margin-left:1rem">日本語のホーム</a></p>
+</Base>
