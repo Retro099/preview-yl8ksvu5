@@ -7,14 +7,14 @@ const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1
 ---
 <Base lang={lang} recruiter={false} page="now" title={ja?'いま':'Now'}>
 <h1>{ja?'いま、していること':'Now'}</h1>
-<p class="when"><time datetime="2026-10-25">{ja?'2026年10月25日 更新':'Updated Oct 25, 2026'}</time></p>
+<p class="when"><time datetime="2026-10-25">{ja?'2026年10月25日 更新':'Updated 25 Oct 2026'}</time></p>
 {ja ? <ul>
-<li><J tag="span" en="Studying for JLPT N2 every day (the test is on December 6, 2026). I will update this after the result.">毎日、JLPT N2の勉強をしています（試験は2026年12月6日）。結果が出たら更新します。</J></li>
-<li><J tag="span" en="The evaluation run for CRM project version 1.1 is in progress.">CRMプロジェクトのバージョン1.1の評価を実行しています。</J></li>
+<li><J tag="span" en="Started 25 Oct 2026: began the JLPT N2 syllabus, from Lesson 1. I am taking N2 on 6 Dec 2026.">2026年10月25日から：JLPT N2の教材の勉強を始めました（第1課から）。2026年12月6日にN2を受けます。</J></li>
+<li><J tag="span" en="As of 25 Oct 2026: CRM project. A larger evaluation with more tests is in progress. It is paused now. I will add the results when it is done.">2026年10月25日時点：CRMプロジェクト。テストを増やした大きな評価を実行中です。今は一時停止しています。終わったら結果をのせます。</J></li>
 <li><J tag="span" en="Building this website.">このサイトを作っています。</J></li>
 </ul> : <ul>
-<li>Studying for JLPT N2 every day. The test is on Dec 6, 2026; I'll update this after the result.</li>
-<li>The evaluation run for CRM project v1.1 is in progress.</li>
+<li>Since 25 Oct 2026: started the JLPT N2 syllabus (Lesson 1). Taking N2 on 6 Dec 2026.</li>
+<li>As of 25 Oct 2026: CRM project — a larger evaluation run with more tests is in progress, currently paused. Results will be added when it is done.</li>
 <li>Building this site.</li>
 </ul>}
 </Base>
