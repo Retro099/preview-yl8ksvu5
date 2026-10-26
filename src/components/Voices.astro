@@ -8,7 +8,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 ---
 <section class="voices" aria-labelledby="vh" data-voices data-letters={letters}>
 <div class="vhead"><h2 id="vh">{ja?'日本の友だちの声':'From a Japanese friend'}</h2>
-<span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10h9l3-3h2v10h-2l-3-3H4z" fill="currentColor"/><path d="M19.5 9.5q1.5 2.5 0 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span></div>
+</div>
 <p class="mut small">{ja?'ご本人の許可を得てのせています。':'Shared with her permission.'}{' '}<span class="trhint" hidden>{ja?'窓の中の人をタップすると、コメントが読めます。':'Tap the passenger in the window to read the comment.'}</span></p>
 
 <div class="vfall" data-vfall><div class="vgrid">{voices.map(v => <figure class="vnote">
@@ -52,6 +52,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
  <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop}/></button>)}
 <div class="smoke" data-smoke aria-hidden="true" style={`left:${pc(X+307,W)};top:${pc(40,H)}`}></div>
 </div></div>
+<span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="3" rx="1" fill="#D9A441"/><path d="M8.5 6h7l-.8 11h-5.4z" fill="#E3B85C" stroke="#8a5a2b" stroke-width=".8"/><rect x="10.5" y="9" width="3" height="1.4" fill="#8a5a2b"/><rect x="7" y="17" width="10" height="3" rx="1.5" fill="#D9A441"/><path d="M17 4q2 1 2.5 3M18.5 2.5q3 1.5 3.5 4.5" stroke="#E3B85C" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span>
 <div class="sr">{voices.map(v=><figure><blockquote lang="ja"><p>「{v.ja}」</p></blockquote>{!ja&&<p>English meaning (translation): {v.en}</p>}<figcaption lang="ja">— {v.by}</figcaption></figure>)}</div>
 </div>
 
@@ -70,7 +71,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 
 <style is:global>
 .voices{margin:2rem 0}.vhead{display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
-.sndrow{display:flex;gap:.5rem}.snd{display:inline-flex;align-items:center;gap:.35rem;font:inherit;font-size:.85rem;min-height:44px;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer}
+.sndrow{display:flex;gap:.5rem;justify-content:center;margin-top:.6rem;padding:.35rem;border-radius:999px;width:max-content;max-width:100%;margin-inline:auto;background:#2B2F36;border:2px solid #D9A441}.snd{display:inline-flex;align-items:center;gap:.35rem;font:inherit;font-size:.88rem;font-weight:700;min-height:44px;padding:.3rem 1rem;border:1.5px dashed #E3B85C;border-radius:999px;background:#8C3A45;color:#FFF3D6;cursor:pointer;letter-spacing:.02em}.snd:hover{background:#A24C58}.snd:focus-visible{outline:3px solid #E3B85C;outline-offset:2px}.snd[aria-pressed=false]{background:#4A515C}
 .trwrap{margin-top:5.5rem}@media (max-width:600px){.trwrap{margin-top:6.5rem}}.trclip{position:relative;width:100%;clip-path:inset(-96px 0 -12px 0)}
 .tr{position:absolute;inset:0}.trsvg{display:block;width:100%;height:100%;overflow:visible}
 .rail rect{fill:var(--mut)}.rail .slp{fill:var(--line)}
