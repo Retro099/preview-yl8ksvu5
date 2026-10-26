@@ -1,17 +1,17 @@
 ---
 import Base from '../../layouts/Base.astro';
-import TeamDeck from '../../components/TeamDeck.astro';
+import PageHead from '../../components/PageHead.astro'; import TeamDeck from '../../components/TeamDeck.astro';
 import { timeline } from '../../data/team';
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 const T = ja ? {
- title:'わたしを手伝うAIツール', line:'すべて自分で決めて、ぜんぶ自分で確認しています。',
+ title:'わたしのエージェントチーム', eb:'仕事の進め方', line:'すべて自分で決めて、ぜんぶ自分で確認しています。',
  hist:'このサイトの作り方', histNote:'git のタグと記録から作った、本当の更新の記録です。時間はすべてインド時間（IST）です。',
  facts:'最初のコミット：2026年10月25日 14:22（IST）。v4.10：2026年10月25日 23:27（IST）。', now:'この版',
  doH:'エージェントがすること', doL:['調べものと出典さがし','書類の下書き','勉強とまちがいの記録','コードを作ってテストする'],
  meH:'わたしがすること', meL:['決める','すべての内容を確認する','送るものは、すべて自分で送る'],
 } : {
- title:'AI tools that help me', line:'I decide and check everything myself.',
+ title:'My team of agents', eb:'How I work', line:'I decide and check everything myself.',
  hist:'How this site was built', histNote:'A real version history, taken from the git tags and commits. All times are IST.',
  facts:'First commit: 25 Oct 2026, 14:22 IST. v4.10: 25 Oct 2026, 23:27 IST.', now:'this version',
  doH:'What agents do here', doL:['Research and sourcing','Drafting documents','Tracking study and mistakes','Building and testing code'],
@@ -19,8 +19,7 @@ const T = ja ? {
 };
 ---
 <Base lang={lang} page="team" title={T.title} description={T.line}>
-<h1>{T.title}</h1>
-<p class="lead">{T.line}</p>
+<PageHead eyebrow={T.eb} title={T.title} intro={T.line}/>
 <section aria-label={T.title}><TeamDeck lang={lang}/></section>
 <section class="roles">
 <div class="card"><h2>{T.doH}</h2><ul>{T.doL.map(x => <li>{x}</li>)}</ul></div>

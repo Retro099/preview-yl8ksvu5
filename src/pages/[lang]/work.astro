@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { CONTACT as C } from '../../config';
+import Contact from '../../components/Contact.astro'; import PageHead from '../../components/PageHead.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
@@ -15,29 +15,28 @@ const ART = {
 };
 const T = ja ? {
  title:'仕事の依頼', intro:'有料のプロジェクトを受けています。やりたいことを教えてください。依頼ごとに見積もりをお送りします。',
- can:'できること', shown:'見られる場所：', ask:'ご相談ください', how:'進め方', note:'いまは、ログイン機能やデータベースがあるサイトは作っていません。', contact:'連絡する', mail:'メールを送る',
+ can:'できること', shown:'見られる場所：', ask:'ご相談ください', how:'進め方', eb:'有料の依頼', contact:'連絡する',
  steps:['やりたいことを教えてください。','作業の内容と見積もりをお返しします。','作りながら、進み具合をお見せします。'],
  s:[
-  ['fields','t-ai','バラバラの文章を、きれいな項目にする','日本語や英語の仕事のメモをAIが読んで、決まった項目に入れます。テストの報告もつけます。',[['CRMのプロジェクト',P('meeting-notes-to-crm')]]],
-  ['search','t-sakura','あなたの文書を検索する','あなたの文書をAIで検索できるようにします。テスト用の質問で、どれくらい正しいかを測ります。',[['日本語の文書検索',P('japanese-document-search')]]],
-  ['test','t-gold','AIの回答をテストする','テスト用の質問を作って実行し、何がどのくらいの割合で失敗したかを書いてまとめます。',[['CRMの安全性テスト',P('meeting-notes-to-crm')],['検索のテスト',P('japanese-document-search')]]],
-  ['site','t-ai','動きのあるウェブサイト','このサイトのようなサイトです。英語と日本語、だれでも使いやすく、動きもあります。',[['このサイト（作り方）',`${B}/${lang}/team/#history`]]],
-  ['fraud','t-sakura','支払いデータの不正を見つける','モデルの試作です。できないことも、正直に書きます。',[['クレジットカード不正検出',P('credit-card-fraud')]]],
+  ['fields','t-ai','バラバラの文章を、きれいなデータにする','日本語や英語のメモ、メール、書類をAIが読み、大事な情報を表やCRMにきちんと入れます。テストの報告もつけます。',[['CRMのプロジェクト',P('meeting-notes-to-crm')]]],
+  ['search','t-sakura','会社の文書をまとめて検索する','質問すると、会社の文書の中から答えのある部分を見つけます。どれくらい正しく見つけられるかも測ります。',[['日本語の文書検索',P('japanese-document-search')]]],
+  ['test','t-gold','AIの答えが正しく安全かを確かめる','テストの質問や攻撃を作って実行し、何がどのくらいの割合で失敗したかを報告します。',[['CRMの安全性テスト',P('meeting-notes-to-crm')],['検索のテスト',P('japanese-document-search')]]],
+  ['site','t-ai','ウェブサイトを作る','このサイトのように、速くて、だれでも使いやすく、動きのある英語と日本語のサイトです。',[['このサイト（作り方）',`${B}/${lang}/team/#history`]]],
+  ['fraud','t-sakura','支払いデータから不正を見つける','あやしい支払いに印をつけるモデルです。できないことも正直に書きます。',[['クレジットカード不正検出',P('credit-card-fraud')]]],
  ]} : {
  title:'Work with me', intro:'I take on paid projects. Tell me what you need, and I reply to each request with a quote.',
- can:'What I can make', shown:'Shown in:', ask:'Ask me', how:'How it works', note:'Right now I do not build sites with user logins and databases.', contact:'Get in touch', mail:'Email me',
+ can:'What I can make', shown:'Shown in:', ask:'Ask me', how:'How it works', eb:'Paid projects', contact:'Get in touch',
  steps:['You tell me what you need.','I reply with the scope and a quote.','I build it and show you progress.'],
  s:[
-  ['fields','t-ai','Turn messy text into clean fields','AI that reads Japanese or English business notes and fills structured fields, with a test report.',[['Meeting notes to CRM project',P('meeting-notes-to-crm')]]],
-  ['search','t-sakura','Search over your documents','AI search over your set of documents, measured on a test set.',[['Japanese document search project',P('japanese-document-search')]]],
-  ['test','t-gold',"Test your AI's answers",'I build a test set, run it, and write up what failed and how often.',[['CRM security test',P('meeting-notes-to-crm')],['Search test',P('japanese-document-search')]]],
-  ['site','t-ai','An interactive website','English and Japanese, accessible and animated, like this one.',[['This site (how it was built)',`${B}/${lang}/team/#history`]]],
-  ['fraud','t-sakura','Spot fraud in payment data','A model prototype. I write down what it cannot do.',[['Credit-card fraud project',P('credit-card-fraud')]]],
+  ['fields','t-ai','Turn messy text into clean data','AI reads your notes, emails or forms in Japanese or English and puts the key facts into a clean table or your CRM. You get a test report too.',[['Meeting notes to CRM project',P('meeting-notes-to-crm')]]],
+  ['search','t-sakura',"Search across your company's documents",'Ask a question and get the right passage from your own documents, with a measure of how often it finds the right one.',[['Japanese document search project',P('japanese-document-search')]]],
+  ['test','t-gold','Check that AI answers are correct and safe','I write test questions and attacks, run them, and report what failed and how often.',[['CRM security test',P('meeting-notes-to-crm')],['Search test',P('japanese-document-search')]]],
+  ['site','t-ai','Build your website','Fast, accessible websites in English and Japanese, with animation, like this one.',[['This site (how it was built)',`${B}/${lang}/team/#history`]]],
+  ['fraud','t-sakura','Find fraud in payment data','A model that flags suspicious payments, with an honest note on what it cannot do.',[['Credit-card fraud project',P('credit-card-fraud')]]],
  ]};
 ---
 <Base lang={lang} page="work" title={T.title} description={T.intro}>
-<h1>{T.title}</h1>
-<p class="lead">{T.intro}</p>
+<PageHead eyebrow={T.eb} title={T.title} intro={T.intro}/>
 <h2>{T.can}</h2>
 <section class="offers svc" aria-label={T.can}>
 {T.s.map(([a,t,name,line,proof],i) => <article class={`offer card ${t}`}>
@@ -50,7 +49,7 @@ const T = ja ? {
 </section>
 <section class="how"><h2>{T.how}</h2>
 <ol class="steps">{T.steps.map((s,i) => <li><span class="n" aria-hidden="true">{i+1}</span><span>{s}</span></li>)}</ol>
-<p class="mut">{T.note}</p></section>
+</section>
 <section class="cta"><h2>{T.contact}</h2>
-<p class="btns"><a class="btn" href={`mailto:${C.email}`}>{T.mail}</a><a class="btn ghost" href="https://www.linkedin.com/in/retro099">LinkedIn</a></p></section>
+<Contact lang={lang}/></section>
 </Base>

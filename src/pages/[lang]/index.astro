@@ -3,7 +3,7 @@ import Voices from '../../components/Voices.astro';
 import Blob from '../../components/Blob.astro';
 import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
-import Experience from '../../components/Experience.astro'; import Avatar from '../../components/Avatar.astro';
+import Contact from '../../components/Contact.astro'; import Avatar from '../../components/Avatar.astro';
 import m from '../../data/metrics.json'; import latest from '../../data/latest.json';
 import { CONTACT as C } from '../../config'; import FlashDeck from '../../components/FlashDeck.astro'; import Chomp from '../../components/Chomp.astro';
 const { lang } = Astro.params; const ja = lang==='ja';
@@ -27,7 +27,7 @@ const now = ja
 ---
 <style>.start{margin:.7rem 0 0;padding:.55rem .8rem;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.startb{font:inherit;font-weight:700;min-height:44px;padding:0 .2rem;border:0;background:none;color:var(--acc);text-decoration:underline;cursor:pointer}.startb:focus-visible{outline:3px solid var(--acc);outline-offset:2px}</style>
 <Base lang={lang} title={ja?'AI/MLエンジニア':'AI/ML engineer'}>
-<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
+<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['projects','プロジェクト'],['now','いま'],['contact','連絡先']]:[['projects','Projects'],['now','Now'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
 <div class="hero4">
 <Avatar size={112}/>
 <div>
@@ -35,26 +35,20 @@ const now = ja
 <p class="hi">こんにちは。</p>
 <h1>プリティヴィ・ラージ・モハンタ</h1>
 <p class="title">AI/MLエンジニア。ソフトウェアの仕事は約4年、そのうち約2.5年はAIとLLMの仕事です。</p>
-<p class="lead">仕事で使うAIを作り、テストしています。日本語の文書、AIの評価、セキュリティのテストです。ゲーム開発の経験もあります。正社員として、チームで働いていました。</p>
+<p class="lead">仕事で使うAIを作り、テストしています。日本語の文書、AIの評価、セキュリティのテストです。</p>
 <p class="start">ここはわたしのウェブ上の拠点です。仕事、プロジェクト、相談の案内をまとめています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
 <h1>Prithivi Raj Mohanta</h1>
 <p class="title">AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work.</p>
-<p class="lead">I build and test AI for real work: Japanese documents, evaluation and security testing. I also have game development experience from a full-time job with a team.</p>
+<p class="lead">I build and test AI for real work: Japanese documents, evaluation and security testing.</p>
 <p class="start"><span>This is my home on the web: my work, projects and guidance. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
 {(lang==='fr'||lang==='ru') && <p class="small mut i18nnote">{lang==='fr'?'Ceci est une première traduction. Vos remarques sur le français sont les bienvenues.':'Это первый вариант перевода. Буду рад замечаниям по тексту.'}</p>}
 </>}
 </div></div>
 
 <section id="projects" aria-labelledby="pj-h"><h2 id="pj-h">{ja?'プロジェクト：それぞれが示すこと':'Projects: what each one shows'}</h2><p class="mut">{ja?'どのプロジェクトも、わたしの仕事の進め方を示しています。テストのしかた、数字での確認、弱い点の見つけ方です。':'Each project shows how I work: how I test, how I measure, and how I find the weak spots.'}</p><FlashDeck lang={lang}/></section>
-<p class="mut small">{ja?'どれも小さなテストでの数字です。条件と弱い点は各プロジェクトのページに書いています。':'All three come from small tests. Each project page explains the setup and the weak spots.'}</p>
-
-<dl class="status">
-<div><dt>{ja?'拠点':'Based'}</dt><dd>{ja?'インド・オディシャ州（リモート）':'Odisha, India (remote)'}</dd></div>
-<div><dt>{ja?'日本語':'Japanese'}</dt><dd class="chip">{ja?'毎日勉強しています':'I study Japanese every day'}</dd></div>
-<div><dt>{ja?'現在':'Currently'}</dt><dd>{ja?'日本企業の選考を受けています':'In the hiring process with Japanese companies'}</dd></div>
-</dl>
+<p class="mut small">{ja?'どれも決まった条件でのテストの数字です。条件と弱い点は各プロジェクトのページに書いています。':'These numbers come from focused tests. Each project page explains the setup and the weak spots.'}</p>
 
 <section class="split" id="now">
 <div class="card"><h2>{ja?'いま':'Now'}</h2>
@@ -68,18 +62,17 @@ const now = ja
 </section>
 
 <section class="doors"><div class="grid3">
-<div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、職務経歴、連絡先。':'Projects with measured results, work history and contact details.'}</p><p class="mut small">{ja?'就労ビザのスポンサーが必要です。':'Visa sponsorship needed.'}</p><a href="#work">{ja?'職務経歴 →':'Work history →'}</a></div>
-<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'インドから日本で働くまでの記録と、日本語の勉強。':'My path from India toward work in Japan, and how I study Japanese.'}</p><a href={`${B}/${lang}/now/`}>{ja?'いまの様子 →':'What I\'m doing now →'}</a><br><a href={`${B}/${lang}/talk/`}>{ja?'日本での就職について相談する →':'Book a 1:1 chat about Japan →'}</a></div>
-<div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト →':'Projects →'}</a><br><a href={C.github}>GitHub →</a></div>
+<div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、わたしの話、連絡先。':'Projects with measured results, my story and how to reach me.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About me'}</a></div>
+<div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'日本で働くまでの記録と、日本語の勉強。':'My path toward work in Japan, and how I study Japanese.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/now/`}>{ja?'いまの様子':'What I\'m doing now'}</a><a class="btn ghost dbtn" href={`${B}/${lang}/talk/`}>{ja?'日本での就職について相談する':'Book a 1:1 chat about Japan'}</a></div>
+<div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a class="btn ghost dbtn" href={C.github}>GitHub</a></div>
 </div></section>
 
 <Voices lang={lang}/>
 <div class="hrow">
-<section class="card hstrip" aria-label={ja?'仕事の依頼':'Work with me'}><p>{ja?'AIのツール、AIのテスト、ウェブサイトなど、有料のプロジェクトも受けています。':'I also take on paid projects: AI tools, AI testing and websites.'}</p><a class="btn" href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a></section>
-<section class="card hstrip" aria-label={ja?'わたしを手伝うAIツール':'AI tools that help me'}><div class="mini"><a href={`${B}/${lang}/team/`}><span class="chw"><Blob fill="#F6CFD8" acc="study"/></span><span class="chw"><Blob fill="#D9E3F3" acc="github"/></span><span class="chw"><Blob fill="#FFF8EC" acc="site"/></span><span class="lk">{ja?'わたしを手伝うAIツール →':'AI tools that help me →'}</span></a></div></section>
+<section class="card hstrip" aria-label={ja?'仕事の依頼':'Work with me'}><p>{ja?'AIの評価、AIのセキュリティテスト、AIを使ったツールやウェブサイトの制作をお受けしています。':'Available for AI evaluation, AI security testing and building AI-powered tools and websites.'}</p><a class="btn" href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a></section>
+<section class="card hstrip" aria-label={ja?'わたしのエージェントチーム':'My team of agents'}><div class="mini"><a href={`${B}/${lang}/team/`}><span class="chw"><Blob fill="#F6CFD8" acc="study"/></span><span class="chw"><Blob fill="#D9E3F3" acc="github"/></span><span class="chw"><Blob fill="#FFF8EC" acc="site"/></span><span class="lk">{ja?'わたしのエージェントチーム →':'My team of agents →'}</span></a></div></section>
 </div>
-<section class="narrow" id="work"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>
 
 <section class="narrow" id="contact"><Chomp/><h2>{ja?'連絡先':'Say hello'}</h2>
-<p class="crow"><a href={`mailto:${C.email}`}>{C.email}</a><a href={C.linkedin}>LinkedIn</a><a href={C.github}>GitHub</a><a href={C.topmate}>{ja?'1対1の相談（Topmate）':'1:1 chat (Topmate)'}</a></p></section>
+<Contact lang={lang}/></section>
 </Base>

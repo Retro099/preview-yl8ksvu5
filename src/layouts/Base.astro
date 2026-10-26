@@ -1,4 +1,5 @@
 ---
+import Contact from '../components/Contact.astro';
 import Guide from '../components/Guide.astro';
 import Avatar from '../components/Avatar.astro';
 import { SHOW_RUBY_ON_RECRUITER_PAGES, GOATCOUNTER, SHOW_WRITING_IN_NAV } from '../config';
@@ -87,7 +88,10 @@ dl.cs dt{font-weight:700;margin-top:1.4rem;color:var(--acc)}dl.cs dd{margin:.25r
 .crow{display:flex;flex-wrap:wrap;gap:0 1.25rem}.crow a{min-height:44px;display:inline-flex;align-items:center}
 .mark{flex:none}@media (max-width:799px){.av,.av svg{width:112px!important;height:112px!important}}
 footer{border-top:1px solid var(--line);color:var(--mut);font-size:.9rem;padding:1.5rem 0 2.5rem}
-footer nav a{padding:0 .8rem 0 0}footer p{margin:.4rem 0}
+footer nav a{padding:0 .8rem 0 0}
+.cicons{list-style:none;display:flex;flex-wrap:nowrap;gap:.5rem;padding:0;margin:.8rem 0}.cicons li{margin:0}.ci{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:48px;padding:0 .6rem;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--fg);text-decoration:none;transition:border-color .15s,color .15s,transform .15s}.ci:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}.ci:focus-visible{outline:3px solid var(--acc);outline-offset:2px}.ci.tm{font-weight:700;font-size:.9rem;color:var(--acc)}.cicons.sm .ci{min-width:44px;height:44px;border-radius:12px}@media (max-width:420px){.cicons{gap:.35rem}.ci{min-width:44px;height:44px;padding:0 .45rem}}
+.phead{border-left:4px solid var(--acc);padding:.15rem 0 .15rem 1rem;margin:0 0 1.4rem}.phead .eyebrow{margin:0;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}.phead h1{margin:.15rem 0 .3rem}.phead .pintro{margin:0;color:var(--mut);max-width:60ch}
+.dbtn{margin:.4rem .4rem 0 0}footer p{margin:.4rem 0}
 @media (max-width:799px){header .wrap{padding:.25rem 1rem}.brand{order:1}.lang{order:2;margin-left:0;white-space:nowrap;min-height:36px;align-self:center}header nav{order:3;width:100%;margin:0 -.55rem;flex-wrap:nowrap;overflow-x:auto}header nav a{white-space:nowrap}}
 .lang{white-space:nowrap}.talk ol{padding-left:1.2rem}.talk li{margin:.3rem 0}.talk .card h3{color:var(--acc)}
 
@@ -299,7 +303,8 @@ header nav a,header nav .navhelp{min-height:48px;width:100%;padding:0 .4rem;font
 </div></header>
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
-<nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a><a href={`${B}/${lang}/team/`}>{ja?'AIツール':'AI tools'}</a><a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">{ja?'相談（Topmate）':'1:1 chat (Topmate)'}</a></nav>
+<nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a><a href={`${B}/${lang}/team/`}>{ja?'わたしのエージェントチーム':'My team of agents'}</a></nav>
+<Contact lang={lang} compact/>
 <p>{ja?'更新日':'Updated'} <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
 <p>© 2026 Prithivi Raj Mohanta · <button type="button" class="helpb" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></p>
 </div></footer>

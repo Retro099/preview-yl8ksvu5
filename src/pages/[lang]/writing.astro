@@ -1,10 +1,10 @@
 ---
-import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
+import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro'; import PageHead from '../../components/PageHead.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 ---
 <Base lang={lang} recruiter={false} page="writing" title={ja?'記事':'Writing'}>
-<h1>{ja?'記事':'Writing'}</h1>
+<PageHead eyebrow={ja?'ノート':'Notes'} title={ja?'記事':'Writing'} intro={ja?'日本語の勉強と、プロジェクトの記録。':'Japanese study and project write-ups.'}/>
 {ja ? <J en="Weekly Japanese study notes and project write-ups. The first posts are coming soon.">日本語の勉強ノート（毎週）と、プロジェクトの記録を書きます。最初の記事は近日公開です。</J>
  : <p>Weekly Japanese study notes and project write-ups. The first posts are coming soon.</p>}
 </Base>

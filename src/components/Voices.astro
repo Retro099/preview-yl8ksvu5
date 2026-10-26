@@ -13,7 +13,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 ---
 <section class="voices" aria-labelledby="vh" data-voices data-letters={letters}>
 <style set:html={thCss}></style>
-<div class="vhead"><h2 id="vh">{ja?'日本の友だちの声':'From Japanese friends'}</h2>
+<div class="vhead"><h2 id="vh">{ja?'友だちからのコメント':'Comments from my friends'}</h2>
 </div>
 <p class="mut small">{ja?'ご本人たちの許可を得てのせています。':'Shared with their permission.'}{' '}<span class="trhint" hidden>{ja?'窓をタップすると、コメントが読めます。':'Tap a window to read a comment.'}</span></p>
 
