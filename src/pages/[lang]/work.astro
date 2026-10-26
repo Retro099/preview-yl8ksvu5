@@ -14,7 +14,7 @@ const ART = {
  fraud: sv('<rect x="30" y="26" width="70" height="44" rx="5" fill="#fff" stroke="#2B4C7E" stroke-width="2"/><rect x="30" y="36" width="70" height="8" fill="#2B4C7E" opacity=".25"/><path d="M38 58h22" stroke="#2B4C7E" stroke-width="2" stroke-linecap="round"/><path d="M118 22l20 36h-40Z" fill="#FFF3D6" stroke="#D9A441" stroke-width="2.5" stroke-linejoin="round"/><path d="M118 34v12" stroke="#B84C35" stroke-width="3" stroke-linecap="round"/><circle cx="118" cy="52" r="1.8" fill="#B84C35"/>'),
 };
 const T = ja ? {
- title:'仕事の依頼', intro:'小さな有料のプロジェクトを受けています。やりたいことを教えてください。一つ一つの依頼に、見積もりをお返しします。',
+ title:'仕事の依頼', intro:'小さな有料のプロジェクトを受けています。やりたいことを教えてください。依頼ごとに見積もりをお送りします。',
  can:'できること', shown:'見られる場所：', ask:'ご相談ください', how:'進め方', note:'いまは、ログイン機能やデータベースがあるサイトは作っていません。', contact:'連絡する', mail:'メールを送る',
  steps:['やりたいことを教えてください。','作業の内容と見積もりをお返しします。','作りながら、進み具合をお見せします。'],
  s:[
@@ -32,7 +32,7 @@ const T = ja ? {
   ['search','t-sakura','Search over your documents','AI search over your set of documents, measured on a test set.',[['Japanese document search project',P('japanese-document-search')]]],
   ['test','t-gold',"Test your AI's answers",'I build a test set, run it, and write up what failed and how often.',[['CRM security test',P('meeting-notes-to-crm')],['Search test',P('japanese-document-search')]]],
   ['site','t-ai','A small interactive website','English and Japanese, accessible and animated, like this one.',[['This site (how it was built)',`${B}/${lang}/team/#history`]]],
-  ['fraud','t-sakura','Spot fraud in payment data','A model prototype, with its limits written down honestly.',[['Credit-card fraud project',P('credit-card-fraud')]]],
+  ['fraud','t-sakura','Spot fraud in payment data','A model prototype. I write down what it cannot do.',[['Credit-card fraud project',P('credit-card-fraud')]]],
  ]};
 ---
 <Base lang={lang} page="work" title={T.title} description={T.intro}>

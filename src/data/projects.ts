@@ -14,7 +14,7 @@ export const flash = {
 };
 export const projects = [
 { slug:'meeting-notes-to-crm', table:[['Exact match',c.exact_match,`${c.exact_hits}/${c.exact_total} fields`],['Attacks through (defenses on)',`${c.attack_before} → ${c.attack_after}`,`${c.attacks} self-written`]], tableJa:[['完全一致',c.exact_match,`${c.exact_hits}/${c.exact_total}項目`],['攻撃が通る割合（対策あり）',`${c.attack_before} → ${c.attack_after}`,`自作${c.attacks}件`]], repo:'jp-meeting-to-crm-fields', demo:'https://retro-jp-meeting-to-crm-fields.streamlit.app',
-  en:{ title:'Turning Japanese sales meetings into CRM fields — safely',
+  en:{ title:'Turning Japanese sales meetings into CRM fields, safely',
     line:'An AI reads notes from a sales meeting and fills in the customer record, while refusing hidden instructions in the text.',
     nums:[`${c.exact_match} exact match (${c.exact_hits}/${c.exact_total} fields, ${c.notes} synthetic notes)`,`Attacks that get through: ${c.attack_before} → ${c.attack_after} with defenses on (${c.attacks} attacks I wrote)`],
     purpose:'Sales staff spend time copying meeting notes into CRM forms. I wanted an AI to do this for Japanese notes, and to be hard to trick.',
@@ -22,7 +22,7 @@ export const projects = [
     did:'I wrote the extraction code, the 30 synthetic notes, the 40 attack texts, the scoring and the tests, and set up automatic tests on every change.',
     result:`${c.exact_match} of fields matched exactly (${c.exact_hits}/${c.exact_total}) on ${c.notes} synthetic notes. With defenses on, attacks that got through fell from ${c.attack_before} to ${c.attack_after} on ${c.attacks} attacks I wrote myself. Because I wrote those attacks, I also test on attacks I had not seen.`,
     next:'Version 1.1: a judge for each field, plus cost and speed per note.'},
-  ja:{ title:'<ruby>商談<rt>しょうだん</rt></ruby>メモからCRMの<ruby>項目<rt>こうもく</rt></ruby>を<ruby>自動<rt>じどう</rt></ruby>で入力 — 安全対策つき',
+  ja:{ title:'<ruby>商談<rt>しょうだん</rt></ruby>メモからCRMの<ruby>項目<rt>こうもく</rt></ruby>を<ruby>自動<rt>じどう</rt></ruby>で入力（安全対策つき）',
     line:'商談のメモをAIが読んで、顧客情報に入力します。文の中にかくれた命令には従いません。',
     lineEn:'An AI reads sales meeting notes and fills in customer records. It does not follow hidden instructions in the text.',
     purpose:'営業の人は、メモをCRMに書き写すのに時間を使っています。日本語のメモを、AIで安全に入力したいと考えました。',

@@ -155,3 +155,9 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - Screenshots: screenshots/v54 (4 train shots + dialog-en-light-390). axe 0 on Home EN/JA; no overflow.
 - v5.4.1: Honk and Sound restyled as one railway-sign control group under the train: maroon (#8C3A45) pills with cream text (contrast about 8:1), dashed brass edge, black-engine rail around them, brass whistle icon. Same look in light and dark; Sound off turns slate grey. 44px high.
 - v5.4.1: project flashcards (Home + Projects, same component) now have equal heights on desktop (≥800px), and "Tap to flip" sits at the bottom. Measured 480px x3 at 1440/1100 EN, 486px x3 JA dark 1100. The mobile carousel is unchanged. Screenshots: screenshots/v54/cards-en-light-1440.png, cards-en-light-1100.png. (v5.4 was already pushed, so this ships as v5.4.1 rather than moving the tag.)
+
+## v5.5 (2026-10-26 IST): wording pass, EN + JA
+- Removed all 14 long dashes from the site text (titles, card title, share-image alt text, Now, the friend label line, date ranges). Normal range dashes like 2022–2023, the JA ー and compound-word hyphens stay.
+- Rewrote 8 sentences in plainer words (5 EN, 3 JA). The full before/after list is in WORDING-V55-CHANGES.md, with a "needs Prithivi's call" list (the Outlier sentence was left unchanged).
+- No changes to numbers, names, URLs, friend quotes or layout. axe 0 and no sideways scroll on 6 pages, EN + JA, 390 light. Screenshots: screenshots/v55 (home, about, work).
+- Backup: /workspace/site-backup-v55-start-2026-10-26.tgz

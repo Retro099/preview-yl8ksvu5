@@ -733,3 +733,13 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 |---|---|
 | ポーッ | (train whistle sound) Toot! |
 | 汽笛を鳴らす | Sound the train whistle |
+
+## v5.5 (wording pass)
+| Where | New JA | English meaning |
+|---|---|---|
+| Home title | AI / MLエンジニア：LLMの評価、日本語AI、ゲーム開発 | AI / ML engineer: LLM evaluation, Japanese AI, game development |
+| CRM card title | 商談メモからCRMの項目を自動で入力（安全対策つき） | Auto-filling CRM fields from sales notes (with safety measures) |
+| Share image alt text | プリティヴィ・ラージ・モハンタ（AI / MLエンジニア） | Prithivi Raj Mohanta (AI / ML engineer) |
+| About table | ヒンディー語、英語、ベンガル語、オディア語。 | Hindi, English, Bengali, Odia (one spelling used everywhere) |
+| Talk | 日本へ行くにはどんな道が合いそうか、私の経験をもとに一緒に話します。 | We talk together about which routes to Japan may fit you, based on my experience. |
+| Work | 依頼ごとに見積もりをお送りします。 | I send a quote for each request. |
