@@ -1979,3 +1979,11 @@ English meaning = EN column.
 | stage5 | Now, with her dog | いま、愛犬と | Aujourd’hui, avec son chien | Сейчас, со своей собакой |
 | help | Help | ヘルプ | Aide | Помощь |
 | dlg hint | Tap her picture to see the next stage and hear the drum. | 絵をタップすると次の場面になり、ドラムが鳴ります。 | Touchez son image pour voir l’étape suivante et entendre le tambour. | Нажмите на её картинку, чтобы увидеть следующий этап и услышать барабан. |
+
+
+## v6.2 new strings (EN source | FR | RU)
+
+| EN meaning | FR | RU |
+|---|---|---|
+
+JA additions (v6.2): サイトを案内しましょうか？ (Want a tour of the site?), ヘルプ (Help), わたしを手伝うAIツール (AI tools that help me), すべて自分で決めて、ぜんぶ自分で確認しています。 (I decide and check everything myself.), 絵をタップすると、絵が変わります。 (Tap her picture to change it.)

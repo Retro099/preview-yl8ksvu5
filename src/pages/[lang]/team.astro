@@ -5,13 +5,13 @@ import { timeline } from '../../data/team';
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 const T = ja ? {
- title:'わたしを手伝うAIエージェント', line:'すべて自分で決めて、仕事の確認も自分でしています。',
+ title:'わたしを手伝うAIツール', line:'すべて自分で決めて、ぜんぶ自分で確認しています。',
  hist:'このサイトの作り方', histNote:'git のタグと記録から作った、本当の更新の記録です。時間はすべてインド時間（IST）です。',
  facts:'最初のコミット：2026年10月25日 14:22（IST）。v4.10：2026年10月25日 23:27（IST）。', now:'この版',
  doH:'エージェントがすること', doL:['調べものと出典さがし','書類の下書き','勉強とまちがいの記録','コードを作ってテストする'],
  meH:'わたしがすること', meL:['決める','すべての内容を確認する','送るものは、すべて自分で送る'],
 } : {
- title:'AI agents that help me', line:'I decide everything and check the work myself.',
+ title:'AI tools that help me', line:'I decide and check everything myself.',
  hist:'How this site was built', histNote:'A real version history, taken from the git tags and commits. All times are IST.',
  facts:'First commit: 25 Oct 2026, 14:22 IST. v4.10: 25 Oct 2026, 23:27 IST.', now:'this version',
  doH:'What agents do here', doL:['Research and sourcing','Drafting documents','Tracking study and mistakes','Building and testing code'],

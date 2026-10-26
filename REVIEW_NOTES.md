@@ -179,3 +179,14 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - O: root URL picks ja/fr/ru/en from navigator.languages (saved 'lang' wins) with location.replace; direct links never redirect; noscript link list; still noindex, robots Disallow.
 - Checks at 390: axe 0 on Home EN/JA/FR/RU light, EN dark, dialog (light+dark), guide menu, tour step. No horizontal scroll in 4 languages. Screenshots: screenshots/v61/.
 - Unsure: stage tap is on the dialog avatar (a tap on the train opens the dialog); guide tab can overlap content edge on mobile; dialog bell tower is subtle.
+
+## v6.2 (2026-10-26) fixes from real device feedback
+1. Train/avatar: carriage plate, stage captions and the chalkboard text removed. Dialog shows only 日本人30歳女性 above the verbatim quote. Neutral labels.
+2. Drum: sticks drum for 3 s on load of the dialog/train avatar, then stages cycle. Tap advances and beats. Sound only on tap with Sound on.
+3. Stage transitions: 0.8 s ease-in-out cross fade with slight scale; dwell 2.5 s; instant under reduced motion.
+4. Auto honk removed. Cause: any pointerdown/keydown anywhere set an "unlocked" flag, and the train's IntersectionObserver whistled when it came into view on every page load. Test: 0 AudioContext and 0 oscillators across load, language switch, navigation away and back.
+5. Guide: thought bubble cloud with two dots, "Want a tour of the site?" in 4 languages, once per session, opens the menu.
+6. Guide visible on every page at 1280, 1440 and 390. Cause: the footer observer faded it to opacity 0 whenever the footer was visible (short pages on desktop), and the tab sat about 83 px off screen. Help added to the top nav; ?guide=on clears guide=off.
+7. Team cards compact (no stacked hidden face).
+8. Agent voices: Web Audio babble per agent, no speech synthesis, tap only with Sound on. See SOUND-CREDITS.md.
+9. Overlap check on 6 pages x 4 languages x 390/1280: clean after excluding screen reader text. Agents renamed Pip, Sora, Fumi, Bit, Chatti, Tabi, Niwa with job lines.
