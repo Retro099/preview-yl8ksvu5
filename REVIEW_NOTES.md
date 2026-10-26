@@ -148,3 +148,8 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - Motion: the train drives in with a transform (no CLS). Wheels, chug and smoke puffs with letters (aria-hidden) run only while the section is visible.
 - Fallbacks: no JS shows the old static card. Reduced motion shows a static train. Quotes are also in sr-only text.
 - Checks: screenshots in screenshots/v53 (train-*, dialog-*, train-reduced-390, nojs-390, plus all pages); axe 0 issues; no overflow.
+
+## v5.4 (2026-10-26 IST)
+- Honk button next to Sound (EN "Honk", JA ポーッ, whistle icon, 44px high, aria-label per language). It plays the synthesized whistle only on a tap and only if Sound is on, with a shake and puffs. With reduced motion there is no animation, but a tap still plays the sound if Sound is on.
+- Polish: more space above the train, and puffs rise less (80px) and are clipped at 96px, so they stay off the permission text. The dialog is more compact under 480px; at 390x900 it no longer scrolls with the translation open.
+- Screenshots: screenshots/v54 (4 train shots + dialog-en-light-390). axe 0 on Home EN/JA; no overflow.

@@ -727,3 +727,9 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | 英訳を見る／英訳をかくす | Show / hide English translation |
 | 英訳（翻訳） | English meaning (translation) |
 | ドラムをたたく / 閉じる | Play the drum / Close |
+
+## v5.4 new JA text
+| JA | English meaning |
+|---|---|
+| ポーッ | (train whistle sound) Toot! |
+| 汽笛を鳴らす | Sound the train whistle |

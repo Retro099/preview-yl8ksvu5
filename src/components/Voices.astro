@@ -8,7 +8,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 ---
 <section class="voices" aria-labelledby="vh" data-voices data-letters={letters}>
 <div class="vhead"><h2 id="vh">{ja?'日本の友だちの声':'From a Japanese friend'}</h2>
-<button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></div>
+<span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10h9l3-3h2v10h-2l-3-3H4z" fill="currentColor"/><path d="M19.5 9.5q1.5 2.5 0 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span></div>
 <p class="mut small">{ja?'ご本人の許可を得てのせています。':'Shared with her permission.'}{' '}<span class="trhint" hidden>{ja?'窓の中の人をタップすると、コメントが読めます。':'Tap the passenger in the window to read the comment.'}</span></p>
 
 <div class="vfall" data-vfall><div class="vgrid">{voices.map(v => <figure class="vnote">
@@ -70,8 +70,8 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 
 <style is:global>
 .voices{margin:2rem 0}.vhead{display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
-.snd{font:inherit;font-size:.85rem;min-height:44px;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer}
-.trwrap{margin-top:4.5rem}.trclip{position:relative;width:100%;clip-path:inset(-110px 0 -12px 0)}
+.sndrow{display:flex;gap:.5rem}.snd{display:inline-flex;align-items:center;gap:.35rem;font:inherit;font-size:.85rem;min-height:44px;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer}
+.trwrap{margin-top:5.5rem}@media (max-width:600px){.trwrap{margin-top:6.5rem}}.trclip{position:relative;width:100%;clip-path:inset(-96px 0 -12px 0)}
 .tr{position:absolute;inset:0}.trsvg{display:block;width:100%;height:100%;overflow:visible}
 .rail rect{fill:var(--mut)}.rail .slp{fill:var(--line)}
 .car{fill:#8C3A45}.roof{fill:#5E2A33}.win{fill:#FFF3D6;stroke:#5E2A33;stroke-width:3}
@@ -83,7 +83,7 @@ html[data-theme=dark] .car{fill:#A24C58}html[data-theme=dark] .cab,html[data-the
 .pax svg{width:92%;height:100%}.pax:focus-visible,.drumbtn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .smoke{position:absolute;width:0;height:0}
 .puff{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--card) 80%,#c9c9c9);box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;font-size:13px;color:var(--warm);pointer-events:none;animation:vpuff 3.4s ease-out forwards}
-@keyframes vpuff{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:.95}100%{transform:translate(var(--dx),-100px) scale(1.5);opacity:0}}
+@keyframes vpuff{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:.95}100%{transform:translate(var(--dx),-80px) scale(1.5);opacity:0}}
 .voices.run .whl{animation:vspin 1.4s linear infinite}.voices.run .body,.voices.run .pax{animation:vchug .7s ease-in-out infinite}
 @keyframes vspin{to{transform:rotate(360deg)}}@keyframes vchug{50%{transform:translateY(1.5px)}}
 .voices .whl,.voices .body,.voices .pax{animation-play-state:paused}.voices.run .whl,.voices.run .body,.voices.run .pax{animation-play-state:running}
@@ -101,6 +101,8 @@ html[data-theme=dark] .car{fill:#A24C58}html[data-theme=dark] .cab,html[data-the
 .vclose{display:block;margin:1rem 0 0 auto;background:var(--acc);color:var(--bg)}
 .ven{margin-top:.6rem;padding:.6rem .8rem;border:1px dashed var(--line);border-radius:8px}.ven p{margin:.3rem 0}
 .vx{position:absolute;right:.5rem;top:.5rem;width:44px;height:44px;border:0;background:transparent;color:var(--fg);font-size:1.6rem;cursor:pointer}
+.tr.honked .body{animation:vshake .5s ease-in-out}@keyframes vshake{20%,60%{transform:translateX(-2px)}40%,80%{transform:translateX(2px)}}
+@media (max-width:479px){.vdin{padding:.9rem .8rem .8rem}.vdtop{gap:.6rem;margin-bottom:.4rem}.drumbtn{width:68px;height:74px}.vdtop p{font-size:.8rem}.vq{padding:.45rem .6rem;margin:.35rem 0}.vq p,.ven p{font-size:.92rem;line-height:1.55}.ven{padding:.45rem .6rem;margin-top:.4rem}.vtg,.vclose{margin-top:.35rem}.vclose{margin-top:.6rem}.vdlg{max-height:94vh}}
 @media (prefers-reduced-motion:reduce){.tr.pre{transform:none}.puff{display:none}.voices .whl,.voices .body,.voices .pax{animation:none!important}.hit .stk{animation:none}}
 </style>
 
@@ -114,25 +116,26 @@ if (sec) {
   const ja = document.documentElement.lang === 'ja';
   const letters = Array.from(sec.dataset.letters || '');
   train.hidden = false; fall.hidden = true; sec.querySelector<HTMLElement>('.trhint')!.hidden = false;
-  if (!rm) { sndBtn.hidden = false; tr.classList.add('pre'); }
+  sndBtn.hidden = false; if (!rm) { tr.classList.add('pre'); }
   let muted = localStorage.getItem('sound') === 'off', unlocked = false, ctx: AudioContext | null = null;
   const setSnd = () => { sndBtn.setAttribute('aria-pressed', String(!muted)); sndL.textContent = muted ? (ja?'オフ':'off') : (ja?'オン':'on'); };
   setSnd();
   sndBtn.addEventListener('click', () => { muted = !muted; localStorage.setItem('sound', muted ? 'off' : 'on'); setSnd(); });
   addEventListener('pointerdown', () => { unlocked = true; }, { once: true, capture: true });
   addEventListener('keydown', () => { unlocked = true; }, { once: true, capture: true });
-  const ac = () => { if (rm || muted) return null; try { ctx ||= new AudioContext(); if (ctx.state === 'suspended') ctx.resume(); } catch { return null; } return ctx; };
+  const ac = (tap = false) => { if ((rm && !tap) || muted) return null; try { ctx ||= new AudioContext(); if (ctx.state === 'suspended') ctx.resume(); } catch { return null; } return ctx; };
   const drum = () => { const c = ac(); if (!c) return; const t = c.currentTime;
     const o = c.createOscillator(), g = c.createGain(); o.frequency.setValueAtTime(160, t); o.frequency.exponentialRampToValueAtTime(50, t + .18);
     g.gain.setValueAtTime(.5, t); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.connect(g).connect(c.destination); o.start(t); o.stop(t + .26);
     const b = c.createBuffer(1, c.sampleRate * .12, c.sampleRate), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
     const n = c.createBufferSource(), ng = c.createGain(), f = c.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 1500; ng.gain.value = .18;
     n.buffer = b; n.connect(f).connect(ng).connect(c.destination); n.start(t); };
-  const whistle = () => { const c = ac(); if (!c) return; const t = c.currentTime, g = c.createGain(); g.gain.setValueAtTime(0, t);
+  const whistle = (tap = false) => { const c = ac(tap); if (!c) return; const t = c.currentTime, g = c.createGain(); g.gain.setValueAtTime(0, t);
     g.gain.linearRampToValueAtTime(.12, t + .08); g.gain.setValueAtTime(.12, t + .7); g.gain.linearRampToValueAtTime(0, t + 1); g.connect(c.destination);
     [587, 740, 880].forEach(fq => { const o = c.createOscillator(); o.type = 'triangle'; o.frequency.value = fq; o.connect(g); o.start(t); o.stop(t + 1.05); }); };
   const hit = (svg: Element | null) => { if (!svg) return; svg.classList.remove('hit'); void (svg as HTMLElement).getBoundingClientRect(); svg.classList.add('hit'); drum(); };
   let timer = 0, live = 0, first = true;
+  sec.querySelector('[data-honk]')?.addEventListener('click', () => { whistle(true); if (rm) return; tr.classList.remove('honked'); void tr.offsetWidth; tr.classList.add('honked'); for (let i = 0; i < 3; i++) setTimeout(puff, i * 120); });
   const puff = () => { if (live > 6 || document.hidden) return; const s = document.createElement('span'); s.className = 'puff';
     s.textContent = letters[Math.floor(Math.random() * letters.length)] || ''; s.style.setProperty('--dx', (Math.random() * 60 - 20) + 'px');
     live++; s.addEventListener('animationend', () => { s.remove(); live--; }); smoke.appendChild(s); };
