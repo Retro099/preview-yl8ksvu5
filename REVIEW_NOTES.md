@@ -161,3 +161,12 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - Rewrote 8 sentences in plainer words (5 EN, 3 JA). The full before/after list is in WORDING-V55-CHANGES.md, with a "needs Prithivi's call" list (the Outlier sentence was left unchanged).
 - No changes to numbers, names, URLs, friend quotes or layout. axe 0 and no sideways scroll on 6 pages, EN + JA, 390 light. Screenshots: screenshots/v55 (home, about, work).
 - Backup: /workspace/site-backup-v55-start-2026-10-26.tgz
+
+## v6.0 (2026-10-26 IST): French and Russian
+- New locales /fr/ and /ru/ for every page (Home, Projects + 3 project pages, About, Talk, Work, Team, Now, Writing, Advice, 404).
+- How: pages render the EN branch; src/middleware.ts + src/i18n/translate.ts swap exact EN strings with src/i18n/fr.json and ru.json (337 strings) at build time, and set lang="fr"/"ru".
+- Language switch: 🌐 menu with 4 languages (fits at 390), choice saved in localStorage "lang", hreflang for en/ja/fr/ru. No auto-redirect, root unchanged, still noindex + robots disallow.
+- Kept original: names, project/tech names, friend's Japanese quotes (FR/RU meaning shown as a translation), animation texts, smoke letters, 埼玉ゆき plate, GitHub commit messages.
+- Checks: axe wcag2a/aa 0 violations and no horizontal scroll on all FR and RU pages at 390 light; no overflow at 1440. EN/JA unchanged.
+- Screenshots: screenshots/v60/. Review sheet: FR-RU-REVIEW-SHEET.md (first draft).
+- Restore: /workspace/site-backup-v60-start-2026-10-26.tgz or git checkout v5.5.

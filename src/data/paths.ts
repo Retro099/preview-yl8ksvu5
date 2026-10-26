@@ -1,3 +1,3 @@
 import { projects } from './projects';
-export const paths = () => [{ params: { lang: 'en' } }, { params: { lang: 'ja' } }];
-export const projectPaths = () => ['en','ja'].flatMap(lang => projects.map(p => ({ params: { lang, slug: p.slug } })));
+export const paths = () => ['en','ja','fr','ru'].map(lang => ({ params: { lang } }));
+export const projectPaths = () => ['en','ja','fr','ru'].flatMap(lang => projects.map(p => ({ params: { lang, slug: p.slug } })));

@@ -6,7 +6,8 @@ const noruby = recruiter && !SHOW_RUBY_ON_RECRUITER_PAGES;
 const built = new Date().toISOString().slice(0,10);
 const ja = lang === 'ja';
 const pageTitle = (title ? `${title} · ` : '') + 'Prithivi Raj Mohanta';
-const other = ja ? 'en' : 'ja';
+const LANGS = [['en','EN','English'],['ja','日本語','日本語'],['fr','FR','Français'],['ru','RU','Русский']];
+const cur = LANGS.find(x=>x[0]===lang) ?? LANGS[0];
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const site = (Astro.site?.href ?? '').replace(/\/$/, '') + B;
 const slug = page ? page + '/' : '';
@@ -20,12 +21,12 @@ const nav = [['projects', ja?'プロジェクト':'Projects'],...(SHOW_WRITING_I
 <title>{pageTitle}</title>
 <meta name="description" content={desc}>
 <link rel="icon" href={`${B}/favicon.svg`} type="image/svg+xml"><link rel="icon" href={`${B}/favicon-32.png`} sizes="32x32"><link rel="apple-touch-icon" href={`${B}/apple-touch-icon.png`}>
-<meta property="og:type" content="website"><meta property="og:site_name" content="Prithivi Raj Mohanta"><meta property="og:title" content={pageTitle}><meta property="og:description" content={desc}><meta property="og:url" content={`${site}/${lang}/${slug}`}><meta property="og:locale" content={ja?'ja_JP':'en_US'}>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Prithivi Raj Mohanta"><meta property="og:title" content={pageTitle}><meta property="og:description" content={desc}><meta property="og:url" content={`${site}/${lang}/${slug}`}><meta property="og:locale" content={({ja:'ja_JP',fr:'fr_FR',ru:'ru_RU'})[lang] ?? 'en_US'}>
 <meta property="og:image" content={`${site}/og-${lang}.png`}><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content={ja?'プリティヴィ・ラージ・モハンタ（AI / MLエンジニア）':'Prithivi Raj Mohanta, AI / ML engineer'}>
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content={pageTitle}><meta name="twitter:description" content={desc}><meta name="twitter:image" content={`${site}/og-${lang}.png`}>
 <meta name="color-scheme" content="light dark">
 <script is:inline>(()=>{let t;try{t=localStorage.getItem('theme')}catch(e){}document.documentElement.dataset.theme=t=='dark'?'dark':'light'})();</script>
-<link rel="canonical" href={`${site}/${lang}/${slug}`}><link rel="alternate" hreflang="x-default" href={`${site}/en/${slug}`}><link rel="alternate" hreflang="en" href={`${site}/en/${slug}`}><link rel="alternate" hreflang="ja" href={`${site}/ja/${slug}`}>
+<link rel="canonical" href={`${site}/${lang}/${slug}`}><link rel="alternate" hreflang="x-default" href={`${site}/en/${slug}`}><link rel="alternate" hreflang="en" href={`${site}/en/${slug}`}><link rel="alternate" hreflang="ja" href={`${site}/ja/${slug}`}><link rel="alternate" hreflang="fr" href={`${site}/fr/${slug}`}><link rel="alternate" hreflang="ru" href={`${site}/ru/${slug}`}>
 <style is:global>
 :root{--bg:#FAFAF7;--card:#fff;--fg:#1B1F23;--mut:#5C6670;--line:#E4E4DE;--acc:#2B4C7E;--warm:#B84C35;--soft:#EEF2F8}
 html[data-theme=dark]{--bg:#14171B;--card:#1E2228;--fg:#ECEDEF;--mut:#B0B7BF;--line:#3A4049;--acc:#8FB0E0;--warm:#E58A75;--soft:#1C2533}
@@ -114,6 +115,10 @@ footer nav a{padding:0 .8rem 0 0}footer p{margin:.4rem 0}
 .fx .fc{flex:0 0 86%;scroll-snap-align:center}.deckw:has(.fx) .hint{display:block;margin:0 0 .5rem}
 .deckw:has(.fx) .dots{display:flex;justify-content:center;gap:.5rem;margin:.4rem 0 0}.dots span{width:7px;height:7px;border-radius:50%;background:var(--line)}.dots span.on{background:var(--acc)}}
 @media (min-width:800px){.deck{align-items:stretch}.deck>.fc{display:flex;flex-direction:column}.deck .fc-in{flex:1;height:100%;align-items:stretch}.deck .face{height:100%;box-sizing:border-box}.deck .front .flip{margin-top:auto}} /* v5.4 equal card heights */
+/* v6.0 language menu */
+.langm{position:relative;padding:0;border:0}.langm summary{list-style:none;cursor:pointer;min-height:inherit;display:inline-flex;align-items:center;gap:.3rem;padding:0 .7rem;border:1px solid var(--line);border-radius:99px;color:var(--acc)}.langm summary::-webkit-details-marker{display:none}
+.langm ul{position:absolute;right:0;top:calc(100% + .3rem);z-index:50;margin:0;padding:.3rem;list-style:none;background:var(--card);border:1px solid var(--line);border-radius:.8rem;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:9.5rem}
+.langm li a{display:flex;align-items:center;min-height:44px;padding:0 .8rem;border-radius:.5rem;color:var(--fg);text-decoration:none}.langm li a[aria-current]{font-weight:700;color:var(--acc)}.langm li a:hover,.langm li a:focus-visible{background:var(--line)}
 /* v4.7 chomp */
 .chomp{max-width:340px;height:44px;margin:0 0 .5rem;cursor:pointer;-webkit-tap-highlight-color:transparent}.chomp svg{width:100%;height:44px;display:block}
 .chomp .dot{fill:var(--warm);opacity:1}
@@ -275,7 +280,7 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 <a class="brand" href={`${B}/${lang}/`}><Avatar mark/>{ja?'プリティヴィ':'Prithivi'}</a>
 <nav aria-label="Main">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}</nav>
 <button class="theme" type="button" aria-pressed="false" aria-label={ja?'ダークモード':'Dark mode'}><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-<a class="lang" href={`${B}/${other}/${slug}`} hreflang={other} lang={other}>{other==='ja'?'日本語':'EN'}</a>
+<details class="lang langm"><summary aria-label={ja?'言語を選ぶ':'Choose language'}><span aria-hidden="true">🌐</span> {cur[1]}</summary><ul>{LANGS.map(([c,code,name]) => <li><a href={`${B}/${c}/${slug}`} hreflang={c} lang={c} data-lang={c} aria-current={c===lang?'true':undefined}>{name}</a></li>)}</ul></details>
 </div></header>
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
@@ -289,6 +294,7 @@ if(!rm&&matchMedia('(hover:hover) and (pointer:fine)').matches){let t=0,n=0,k=0;
 const r=document.querySelector('.rail');if(r&&'IntersectionObserver' in window){const L=[...r.querySelectorAll('a')];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)L.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id));}),{rootMargin:'-45% 0px -50% 0px'});L.forEach(a=>{const s=document.getElementById(a.hash.slice(1));s&&io.observe(s);});}})();
 </script>
 <script is:inline>
+document.addEventListener('click',e=>{document.querySelectorAll('details.langm[open]').forEach(d=>{if(!d.contains(e.target))d.open=false})});document.querySelectorAll('[data-lang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}}));
 (()=>{const h=document.documentElement,b=document.querySelector('.theme');if(b){const set=()=>b.setAttribute('aria-pressed',h.dataset.theme==='dark');set();b.addEventListener('click',()=>{h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('theme',h.dataset.theme)}catch(e){}set();});}
 const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;const pool=[];
 const kill=d=>{const i=pool.indexOf(d);if(i>-1)pool.splice(i,1);d.remove();};

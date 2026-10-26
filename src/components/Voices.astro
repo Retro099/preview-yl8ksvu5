@@ -115,11 +115,12 @@ if (sec) {
   const tr = sec.querySelector<HTMLElement>('.tr')!, smoke = sec.querySelector<HTMLElement>('[data-smoke]')!;
   const sndBtn = sec.querySelector<HTMLButtonElement>('[data-snd]')!, sndL = sec.querySelector<HTMLElement>('[data-sndl]')!;
   const ja = document.documentElement.lang === 'ja';
+  const L = ({ja:{on:'オン',off:'オフ',show:'英訳を見る',hide:'英訳をかくす'},fr:{on:'activé',off:'coupé',show:'Voir la traduction en français',hide:'Masquer la traduction en français'},ru:{on:'вкл.',off:'выкл.',show:'Показать перевод на русский',hide:'Скрыть перевод на русский'}} as any)[document.documentElement.lang] ?? {on:'on',off:'off',show:'Show English translation',hide:'Hide English translation'};
   const letters = Array.from(sec.dataset.letters || '');
   train.hidden = false; fall.hidden = true; sec.querySelector<HTMLElement>('.trhint')!.hidden = false;
   sndBtn.hidden = false; if (!rm) { tr.classList.add('pre'); }
   let muted = localStorage.getItem('sound') === 'off', unlocked = false, ctx: AudioContext | null = null;
-  const setSnd = () => { sndBtn.setAttribute('aria-pressed', String(!muted)); sndL.textContent = muted ? (ja?'オフ':'off') : (ja?'オン':'on'); };
+  const setSnd = () => { sndBtn.setAttribute('aria-pressed', String(!muted)); sndL.textContent = muted ? (L.off) : (L.on); };
   setSnd();
   sndBtn.addEventListener('click', () => { muted = !muted; localStorage.setItem('sound', muted ? 'off' : 'on'); setSnd(); });
   addEventListener('pointerdown', () => { unlocked = true; }, { once: true, capture: true });
@@ -157,7 +158,7 @@ if (sec) {
     d.querySelector('[data-drum]')?.addEventListener('click', e => hit((e.currentTarget as HTMLElement).querySelector('svg')));
     const t = d.querySelector<HTMLButtonElement>('[data-tr]')!, en = d.querySelector<HTMLElement>('.ven')!;
     t.addEventListener('click', () => { const o = en.hidden; en.hidden = !o; t.setAttribute('aria-expanded', String(o));
-      t.textContent = o ? (ja ? '英訳をかくす' : 'Hide English translation') : (ja ? '英訳を見る' : 'Show English translation'); });
+      t.textContent = o ? L.hide : L.show; });
     d.addEventListener('keydown', e => { if (e.key !== 'Tab') return; const f = Array.from(d.querySelectorAll<HTMLElement>('button:not([hidden])')).filter(x => !x.closest('[hidden]'));
       const a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } });
   });
