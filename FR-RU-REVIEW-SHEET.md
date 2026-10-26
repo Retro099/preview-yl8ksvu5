@@ -1985,5 +1985,26 @@ English meaning = EN column.
 
 | EN meaning | FR | RU |
 |---|---|---|
+| Pip | Pip | Пип |
+| Helps with study and exam plans | Aide pour les études et les examens | Помогает с учёбой и экзаменами |
+| Sora | Sora | Сора |
+| Helps with Japan job documents | Aide pour les documents d’emploi au Japon | Помогает с документами для работы в Японии |
+| Fumi | Fumi | Фуми |
+| Finds programs and helps with applications | Trouve des programmes et aide aux candidatures | Ищет программы и помогает с заявками |
+| Bit | Bit | Бит |
+| Keeps the GitHub projects tidy | Garde les projets GitHub en ordre | Следит за порядком в проектах на GitHub |
+| Chatti | Chati | Чатти |
+| Looks after the Topmate page | S’occupe de la page Topmate | Ведёт страницу на Topmate |
+| Tabi | Tabi | Таби |
+| Helps with CVs for jobs outside Japan | Aide pour les CV hors du Japon | Помогает с резюме для работы вне Японии |
+| Niwa | Niwa | Нива |
+| Builds and checks this website | Construit et vérifie ce site | Делает и проверяет этот сайт |
+| Tap her picture to change it. | Touchez son image pour la changer. | Нажмите на её картинку, чтобы она сменилась. |
+| Friend illustration. Tap to read her comment | Illustration de l’amie. Touchez pour lire son commentaire | Рисунок подруги. Нажмите, чтобы прочитать её комментарий |
+| Friend illustration, tap to change | Illustration de l’amie, touchez pour changer | Рисунок подруги, нажмите, чтобы сменить |
+| AI tools that help me | Les outils d’IA qui m’aident | AI-инструменты, которые мне помогают |
+| AI tools that help me → | Les outils d’IA qui m’aident → | AI-инструменты, которые мне помогают → |
+| I decide and check everything myself. | Je décide et je vérifie tout moi-même. | Я сам всё решаю и всё проверяю. |
+| AI tools | Outils d’IA | AI-инструменты |
 
 JA additions (v6.2): サイトを案内しましょうか？ (Want a tour of the site?), ヘルプ (Help), わたしを手伝うAIツール (AI tools that help me), すべて自分で決めて、ぜんぶ自分で確認しています。 (I decide and check everything myself.), 絵をタップすると、絵が変わります。 (Tap her picture to change it.)
