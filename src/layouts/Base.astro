@@ -12,7 +12,7 @@ const cur = LANGS.find(x=>x[0]===lang) ?? LANGS[0];
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const site = (Astro.site?.href ?? '').replace(/\/$/, '') + B;
 const slug = page ? page + '/' : '';
-const desc = Astro.props.description ?? (ja?'AI / MLエンジニア。LLMの評価、日本語の文書を扱うAIツール、ゲーム開発。プロジェクトごとにテストの方法と結果を公開しています。':'AI / ML engineer working on LLM evaluation, AI tools for Japanese text and game development. Each project shows how it was tested.');
+const desc = Astro.props.description ?? (ja?'AI/MLエンジニア。ソフトウェアの仕事は約4年、そのうち約2.5年はAIとLLMの仕事です。日本語の文書、AIの評価、セキュリティのテスト。プロジェクトごとにテストの方法と結果を公開しています。':'AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work: Japanese documents, evaluation and security testing. Each project shows how it was tested.');
 const nav = [['projects', ja?'プロジェクト':'Projects'],...(SHOW_WRITING_IN_NAV?[['writing', ja?'記事':'Writing']]:[]),['about', ja?'自己紹介':'About'],['talk', ja?'相談する':'Talk with me'],['work', ja?'依頼':'Work with me']];
 ---
 <!doctype html>
@@ -285,7 +285,7 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 header nav{display:none;order:9;width:100%;margin:.3rem 0 0;flex-direction:column;flex-wrap:nowrap;overflow:visible;border-top:1px solid var(--line)}
 header nav.open{display:flex}
 header nav a,header nav .navhelp{min-height:48px;width:100%;padding:0 .4rem;font-size:1.05rem;border-bottom:1px solid var(--line);white-space:normal;justify-content:flex-start}
-.brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mbtn{order:4}.mguide,.mbtn{min-width:40px;min-height:40px;margin-left:.25rem}.brand+.theme+.lang{margin-left:.25rem}}
+.brand{flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mbtn{order:4}.mguide,.mbtn{min-width:40px;min-height:40px;margin-left:.25rem}.brand+.theme+.lang{margin-left:.25rem}}
 </style>
 {GOATCOUNTER && <script is:inline data-goatcounter={`https://${GOATCOUNTER}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
 </head>

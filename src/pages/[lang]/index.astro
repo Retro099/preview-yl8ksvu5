@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 import Experience from '../../components/Experience.astro'; import Avatar from '../../components/Avatar.astro';
 import m from '../../data/metrics.json'; import latest from '../../data/latest.json';
-import { CONTACT as C } from '../../config'; import FlashDeck from '../../components/FlashDeck.astro'; import Chomp from '../../components/Chomp.astro';
+import { CONTACT as C } from '../../config'; import { skills } from '../../data/profile'; import FlashDeck from '../../components/FlashDeck.astro'; import Chomp from '../../components/Chomp.astro';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const P = (s) => `${B}/${lang}/projects/${s}/`;
@@ -26,28 +26,30 @@ const now = ja
  : [['2026-10-25','I study Japanese every day.'],['2026-10-25','CRM project: a larger evaluation run with more tests is in progress. Results will be added when it is done.'],['','Building this site.']];
 ---
 <style>.start{margin:.7rem 0 0;padding:.55rem .8rem;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.startb{font:inherit;font-weight:700;min-height:44px;padding:0 .2rem;border:0;background:none;color:var(--acc);text-decoration:underline;cursor:pointer}.startb:focus-visible{outline:3px solid var(--acc);outline-offset:2px}</style>
-<Base lang={lang} title={ja?'ホーム':'Home'}>
-<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
+<Base lang={lang} title={ja?'AI/MLエンジニア':'AI/ML engineer'}>
+<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['skills','スキル'],['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['skills','Skills'],['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
 <div class="hero4">
 <Avatar size={112}/>
 <div>
 {ja ? <>
 <p class="hi">こんにちは。</p>
 <h1>プリティヴィ・ラージ・モハンタ</h1>
-<p class="title">AI / MLエンジニア：LLMの評価、日本語AI、ゲーム開発</p>
-<p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱うAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。</p>
-<p class="start">これはわたしのポートフォリオです。AIのプロジェクトを作っています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
+<p class="title">AI/MLエンジニア。ソフトウェアの仕事は約4年、そのうち約2.5年はAIとLLMの仕事です。</p>
+<p class="lead">仕事で使うAIを作り、テストしています。日本語の文書、AIの評価、セキュリティのテストです。その前は、チームでゲームを作っていました。</p>
+<p class="start">ここはわたしのウェブ上の拠点です。仕事、プロジェクト、相談の案内をまとめています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
 <h1>Prithivi Raj Mohanta</h1>
-<p class="title">AI / ML engineer: LLM evaluation, Japanese-language AI and game development</p>
-<p class="lead">I evaluate AI answers as a contractor. I also build AI tools for Japanese text, and each project page shows how I tested them.</p>
-<p class="start"><span>This is my portfolio. I build AI projects. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
+<p class="title">AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work.</p>
+<p class="lead">I build and test AI for real work: Japanese documents, evaluation and security testing. Before that I made games with a team.</p>
+<p class="start"><span>This is my home on the web: my work, projects and guidance. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
 {(lang==='fr'||lang==='ru') && <p class="small mut i18nnote">{lang==='fr'?'Ceci est une première traduction. Vos remarques sur le français sont les bienvenues.':'Это первый вариант перевода. Буду рад замечаниям по тексту.'}</p>}
 </>}
 </div></div>
 
-<section id="projects" aria-label={ja?'プロジェクト':'Projects'}><FlashDeck lang={lang}/></section>
+<section class="skillsec hskills" id="skills"><h2>{ja?'会社でどう役立つか':'How this helps a company'}</h2><ul class="skills bento">{skills.filter(x=>x[2]).map(([e,j,he,hj,sl]) => <li><strong class="sk">{ja?j:e}</strong><span class="use">{ja?hj:he} <a href={`${B}/${lang}/projects/${sl}/`}>{ja?'プロジェクトを見る':'See the project'}<span class="sr"> ({ja?j:e})</span></a></span></li>)}</ul>
+<p class="mut small"><span>{ja?'ほかに：':'Also:'}</span> {skills.filter(x=>!x[2]).map((x,i)=><>{i>0&&(ja?'、':', ')}<span>{ja?x[1]:x[0]}</span></>)}</p></section>
+<section id="projects" aria-labelledby="pj-h"><h2 id="pj-h">{ja?'プロジェクト：それぞれが示すこと':'Projects: what each one shows'}</h2><p class="mut">{ja?'どのプロジェクトも、わたしの仕事の進め方を示しています。テストのしかた、数字での確認、弱い点の見つけ方です。':'Each project shows how I work: how I test, how I measure, and how I find the weak spots.'}</p><FlashDeck lang={lang}/></section>
 <p class="mut small">{ja?'どれも小さなテストでの数字です。条件と弱い点は各プロジェクトのページに書いています。':'All three come from small tests. Each project page explains the setup and the weak spots.'}</p>
 
 <dl class="status">

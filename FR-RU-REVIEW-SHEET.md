@@ -2041,3 +2041,17 @@ Removed all exam mentions at the owner's request. Entries above now show the neu
 ## v6.3.1
 | Flip card for details. | Retourner la carte pour les détails. | Перевернуть карточку, чтобы увидеть детали. |
 | Menu | Menu | Меню |
+
+## v6.4 new strings
+| EN | FR | RU |
+|---|---|---|
+| AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work. | Ingénieur AI/ML. Environ 4 ans dans le logiciel, dont les 2,5 dernières années en IA et LLM. | AI/ML-инженер. Около 4 лет в разработке ПО, из них последние 2,5 года в AI и LLM. |
+| I build and test AI for real work: Japanese documents, evaluation and security testing. Before that I made games with a team. | Je conçois et je teste de l’IA pour un usage réel : documents japonais, évaluation et tests de sécurité. Avant cela, je développais des jeux en équipe. | Я создаю и тестирую AI для реальной работы: японские документы, оценка и тестирование безопасности. До этого я делал игры в команде. |
+| This is my home on the web: my work, projects and guidance. Not sure where to start? | Voici mon espace sur le web : mon travail, mes projets et mes conseils. Vous ne savez pas par où commencer ? | Это мой дом в сети: моя работа, проекты и консультации. Не знаете, с чего начать? |
+| How this helps a company | Ce que cela apporte à une entreprise | Чем это полезно компании |
+| Also: | Aussi : | Также: |
+| Skills | Compétences | Навыки |
+| Projects: what each one shows | Projets : ce que chacun montre | Проекты: что показывает каждый |
+| Each project shows how I work: how I test, how I measure, and how I find the weak spots. | Chaque projet montre ma façon de travailler : comment je teste, comment je mesure et comment je trouve les points faibles. | Каждый проект показывает, как я работаю: как тестирую, как измеряю и как нахожу слабые места. |
+| AI/ML engineer (page title) | Ingénieur AI/ML | AI/ML-инженер |
+| Meta: AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work: Japanese documents, evaluation and security testing. Each project shows how it was tested. | Ingénieur AI/ML. Environ 4 ans dans le logiciel, dont les 2,5 dernières années en IA et LLM : documents japonais, évaluation et tests de sécurité. Chaque projet montre comment il a été testé. | AI/ML-инженер. Около 4 лет в разработке ПО, из них последние 2,5 года в AI и LLM: японские документы, оценка и тестирование безопасности. Для каждого проекта показано, как он тестировался. |
