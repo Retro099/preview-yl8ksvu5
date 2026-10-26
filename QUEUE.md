@@ -83,3 +83,6 @@ Full numbered list (29 items, grouped Home/Projects/Work/Team/About/Global): BAC
 27. G5 Writing: replace "coming soon" with content from the JLPT bot (Primary will brief it). Status: not started
 28. G6 Single source: don't repeat projects, work history, experience and contact on several pages. Status: not started
 29. G7 Test on a real mobile emulator (device size, touch), not just a narrow desktop window. Status: not started
+
+## v6.5 released 2026-10-26
+Done: H1 H4 H6 W1 W2 T2 T4 A1 A2 A3 A4 A5 G2 G3 G4 G7. Partial: H5 (text), H7 (rename), G1, G6. Not started: H2 H3 P1 P2 P3 W3 T1 T3 G5. Open: confirm LangGraph spelling with owner.
