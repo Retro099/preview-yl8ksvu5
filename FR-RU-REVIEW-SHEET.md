@@ -2046,7 +2046,7 @@ Removed all exam mentions at the owner's request. Entries above now show the neu
 | EN | FR | RU |
 |---|---|---|
 | AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work. | Ingénieur AI/ML. Environ 4 ans dans le logiciel, dont les 2,5 dernières années en IA et LLM. | AI/ML-инженер. Около 4 лет в разработке ПО, из них последние 2,5 года в AI и LLM. |
-| I build and test AI for real work: Japanese documents, evaluation and security testing. Before that I made games with a team. | Je conçois et je teste de l’IA pour un usage réel : documents japonais, évaluation et tests de sécurité. Avant cela, je développais des jeux en équipe. | Я создаю и тестирую AI для реальной работы: японские документы, оценка и тестирование безопасности. До этого я делал игры в команде. |
+| I build and test AI for real work: Japanese documents, evaluation and security testing. I also have game development experience from a full-time job with a team. | Je conçois et je teste de l’IA pour un usage réel : documents japonais, évaluation et tests de sécurité. J’ai aussi une expérience en développement de jeux, dans un emploi à temps plein en équipe. | Я создаю и тестирую AI для реальной работы: японские документы, оценка и тестирование безопасности. Также у меня есть опыт разработки игр: я работал в команде на полной ставке. |
 | This is my home on the web: my work, projects and guidance. Not sure where to start? | Voici mon espace sur le web : mon travail, mes projets et mes conseils. Vous ne savez pas par où commencer ? | Это мой дом в сети: моя работа, проекты и консультации. Не знаете, с чего начать? |
 | How this helps a company | Ce que cela apporte à une entreprise | Чем это полезно компании |
 | Also: | Aussi : | Также: |
