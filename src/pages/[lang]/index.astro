@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 import Experience from '../../components/Experience.astro'; import Avatar from '../../components/Avatar.astro';
 import m from '../../data/metrics.json'; import latest from '../../data/latest.json';
-import { CONTACT as C } from '../../config'; import { skills } from '../../data/profile'; import FlashDeck from '../../components/FlashDeck.astro'; import Chomp from '../../components/Chomp.astro';
+import { CONTACT as C } from '../../config'; import FlashDeck from '../../components/FlashDeck.astro'; import Chomp from '../../components/Chomp.astro';
 const { lang } = Astro.params; const ja = lang==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const P = (s) => `${B}/${lang}/projects/${s}/`;
@@ -27,7 +27,7 @@ const now = ja
 ---
 <style>.start{margin:.7rem 0 0;padding:.55rem .8rem;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.startb{font:inherit;font-weight:700;min-height:44px;padding:0 .2rem;border:0;background:none;color:var(--acc);text-decoration:underline;cursor:pointer}.startb:focus-visible{outline:3px solid var(--acc);outline-offset:2px}</style>
 <Base lang={lang} title={ja?'AI/MLエンジニア':'AI/ML engineer'}>
-<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['skills','スキル'],['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['skills','Skills'],['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
+<nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
 <div class="hero4">
 <Avatar size={112}/>
 <div>
@@ -47,8 +47,6 @@ const now = ja
 </>}
 </div></div>
 
-<section class="skillsec hskills" id="skills"><h2>{ja?'会社でどう役立つか':'How this helps a company'}</h2><ul class="skills bento">{skills.filter(x=>x[2]).map(([e,j,he,hj,sl]) => <li><strong class="sk">{ja?j:e}</strong><span class="use">{ja?hj:he} <a href={`${B}/${lang}/projects/${sl}/`}>{ja?'プロジェクトを見る':'See the project'}<span class="sr"> ({ja?j:e})</span></a></span></li>)}</ul>
-<p class="mut small"><span>{ja?'ほかに：':'Also:'}</span> {skills.filter(x=>!x[2]).map((x,i)=><>{i>0&&(ja?'、':', ')}<span>{ja?x[1]:x[0]}</span></>)}</p></section>
 <section id="projects" aria-labelledby="pj-h"><h2 id="pj-h">{ja?'プロジェクト：それぞれが示すこと':'Projects: what each one shows'}</h2><p class="mut">{ja?'どのプロジェクトも、わたしの仕事の進め方を示しています。テストのしかた、数字での確認、弱い点の見つけ方です。':'Each project shows how I work: how I test, how I measure, and how I find the weak spots.'}</p><FlashDeck lang={lang}/></section>
 <p class="mut small">{ja?'どれも小さなテストでの数字です。条件と弱い点は各プロジェクトのページに書いています。':'All three come from small tests. Each project page explains the setup and the weak spots.'}</p>
 
