@@ -5,6 +5,6 @@ const { lang } = Astro.params; const ja = lang==='ja';
 ---
 <Base lang={lang} recruiter={false} page="writing" title={ja?'記事':'Writing'}>
 <h1>{ja?'記事':'Writing'}</h1>
-{ja ? <J en="Weekly JLPT study notes and project write-ups. The first posts are coming soon.">JLPTの勉強ノート（毎週）と、プロジェクトの記録を書きます。最初の記事は近日公開です。</J>
- : <p>Weekly JLPT study notes and project write-ups. The first posts are coming soon.</p>}
+{ja ? <J en="Weekly Japanese study notes and project write-ups. The first posts are coming soon.">日本語の勉強ノート（毎週）と、プロジェクトの記録を書きます。最初の記事は近日公開です。</J>
+ : <p>Weekly Japanese study notes and project write-ups. The first posts are coming soon.</p>}
 </Base>

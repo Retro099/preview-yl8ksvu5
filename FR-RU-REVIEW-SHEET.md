@@ -198,9 +198,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 33
 
-- EN: Taking JLPT N2 on 6 Dec 2026
-- FR: Je passe le JLPT N2 le 6 décembre 2026
-- RU: Сдаю JLPT N2 6 декабря 2026
+- EN: I study Japanese every day
+- FR: J'étudie le japonais tous les jours
+- RU: Каждый день учу японский
 
 ## 34
 
@@ -258,9 +258,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 43
 
-- EN: Now I study Japanese every day and am taking JLPT N2 on Dec 6, 2026. I am in the hiring process with Japanese companies. I speak Hindi, English, Bengali and Odia.
-- FR: Aujourd'hui, j'étudie le japonais tous les jours et je passe le JLPT N2 le 6 décembre 2026. Je suis en cours de recrutement avec des entreprises japonaises. Je parle hindi, anglais, bengali et odia.
-- RU: Сейчас я каждый день учу японский и 6 декабря 2026 сдаю JLPT N2. Я прохожу отбор в японских компаниях. Я говорю на хинди, английском, бенгальском и ория.
+- EN: Now I study Japanese every day. I am in the hiring process with Japanese companies. I speak Hindi, English, Bengali and Odia.
+- FR: Aujourd'hui, j'étudie le japonais tous les jours. Je suis en cours de recrutement avec des entreprises japonaises. Je parle hindi, anglais, bengali et odia.
+- RU: Сейчас я каждый день учу японский. Я прохожу отбор в японских компаниях. Я говорю на хинди, английском, бенгальском и ория.
 
 ## 44
 
@@ -282,9 +282,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 47
 
-- EN: Studying the JLPT N2 syllabus. Taking N2 on 6 Dec 2026.
-- FR: J'étudie le programme du JLPT N2. Je passe le N2 le 6 décembre 2026.
-- RU: Прохожу программу JLPT N2. Сдаю N2 6 декабря 2026.
+- EN: I study Japanese every day.
+- FR: J'étudie le japonais tous les jours.
+- RU: Каждый день учу японский.
 
 ## 48
 
@@ -294,9 +294,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 49
 
-- EN: N2 exam: 6 Dec 2026
-- FR: Examen N2 : 6 décembre 2026
-- RU: Экзамен N2: 6 декабря 2026
+- EN: (removed in v6.2.2: exam countdown)
+- FR: (removed in v6.2.2: exam countdown)
+- RU: (removed in v6.2.2: exam countdown)
 
 ## 50
 
@@ -570,9 +570,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 95
 
-- EN: Taking JLPT N2 on Dec 6, 2026
-- FR: Je passe le JLPT N2 le 6 décembre 2026
-- RU: Сдаю JLPT N2 6 декабря 2026
+- EN: I study Japanese every day
+- FR: J'étudie le japonais tous les jours
+- RU: Каждый день учу японский
 
 ## 96
 
@@ -606,9 +606,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 101
 
-- EN: Started the JLPT N2 syllabus (Lesson 1). Taking N2 on 6 Dec 2026.
-- FR: J'ai commencé le programme du JLPT N2 (leçon 1). Je passe le N2 le 6 décembre 2026.
-- RU: Начал программу JLPT N2 (урок 1). Сдаю N2 6 декабря 2026.
+- EN: I study Japanese every day.
+- FR: J'étudie le japonais tous les jours.
+- RU: Каждый день учу японский.
 
 ## 102
 
@@ -966,9 +966,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 161
 
-- EN: Since 25 Oct 2026: started the JLPT N2 syllabus (Lesson 1). Taking N2 on 6 Dec 2026.
-- FR: Depuis le 25 oct. 2026 : j'ai commencé le programme du JLPT N2 (leçon 1). Je passe le N2 le 6 décembre 2026.
-- RU: С 25 окт. 2026: начал программу JLPT N2 (урок 1). Сдаю N2 6 декабря 2026.
+- EN: I study Japanese every day.
+- FR: J'étudie le japonais tous les jours.
+- RU: Каждый день учу японский.
 
 ## 162
 
@@ -1404,9 +1404,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 235
 
-- EN: I help Prithivi prepare for the JLPT N2 exam with study notes, practice questions and a review of his mistakes after each mock test.
-- FR: J'aide Prithivi à préparer le JLPT N2 : fiches de révision, exercices, et retour sur ses erreurs après chaque examen blanc.
-- RU: Я помогаю Prithivi готовиться к JLPT N2: конспекты, упражнения и разбор ошибок после каждого пробного теста.
+- EN: I help Prithivi study Japanese with study notes, practice questions and a review of his mistakes.
+- FR: J'aide Prithivi à étudier le japonais : fiches de révision, exercices et retour sur ses erreurs.
+- RU: Я помогаю Prithivi учить японский: конспекты, упражнения и разбор ошибок.
 
 ## 236
 
@@ -1416,9 +1416,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 237
 
-- EN: On 25 Oct 2026 I set up Notion study pages for N2 Lessons 1 and 2, following his printed booklet, with English translations and furigana.
-- FR: Le 25 oct. 2026, j'ai créé dans Notion des pages d'étude pour les leçons 1 et 2 du N2, en suivant son livret imprimé, avec traductions en anglais et furigana.
-- RU: 25 окт. 2026 я сделал в Notion учебные страницы для уроков 1 и 2 уровня N2 по его печатному пособию, с переводом на английский и фуриганой.
+- EN: On 25 Oct 2026 I set up Notion study pages for two Japanese lessons, following his printed booklet, with English translations and furigana.
+- FR: Le 25 oct. 2026, j'ai créé dans Notion des pages d'étude pour deux leçons de japonais, en suivant son livret imprimé, avec traductions en anglais et furigana.
+- RU: 25 окт. 2026 я сделал в Notion учебные страницы для двух уроков японского по его печатному пособию, с переводом на английский и фуриганой.
 
 ## 238
 
@@ -1860,9 +1860,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 311
 
-- EN: Weekly JLPT study notes and project write-ups. The first posts are coming soon.
-- FR: Des notes d'étude JLPT chaque semaine et des comptes rendus de projets. Les premiers articles arrivent bientôt.
-- RU: Еженедельные заметки о подготовке к JLPT и описания проектов. Первые записи скоро появятся.
+- EN: Weekly Japanese study notes and project write-ups. The first posts are coming soon.
+- FR: Des notes d'étude de japonais chaque semaine et des comptes rendus de projets. Les premiers articles arrivent bientôt.
+- RU: Еженедельные заметки об изучении японского и описания проектов. Первые записи скоро появятся.
 
 ## 312
 
@@ -2024,3 +2024,7 @@ Agent mapping (by role): Study = Pip / Пип; Japan job search = Sora / Сор�
 | Work with me | RU Работа со мной | RU Работать со мной | reads as an invitation, like the EN |
 | Three featured 1:1 chats and guides on Topmate. | RU Три избранные беседы и гида на Topmate. | RU Три избранных предложения на Topmate: беседы и гиды. | grammar (mixed noun forms) |
 | Turning Japanese sales meetings into CRM fields, safely | RU Японские встречи с клиентами в поля CRM, безопасно | RU Из японских встреч с клиентами в поля CRM, безопасно | missing "from" |
+
+
+## v6.2.2 (2026-10-26)
+Removed all exam mentions at the owner's request. Entries above now show the neutral wording (I study Japanese every day). Pip job line: Helps with Japanese study plans / Aide pour le planning d’étude du japonais / Помогает планировать изучение японского.

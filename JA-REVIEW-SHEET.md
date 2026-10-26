@@ -44,8 +44,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: More →
   - DRAFT
 
-- JA: JLPT N2の勉強（毎日）
-  - EN: Studying for JLPT N2 (daily)
+- JA: 日本語の勉強（毎日）
+  - EN: Studying Japanese (daily)
   - DRAFT
 
 - JA: このサイトの制作
@@ -128,8 +128,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: Anime showed me that Japan's places and culture are real. Since Mar 2024 I have talked with Japanese friends on HelloTalk, and I respect the care for others and punctuality I see in Japan.
   - DRAFT
 
-- JA: いまは毎日日本語を勉強していて、2026年12月6日にJLPT N2を受験します。日本企業の選考を受けています。ヒンディー語、英語、ベンガル語、オディア語を話します。
-  - EN: Now I study Japanese every day and am taking JLPT N2 on Dec 6, 2026. I am in the hiring process with Japanese companies. I speak Hindi, English, Bengali and Odia.
+- JA: いまは毎日日本語を勉強しています。日本企業の選考を受けています。ヒンディー語、英語、ベンガル語、オディア語を話します。
+  - EN: Now I study Japanese every day. I am in the hiring process with Japanese companies. I speak Hindi, English, Bengali and Odia.
   - DRAFT
 
 - JA: 自己紹介
@@ -204,8 +204,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: Japanese
   - DRAFT
 
-- JA: 2026年12月6日 JLPT N2受験
-  - EN: Taking JLPT N2 on Dec 6, 2026
+- JA: 毎日勉強しています
+  - EN: I study Japanese every day
   - DRAFT
 
 - JA: 現在
@@ -298,8 +298,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 
 ## pages/[lang]/now.astro
 
-- JA: 毎日、JLPT N2の勉強をしています（試験は2026年12月6日）。結果が出たら更新します。
-  - EN: Studying for JLPT N2 every day (the test is on December 6, 2026). I will update this after the result.
+- JA: 毎日日本語を勉強しています。
+  - EN: I study Japanese every day.
   - DRAFT
 
 - JA: CRMプロジェクトのバージョン1.1の評価を実行しています。
@@ -388,8 +388,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 
 ## pages/[lang]/writing.astro
 
-- JA: JLPTの勉強ノート（毎週）と、プロジェクトの記録を書きます。最初の記事は近日公開です。
-  - EN: Weekly JLPT study notes and project write-ups. The first posts are coming soon.
+- JA: 日本語の勉強ノート（毎週）と、プロジェクトの記録を書きます。最初の記事は近日公開です。
+  - EN: Weekly Japanese study notes and project write-ups. The first posts are coming soon.
   - DRAFT
 
 - JA: 記事
@@ -574,8 +574,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 - JA: 日本語文書検索で、正解が上位5件に入った割合 / 政府の報告書1冊、42問での結果 — EN: Share of Japanese document searches with the right passage in the top 5 / Result on 42 questions about one government report
 - JA: 不正の検出率 / 警告の正しさ（再現率 / 適合率） / 不正が0.172%しかない公開データでの結果 — EN: Fraud caught / how often alerts were right (recall / precision) / Result on public data where only 0.172% is fraud
 - JA: どれも小さなテストでの数字です。条件と弱い点は各プロジェクトのページに書いています。 — EN: All are numbers from small tests. Each project page describes the conditions and weak points.
-- JA: 拠点 インド・オディシャ州（リモート） / 日本語 2026年12月6日にJLPT N2受験 / 現在 日本企業の選考を受けています — EN: Based: Odisha, India (remote) / Japanese: taking JLPT N2 on Dec 6, 2026 / Currently: in the hiring process with Japanese companies
-- JA: いま — 10月25日 JLPT N2の勉強を毎日しています（試験は12月6日）。/ CRMツール v1.1 の評価を実行中です。/ このサイトを作り直しています。 — EN: Now — Oct 25: Studying for N2 every day (test Dec 6). / Running the CRM tool v1.1 evaluation. / Rebuilding this site.
+- JA: 拠点 インド・オディシャ州（リモート） / 日本語 毎日勉強しています / 現在 日本企業の選考を受けています — EN: Based: Odisha, India (remote) / Japanese: I study every day / Currently: in the hiring process with Japanese companies
+- JA: いま — 10月25日 毎日日本語を勉強しています。/ CRMツール v1.1 の評価を実行中です。/ このサイトを作り直しています。 — EN: Now — Oct 25: I study Japanese every day. / Running the CRM tool v1.1 evaluation. / Rebuilding this site.
 - JA: 最近の更新（GitHub） / 〇〇 の変更をマージ / GitHubで見る → / 更新の一覧を読み込めませんでした。 — EN: Latest on GitHub / Merged a change to <repo> / See on GitHub → / The update list could not be loaded.
 - JA: 職務経歴 →（採用担当の方へ） — EN: Work history → (for recruiters)
 - JA: 更新日 — EN: Updated (footer)
@@ -599,11 +599,11 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 ---
 ## v4.4 Now items (2026-10-25)
 - 2026年10月25日 更新 — Updated 25 Oct 2026
-- JLPT N2の教材の勉強を始めました（第1課から）。2026年12月6日にN2を受けます。 — Started the JLPT N2 syllabus (from Lesson 1). I am taking N2 on 6 Dec 2026.
+- 毎日日本語を勉強しています。 — I study Japanese every day.
 - CRMプロジェクト：テストを増やした大きな評価を実行中です。今は一時停止しています。終わったら結果をのせます。 — CRM project: a larger evaluation with more tests is in progress. It is paused now. I will add the results when it is done.
 - 2026年10月25日から： / 2026年10月25日時点： — Since 25 Oct 2026: / As of 25 Oct 2026: (Now page)
 - このサイトを作っています。 — Building this site. (no date; unverified start)
-- NowStrip (unused component): JLPT N2の教材の勉強（2026年10月25日から） / CRMプロジェクトの評価（一時停止中） / このサイトの制作 — N2 syllabus (since 25 Oct 2026) / CRM project evaluation (paused) / Building this site
+- NowStrip (unused component): 毎日の日本語の勉強 / CRMプロジェクトの評価（一時停止中） / このサイトの制作 — Studying Japanese every day / CRM project evaluation (paused) / Building this site
 
 ## v4.5 (2026-10-25) — CRM Now item is running
 - CRMプロジェクト：テストを増やした大きな評価を実行中です。終わったら結果をのせます。 — CRM project: a larger evaluation with more tests is running. I will add the results when it is done.
@@ -635,7 +635,7 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | 公開データ1つだけで、新しいデータではまだ試していません。 | Only one public dataset; not yet tried on newer data. |
 | このページの中 / プロジェクト / いま / 職務経歴 / 連絡先 | (side rail) On this page / Projects / Now / Experience / Contact |
 | いま（2026年10月25日） | Now (25 Oct 2026) |
-| JLPT N2の教材を勉強中。2026年12月6日に受験します。 | Studying N2 materials. Taking it on 6 Dec 2026. |
+| 毎日日本語を勉強しています。 | I study Japanese every day. |
 | CRMプロジェクトの大きな評価を実行中です。 | A large evaluation of the CRM project is running. |
 
 ## v4.8 Talk page (2026-10-25)
@@ -659,8 +659,6 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 |---|---|
 | ダークモード | Dark mode (theme button label, for screen readers) |
 | サイドの情報 | Side information (About page side column label) |
-| N2の試験：2026年12月6日 | N2 exam: 6 Dec 2026 (no-JS version) |
-| N2の試験：あと◯日（2026年12月6日） | N2 exam: ◯ days left (6 Dec 2026) |
 | 最近のGitHubの更新 | Recent GitHub updates |
 | ◯から◯までに、公開された更新が◯件あります。 | There are ◯ public updates from ◯ to ◯ (chart description for screen readers) |
 | 最近の◯件（日ごと、◯まで） | The latest ◯ (by day, up to ◯) |
@@ -705,7 +703,7 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | AIエンジニア（契約）。Outlier（Scale AI）で、LLMの答えの評価と安全性テスト（2024年6月から） | AI Engineer (contract) at Outlier: LLM answer evaluation and safety tests (since Jun 2024) |
 | ゲーム開発・テスト担当（2022〜2023年）、個人でデータの仕事（2023〜2024年） | Game dev/tester; self-employed data work |
 | ヒンディー語、英語、ベンガル語、オリヤー語。日本語は勉強中 | Hindi, English, Bengali, Odia. Studying Japanese |
-| 2026年12月6日にJLPT N2を受験します | Taking JLPT N2 on 6 Dec 2026 |
+| 毎日日本語を勉強しています | I study Japanese every day |
 | 会議メモからCRMの項目へ・日本語の文書検索・クレジットカードの不正検出 | the three project names |
 | 会社での使い方： / プロジェクトを見る | How this helps a company: / See the project |
 | 会社がAIツールを使う前に、まちがった答えや危ない答えをテストします。CRMのプロジェクトでは、通ってしまう攻撃が45%から6.7%に減りました（自作の攻撃40件）。 | Test AI for wrong/unsafe answers; attacks 45%→6.7% (40 self-written) |
@@ -749,3 +747,7 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 - 長い政府の報告書から → 政府の長い報告書から (EN: from a long government report; word order more natural)
 - Sora job line: 日本の就職書類を手伝います → 日本での仕事さがしを手伝います (EN: helps with my job search in Japan)
 - Names: たび is now the programs and scholarships agent, ふみ is the CV and documents agent (swap, by role).
+
+
+## v6.2.2 (2026-10-26)
+Removed all exam mentions at the owner's request. Pip: 日本語の勉強の計画を手伝います / プリティヴィさんの日本語の勉強を手伝っています。勉強ノート、練習問題、そしてまちがいの見直しをします。 / 日本語の2つの課の勉強ページ.
