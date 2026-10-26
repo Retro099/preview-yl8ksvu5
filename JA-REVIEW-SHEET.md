@@ -743,3 +743,9 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | About table | ヒンディー語、英語、ベンガル語、オディア語。 | Hindi, English, Bengali, Odia (one spelling used everywhere) |
 | Talk | 日本へ行くにはどんな道が合いそうか、私の経験をもとに一緒に話します。 | We talk together about which routes to Japan may fit you, based on my experience. |
 | Work | 依頼ごとに見積もりをお送りします。 | I send a quote for each request. |
+
+## v6.2.1 changes (2026-10-26)
+
+- 長い政府の報告書から → 政府の長い報告書から (EN: from a long government report; word order more natural)
+- Sora job line: 日本の就職書類を手伝います → 日本での仕事さがしを手伝います (EN: helps with my job search in Japan)
+- Names: たび is now the programs and scholarships agent, ふみ is the CV and documents agent (swap, by role).

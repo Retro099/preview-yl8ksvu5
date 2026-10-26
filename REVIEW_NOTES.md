@@ -190,3 +190,4 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 7. Team cards compact (no stacked hidden face).
 8. Agent voices: Web Audio babble per agent, no speech synthesis, tap only with Sound on. See SOUND-CREDITS.md.
 9. Overlap check on 6 pages x 4 languages x 390/1280: clean after excluding screen reader text. Agents renamed Pip, Sora, Fumi, Bit, Chatti, Tabi, Niwa with job lines.
+- v6.2.1 (2026-10-26): agent names matched to roles (Tabi = programs, Fumi = CVs and documents, Sora job line = job search in Japan); 9 FR/RU and 1 JA wording fixes, see review sheets.

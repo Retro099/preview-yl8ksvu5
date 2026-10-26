@@ -45,7 +45,7 @@ export const projects = [
     result:`The right passage was in the top 5 results for ${r.hit5} of questions, with MRR ${r.mrr}, on ${r.questions} questions about the 2025 White Paper on Information and Communications (情報通信白書). ${r.hand_checked} questions were hand-checked.`,
     next:'Check more questions by hand and add a small live demo.'},
   ja:{ title:'日本語の文書から、正しいページを<ruby>探<rt>さが</rt></ruby>す',
-    line:'長い政府の報告書から、AIの<ruby>検索<rt>けんさく</rt></ruby>が正しい部分を見つけられるかを試しました。',
+    line:'政府の長い報告書から、AIの<ruby>検索<rt>けんさく</rt></ruby>が正しい部分を見つけられるかを試しました。',
     lineEn:'I tested whether AI search can find the right part of a long government report.',
     purpose:'AIの答えは、最初に見つけたページで決まります。日本語で正しいページが見つかる割合を、数字で知りたいと考えました。',
     purposeEn:'An AI answer depends on the page it finds first. I wanted a number for how often it finds the right page in Japanese.',

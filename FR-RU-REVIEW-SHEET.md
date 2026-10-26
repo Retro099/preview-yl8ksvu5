@@ -2008,3 +2008,19 @@ English meaning = EN column.
 | AI tools | Outils d’IA | AI-инструменты |
 
 JA additions (v6.2): サイトを案内しましょうか？ (Want a tour of the site?), ヘルプ (Help), わたしを手伝うAIツール (AI tools that help me), すべて自分で決めて、ぜんぶ自分で確認しています。 (I decide and check everything myself.), 絵をタップすると、絵が変わります。 (Tap her picture to change it.)
+
+## v6.2.1 changes (2026-10-26)
+
+Agent mapping (by role): Study = Pip / Пип; Japan job search = Sora / Сора; CVs and documents (overseas CV card) = Fumi / Фуми; GitHub = Bit / Бит; Topmate = Chatti (FR Chati) / Чатти; Programs and scholarships abroad = Tabi / Таби; Website = Niwa / Нива.
+
+| EN meaning | Old | New | Why |
+|---|---|---|---|
+| Side notes | FR À côté | FR En marge | "À côté" does not mean side notes |
+| Tap her picture to hear the drum. | FR la batterie | FR le tambour | one drum, not a drum kit |
+| Play the drum | FR Jouer de la batterie | FR Jouer du tambour | same |
+| Japan job prep | FR Préparer un emploi au Japon | FR Se préparer à un emploi au Japon | grammar |
+| Helps with CVs for jobs outside Japan | FR Aide pour les CV hors du Japon | FR Aide pour les CV destinés à l’étranger | more natural |
+| Helps with my job search in Japan (Sora, new job line) | FR Aide pour les documents d’emploi au Japon / RU Помогает с документами для работы в Японии | FR Aide pour ma recherche d’emploi au Japon / RU Помогает искать работу в Японии | matches Sora's role |
+| Work with me | RU Работа со мной | RU Работать со мной | reads as an invitation, like the EN |
+| Three featured 1:1 chats and guides on Topmate. | RU Три избранные беседы и гида на Topmate. | RU Три избранных предложения на Topmate: беседы и гиды. | grammar (mixed noun forms) |
+| Turning Japanese sales meetings into CRM fields, safely | RU Японские встречи с клиентами в поля CRM, безопасно | RU Из японских встреч с клиентами в поля CRM, безопасно | missing "from" |
