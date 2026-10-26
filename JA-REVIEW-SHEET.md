@@ -713,3 +713,17 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 | 日本語の会議メモを、手で入力せずにCRMの項目に入れます。…150項目のうち90項目が完全に一致しました（60.0%、テスト用メモ30件）。 | Notes→CRM fields; 90/150 exact |
 | 不正かもしれないカードの支払いを見つけます。…再現率0.84、適合率0.88でした。 | Flag possible fraud; recall 0.84, precision 0.88 |
 | チームがブラウザでツールを試せて、テストも続けられるようにします。…Streamlitのデモがあり、変更のたびに自動テストが動きます。 | Try tools in the browser, keep them tested |
+
+## v5.3 new JA text
+| JA | English meaning |
+|---|---|
+| いつも力になってくれる、とてもやさしい友だち | Always ready to help, a very kind and very sweet friend |
+| 埼玉ゆき (cabin plate) | Bound for Saitama |
+| 窓の中の人をタップすると、コメントが読めます。 | Tap the person in the window to read the comment. |
+| 音：オン／オフ | Sound: on/off |
+| 日本人30歳女性のコメントを読む | Read the comment from the Japanese woman, 30 |
+| 絵をタップするとドラムが鳴ります。 | Tap the picture and the drum plays. |
+| 元のコメント（そのまま） | Original comment (as is) |
+| 英訳を見る／英訳をかくす | Show / hide English translation |
+| 英訳（翻訳） | English meaning (translation) |
+| ドラムをたたく / 閉じる | Play the drum / Close |

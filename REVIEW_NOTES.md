@@ -139,3 +139,12 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - About: an "At a glance" dl near the top (EN and JA). It stacks on narrow screens.
 - Projects/Skills: each skill gets a "How this helps a company" line built from metrics.json, with a link to its project. Python and Game development have no line (no real example).
 - Checks: 48 screenshots in screenshots/v52; axe 0 issues; no overflow at 390.
+
+## v5.3 (2026-10-26 IST): comment train + friend avatar
+- Home testimonial area: a steam train drawn in code (inline SVG + CSS, no images or audio files). The cabins are built from `passengers` in src/data/voices.ts, so adding an object adds a cabin.
+- One passenger, 日本人30歳女性: a code-drawn avatar (black hair below the shoulders, slim, drum and two sticks). Her cabin plate reads 埼玉ゆき, a subtle Saitama hint. No name, company or workplace.
+- Tapping the passenger (a real button, 56x46 at 390) makes the sticks hit the drum, then opens a native modal dialog with a blurred backdrop. The dialog shows the original quotes word for word, a translation toggle (the English is marked as a translation) and a caption. It closes with the button, ×, a backdrop click or Esc. Focus is trapped and goes back to the passenger.
+- Sound: Web Audio only (drum and whistle). Nothing plays before a user tap. The whistle plays on the first scroll-in only if the page was already tapped. A Sound toggle is saved in localStorage ('sound'). No sound and no motion with prefers-reduced-motion.
+- Motion: the train drives in with a transform (no CLS). Wheels, chug and smoke puffs with letters (aria-hidden) run only while the section is visible.
+- Fallbacks: no JS shows the old static card. Reduced motion shows a static train. Quotes are also in sr-only text.
+- Checks: screenshots in screenshots/v53 (train-*, dialog-*, train-reduced-390, nojs-390, plus all pages); axe 0 issues; no overflow.

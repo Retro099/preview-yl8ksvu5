@@ -1,0 +1,19 @@
+---
+const { hair='#1d1a1c', top='#E9A3B0', prop='drum', cls='' } = Astro.props;
+---
+<svg class={`fav ${cls}`} viewBox="0 0 100 110" aria-hidden="true" focusable="false">
+<path d="M27 44Q25 17 50 15Q75 17 73 44L75 74Q63 80 50 78Q37 80 25 74Z" fill={hair}/>
+<rect x="45" y="58" width="10" height="10" fill="#F2CDB6"/>
+<path d="M36 70Q50 63 64 70L68 104H32Z" fill={top}/>
+<ellipse cx="50" cy="43" rx="17" ry="19" fill="#F6D9C6"/>
+<path d="M32 40Q34 21 50 21Q66 21 68 40Q60 31 52 33Q43 29 32 40Z" fill={hair}/>
+<ellipse cx="43" cy="46" rx="2.2" ry="3" fill="#2a2228"/><ellipse cx="57" cy="46" rx="2.2" ry="3" fill="#2a2228"/>
+<circle cx="39" cy="52" r="3.2" fill="#E9A3B0" opacity=".7"/><circle cx="61" cy="52" r="3.2" fill="#E9A3B0" opacity=".7"/>
+<path d="M46 54Q50 57 54 54" stroke="#9a4a4a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+{prop==='drum' && <g>
+ <rect x="29" y="90" width="42" height="16" rx="3" fill="#D9A441"/><path d="M29 94H71M29 102H71" stroke="#B84C35" stroke-width="1.5"/>
+ <ellipse class="fav-head" cx="50" cy="90" rx="21" ry="5" fill="#FFF8EC" stroke="#8a5a2b" stroke-width="1.2"/>
+ <g class="stk stk-l"><line x1="35" y1="76" x2="46" y2="88" stroke="#8a5a2b" stroke-width="3" stroke-linecap="round"/><circle cx="35" cy="76" r="3.4" fill="#F6D9C6"/></g>
+ <g class="stk stk-r"><line x1="65" y1="76" x2="54" y2="88" stroke="#8a5a2b" stroke-width="3" stroke-linecap="round"/><circle cx="65" cy="76" r="3.4" fill="#F6D9C6"/></g>
+</g>}
+</svg>

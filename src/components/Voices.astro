@@ -1,13 +1,161 @@
 ---
-import { voices } from '../data/voices';
+import { passengers, voices } from '../data/voices';
+import FriendAvatar from './FriendAvatar.astro';
 const { lang } = Astro.props; const ja = lang==='ja';
+const N = passengers.length, X = 20 + N*330 + 10, W = X + 410, H = 240;
+const pc = (v:number, t:number) => (v/t*100).toFixed(2)+'%';
+const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[、。！？「」\s]/g,'');
 ---
-<section class="voices" aria-labelledby="vh"><h2 id="vh">{ja?'日本の友だちの声':'From a Japanese friend'}</h2>
-<div class="vgrid">{voices.map(v => <figure class="vnote">
+<section class="voices" aria-labelledby="vh" data-voices data-letters={letters}>
+<div class="vhead"><h2 id="vh">{ja?'日本の友だちの声':'From a Japanese friend'}</h2>
+<button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></div>
+<p class="mut small">{ja?'ご本人の許可を得てのせています。':'Shared with her permission.'}{' '}<span class="trhint" hidden>{ja?'窓の中の人をタップすると、コメントが読めます。':'Tap the passenger in the window to read the comment.'}</span></p>
+
+<div class="vfall" data-vfall><div class="vgrid">{voices.map(v => <figure class="vnote">
 <span class="hanko" aria-hidden="true">声</span>
 <blockquote lang="ja"><p>「{v.ja}」</p></blockquote>
 {!ja && <p class="vtr small"><span class="mut">English meaning (translation):</span> {v.en}</p>}
 <figcaption lang="ja">— {v.by}{!ja && <span lang="en" class="mut"> ({v.byEn})</span>}</figcaption>
-</figure>)}</div>
-<p class="mut small">{ja?'ご本人の許可を得てのせています。':'Shared with her permission.'}</p>
+</figure>)}</div></div>
+
+<div class="trwrap" data-train hidden>
+<div class="trclip" style={`aspect-ratio:${W}/${H}`}><div class="tr">
+<svg class="trsvg" viewBox={`0 0 ${W} ${H}`} aria-hidden="true" focusable="false">
+<g class="rail"><rect x="0" y="222" width={W} height="4" rx="2"/>{Array.from({length:Math.ceil(W/40)},(_,i)=><rect x={i*40+6} y="226" width="22" height="6" rx="2" class="slp"/>)}</g>
+<g class="body">
+{passengers.map((p,i)=>{const x=20+i*330; return <g>
+ <rect x={x+6} y="28" width="278" height="18" rx="9" class="roof"/>
+ <rect x={x} y="40" width="290" height="160" rx="18" class="car"/>
+ <rect x={x+18} y="70" width="70" height="60" rx="10" class="win"/>
+ <rect x={x+140} y="55" width="120" height="100" rx="14" class="win"/>
+ <rect x={x+150} y="159" width="100" height="21" rx="5" class="plate"/>
+ <text x={x+200} y="174.5" text-anchor="middle" class="plt">{p.cabin}</text>
+ <circle cx={x+30} cy="175" r="7" class="ume"/>
+ <rect x={x+290} y="176" width="50" height="8" rx="3" class="cpl"/>
+</g>})}
+<rect x={X+10} y="45" width="126" height="16" rx="6" class="roof"/>
+<rect x={X+16} y="55" width="112" height="140" rx="12" class="cab"/>
+<rect x={X+36} y="75" width="60" height="46" rx="8" class="win"/>
+<rect x={X+110} y="95" width="260" height="92" rx="44" class="boil"/>
+<rect x={X+110} y="168" width="262" height="10" class="band"/>
+<path d={`M${X+190} 96a20 20 0 0 1 40 0z`} class="dome"/>
+<rect x={X+290} y="52" width="34" height="48" class="chim"/><rect x={X+282} y="40" width="50" height="14" rx="4" class="chim"/>
+<circle cx={X+372} cy="92" r="11" class="lamp"/>
+<path d={`M${X+370} 186L${X+404} 214H${X+356}Z`} class="cow"/>
+</g>
+{[[X+56,18],...passengers.flatMap((_,i)=>[[20+i*330+60,17],[20+i*330+230,17]]),[X+160,25],[X+235,25],[X+310,25]].map(([cx,r])=><g class="whl" style={`transform-origin:${cx}px ${210-r}px`}><circle cx={cx} cy={210-r} r={r} class="wh"/><path d={`M${cx-r+3} ${210-r}H${cx+r-3}M${cx} ${210-2*r+3}V${207}`} class="spk"/><circle cx={cx} cy={210-r} r="4" class="hub"/></g>)}
+<rect x={X+150} y="181" width="176" height="6" rx="3" class="rod"/>
+</svg>
+{passengers.map((p,i)=><button type="button" class="pax" data-pax={p.id} aria-haspopup="dialog"
+ style={`left:${pc(20+i*330+140,W)};top:${pc(55,H)};width:${pc(120,W)};height:${pc(100,H)}`}
+ aria-label={ja?`${p.by}のコメントを読む`:`Read the comment from ${p.byEn} (${p.by})`}>
+ <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop}/></button>)}
+<div class="smoke" data-smoke aria-hidden="true" style={`left:${pc(X+307,W)};top:${pc(40,H)}`}></div>
+</div></div>
+<div class="sr">{voices.map(v=><figure><blockquote lang="ja"><p>「{v.ja}」</p></blockquote>{!ja&&<p>English meaning (translation): {v.en}</p>}<figcaption lang="ja">— {v.by}</figcaption></figure>)}</div>
+</div>
+
+{passengers.map(p=><dialog class="vdlg" id={`dlg-${p.id}`} aria-modal="true" aria-labelledby={`dt-${p.id}`}>
+<div class="vdin">
+<button type="button" class="vx" data-close aria-label={ja?'閉じる':'Close'}>×</button>
+<div class="vdtop"><button type="button" class="drumbtn" data-drum aria-label={ja?'ドラムをたたく':'Play the drum'}><FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop}/></button>
+<div><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3><p class="small mut">{ja?p.capJa:p.capEn}</p><p class="small mut">{ja?'絵をタップするとドラムが鳴ります。':'Tap her picture to hear the drum.'}</p></div></div>
+<p class="small mut">{ja?'元のコメント（そのまま）':'Her original comment (unchanged, in Japanese)'}</p>
+{p.quotes.map(q=><blockquote class="vq" lang="ja"><p>「{q.ja}」</p></blockquote>)}
+<button type="button" class="vtg" data-tr aria-expanded="false" aria-controls={`en-${p.id}`}>{ja?'英訳を見る':'Show English translation'}</button>
+<div id={`en-${p.id}`} class="ven" hidden lang="en"><p class="small"><strong>{ja?'英訳（翻訳）':'English meaning (translation)'}</strong></p>{p.quotes.map(q=><p>{q.en}</p>)}</div>
+<button type="button" class="vclose" data-close>{ja?'閉じる':'Close'}</button>
+</div></dialog>)}
 </section>
+
+<style is:global>
+.voices{margin:2rem 0}.vhead{display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
+.snd{font:inherit;font-size:.85rem;min-height:44px;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer}
+.trwrap{margin-top:4.5rem}.trclip{position:relative;width:100%;clip-path:inset(-110px 0 -12px 0)}
+.tr{position:absolute;inset:0}.trsvg{display:block;width:100%;height:100%;overflow:visible}
+.rail rect{fill:var(--mut)}.rail .slp{fill:var(--line)}
+.car{fill:#8C3A45}.roof{fill:#5E2A33}.win{fill:#FFF3D6;stroke:#5E2A33;stroke-width:3}
+.plate{fill:#FFF8EC;stroke:#5E2A33;stroke-width:1.5}.plt{font:700 14px sans-serif;fill:#5E2A33}.ume{fill:#E9A3B0}
+.cpl,.rod{fill:#6b6f76}.cab{fill:#2B2F36}.boil{fill:#33383F}.band{fill:#B84C35}.dome,.chim{fill:#2B2F36}.lamp{fill:#E3B85C}.cow{fill:#B84C35}
+.wh{fill:#B84C35;stroke:#2B2F36;stroke-width:3}.spk{stroke:#FFF3D6;stroke-width:2.5}.hub{fill:#FFF3D6}
+html[data-theme=dark] .car{fill:#A24C58}html[data-theme=dark] .cab,html[data-theme=dark] .chim,html[data-theme=dark] .dome{fill:#4A515C}html[data-theme=dark] .boil{fill:#545C68}
+.pax{position:absolute;min-width:44px;min-height:44px;padding:0;border:0;background:transparent;cursor:pointer;border-radius:12px;display:grid;place-items:end center}
+.pax svg{width:92%;height:100%}.pax:focus-visible,.drumbtn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.smoke{position:absolute;width:0;height:0}
+.puff{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--card) 80%,#c9c9c9);box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;font-size:13px;color:var(--warm);pointer-events:none;animation:vpuff 3.4s ease-out forwards}
+@keyframes vpuff{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:.95}100%{transform:translate(var(--dx),-100px) scale(1.5);opacity:0}}
+.voices.run .whl{animation:vspin 1.4s linear infinite}.voices.run .body,.voices.run .pax{animation:vchug .7s ease-in-out infinite}
+@keyframes vspin{to{transform:rotate(360deg)}}@keyframes vchug{50%{transform:translateY(1.5px)}}
+.voices .whl,.voices .body,.voices .pax{animation-play-state:paused}.voices.run .whl,.voices.run .body,.voices.run .pax{animation-play-state:running}
+.tr.pre{transform:translateX(-105%)}.tr.go{transition:transform 3s cubic-bezier(.2,.7,.3,1);transform:none}
+.stk{transform-box:fill-box}.stk-l{transform-origin:0 0}.stk-r{transform-origin:100% 0}
+.hit .stk-l{animation:vhl .28s ease-out}.hit .stk-r{animation:vhr .28s ease-out .08s}
+@keyframes vhl{40%{transform:rotate(-28deg)}}@keyframes vhr{40%{transform:rotate(28deg)}}
+.vdlg{width:min(92vw,560px);max-height:88vh;overflow:auto;padding:0;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--fg);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.vdlg::backdrop{background:rgba(20,23,27,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.vdin{position:relative;padding:1.2rem 1.1rem 1.1rem;border-top:6px solid #E9A3B0}
+.vdtop{display:flex;gap:.9rem;align-items:center;margin-bottom:.6rem}.vdtop h3{margin:0}.vdtop p{margin:.15rem 0}
+.drumbtn{flex:none;width:96px;height:104px;padding:0;border:1px solid var(--line);border-radius:14px;background:#FFF3D6;cursor:pointer}.drumbtn svg{width:100%;height:100%}
+.vq{margin:.5rem 0;padding:.6rem .8rem;border-left:4px solid var(--turmeric);background:var(--goldt);border-radius:8px}.vq p{margin:0}
+.vtg,.vclose{font:inherit;min-height:44px;padding:.4rem 1rem;border-radius:999px;border:1px solid var(--acc);background:transparent;color:var(--acc);cursor:pointer;margin-top:.5rem}
+.vclose{display:block;margin:1rem 0 0 auto;background:var(--acc);color:var(--bg)}
+.ven{margin-top:.6rem;padding:.6rem .8rem;border:1px dashed var(--line);border-radius:8px}.ven p{margin:.3rem 0}
+.vx{position:absolute;right:.5rem;top:.5rem;width:44px;height:44px;border:0;background:transparent;color:var(--fg);font-size:1.6rem;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.tr.pre{transform:none}.puff{display:none}.voices .whl,.voices .body,.voices .pax{animation:none!important}.hit .stk{animation:none}}
+</style>
+
+<script>
+const sec = document.querySelector<HTMLElement>('[data-voices]');
+if (sec) {
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const train = sec.querySelector<HTMLElement>('[data-train]')!, fall = sec.querySelector<HTMLElement>('[data-vfall]')!;
+  const tr = sec.querySelector<HTMLElement>('.tr')!, smoke = sec.querySelector<HTMLElement>('[data-smoke]')!;
+  const sndBtn = sec.querySelector<HTMLButtonElement>('[data-snd]')!, sndL = sec.querySelector<HTMLElement>('[data-sndl]')!;
+  const ja = document.documentElement.lang === 'ja';
+  const letters = Array.from(sec.dataset.letters || '');
+  train.hidden = false; fall.hidden = true; sec.querySelector<HTMLElement>('.trhint')!.hidden = false;
+  if (!rm) { sndBtn.hidden = false; tr.classList.add('pre'); }
+  let muted = localStorage.getItem('sound') === 'off', unlocked = false, ctx: AudioContext | null = null;
+  const setSnd = () => { sndBtn.setAttribute('aria-pressed', String(!muted)); sndL.textContent = muted ? (ja?'オフ':'off') : (ja?'オン':'on'); };
+  setSnd();
+  sndBtn.addEventListener('click', () => { muted = !muted; localStorage.setItem('sound', muted ? 'off' : 'on'); setSnd(); });
+  addEventListener('pointerdown', () => { unlocked = true; }, { once: true, capture: true });
+  addEventListener('keydown', () => { unlocked = true; }, { once: true, capture: true });
+  const ac = () => { if (rm || muted) return null; try { ctx ||= new AudioContext(); if (ctx.state === 'suspended') ctx.resume(); } catch { return null; } return ctx; };
+  const drum = () => { const c = ac(); if (!c) return; const t = c.currentTime;
+    const o = c.createOscillator(), g = c.createGain(); o.frequency.setValueAtTime(160, t); o.frequency.exponentialRampToValueAtTime(50, t + .18);
+    g.gain.setValueAtTime(.5, t); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.connect(g).connect(c.destination); o.start(t); o.stop(t + .26);
+    const b = c.createBuffer(1, c.sampleRate * .12, c.sampleRate), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+    const n = c.createBufferSource(), ng = c.createGain(), f = c.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 1500; ng.gain.value = .18;
+    n.buffer = b; n.connect(f).connect(ng).connect(c.destination); n.start(t); };
+  const whistle = () => { const c = ac(); if (!c) return; const t = c.currentTime, g = c.createGain(); g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(.12, t + .08); g.gain.setValueAtTime(.12, t + .7); g.gain.linearRampToValueAtTime(0, t + 1); g.connect(c.destination);
+    [587, 740, 880].forEach(fq => { const o = c.createOscillator(); o.type = 'triangle'; o.frequency.value = fq; o.connect(g); o.start(t); o.stop(t + 1.05); }); };
+  const hit = (svg: Element | null) => { if (!svg) return; svg.classList.remove('hit'); void (svg as HTMLElement).getBoundingClientRect(); svg.classList.add('hit'); drum(); };
+  let timer = 0, live = 0, first = true;
+  const puff = () => { if (live > 6 || document.hidden) return; const s = document.createElement('span'); s.className = 'puff';
+    s.textContent = letters[Math.floor(Math.random() * letters.length)] || ''; s.style.setProperty('--dx', (Math.random() * 60 - 20) + 'px');
+    live++; s.addEventListener('animationend', () => { s.remove(); live--; }); smoke.appendChild(s); };
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { if (rm) return; sec.classList.add('run'); timer = window.setInterval(puff, 900);
+      if (first) { first = false; requestAnimationFrame(() => { tr.classList.add('go'); tr.classList.remove('pre'); }); if (unlocked) whistle(); puff(); } }
+    else { sec.classList.remove('run'); clearInterval(timer); }
+  }, { threshold: .25 }).observe(train);
+  let opener: HTMLElement | null = null;
+  sec.querySelectorAll<HTMLButtonElement>('[data-pax]').forEach(b => b.addEventListener('click', () => {
+    const d = document.getElementById('dlg-' + b.dataset.pax) as HTMLDialogElement; opener = b; hit(b.querySelector('svg'));
+    setTimeout(() => { d.showModal(); d.querySelector<HTMLElement>('[data-close]')?.focus(); }, rm ? 0 : 260); }));
+  sec.querySelectorAll<HTMLDialogElement>('.vdlg').forEach(d => {
+    const close = () => d.close();
+    d.addEventListener('close', () => { opener?.focus(); });
+    d.addEventListener('click', e => { if (e.target === d) close(); });
+    d.querySelectorAll('[data-close]').forEach(x => x.addEventListener('click', close));
+    d.querySelector('[data-drum]')?.addEventListener('click', e => hit((e.currentTarget as HTMLElement).querySelector('svg')));
+    const t = d.querySelector<HTMLButtonElement>('[data-tr]')!, en = d.querySelector<HTMLElement>('.ven')!;
+    t.addEventListener('click', () => { const o = en.hidden; en.hidden = !o; t.setAttribute('aria-expanded', String(o));
+      t.textContent = o ? (ja ? '英訳をかくす' : 'Hide English translation') : (ja ? '英訳を見る' : 'Show English translation'); });
+    d.addEventListener('keydown', e => { if (e.key !== 'Tab') return; const f = Array.from(d.querySelectorAll<HTMLElement>('button:not([hidden])')).filter(x => !x.closest('[hidden]'));
+      const a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } });
+  });
+}
+</script>
