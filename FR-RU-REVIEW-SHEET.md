@@ -240,15 +240,15 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 40
 
-- EN: I had always followed machine learning. When AI started moving fast, I moved into AI work. From Jul 2023 to May 2024 I worked self-employed on small data-science and data-cleaning projects.
-- FR: Je suivais le machine learning depuis longtemps. Quand l'IA a commencé à avancer vite, je suis passé au travail dans l'IA. De juillet 2023 à mai 2024, j'ai travaillé en indépendant sur de petits projets d'analyse et de nettoyage de données.
-- RU: Я давно следил за машинным обучением. Когда AI начал быстро развиваться, я перешёл на работу в AI. С июля 2023 по май 2024 я работал самозанятым на небольших проектах по анализу и очистке данных.
+- EN: I had always followed machine learning. When AI started moving fast, I moved into AI work. From Jul 2023 to May 2024 I worked self-employed on data-science and data-cleaning projects.
+- FR: Je suivais le machine learning depuis longtemps. Quand l'IA a commencé à avancer vite, je suis passé au travail dans l'IA. De juillet 2023 à mai 2024, j'ai travaillé en indépendant sur des projets d'analyse et de nettoyage de données.
+- RU: Я давно следил за машинным обучением. Когда AI начал быстро развиваться, я перешёл на работу в AI. С июля 2023 по май 2024 я работал самозанятым на проектах по анализу и очистке данных.
 
 ## 41
 
-- EN: Since Jun 2024 I have worked on contract with Outlier (Scale AI), evaluating the answers of large language models, including safety tests, with a remote team. In my own time I build small AI tools for Japanese text and publish how I tested them.
-- FR: Depuis juin 2024, je travaille sous contrat avec Outlier (Scale AI), dans une équipe à distance. J'évalue les réponses de grands modèles de langage, y compris avec des tests de sécurité. Sur mon temps libre, je crée de petits outils d'IA pour les textes japonais et je publie comment je les ai testés.
-- RU: С июня 2024 я работаю по контракту с Outlier (Scale AI) в удалённой команде. Я оцениваю ответы больших языковых моделей, в том числе провожу тесты безопасности. В свободное время я делаю небольшие AI-инструменты для японских текстов и публикую, как я их проверял.
+- EN: Since Jun 2024 I have worked on contract with Outlier (Scale AI), evaluating the answers of large language models, including safety tests, with a remote team. In my own time I build AI tools for Japanese text and publish how I tested them.
+- FR: Depuis juin 2024, je travaille sous contrat avec Outlier (Scale AI), dans une équipe à distance. J'évalue les réponses de grands modèles de langage, y compris avec des tests de sécurité. Sur mon temps libre, je crée des outils d'IA pour les textes japonais et je publie comment je les ai testés.
+- RU: С июня 2024 я работаю по контракту с Outlier (Scale AI) в удалённой команде. Я оцениваю ответы больших языковых моделей, в том числе провожу тесты безопасности. В свободное время я делаю AI-инструменты для японских текстов и публикую, как я их проверял.
 
 ## 42
 
@@ -360,9 +360,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 60
 
-- EN: I evaluate AI answers as a contractor. I also build small AI tools for Japanese text, and each project page shows how I tested them.
-- FR: J'évalue des réponses d'IA en tant que prestataire. Je crée aussi de petits outils d'IA pour les textes japonais. Chaque page de projet montre comment je les ai testés.
-- RU: Я оцениваю ответы AI как подрядчик. Ещё я делаю небольшие AI-инструменты для японских текстов. На странице каждого проекта видно, как я их проверял.
+- EN: I evaluate AI answers as a contractor. I also build AI tools for Japanese text, and each project page shows how I tested them.
+- FR: J'évalue des réponses d'IA en tant que prestataire. Je crée aussi des outils d'IA pour les textes japonais. Chaque page de projet montre comment je les ai testés.
+- RU: Я оцениваю ответы AI как подрядчик. Ещё я делаю AI-инструменты для японских текстов. На странице каждого проекта видно, как я их проверял.
 
 ## 61
 
@@ -822,9 +822,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 137
 
-- EN: I also take on small paid projects: AI tools, AI testing and small websites.
-- FR: Je prends aussi de petits projets payants : outils d'IA, tests d'IA et petits sites web.
-- RU: Ещё я беру небольшие платные проекты: AI-инструменты, тестирование AI и небольшие сайты.
+- EN: I also take on paid projects: AI tools, AI testing and websites.
+- FR: Je prends aussi des projets payants : outils d'IA, tests d'IA et sites web.
+- RU: Ещё я беру платные проекты: AI-инструменты, тестирование AI и сайты.
 
 ## 138
 
@@ -870,9 +870,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 145
 
-- EN: Small data-science and data-cleaning projects through Turing, Mercor and MicroOne.
-- FR: Petits projets d'analyse et de nettoyage de données via Turing, Mercor et MicroOne.
-- RU: Небольшие проекты по анализу и очистке данных через Turing, Mercor и MicroOne.
+- EN: Data-science and data-cleaning projects through Turing, Mercor and MicroOne.
+- FR: Projets d'analyse et de nettoyage de données via Turing, Mercor et MicroOne.
+- RU: Проекты по анализу и очистке данных через Turing, Mercor и MicroOne.
 
 ## 146
 
@@ -1218,9 +1218,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 204
 
-- EN: Check more questions by hand and add a small live demo.
-- FR: Vérifier plus de questions à la main et ajouter une petite démo en ligne.
-- RU: Проверить вручную больше вопросов и добавить небольшое живое демо.
+- EN: Check more questions by hand and add a live demo.
+- FR: Vérifier plus de questions à la main et ajouter une démo en ligne.
+- RU: Проверить вручную больше вопросов и добавить живое демо.
 
 ## 205
 
@@ -1692,9 +1692,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 283
 
-- EN: I take on small paid projects. Tell me what you need, and I reply to each request with a quote.
-- FR: Je prends de petits projets payants. Dites-moi ce dont vous avez besoin, et je réponds à chaque demande avec un devis.
-- RU: Я беру небольшие платные проекты. Расскажите, что вам нужно, и я отвечу на каждый запрос с оценкой стоимости.
+- EN: I take on paid projects. Tell me what you need, and I reply to each request with a quote.
+- FR: Je prends des projets payants. Dites-moi ce dont vous avez besoin, et je réponds à chaque demande avec un devis.
+- RU: Я беру платные проекты. Расскажите, что вам нужно, и я отвечу на каждый запрос с оценкой стоимости.
 
 ## 284
 
@@ -1770,9 +1770,9 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 
 ## 296
 
-- EN: A small interactive website
-- FR: Un petit site interactif
-- RU: Небольшой интерактивный сайт
+- EN: An interactive website
+- FR: Un site interactif
+- RU: Интерактивный сайт
 
 ## 297
 
@@ -1968,7 +1968,7 @@ English meaning = EN column.
 | s1 | This is Home. It shows my latest projects and what I am doing now. | ここがホームです。最新のプロジェクトと、いまの活動をのせています。 | Voici l’accueil. Il montre mes derniers projets et ce que je fais en ce moment. | Это главная. Здесь мои последние проекты и то, чем я занят сейчас. |
 | s2 | Projects: each one shows what I built and how I tested it. | プロジェクト：作ったものと、そのテスト方法をのせています。 | Projets : chaque projet montre ce que j’ai construit et comment je l’ai testé. | Проекты: у каждого видно, что я сделал и как проверял. |
 | s3 | About: who I am and how I got into AI. | 自己紹介：わたしのことと、AIの仕事を始めたきっかけです。 | À propos : qui je suis et comment je suis arrivé à l’IA. | Обо мне: кто я и как пришёл в AI. |
-| s4 | Work with me: small paid projects and how they work. | 依頼：小さな有料プロジェクトと、その進め方です。 | Travailler avec moi : de petits projets payants, et comment ça se passe. | Работа со мной: небольшие платные проекты и как всё устроено. |
+| s4 | Work with me: paid projects and how they work. | 依頼：有料プロジェクトと、その進め方です。 | Travailler avec moi : des projets payants, et comment ça se passe. | Работа со мной: платные проекты и как всё устроено. |
 | s5 | Talk: 1:1 chats and guides on Topmate. | 相談：Topmateでの1対1の相談とガイドです。 | Parler avec moi : des échanges et des guides sur Topmate. | Поговорить: беседы и гиды на Topmate. |
 | s6 | Team: the AI agents that help me, and what each one does. | チーム：手伝ってくれるAIエージェントと、それぞれの仕事です。 | Équipe : les agents IA qui m’aident, et le rôle de chacun. | Команда: AI-агенты, которые мне помогают, и что делает каждый. |
 | s7 | The train carries comments from a Japanese friend. Tap the passenger to read them. | 電車には日本の友だちのコメントがのっています。窓の人をタップすると読めます。 | Le train transporte les commentaires d’une amie japonaise. Touchez la passagère pour les lire. | В поезде едут комментарии подруги из Японии. Нажмите на пассажирку, чтобы прочитать. |
@@ -2034,7 +2034,7 @@ Removed all exam mentions at the owner's request. Entries above now show the neu
 |---|---|---|
 | Site guide | Visite guidée | Путеводитель по сайту |
 | Want a quick tour? | Une visite rapide ? | Хотите быструю экскурсию? |
-| This is my portfolio. I build small AI projects. Not sure where to start? | Voici mon portfolio. Je crée de petits projets d’IA. Vous ne savez pas par où commencer ? | Это моё портфолио. Я делаю небольшие AI-проекты. Не знаете, с чего начать? |
+| This is my portfolio. I build AI projects. Not sure where to start? | Voici mon portfolio. Je crée des projets d’IA. Vous ne savez pas par où commencer ? | Это моё портфолио. Я делаю AI-проекты. Не знаете, с чего начать? |
 | She likes Pikachu | (see fr.json) | (see ru.json) |
 | Shiga quote meaning (translation) | (see fr.json) | (see ru.json) |
 

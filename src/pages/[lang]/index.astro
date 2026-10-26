@@ -35,14 +35,14 @@ const now = ja
 <p class="hi">こんにちは。</p>
 <h1>プリティヴィ・ラージ・モハンタ</h1>
 <p class="title">AI / MLエンジニア：LLMの評価、日本語AI、ゲーム開発</p>
-<p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱う小さなAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。</p>
-<p class="start">これはわたしのポートフォリオです。小さなAIのプロジェクトを作っています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
+<p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱うAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。</p>
+<p class="start">これはわたしのポートフォリオです。AIのプロジェクトを作っています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
 <h1>Prithivi Raj Mohanta</h1>
 <p class="title">AI / ML engineer: LLM evaluation, Japanese-language AI and game development</p>
-<p class="lead">I evaluate AI answers as a contractor. I also build small AI tools for Japanese text, and each project page shows how I tested them.</p>
-<p class="start"><span>This is my portfolio. I build small AI projects. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
+<p class="lead">I evaluate AI answers as a contractor. I also build AI tools for Japanese text, and each project page shows how I tested them.</p>
+<p class="start"><span>This is my portfolio. I build AI projects. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
 {(lang==='fr'||lang==='ru') && <p class="small mut i18nnote">{lang==='fr'?'Ceci est une première traduction. Vos remarques sur le français sont les bienvenues.':'Это первый вариант перевода. Буду рад замечаниям по тексту.'}</p>}
 </>}
 </div></div>
@@ -75,7 +75,7 @@ const now = ja
 
 <Voices lang={lang}/>
 <div class="hrow">
-<section class="card hstrip" aria-label={ja?'仕事の依頼':'Work with me'}><p>{ja?'AIのツール、AIのテスト、小さなウェブサイトなど、小さな有料のプロジェクトも受けています。':'I also take on small paid projects: AI tools, AI testing and small websites.'}</p><a class="btn" href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a></section>
+<section class="card hstrip" aria-label={ja?'仕事の依頼':'Work with me'}><p>{ja?'AIのツール、AIのテスト、ウェブサイトなど、有料のプロジェクトも受けています。':'I also take on paid projects: AI tools, AI testing and websites.'}</p><a class="btn" href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a></section>
 <section class="card hstrip" aria-label={ja?'わたしを手伝うAIツール':'AI tools that help me'}><div class="mini"><a href={`${B}/${lang}/team/`}><span class="chw"><Blob fill="#F6CFD8" acc="study"/></span><span class="chw"><Blob fill="#D9E3F3" acc="github"/></span><span class="chw"><Blob fill="#FFF8EC" acc="site"/></span><span class="lk">{ja?'わたしを手伝うAIツール →':'AI tools that help me →'}</span></a></div></section>
 </div>
 <section class="narrow" id="work"><h2>{ja?'職務経歴':'Experience'}</h2><Experience lang={lang}/></section>

@@ -117,11 +117,11 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - DRAFT
 
 - JA: 機械学習にはずっと関心があり、AIが急に進んだときに、AIの仕事に移りました。2023年7月から2024年5月までは、個人事業主としてデータ分析とデータ整理の案件をしました。
-  - EN: I had always followed machine learning, and when AI began to move fast I moved into it fully. From Jul 2023 to May 2024 I worked self-employed on small data-science and data-cleaning projects.
+  - EN: I had always followed machine learning, and when AI began to move fast I moved into it fully. From Jul 2023 to May 2024 I worked self-employed on data-science and data-cleaning projects.
   - DRAFT
 
-- JA: 2024年6月からは、Outlier（Scale AI）の業務委託で、大規模言語モデルの回答を評価しています（安全性テストを含む）。チームはリモートです。個人では、日本語の文書を扱う小さなAIツールを作り、テストの方法を公開しています。
-  - EN: Since Jun 2024 I have worked on contract with Outlier (Scale AI), evaluating the answers of large language models, including safety tests, with a remote team. In my own time I build small AI tools for Japanese text and publish how I tested them.
+- JA: 2024年6月からは、Outlier（Scale AI）の業務委託で、大規模言語モデルの回答を評価しています（安全性テストを含む）。チームはリモートです。個人では、日本語の文書を扱うAIツールを作り、テストの方法を公開しています。
+  - EN: Since Jun 2024 I have worked on contract with Outlier (Scale AI), evaluating the answers of large language models, including safety tests, with a remote team. In my own time I build AI tools for Japanese text and publish how I tested them.
   - DRAFT
 
 - JA: アニメを見て、日本の町や文化に興味を持ちました。2024年3月からHelloTalkで日本人の友だちと話していて、相手を大切にすることや時間を守ることを尊敬しています。
@@ -280,8 +280,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: AI / ML engineer — LLM evaluation, Japanese-language AI, game development
   - DRAFT
 
-- JA: 業務委託でLLMの回答を評価しています。個人では日本語の文書を扱う小さなAIツールを作り、テストの方法と結果を公開しています。
-  - EN: I evaluate LLM answers as a contractor. On my own I build small AI tools for Japanese documents and publish how I tested them and the results.
+- JA: 業務委託でLLMの回答を評価しています。個人では日本語の文書を扱うAIツールを作り、テストの方法と結果を公開しています。
+  - EN: I evaluate LLM answers as a contractor. On my own I build AI tools for Japanese documents and publish how I tested them and the results.
   - DRAFT
 
 - JA: 作る前に、何で成功を測るかを決めます。
@@ -370,8 +370,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: AI / ML engineer — LLM evaluation, Japanese-language AI, game development
   - DRAFT
 
-- JA: 業務委託でLLMの回答を評価しています。個人では日本語の文書を扱う小さなAIツールを作り、テストの方法と結果を公開しています。
-  - EN: I evaluate LLM answers as a contractor. On my own I build small AI tools for Japanese documents and publish how I tested them and the results.
+- JA: 業務委託でLLMの回答を評価しています。個人では日本語の文書を扱うAIツールを作り、テストの方法と結果を公開しています。
+  - EN: I evaluate LLM answers as a contractor. On my own I build AI tools for Japanese documents and publish how I tested them and the results.
   - DRAFT
 
 - JA: 作る前に、何で成功を測るかを決めます。
@@ -410,8 +410,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: AI / ML engineer — LLM evaluation, Japanese-language AI, game development
   - DRAFT
 
-- JA: 業務委託でLLMの回答を評価しています。個人では日本語の文書を扱う小さなAIツールを作り、テストの方法と結果を公開しています。
-  - EN: I evaluate LLM answers as a contractor. On my own I build small AI tools for Japanese documents and publish how I tested them and the results.
+- JA: 業務委託でLLMの回答を評価しています。個人では日本語の文書を扱うAIツールを作り、テストの方法と結果を公開しています。
+  - EN: I evaluate LLM answers as a contractor. On my own I build AI tools for Japanese documents and publish how I tested them and the results.
   - DRAFT
 
 - JA: 作る前に、何で成功を測るかを決めます。
@@ -476,8 +476,8 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - EN: I built the system, scoring and tests myself. The 42 questions were drafted with AI help, and I checked 15 by hand.
   - DRAFT
 
-- JA: 自分で確認する問題を増やし、小さなデモを作ります。
-  - EN: I will check more questions by hand and make a small demo.
+- JA: 自分で確認する問題を増やし、デモを作ります。
+  - EN: I will check more questions by hand and make a demo.
   - DRAFT
 
 - JA: ほとんどが正しい支払いの中から、不正な支払いを見つけるモデルです。
@@ -531,7 +531,7 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
   - DRAFT
 
 - JA: Turing、Mercor、MicroOneを通じた、データ分析とデータ整理の案件。
-  - EN: Small data-science and data-cleaning projects through Turing, Mercor and MicroOne.
+  - EN: Data-science and data-cleaning projects through Turing, Mercor and MicroOne.
   - DRAFT
 
 - JA: リモート、正社員。Unreal Engine 4とC++で「Bunny Park」（Xbox、PS4、PC）を開発。携帯機向けの対応とローカライズも担当。
@@ -569,7 +569,7 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 ---
 ## v4 home page (2026-10-25) — DRAFT
 - JA: こんにちは。 — EN: Hello.
-- JA: 業務委託でAIの回答を評価し、個人では日本語の文書を扱う小さなAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。 — EN: I evaluate AI answers as a contractor, and on my own I build small AI tools that handle Japanese documents. I publish how I tested each one and the results, project by project. (v4.2: Retro / 昔気質 / SNS lines removed)
+- JA: 業務委託でAIの回答を評価し、個人では日本語の文書を扱うAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。 — EN: I evaluate AI answers as a contractor, and on my own I build AI tools that handle Japanese documents. I publish how I tested each one and the results, project by project. (v4.2: Retro / 昔気質 / SNS lines removed)
 - JA: CRMツールで攻撃が通った割合（対策の前→後） / 自作の攻撃40件での結果 — EN: Share of attacks that got through my CRM tool (before → after defenses) / Result on 40 attacks I wrote
 - JA: 日本語文書検索で、正解が上位5件に入った割合 / 政府の報告書1冊、42問での結果 — EN: Share of Japanese document searches with the right passage in the top 5 / Result on 42 questions about one government report
 - JA: 不正の検出率 / 警告の正しさ（再現率 / 適合率） / 不正が0.172%しかない公開データでの結果 — EN: Fraud caught / how often alerts were right (recall / precision) / Result on public data where only 0.172% is fraud
@@ -670,12 +670,12 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 ### Nav / footer
 - 依頼 = Work with me (nav, short so it fits at 390 px) · 仕事の依頼 = Work with me (page title, footer, button) · AIエージェント = Team of agents (footer)
 ### Work page (仕事の依頼)
-- 小さな有料のプロジェクトを受けています。やりたいことを教えてください。一つ一つの依頼に、見積もりをお返しします。 = I take on small paid projects. Tell me what you need. I reply to each request with a quote.
+- 有料のプロジェクトを受けています。やりたいことを教えてください。一つ一つの依頼に、見積もりをお返しします。 = I take on paid projects. Tell me what you need. I reply to each request with a quote.
 - できること = What I can make · 見られる場所： = Shown in: · ご相談ください = Ask me
 - バラバラの文章を、きれいな項目にする = Turn messy text into clean fields / 日本語や英語の仕事のメモをAIが読んで、決まった項目に入れます。テストの報告もつけます。 = AI reads Japanese or English work notes and fills set fields. A test report is included.
 - あなたの文書を検索する = Search over your documents / あなたの文書をAIで検索できるようにします。テスト用の質問で、どれくらい正しいかを測ります。 = I make your documents searchable with AI and measure accuracy with test questions.
 - AIの回答をテストする = Test your AI's answers / テスト用の質問を作って実行し、何がどのくらいの割合で失敗したかを書いてまとめます。 = I make and run test questions and write up what failed and how often.
-- 小さな動きのあるウェブサイト = A small interactive website / このサイトのようなサイトです。英語と日本語、だれでも使いやすく、動きもあります。 = A site like this one: English and Japanese, easy for everyone to use, with movement.
+- 動きのあるウェブサイト = An interactive website / このサイトのようなサイトです。英語と日本語、だれでも使いやすく、動きもあります。 = A site like this one: English and Japanese, easy for everyone to use, with movement.
 - 支払いデータの不正を見つける = Spot fraud in payment data / モデルの試作です。できないことも、正直に書きます。 = A model prototype. I write honestly what it cannot do.
 - 進め方 = How it works: やりたいことを教えてください。 = Tell me what you need. / 作業の内容と見積もりをお返しします。 = I reply with the scope and a quote. / 作りながら、進み具合をお見せします。 = I show you progress as I build.
 - いまは、ログイン機能やデータベースがあるサイトは作っていません。 = Right now I do not build sites with logins or databases.
@@ -688,7 +688,7 @@ Each Japanese block on the live JA pages, followed by its English meaning. **Eve
 - わたしがすること = What I do: 決める (decide), すべての内容を確認する (check every claim), 送るものは、すべて自分で送る (I send everything myself)
 - このサイトの作り方 = How this site was built · 時間はすべてインド時間（IST）です = All times are IST · この版 = this version
 ### Home
-- AIのツール、AIのテスト、小さなウェブサイトなど、小さな有料のプロジェクトも受けています。 = I also take on small paid projects, such as AI tools, AI testing and small websites.
+- AIのツール、AIのテスト、ウェブサイトなど、有料のプロジェクトも受けています。 = I also take on small paid projects, such as AI tools, AI testing and small websites.
 ### Talk
 - 仕事の依頼はこちら。 = For project work, see here.
 
@@ -754,7 +754,7 @@ Removed all exam mentions at the owner's request. Pip: 日本語の勉強の計�
 
 ## v6.3 new strings
 - サイトガイド / かんたんに案内しましょうか？
-- これはわたしのポートフォリオです。小さなAIのプロジェクトを作っています。どこから見ればいいか迷ったら、サイトガイドをタップしてください。
+- これはわたしのポートフォリオです。AIのプロジェクトを作っています。どこから見ればいいか迷ったら、サイトガイドをタップしてください。
 - ピカチュウが好きです / ご本人たちの許可を得てのせています。 / 窓をタップすると、コメントが読めます。
 - 日本人女性:「Retroが作ったWebサイト、可愛さがあってあなたの優しさが滲み出ていて、すばらしいのは理解できました。」(verbatim)
 
