@@ -276,6 +276,16 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 .glance dt{color:var(--mut);font-size:.88rem;font-weight:600}.glance dd{margin:0}
 @media (max-width:479px){.glance div{grid-template-columns:1fr;gap:.1rem}}
 .skills.bento li{display:flex;flex-direction:column;gap:.4rem}.skills .use{font-size:.9rem;color:var(--fg)}.skills .ul{display:block;font-size:.8rem;font-weight:700;color:var(--warm)}
+
+/* v6.3.1 compact mobile header */
+.mguide,.mbtn{display:none}
+@media (max-width:799px){header .wrap{flex-wrap:wrap;align-items:center}
+.mguide,.mbtn{display:inline-flex;order:3;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0;border:1px solid var(--line);border-radius:99px;background:none;color:var(--acc);cursor:pointer;margin-left:.3rem}
+.mguide:focus-visible,.mbtn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+header nav{display:none;order:9;width:100%;margin:.3rem 0 0;flex-direction:column;flex-wrap:nowrap;overflow:visible;border-top:1px solid var(--line)}
+header nav.open{display:flex}
+header nav a,header nav .navhelp{min-height:48px;width:100%;padding:0 .4rem;font-size:1.05rem;border-bottom:1px solid var(--line);white-space:normal;justify-content:flex-start}
+.brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mbtn{order:4}.mguide,.mbtn{min-width:40px;min-height:40px;margin-left:.25rem}.brand+.theme+.lang{margin-left:.25rem}}
 </style>
 {GOATCOUNTER && <script is:inline data-goatcounter={`https://${GOATCOUNTER}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
 </head>
@@ -283,9 +293,9 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 <div class="amb" aria-hidden="true"><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
 <header><div class="wrap">
 <a class="brand" href={`${B}/${lang}/`}><Avatar mark/>{ja?'プリティヴィ':'Prithivi'}</a>
-<nav aria-label="Main">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}<button type="button" class="navhelp" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></nav>
+<button type="button" class="mguide" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg><span class="sr">{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</span></button><button type="button" class="mbtn" aria-expanded="false" aria-controls="mainnav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="sr">{ja?'メニュー':'Menu'}</span></button><nav aria-label="Main" id="mainnav">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}<button type="button" class="navhelp" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></nav>
 <button class="theme" type="button" aria-pressed="false" aria-label={ja?'ダークモード':'Dark mode'}><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-<details class="lang langm"><summary aria-label={ja?'言語を選ぶ':'Choose language'}><span aria-hidden="true">🌐</span> {cur[1]}</summary><ul>{LANGS.map(([c,code,name]) => <li><a href={`${B}/${c}/${slug}`} hreflang={c} lang={c} data-lang={c} aria-current={c===lang?'true':undefined}>{name}</a></li>)}</ul></details>
+<details class="lang langm"><summary><span aria-hidden="true">🌐</span> <span class="sr">{ja?'言語を選ぶ':'Choose language'}</span>{cur[1]}</summary><ul>{LANGS.map(([c,code,name]) => <li><a href={`${B}/${c}/${slug}`} hreflang={c} lang={c} data-lang={c} aria-current={c===lang?'true':undefined}>{name}</a></li>)}</ul></details>
 </div></header>
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
@@ -294,6 +304,8 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 <p>© 2026 Prithivi Raj Mohanta · <button type="button" class="helpb" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></p>
 </div></footer>
 <Guide lang={lang}/>
+<script is:inline>(()=>{const b=document.querySelector('.mbtn'),n=document.getElementById('mainnav');if(!b||!n)return;const set=o=>{n.classList.toggle('open',o);b.setAttribute('aria-expanded',o)};b.addEventListener('click',()=>set(b.getAttribute('aria-expanded')!=='true'));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&b.getAttribute('aria-expanded')==='true'){set(false);b.focus()}});n.querySelector('.navhelp')?.addEventListener('click',()=>set(false));})();</script>
+
 <script is:inline>
 (()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!rm&&matchMedia('(hover:hover) and (pointer:fine)').matches){let t=0,n=0,k=0;addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const now=performance.now();if(now-t<70||n>6)return;t=now;n++;const d=document.createElement('i');d.className=(++k%5===0)?'petal m':'petal';d.style.left=e.clientX+6+'px';d.style.top=e.clientY+6+'px';d.addEventListener('animationend',()=>{d.remove();n--;});document.body.appendChild(d);},{passive:true});}

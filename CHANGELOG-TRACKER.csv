@@ -29,3 +29,4 @@ v6.2,2026-10-26,"Fixes from real device feedback: no auto honk, guide visible on
 v6.2.1,2026-10-26,"Agent names matched to roles, FR/RU/JA wording fixes",friend feedback/fix,S,fix
 v6.2.2,2026-10-26,"Removed exam mentions",owner request,S,fix
 v6.3,2026-10-26,"Shiga friend, Site guide, start line, i18n check",owner request,M,feature
+v6.3.1,2026-10-26,"Compact mobile header, axe name fix",owner request,S,fix

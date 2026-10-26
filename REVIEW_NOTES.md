@@ -193,3 +193,4 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - v6.2.1 (2026-10-26): agent names matched to roles (Tabi = programs, Fumi = CVs and documents, Sora job line = job search in Japan); 9 FR/RU and 1 JA wording fixes, see review sheets.
 - v6.2.2 (2026-10-26): removed all exam mentions (JLPT level, exam date, countdown) in EN/JA/FR/RU at the owner's request; neutral wording "I study Japanese every day"; Pip text and job line neutralised; review sheets updated.
 - v6.3 (2026-10-26): Shiga friend (日本人女性, Lake Biwa theme, original sleepy forest creature, 5 stages), Saitama kind-friend line and Pikachu line restored/added, Help renamed Site guide with compass, start line on Home, npm run check:i18n in build.
+- v6.3.1 (2026-10-26): compact mobile header (logo, theme, 🌐, compass Site guide, menu button with full-width page list, aria-expanded, Esc closes); fixed axe label-content-name-mismatch on language summary and flip cards.

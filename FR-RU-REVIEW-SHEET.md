@@ -2037,3 +2037,7 @@ Removed all exam mentions at the owner's request. Entries above now show the neu
 | This is my portfolio. I build small AI projects. Not sure where to start? | Voici mon portfolio. Je crée de petits projets d’IA. Vous ne savez pas par où commencer ? | Это моё портфолио. Я делаю небольшие AI-проекты. Не знаете, с чего начать? |
 | She likes Pikachu | (see fr.json) | (see ru.json) |
 | Shiga quote meaning (translation) | (see fr.json) | (see ru.json) |
+
+## v6.3.1
+| Flip card for details. | Retourner la carte pour les détails. | Перевернуть карточку, чтобы увидеть детали. |
+| Menu | Menu | Меню |

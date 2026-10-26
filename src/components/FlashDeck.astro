@@ -13,12 +13,12 @@ const strip = (h) => h.replace(/<rt>.*?<\/rt>/g,'').replace(/<[^>]+>/g,'');
 {projects.map(p => { const F = flash[p.slug]; const t = ja ? F.ja : F.en; const name = ja ? strip(p.ja.title) : p.en.title; const rows = ja ? p.tableJa : p.table; return (
 <div class={`fc ${TINT[p.slug]}`}>
 <div class="fc-in">
-<button type="button" class="face front" aria-pressed="false" aria-label={ja?`${name}：カードを裏返して説明を見る`:`${name}: flip card for details`}>
+<button type="button" class="face front" aria-pressed="false">
 <span class="artw" set:html={ART[p.slug]}/>
 <span class="fname" set:html={ja ? p.ja.title : p.en.title}/>
 <span class="big">{F.big}</span><span class="blabel">{t.label}</span>
 <span class="helps">{t.helps}</span>
-<span class="flip mut small" aria-hidden="true">{ja?'タップで裏返す ↻':'Tap to flip ↻'}</span>
+<span class="sr">{ja?'カードを裏返して説明を見る':'Flip card for details.'}</span><span class="flip mut small" aria-hidden="true">{ja?'タップで裏返す ↻':'Tap to flip ↻'}</span>
 </button>
 <div class="face back">
 <p class="bt">{ja?'何をするか':'What it does'}</p>
