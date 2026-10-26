@@ -116,7 +116,8 @@ footer nav a{padding:0 .8rem 0 0}footer p{margin:.4rem 0}
 .fx .fc{flex:0 0 86%;scroll-snap-align:center}.deckw:has(.fx) .hint{display:block;margin:0 0 .5rem}
 .deckw:has(.fx) .dots{display:flex;justify-content:center;gap:.5rem;margin:.4rem 0 0}.dots span{width:7px;height:7px;border-radius:50%;background:var(--line)}.dots span.on{background:var(--acc)}}
 @media (min-width:800px){.deck{align-items:stretch}.deck>.fc{display:flex;flex-direction:column}.deck .fc-in{flex:1;height:100%;align-items:stretch}.deck .face{height:100%;box-sizing:border-box}.deck .front .flip{margin-top:auto}} /* v5.4 equal card heights */
-/* v6.1 help */
+/* v6.1 help, v6.3 Site guide */
+.navhelp,.helpb{display:inline-flex;align-items:center;gap:.3rem}.gico{flex:none}
 .navhelp{font:inherit;font-size:.95rem;min-height:44px;padding:0 .55rem;border:0;background:none;color:var(--mut);cursor:pointer;white-space:nowrap}.navhelp:hover{color:var(--acc);text-decoration:underline}.navhelp:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .helpb{font:inherit;color:var(--acc);background:none;border:0;padding:0 .3rem;min-height:44px;min-width:44px;cursor:pointer;text-decoration:underline}
 /* v6.0 language menu */
@@ -282,7 +283,7 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 <div class="amb" aria-hidden="true"><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
 <header><div class="wrap">
 <a class="brand" href={`${B}/${lang}/`}><Avatar mark/>{ja?'プリティヴィ':'Prithivi'}</a>
-<nav aria-label="Main">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}<button type="button" class="navhelp" data-guide-open>{({en:'Help',ja:'ヘルプ',fr:'Aide',ru:'Помощь'} as any)[lang] ?? 'Help'}</button></nav>
+<nav aria-label="Main">{nav.map(([p,l]) => <a href={`${B}/${lang}/${p}/`} aria-current={page.startsWith(p) ? 'page' : undefined}>{l}</a>)}<button type="button" class="navhelp" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></nav>
 <button class="theme" type="button" aria-pressed="false" aria-label={ja?'ダークモード':'Dark mode'}><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 <details class="lang langm"><summary aria-label={ja?'言語を選ぶ':'Choose language'}><span aria-hidden="true">🌐</span> {cur[1]}</summary><ul>{LANGS.map(([c,code,name]) => <li><a href={`${B}/${c}/${slug}`} hreflang={c} lang={c} data-lang={c} aria-current={c===lang?'true':undefined}>{name}</a></li>)}</ul></details>
 </div></header>
@@ -290,7 +291,7 @@ html[data-theme=dark] header{background:rgba(20,23,27,.92)}
 <footer><div class="wrap">
 <nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a><a href={`${B}/${lang}/team/`}>{ja?'AIツール':'AI tools'}</a><a href="https://github.com/Retro099">GitHub</a><a href="https://topmate.io/prithivi_raj_mohanta">{ja?'相談（Topmate）':'1:1 chat (Topmate)'}</a></nav>
 <p>{ja?'更新日':'Updated'} <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
-<p>© 2026 Prithivi Raj Mohanta · <button type="button" class="helpb" data-guide-open>{({en:'Help',ja:'ヘルプ',fr:'Aide',ru:'Помощь'} as any)[lang] ?? 'Help'}</button></p>
+<p>© 2026 Prithivi Raj Mohanta · <button type="button" class="helpb" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></p>
 </div></footer>
 <Guide lang={lang}/>
 <script is:inline>

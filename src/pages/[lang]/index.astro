@@ -25,6 +25,7 @@ const now = ja
  ? [['2026-10-25','毎日日本語を勉強しています。'],['2026-10-25','CRMプロジェクト：テストを増やした大きな評価を実行中です。終わったら結果をのせます。'],['','このサイトを作っています。']]
  : [['2026-10-25','I study Japanese every day.'],['2026-10-25','CRM project: a larger evaluation run with more tests is in progress. Results will be added when it is done.'],['','Building this site.']];
 ---
+<style>.start{margin:.7rem 0 0;padding:.55rem .8rem;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.startb{font:inherit;font-weight:700;min-height:44px;padding:0 .2rem;border:0;background:none;color:var(--acc);text-decoration:underline;cursor:pointer}.startb:focus-visible{outline:3px solid var(--acc);outline-offset:2px}</style>
 <Base lang={lang} title={ja?'ホーム':'Home'}>
 <nav class="rail" aria-label={ja?'このページの中':'On this page'}>{(ja?[['projects','プロジェクト'],['now','いま'],['work','職務経歴'],['contact','連絡先']]:[['projects','Projects'],['now','Now'],['work','Experience'],['contact','Say hello']]).map(([i,l]) => <a href={`#${i}`}>{l}</a>)}</nav>
 <div class="hero4">
@@ -35,11 +36,13 @@ const now = ja
 <h1>プリティヴィ・ラージ・モハンタ</h1>
 <p class="title">AI / MLエンジニア：LLMの評価、日本語AI、ゲーム開発</p>
 <p class="lead">業務委託でAIの回答を評価し、個人では日本語の文書を扱う小さなAIツールを作っています。テストの方法と結果も、プロジェクトごとに公開しています。</p>
+<p class="start">これはわたしのポートフォリオです。小さなAIのプロジェクトを作っています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
 <h1>Prithivi Raj Mohanta</h1>
 <p class="title">AI / ML engineer: LLM evaluation, Japanese-language AI and game development</p>
 <p class="lead">I evaluate AI answers as a contractor. I also build small AI tools for Japanese text, and each project page shows how I tested them.</p>
+<p class="start"><span>This is my portfolio. I build small AI projects. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
 {(lang==='fr'||lang==='ru') && <p class="small mut i18nnote">{lang==='fr'?'Ceci est une première traduction. Vos remarques sur le français sont les bienvenues.':'Это первый вариант перевода. Буду рад замечаниям по тексту.'}</p>}
 </>}
 </div></div>
@@ -59,7 +62,7 @@ const now = ja
 <ul class="dated">{now.map(([d,t]) => <li>{d ? <time datetime={d}>{fmt(d)}</time> : <span></span>}<span>{t}</span></li>)}</ul>
 <a href={`${B}/${lang}/now/`}>{ja?'くわしく →':'More on the Now page →'}</a></div>
 <div class="card"><h2>{ja?'最近の更新（GitHub）':'Latest on GitHub'}</h2>
-{latest.length ? <ul class="dated">{latest.map(i => <li><time datetime={i.date}>{fmt(i.date)}</time><span>{ja ? <><a href={i.url}>{i.repo}</a> の変更をマージ</> : <><a href={i.url}>{i.title}</a> <span class="mut">· {i.repo}</span></>}</span></li>)}</ul>
+{latest.length ? <ul class="dated">{latest.map(i => <li><time datetime={i.date}>{fmt(i.date)}</time><span>{ja ? <><a href={i.url}>{i.repo}</a> の変更をマージ</> : <><a href={i.url} translate="no">{i.title}</a> <span class="mut">· {i.repo}</span></>}</span></li>)}</ul>
  : <p class="mut">{ja?'更新の一覧を読み込めませんでした。':'The list could not be loaded at build time.'}</p>}
 <a href={C.github}>{ja?'GitHubで見る →':'All activity on GitHub →'}</a></div>
 </section>

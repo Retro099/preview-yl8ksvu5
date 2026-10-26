@@ -2028,3 +2028,12 @@ Agent mapping (by role): Study = Pip / Пип; Japan job search = Sora / Сор�
 
 ## v6.2.2 (2026-10-26)
 Removed all exam mentions at the owner's request. Entries above now show the neutral wording (I study Japanese every day). Pip job line: Helps with Japanese study plans / Aide pour le planning d’étude du japonais / Помогает планировать изучение японского.
+
+## v6.3 new strings
+| EN | FR | RU |
+|---|---|---|
+| Site guide | Visite guidée | Путеводитель по сайту |
+| Want a quick tour? | Une visite rapide ? | Хотите быструю экскурсию? |
+| This is my portfolio. I build small AI projects. Not sure where to start? | Voici mon portfolio. Je crée de petits projets d’IA. Vous ne savez pas par où commencer ? | Это моё портфолио. Я делаю небольшие AI-проекты. Не знаете, с чего начать? |
+| She likes Pikachu | (see fr.json) | (see ru.json) |
+| Shiga quote meaning (translation) | (see fr.json) | (see ru.json) |

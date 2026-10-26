@@ -28,3 +28,4 @@ v6.1,2026-10-26,v6.1,Friend life stages and Saitama dialog theme and tour guide 
 v6.2,2026-10-26,"Fixes from real device feedback: no auto honk, guide visible on desktop, thought bubble, drumming, agent names",friend feedback/fix,L,fix
 v6.2.1,2026-10-26,"Agent names matched to roles, FR/RU/JA wording fixes",friend feedback/fix,S,fix
 v6.2.2,2026-10-26,"Removed exam mentions",owner request,S,fix
+v6.3,2026-10-26,"Shiga friend, Site guide, start line, i18n check",owner request,M,feature
