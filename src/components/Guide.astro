@@ -1,0 +1,66 @@
+---
+// v6.1 scripted site guide (not an AI chat). Uses Prithivi's blob avatar. Dismiss with × (localStorage 'guide'='off'); reopen from the footer "Help".
+import Avatar from './Avatar.astro';
+const { lang } = Astro.props;
+const T:any = {
+ en:{need:'Need help?',open:'Open the site guide',how:'How can I help?',tour:'Tour of the site',proj:'Projects',contact:'Contact',x:'Close the guide',next:'Next',back:'Back',end:'End',
+  s:['This is Home. It shows my latest projects and what I am doing now.','Projects: each one shows what I built and how I tested it.','About: who I am and how I got into AI.','Work with me: small paid projects and how they work.','Talk: 1:1 chats and guides on Topmate.','Team: the AI agents that help me, and what each one does.','The train carries comments from a Japanese friend. Tap the passenger to read them.'],away:'On Home, a little train carries comments from a Japanese friend.'},
+ ja:{need:'案内しましょうか？',open:'サイトの案内を開く',how:'何をお手伝いしましょうか？',tour:'サイトの案内',proj:'プロジェクト',contact:'連絡する',x:'案内を閉じる',next:'次へ',back:'戻る',end:'終わる',
+  s:['ここがホームです。最新のプロジェクトと、いまの活動をのせています。','プロジェクト：作ったものと、そのテスト方法をのせています。','自己紹介：わたしのことと、AIの仕事を始めたきっかけです。','依頼：小さな有料プロジェクトと、その進め方です。','相談：Topmateでの1対1の相談とガイドです。','チーム：手伝ってくれるAIエージェントと、それぞれの仕事です。','電車には日本の友だちのコメントがのっています。窓の人をタップすると読めます。'],away:'ホームでは、小さな電車が日本の友だちのコメントを運んでいます。'},
+ fr:{need:'Besoin d’aide ?',open:'Ouvrir le guide du site',how:'Comment puis-je vous aider ?',tour:'Visite du site',proj:'Projets',contact:'Contact',x:'Fermer le guide',next:'Suivant',back:'Retour',end:'Terminer',
+  s:['Voici l’accueil. Il montre mes derniers projets et ce que je fais en ce moment.','Projets : chaque projet montre ce que j’ai construit et comment je l’ai testé.','À propos : qui je suis et comment je suis arrivé à l’IA.','Travailler avec moi : de petits projets payants, et comment ça se passe.','Parler avec moi : des échanges et des guides sur Topmate.','Équipe : les agents IA qui m’aident, et le rôle de chacun.','Le train transporte les commentaires d’une amie japonaise. Touchez la passagère pour les lire.'],away:'Sur l’accueil, un petit train transporte les commentaires d’une amie japonaise.'},
+ ru:{need:'Нужна помощь?',open:'Открыть гида по сайту',how:'Чем могу помочь?',tour:'Экскурсия по сайту',proj:'Проекты',contact:'Контакты',x:'Закрыть гида',next:'Далее',back:'Назад',end:'Готово',
+  s:['Это главная. Здесь мои последние проекты и то, чем я занят сейчас.','Проекты: у каждого видно, что я сделал и как проверял.','Обо мне: кто я и как пришёл в AI.','Работа со мной: небольшие платные проекты и как всё устроено.','Поговорить: беседы и гиды на Topmate.','Команда: AI-агенты, которые мне помогают, и что делает каждый.','В поезде едут комментарии подруги из Японии. Нажмите на пассажирку, чтобы прочитать.'],away:'На главной маленький поезд везёт комментарии подруги из Японии.'},
+};
+const t = T[lang] ?? T.en; const B = import.meta.env.BASE_URL.replace(/\/$/,'');
+---
+<div class="gd" data-guide hidden data-t={JSON.stringify(t)} data-b={`${B}/${lang}/`}>
+<button type="button" class="gd-tab" aria-expanded="false" aria-controls="gd-p" aria-label={t.open}><Avatar mark/><span class="gd-note" aria-hidden="true">{t.need}</span></button>
+<section id="gd-p" class="gd-p" hidden aria-labelledby="gd-h" tabindex="-1">
+<button type="button" class="gd-x" aria-label={t.x}>×</button>
+<div class="gd-top"><Avatar mark/><p id="gd-h" class="gd-h">{t.how}</p></div>
+<div class="gd-menu"><button type="button" data-g="tour">{t.tour}</button><a href={`${B}/${lang}/projects/`}>{t.proj}</a><a href={`${B}/${lang}/#contact`}>{t.contact}</a></div>
+<div class="gd-step" hidden><p class="gd-c small mut" aria-hidden="true"></p><p class="gd-s" aria-live="polite"></p><div class="gd-nav"><button type="button" data-g="back">{t.back}</button><button type="button" data-g="next">{t.next}</button><button type="button" data-g="end">{t.end}</button></div></div>
+</section>
+</div>
+<style is:global>
+.gd{position:fixed;left:0;bottom:84px;z-index:40;font-size:.95rem}
+.gd-tab{display:flex;align-items:center;gap:.35rem;min-height:44px;min-width:44px;padding:.25rem .5rem .25rem .3rem;border:1px solid var(--line);border-left:0;border-radius:0 999px 999px 0;background:var(--card);color:var(--fg);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.08);transform:translateX(calc(-100% + 44px));transition:transform .3s ease}
+.gd-tab .mark{flex:none;order:2;width:28px;height:28px}.gd-note{order:1;font-size:.8rem;white-space:nowrap;background:#FFF3B8;color:#3a3220;padding:.15rem .45rem;border-radius:4px;transform:rotate(-2deg)}
+.gd-tab:hover,.gd-tab:focus-visible,.gd-tab[aria-expanded=true]{transform:none}.gd-tab:focus-visible,.gd-p button:focus-visible,.gd-p a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.gd-p{position:absolute;left:8px;bottom:52px;width:min(300px,calc(100vw - 24px));padding:.8rem .8rem .7rem;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--fg);box-shadow:0 12px 32px rgba(0,0,0,.16)}
+.gd-top{display:flex;align-items:center;gap:.5rem;padding-right:40px}.gd-top .mark{flex:none}.gd-h{margin:0;font-weight:700}
+.gd-x{position:absolute;right:.3rem;top:.3rem;width:44px;height:44px;border:0;background:none;color:var(--fg);font-size:1.5rem;cursor:pointer}
+.gd-menu,.gd-nav{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.gd-menu>*,.gd-nav button{font:inherit;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center;padding:.2rem .85rem;border:1px solid var(--acc);border-radius:999px;background:transparent;color:var(--acc);text-decoration:none;cursor:pointer}
+.gd-nav [data-g=next]{background:var(--acc);color:var(--bg)}.gd-s{margin:.2rem 0 0}.gd-c{margin:.5rem 0 0}
+.tour-hl{outline:3px solid var(--warm)!important;outline-offset:4px;border-radius:8px;position:relative;z-index:41}
+@media (prefers-reduced-motion:no-preference){.gd-tab{animation:gdpeek 1.2s ease 1.5s 1 both}@keyframes gdpeek{40%{transform:translateX(calc(-100% + 54px))}}}
+@media (prefers-reduced-motion:reduce){.gd-tab{transition:none}}
+@media print{.gd{display:none}}
+</style>
+<script is:inline>
+(()=>{const g=document.querySelector('[data-guide]');if(!g)return;const T=JSON.parse(g.dataset.t),B=g.dataset.b;
+let off=false;try{off=localStorage.getItem('guide')==='off'}catch(e){}
+const tab=g.querySelector('.gd-tab'),p=g.querySelector('.gd-p'),menu=g.querySelector('.gd-menu'),st=g.querySelector('.gd-step'),s=g.querySelector('.gd-s'),c=g.querySelector('.gd-c'),back=g.querySelector('[data-g=back]'),next=g.querySelector('[data-g=next]');
+const sel=['.brand','nav[aria-label=Main] a[href$="/projects/"]','nav[aria-label=Main] a[href$="/about/"]','nav[aria-label=Main] a[href$="/work/"]','nav[aria-label=Main] a[href$="/talk/"]','footer a[href$="/team/"]','[data-train]'];
+let k=-1,hl=null;
+const clear=()=>{hl&&hl.classList.remove('tour-hl');hl=null};
+const step=n=>{clear();k=n;const el=document.querySelector(sel[k]);let txt=T.s[k];if(k===6&&(!el||el.hidden)){txt=T.away}
+if(el&&!el.hidden){el.classList.add('tour-hl');hl=el;el.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+s.textContent=txt;c.textContent=(k+1)+' / '+sel.length;back.disabled=k===0;next.hidden=k===sel.length-1};
+const openP=()=>{p.hidden=false;tab.setAttribute('aria-expanded','true');menu.hidden=false;st.hidden=true;p.focus()};
+const closeP=()=>{p.hidden=true;tab.setAttribute('aria-expanded','false');clear()};
+const show=()=>{g.hidden=false};
+tab.addEventListener('click',()=>p.hidden?openP():closeP());
+g.querySelector('[data-g=tour]').addEventListener('click',()=>{menu.hidden=true;st.hidden=false;step(0);next.focus()});
+back.addEventListener('click',()=>step(Math.max(0,k-1)));next.addEventListener('click',()=>step(Math.min(sel.length-1,k+1)));
+g.querySelector('[data-g=end]').addEventListener('click',()=>{closeP();tab.focus()});
+g.querySelector('.gd-x').addEventListener('click',()=>{closeP();g.hidden=true;try{localStorage.setItem('guide','off')}catch(e){}const h=document.querySelector('[data-guide-open]');h&&h.focus()});
+g.addEventListener('keydown',e=>{if(e.key==='Escape'&&!p.hidden){closeP();tab.focus()}});
+document.querySelectorAll('[data-guide-open]').forEach(b=>b.addEventListener('click',()=>{try{localStorage.removeItem('guide')}catch(e){}show();openP()}));
+const sync=()=>{const d=document.querySelector('dialog[open]'),lm=document.querySelector('details.langm[open]');g.style.visibility=(d||lm)?'hidden':''};
+new MutationObserver(sync).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
+const f=document.querySelector('footer');if(f&&'IntersectionObserver' in window)new IntersectionObserver(([e])=>{g.classList.toggle('gd-foot',e.isIntersecting);if(e.isIntersecting&&p.hidden)g.style.opacity='0',g.style.pointerEvents='none';else g.style.opacity='',g.style.pointerEvents=''}).observe(f);
+if(!off)show();})();
+</script>

@@ -1,12 +1,16 @@
 ---
 import { passengers, voices } from '../data/voices';
 import FriendAvatar from './FriendAvatar.astro';
-const { lang } = Astro.props; const ja = lang==='ja';
+import { themes } from '../data/themes';
+const CAP:any = {en:['School band','College, law','Online with friends','Teaching Japanese','Now, with her dog'],ja:['学校のバンド','大学で法律','オンラインで友だちと','日本語の先生','いま、愛犬と'],fr:["Groupe de l'école",'Université, droit','En ligne avec des amis','Professeure de japonais','Aujourd’hui, avec son chien'],ru:['Школьная группа','Университет, право','Онлайн с друзьями','Учит японскому','Сейчас, со своей собакой']};
+const { lang } = Astro.props; const ja = lang==='ja'; const caps = JSON.stringify(CAP[lang]??CAP.en);
+const thCss = Object.entries(themes).map(([k,t])=>`.vdlg.th-${k}{${Object.entries(t.light).map(([a,b])=>a+':'+b).join(';')}}html[data-theme=dark] .vdlg.th-${k}{${Object.entries(t.dark).map(([a,b])=>a+':'+b).join(';')}}`).join('');
 const N = passengers.length, X = 20 + N*330 + 10, W = X + 410, H = 240;
 const pc = (v:number, t:number) => (v/t*100).toFixed(2)+'%';
 const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[、。！？「」\s]/g,'');
 ---
-<section class="voices" aria-labelledby="vh" data-voices data-letters={letters}>
+<section class="voices" aria-labelledby="vh" data-voices data-letters={letters} data-caps={caps}>
+<style set:html={thCss}></style>
 <div class="vhead"><h2 id="vh">{ja?'日本の友だちの声':'From a Japanese friend'}</h2>
 </div>
 <p class="mut small">{ja?'ご本人の許可を得てのせています。':'Shared with her permission.'}{' '}<span class="trhint" hidden>{ja?'窓の中の人をタップすると、コメントが読めます。':'Tap the passenger in the window to read the comment.'}</span></p>
@@ -49,18 +53,20 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 {passengers.map((p,i)=><button type="button" class="pax" data-pax={p.id} aria-haspopup="dialog"
  style={`left:${pc(20+i*330+140,W)};top:${pc(55,H)};width:${pc(120,W)};height:${pc(100,H)}`}
  aria-label={ja?`${p.by}のコメントを読む`:`Read the comment from ${p.byEn} (${p.by})`}>
- <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop}/></button>)}
+ <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/></button>)}
+{passengers.filter(p=>p.stages).map((p,i)=><p class="stcap" data-stcap={p.id} aria-hidden="true" style={`left:${pc(20+passengers.indexOf(p)*330+140,W)};width:${pc(120,W)}`}>{(CAP[lang]??CAP.en)[0]}</p>)}
 <div class="smoke" data-smoke aria-hidden="true" style={`left:${pc(X+307,W)};top:${pc(40,H)}`}></div>
 </div></div>
 <span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="3" rx="1" fill="#D9A441"/><path d="M8.5 6h7l-.8 11h-5.4z" fill="#E3B85C" stroke="#8a5a2b" stroke-width=".8"/><rect x="10.5" y="9" width="3" height="1.4" fill="#8a5a2b"/><rect x="7" y="17" width="10" height="3" rx="1.5" fill="#D9A441"/><path d="M17 4q2 1 2.5 3M18.5 2.5q3 1.5 3.5 4.5" stroke="#E3B85C" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span>
 <div class="sr">{voices.map(v=><figure><blockquote lang="ja"><p>「{v.ja}」</p></blockquote>{!ja&&<p>English meaning (translation): {v.en}</p>}<figcaption lang="ja">{v.by}</figcaption></figure>)}</div>
 </div>
 
-{passengers.map(p=><dialog class="vdlg" id={`dlg-${p.id}`} aria-modal="true" aria-labelledby={`dt-${p.id}`}>
+{passengers.map(p=><dialog class={`vdlg${p.theme?' th-'+p.theme:''}`} id={`dlg-${p.id}`} aria-modal="true" aria-labelledby={`dt-${p.id}`}>
+{p.theme && themes[p.theme] && <div class="vbg" aria-hidden="true" set:html={themes[p.theme].svg}></div>}
 <div class="vdin">
 <button type="button" class="vx" data-close aria-label={ja?'閉じる':'Close'}>×</button>
-<div class="vdtop"><button type="button" class="drumbtn" data-drum aria-label={ja?'ドラムをたたく':'Play the drum'}><FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop}/></button>
-<div><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3><p class="small mut">{ja?p.capJa:p.capEn}</p><p class="small mut">{ja?'絵をタップするとドラムが鳴ります。':'Tap her picture to hear the drum.'}</p></div></div>
+<div class="vdtop"><span class="dcapw"><button type="button" class="drumbtn" data-drum aria-label={ja?'ドラムをたたく':'Play the drum'}><FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/></button>{p.stages && <span class="dcap small mut" data-dcap>{(CAP[lang]??CAP.en)[0]}</span>}</span>
+<div><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3><p class="small mut">{ja?p.capJa:p.capEn}</p><p class="small mut">{ja?'絵をタップすると次の場面になり、ドラムが鳴ります。':'Tap her picture to see the next stage and hear the drum.'}</p></div></div>
 <p class="small mut">{ja?'元のコメント（そのまま）':'Her original comment (unchanged, in Japanese)'}</p>
 {p.quotes.map(q=><blockquote class="vq" lang="ja"><p>「{q.ja}」</p></blockquote>)}
 <button type="button" class="vtg" data-tr aria-expanded="false" aria-controls={`en-${p.id}`}>{ja?'英訳を見る':'Show English translation'}</button>
@@ -105,6 +111,13 @@ html[data-theme=dark] .car{fill:#A24C58}html[data-theme=dark] .cab,html[data-the
 .tr.honked .body{animation:vshake .5s ease-in-out}@keyframes vshake{20%,60%{transform:translateX(-2px)}40%,80%{transform:translateX(2px)}}
 @media (max-width:479px){.vdin{padding:.9rem .8rem .8rem}.vdtop{gap:.6rem;margin-bottom:.4rem}.drumbtn{width:68px;height:74px}.vdtop p{font-size:.8rem}.vq{padding:.45rem .6rem;margin:.35rem 0}.vq p,.ven p{font-size:.92rem;line-height:1.55}.ven{padding:.45rem .6rem;margin-top:.4rem}.vtg,.vclose{margin-top:.35rem}.vclose{margin-top:.6rem}.vdlg{max-height:94vh}}
 @media (prefers-reduced-motion:reduce){.tr.pre{transform:none}.puff{display:none}.voices .whl,.voices .body,.voices .pax{animation:none!important}.hit .stk{animation:none}}
+.stg{opacity:0;transition:opacity .45s ease}.st-0 .s0,.st-1 .s1,.st-2 .s2,.st-3 .s3,.st-4 .s4{opacity:1}
+.stcap{position:absolute;top:calc(100% + 4px);margin:0;text-align:center;font-size:.78rem;line-height:1.2;color:var(--mut);pointer-events:none}
+.trclip:has(.stcap){margin-bottom:1.6rem}
+.dcapw{display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:none}.dcap{text-align:center;max-width:96px;line-height:1.2}
+.vdlg .vbg{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.9}.vdlg .vbg svg{width:100%;height:100%;display:block}.vdlg .vdin{z-index:1}
+.vdlg[class*=th-] .vq{background:color-mix(in srgb,var(--card) 82%,transparent)}
+@media (prefers-reduced-motion:reduce){.stg{transition:none}}
 </style>
 
 <script>
@@ -161,6 +174,31 @@ if (sec) {
       t.textContent = o ? L.hide : L.show; });
     d.addEventListener('keydown', e => { if (e.key !== 'Tab') return; const f = Array.from(d.querySelectorAll<HTMLElement>('button:not([hidden])')).filter(x => !x.closest('[hidden]'));
       const a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } });
+  });
+}
+</script>
+
+<script>
+// v6.1 friend life stages: drum ~5 s, then next stage every 2.5 s; tap her in the dialog = next stage now.
+const vs = document.querySelector<HTMLElement>('[data-voices]');
+if (vs) {
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const caps: string[] = JSON.parse(vs.dataset.caps || '[]');
+  vs.querySelectorAll<HTMLButtonElement>('[data-pax]').forEach(b => {
+    const id = b.dataset.pax!, svgs = [b.querySelector('svg.stgs'), document.querySelector('#dlg-' + id + ' svg.stgs')].filter(Boolean) as SVGElement[];
+    if (!svgs.length) return;
+    const dlg = document.getElementById('dlg-' + id) as HTMLDialogElement, cap = vs.querySelector<HTMLElement>(`[data-stcap="${id}"]`), dcap = dlg.querySelector<HTMLElement>('[data-dcap]');
+    const drumB = dlg.querySelector<HTMLButtonElement>('[data-drum]')!, base = b.getAttribute('aria-label') || '', dBase = drumB.getAttribute('aria-label') || '';
+    let i = 0, t = 0, seen = false, started = false;
+    const show = (n: number) => { i = n % caps.length; svgs.forEach(s => { s.classList.remove('st-0','st-1','st-2','st-3','st-4'); s.classList.add('st-' + i); });
+      if (cap) cap.textContent = caps[i]; if (dcap) dcap.textContent = caps[i];
+      b.setAttribute('aria-label', base + ' · ' + caps[i]); drumB.setAttribute('aria-label', dBase + ' · ' + caps[i]); };
+    const stop = () => { clearTimeout(t); t = 0; };
+    const run = (d: number) => { stop(); if (rm || !seen || dlg.open) return; t = window.setTimeout(() => { show(i + 1); run(2500); }, d); };
+    show(0);
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen) { run(started ? 2500 : 5000); started = true; } else stop(); }, { threshold: .25 }).observe(b);
+    new MutationObserver(() => { dlg.open ? stop() : run(2500); }).observe(dlg, { attributes: true, attributeFilter: ['open'] });
+    drumB.addEventListener('click', () => show(i + 1));
   });
 }
 </script>

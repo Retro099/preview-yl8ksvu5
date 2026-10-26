@@ -170,3 +170,12 @@ At 1024px and wider: the Projects skills list is a bento grid, the About page ha
 - Checks: axe wcag2a/aa 0 violations and no horizontal scroll on all FR and RU pages at 390 light; no overflow at 1440. EN/JA unchanged.
 - Screenshots: screenshots/v60/. Review sheet: FR-RU-REVIEW-SHEET.md (first draft).
 - Restore: /workspace/site-backup-v60-start-2026-10-26.tgz or git checkout v5.5.
+
+## v6.1 (2026-10-26)
+- J: Saitama friend avatar stages (school band, college/law, online with friends, teaching Japanese, now with her dog). Drum ~5 s, then 2.5 s per stage; pauses off-screen and while the dialog is open; no auto cycling under reduced motion. Tap her picture in the dialog = next stage + drum (Sound on only). Captions in 4 languages; no job, employer, name or town.
+- K: optional per-passenger dialog theme (src/data/themes.ts). Saitama: bell tower + shibazakura field, light/dark. Shiga can be added later by data only (no Shiga passenger yet).
+- M: scripted tour guide (left-edge tab "Need help?", menu Tour/Projects/Contact, 7 steps). × remembers via localStorage guide=off; footer "Help" reopens. Hides when a dialog or the language menu is open, and near the footer.
+- N: Team page: tap a card to hear the name (SpeechSynthesis, page language, Sound on only, silent with no voice). Speaker icon on each card.
+- O: root URL picks ja/fr/ru/en from navigator.languages (saved 'lang' wins) with location.replace; direct links never redirect; noscript link list; still noindex, robots Disallow.
+- Checks at 390: axe 0 on Home EN/JA/FR/RU light, EN dark, dialog (light+dark), guide menu, tour step. No horizontal scroll in 4 languages. Screenshots: screenshots/v61/.
+- Unsure: stage tap is on the dialog avatar (a tap on the train opens the dialog); guide tab can overlap content edge on mobile; dialog bell tower is subtle.

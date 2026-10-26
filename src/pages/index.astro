@@ -1,3 +1,12 @@
 ---
+const B = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
-<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta http-equiv="refresh" content="0; url=./en/"><link rel="canonical" href="./en/"><title>Prithivi Raj Mohanta</title></head><body><a href="./en/">English</a> · <a href="./ja/">日本語</a></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script is:inline>
+// v6.1 auto language (root only): saved choice wins, else first of ja/fr/ru in navigator.languages, else en. location.replace = no back-button trap.
+(function(){var L=['en','ja','fr','ru'],l=null;try{l=localStorage.getItem('lang')}catch(e){}
+if(L.indexOf(l)<0){l='en';var n=navigator.languages||[navigator.language||''];for(var i=0;i<n.length;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(c==='ja'||c==='fr'||c==='ru'){l=c;break}}}
+location.replace('./'+l+'/'+location.hash)})();
+</script>
+<link rel="canonical" href="./en/"><title>Prithivi Raj Mohanta</title></head>
+<body><noscript><p>Choose a language:</p><ul><li><a href="./en/">English</a></li><li><a href="./ja/" lang="ja">日本語</a></li><li><a href="./fr/" lang="fr">Français</a></li><li><a href="./ru/" lang="ru">Русский</a></li></ul></noscript></body></html>

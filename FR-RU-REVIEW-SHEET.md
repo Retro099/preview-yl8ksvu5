@@ -1947,3 +1947,35 @@ Kept original on purpose: names, project/product/tech names, the friend's Japane
 - EN: Website: flip back to front
 - FR: Site web : revenir au recto
 - RU: Сайт: вернуть лицевую сторону
+
+
+## v6.1 new strings (guide, friend stages, Help, dialog hint)
+English meaning = EN column.
+
+| key | English meaning | JA | FR | RU |
+|---|---|---|---|---|
+| need | Need help? | 案内しましょうか？ | Besoin d’aide ? | Нужна помощь? |
+| open | Open the site guide | サイトの案内を開く | Ouvrir le guide du site | Открыть гида по сайту |
+| how | How can I help? | 何をお手伝いしましょうか？ | Comment puis-je vous aider ? | Чем могу помочь? |
+| tour | Tour of the site | サイトの案内 | Visite du site | Экскурсия по сайту |
+| proj | Projects | プロジェクト | Projets | Проекты |
+| contact | Contact | 連絡する | Contact | Контакты |
+| x | Close the guide | 案内を閉じる | Fermer le guide | Закрыть гида |
+| next | Next | 次へ | Suivant | Далее |
+| back | Back | 戻る | Retour | Назад |
+| end | End | 終わる | Terminer | Готово |
+| away | On Home, a little train carries comments from a Japanese friend. | ホームでは、小さな電車が日本の友だちのコメントを運んでいます。 | Sur l’accueil, un petit train transporte les commentaires d’une amie japonaise. | На главной маленький поезд везёт комментарии подруги из Японии. |
+| s1 | This is Home. It shows my latest projects and what I am doing now. | ここがホームです。最新のプロジェクトと、いまの活動をのせています。 | Voici l’accueil. Il montre mes derniers projets et ce que je fais en ce moment. | Это главная. Здесь мои последние проекты и то, чем я занят сейчас. |
+| s2 | Projects: each one shows what I built and how I tested it. | プロジェクト：作ったものと、そのテスト方法をのせています。 | Projets : chaque projet montre ce que j’ai construit et comment je l’ai testé. | Проекты: у каждого видно, что я сделал и как проверял. |
+| s3 | About: who I am and how I got into AI. | 自己紹介：わたしのことと、AIの仕事を始めたきっかけです。 | À propos : qui je suis et comment je suis arrivé à l’IA. | Обо мне: кто я и как пришёл в AI. |
+| s4 | Work with me: small paid projects and how they work. | 依頼：小さな有料プロジェクトと、その進め方です。 | Travailler avec moi : de petits projets payants, et comment ça se passe. | Работа со мной: небольшие платные проекты и как всё устроено. |
+| s5 | Talk: 1:1 chats and guides on Topmate. | 相談：Topmateでの1対1の相談とガイドです。 | Parler avec moi : des échanges et des guides sur Topmate. | Поговорить: беседы и гиды на Topmate. |
+| s6 | Team: the AI agents that help me, and what each one does. | チーム：手伝ってくれるAIエージェントと、それぞれの仕事です。 | Équipe : les agents IA qui m’aident, et le rôle de chacun. | Команда: AI-агенты, которые мне помогают, и что делает каждый. |
+| s7 | The train carries comments from a Japanese friend. Tap the passenger to read them. | 電車には日本の友だちのコメントがのっています。窓の人をタップすると読めます。 | Le train transporte les commentaires d’une amie japonaise. Touchez la passagère pour les lire. | В поезде едут комментарии подруги из Японии. Нажмите на пассажирку, чтобы прочитать. |
+| stage1 | School band | 学校のバンド | Groupe de l'école | Школьная группа |
+| stage2 | College, law | 大学で法律 | Université, droit | Университет, право |
+| stage3 | Online with friends | オンラインで友だちと | En ligne avec des amis | Онлайн с друзьями |
+| stage4 | Teaching Japanese | 日本語の先生 | Professeure de japonais | Учит японскому |
+| stage5 | Now, with her dog | いま、愛犬と | Aujourd’hui, avec son chien | Сейчас, со своей собакой |
+| help | Help | ヘルプ | Aide | Помощь |
+| dlg hint | Tap her picture to see the next stage and hear the drum. | 絵をタップすると次の場面になり、ドラムが鳴ります。 | Touchez son image pour voir l’étape suivante et entendre le tambour. | Нажмите на её картинку, чтобы увидеть следующий этап и услышать барабан. |
