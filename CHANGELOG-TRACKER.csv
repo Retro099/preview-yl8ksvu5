@@ -35,3 +35,4 @@ v6.4,2026-10-26,"Home positioning: AI/ML engineer, company value first",owner re
 v6.4.1,2026-10-26,"Subline order fix",owner request,S,copy
 v6.4.2,2026-10-26,"Removed Home company-value block",owner request,S,copy
 v6.5,2026-10-26,"Home shortened (subline, strip, visa, timeline removed); contact icon component; My team of agents rename; About rewrite with tools list; Work offers rewrite; page headers; Writing in nav; Tabi generic; RU flip hint",owner request,M,copy
+v6.6,2026-10-30,v6.6,"Phone train fix, Aichi friend on the train, country markers, agent roles and friend feedback timeline on Team",friend feedback,M,owner request

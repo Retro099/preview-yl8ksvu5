@@ -1,7 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro'; import TeamDeck from '../../components/TeamDeck.astro';
-import { timeline } from '../../data/team';
+import { timeline, team } from '../../data/team';
+// Friend feedback timeline: dates from CHANGELOG-TRACKER.csv and the feedback records. Friends are unnamed (same labels as on the train).
+const FB = [
+ { d:'2026-10-26', en:'Friend from Saitama Prefecture (日本人30歳女性)', ja:'埼玉県の友だち（日本人30歳女性）', chEn:['v5.2: her comment added to Home, and an at-a-glance table on About','v5.3: the comment train, with her as the first passenger','v6.1: her picture changes through life stages, and her window got a Saitama theme'], chJa:['v5.2：ホームに彼女のコメント、Aboutに一目でわかる表','v5.3：コメントの汽車。最初の乗客が彼女','v6.1：彼女の絵が人生の場面で変わるように。埼玉のテーマも'] },
+ { d:'2026-10-26', en:'Friend from Shiga Prefecture (日本人女性)', ja:'滋賀県の友だち（日本人女性）', chEn:['v6.3: added to the train as a sleepy forest character with a Lake Biwa theme'], chJa:['v6.3：びわ湖のテーマで、ねむそうな森のキャラクターとして汽車に'] },
+ { d:'2026-10-27', en:'Friend from Aichi Prefecture (日本人男性)', ja:'愛知県の友だち（日本人男性）', chEn:['v6.6: added to the train as a motorcycle rider, with his comments'], chJa:['v6.6：バイクに乗る人として、コメントといっしょに汽車に'] },
+];
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 const T = ja ? {
@@ -9,12 +15,14 @@ const T = ja ? {
  hist:'このサイトの作り方', histNote:'git のタグと記録から作った、本当の更新の記録です。時間はすべてインド時間（IST）です。',
  facts:'最初のコミット：2026年10月25日 14:22（IST）。v4.10：2026年10月25日 23:27（IST）。', now:'この版',
  doH:'エージェントがすること', doL:['調べものと出典さがし','書類の下書き','勉強とまちがいの記録','コードを作ってテストする'],
+ rolesH:'エージェントの役わり', fbH:'友だちの感想と、それで変わったこと', fbNote:'日付はインド時間です。友だちの名前はのせていません。',
  meH:'わたしがすること', meL:['決める','すべての内容を確認する','送るものは、すべて自分で送る'],
 } : {
  title:'My team of agents', eb:'How I work', line:'I decide and check everything myself.',
  hist:'How this site was built', histNote:'A real version history, taken from the git tags and commits. All times are IST.',
  facts:'First commit: 25 Oct 2026, 14:22 IST. v4.10: 25 Oct 2026, 23:27 IST.', now:'this version',
  doH:'What agents do here', doL:['Research and sourcing','Drafting documents','Tracking study and mistakes','Building and testing code'],
+ rolesH:'What each agent does', fbH:'Friend feedback and what changed', fbNote:'Dates are IST. Friends are not named.',
  meH:'What I do', meL:['Decide','Check every claim','Send everything myself'],
 };
 ---
@@ -25,9 +33,13 @@ const T = ja ? {
 <div class="card"><h2>{T.doH}</h2><ul>{T.doL.map(x => <li>{x}</li>)}</ul></div>
 <div class="card warm"><h2>{T.meH}</h2><ul>{T.meL.map(x => <li>{x}</li>)}</ul></div>
 </section>
+<section class="rolelist"><h2>{T.rolesH}</h2><ul>{team.map(t => <li><strong>{(ja?t.ja:t.en).name}</strong>: {(ja?t.ja:t.en).job}</li>)}</ul></section>
+<section id="feedback" class="hist"><h2>{T.fbH}</h2><p class="mut">{T.fbNote}</p>
+<ol class="tl fbl">{FB.map(f => <li><span class="tt">{f.d ? <time datetime={f.d}>{ja?`${+f.d.slice(5,7)}月${+f.d.slice(8)}日`:`${+f.d.slice(8)} Oct`}</time> : null}</span><span><strong>{ja?f.ja:f.en}</strong><ul class="fbch">{(ja?f.chJa:f.chEn).map(c => <li>{c}</li>)}</ul></span></li>)}</ol></section>
 <section id="history" class="hist"><h2>{T.hist}</h2>
 <p class="mut">{T.histNote}</p>
 <ol class="tl">{timeline.map(([v,t,en,jp]) => <li><span class="tv">{v}</span><span class="tt">{t ? <time datetime={`2026-10-25T${t}+05:30`}>{ja?`10月25日 ${t}`:`25 Oct, ${t}`}</time> : <span>{ja?`10月25日（${T.now}）`:`25 Oct (${T.now})`}</span>}</span><span>{ja?jp:en}</span></li>)}</ol>
 <p class="small mut">{T.facts}</p>
 </section>
+<style>.fbl .fbch{margin:.3rem 0 0;padding-left:1.1rem}.fbl .fbch li{display:list-item;list-style:disc;padding:.15rem 0;border:0}.fbl .fbch li::before{display:none}.rolelist ul{padding-left:1.1rem}.rolelist li{margin:.25rem 0}</style>
 </Base>
