@@ -445,7 +445,6 @@
  "Friend illustration, Shiga Prefecture. Tap to read her comment": "Illustration d’une amie, préfecture de Shiga. Touchez pour lire son commentaire",
  "Friend illustration, Aichi Prefecture. Tap to read his comment": "Illustration d’un ami, préfecture d’Aichi. Touchez pour lire son commentaire",
  "His original comment (unchanged, in Japanese)": "Son commentaire d’origine (inchangé, en japonais)",
- "Lives in the countryside; his wife is a school teacher. Loves riding his motorcycle, camping, and going out to restaurants with his wife. Very friendly and kind, always ready to talk, and honest about how things really are.": "Il vit à la campagne ; sa femme est enseignante. Il adore faire de la moto, camper et aller au restaurant avec sa femme. Très sympathique et gentil, toujours prêt à discuter, et honnête sur la réalité des choses.",
  "I think the homepage is good because it shows Retro’s kind personality.": "Je trouve la page d’accueil réussie, car on y voit la gentillesse de Retro.",
  "At the top it says what you do, so it is easy to understand.": "Dès le début, on lit ce que tu fais, donc c’est facile à comprendre.",
  "v5.2: her comment added to Home, and an at-a-glance table on About": "v5.2 : son commentaire ajouté à l’accueil, et un tableau récapitulatif sur la page À propos",
@@ -461,5 +460,18 @@
  ": Looks after the Topmate page": ": S’occupe de la page Topmate",
  ": Builds and checks this website": ": Construit et vérifie ce site",
  "English meaning (translation): I think the homepage is good because it shows Retro’s kind personality.": "Sens en français (traduction) : Je trouve la page d’accueil réussie, car on y voit la gentillesse de Retro.",
- "English meaning (translation): At the top it says what you do, so it is easy to understand.": "Sens en français (traduction) : Dès le début, on lit ce que tu fais, donc c’est facile à comprendre."
+ "English meaning (translation): At the top it says what you do, so it is easy to understand.": "Sens en français (traduction) : Dès le début, on lit ce que tu fais, donc c’est facile à comprendre.",
+ "Loves riding his motorcycle and camping. Kind, friendly, and honest about real life. Lives in the countryside.": "Il adore faire de la moto et camper. Gentil, sympathique et honnête sur la vie réelle. Il vit à la campagne.",
+ "Very active, and always ready to answer my questions": "Très active, et toujours prête à répondre à mes questions",
+ "Tap his picture to change it.": "Touchez son image pour la changer.",
+ "Updated 30 Oct 2026": "Mis à jour le 30 oct. 2026",
+ "My email, LinkedIn, GitHub and Topmate links are at the bottom of every page.": "Mes liens e-mail, LinkedIn, GitHub et Topmate sont en bas de chaque page.",
+ "Built with agents": "Construit avec les agents",
+ "Friend feedback": "Avis d’amis",
+ "One timeline: site versions built with my agents, and the changes my friends asked for. All times are IST. Friends are not named.": "Une seule chronologie : les versions du site construites avec mes agents, et les changements demandés par mes amis. Heures en IST. Les amis ne sont pas nommés.",
+ "First commit 25 Oct 2026, 14:22 IST": "Premier commit le 25 oct. 2026, 14:22 IST",
+ "Site timeline (scrollable)": "Chronologie du site (défilante)",
+ "Agent board": "Tableau des agents",
+ "Ready when I ask. I review every result.": "Prêts quand je demande. Je vérifie chaque résultat.",
+ "(this version)": "(cette version)"
 }

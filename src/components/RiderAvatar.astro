@@ -1,8 +1,12 @@
 ---
-// Aichi friend character (2026-10-30): face-free. A rider in a full-face motorcycle helmet with the visor down; a small tent badge for camping.
-// No stages, no drum. Not based on any existing character.
+// Aichi friend character (2026-10-27, stages v6.7): face-free rider in a full-face helmet, visor down.
+// 4 stage overlays (s0..s3) on the shared stage system: motorcycle ride, camping, countryside, restaurant.
+// The friend's wife appears only in the restaurant stage, face-free, seen from behind. Text never mentions her.
 ---
-<svg class="fav nodrum" viewBox="0 0 100 110" aria-hidden="true" focusable="false">
+<svg class="fav stgs st-0 nodrum" data-n="4" viewBox="0 0 100 110" aria-hidden="true" focusable="false">
+<g class="stg s2"><path d="M0 92q25-14 50-4t50-6v28H0z" fill="#9CC48A"/><path d="M0 100q30-8 60-2t40-3v15H0z" fill="#7FAE6E"/><circle cx="86" cy="16" r="7" fill="#F2C75C"/><path d="M6 70v-12l8-7l8 7v12z" fill="#E8D8B8" stroke="#8a6a44" stroke-width="1"/><path d="M5 59l9-9l9 9" fill="none" stroke="#B5523F" stroke-width="2.2"/></g>
+<g class="stg s1"><g transform="translate(2 74)"><path d="M0 22L13 2L26 22z" fill="#7FA77A" stroke="#4D6B47" stroke-width="1.2"/><path d="M13 8v14" stroke="#EEF3E2" stroke-width="1.4"/></g><g transform="translate(80 88)"><path d="M0 14l14-4M0 10l14 4" stroke="#8a5a2b" stroke-width="2.4" stroke-linecap="round"/><path d="M7 10q-5-6 0-11q2 4 3 2q3 4-3 9" fill="#F0A04B"/><path d="M7 9q-2-3 0-5q2 3 0 5" fill="#F7D774"/></g><circle cx="14" cy="14" r="1.4" fill="#F2C75C"/><circle cx="26" cy="8" r="1" fill="#F2C75C"/><circle cx="84" cy="12" r="1.2" fill="#F2C75C"/></g>
+<g class="stg s3"><g transform="translate(70 66)"><path d="M3 44q0-20 12-20q12 0 12 20z" fill="#B57A8F"/><circle cx="15" cy="14" r="10" fill="#3A2C28"/><path d="M6 16q0 14 4 18h10q4-4 4-18" fill="#3A2C28"/></g></g>
 <path d="M18 110q2-30 32-30q30 0 32 30z" fill="#3E6B8A"/>
 <path d="M44 82h12l-2 10h-8z" fill="#2F536C"/>
 <path d="M50 84v26" stroke="#2F536C" stroke-width="1.6"/>
@@ -11,5 +15,6 @@
 <path d="M27 56q23-6 46 0v10q-23 7-46 0z" fill="#2B2F36"/>
 <path d="M32 58q10-2 18-1" stroke="#7FA6C2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
 <rect x="38" y="76" width="24" height="5" rx="2.5" fill="#5E6B78"/>
-<g transform="translate(66 88)"><path d="M0 16L10 2L20 16z" fill="#7FA77A" stroke="#4D6B47" stroke-width="1.2"/><path d="M10 6v10" stroke="#EEF3E2" stroke-width="1.4"/></g>
+<g class="stg s0"><path d="M14 98h72" stroke="#5E6B78" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="100" r="9" fill="none" stroke="#2B2F36" stroke-width="4"/><circle cx="84" cy="100" r="9" fill="none" stroke="#2B2F36" stroke-width="4"/><path d="M24 96l14-8h24l14 8" fill="#C9473B"/><path d="M70 86l8-6h6" stroke="#2B2F36" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M0 88h7M2 80h6" stroke="#7FA6C2" stroke-width="2" stroke-linecap="round" opacity=".8"/></g>
+<g class="stg s3"><rect x="8" y="94" width="84" height="5" rx="2" fill="#B5835A"/><path d="M14 99v11M86 99v11" stroke="#8a5a2b" stroke-width="3"/><path d="M22 86h16q0 8-8 8q-8 0-8-8z" fill="#F4EDE1" stroke="#8a6a44" stroke-width="1"/><path d="M26 82q1-3 0-5M31 82q1-3 0-5" stroke="#B0B7BF" stroke-width="1" fill="none"/><path d="M58 86h14q0 8-7 8q-7 0-7-8z" fill="#F4EDE1" stroke="#8a6a44" stroke-width="1"/></g>
 </svg>

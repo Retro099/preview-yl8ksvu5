@@ -41,7 +41,7 @@ const { lang } = Astro.params; const ja = lang==='ja';
 <p>I study Japanese every day, and I speak Hindi, English, Bengali and Odia.</p>
 </>}
 <h2>{ja?'連絡先':'Say hello'}</h2>
-<Contact lang={lang}/>
+<p>{ja?'メール、LinkedIn、GitHub、Topmateへのリンクは、どのページでもいちばん下にあります。':'My email, LinkedIn, GitHub and Topmate links are at the bottom of every page.'}</p>
 </div>
 <aside class="side" aria-label={ja?'サイドの情報':'Side notes'}>
 <Avatar size={96}/>

@@ -52,7 +52,7 @@ const now = ja
 
 <section class="split" id="now">
 <div class="card"><h2>{ja?'いま':'Now'}</h2>
-<p class="mut"><time datetime="2026-10-25">{ja?'2026年10月25日 更新':'Updated 25 Oct 2026'}</time></p>
+<p class="mut"><time datetime="2026-10-30">{ja?'2026年10月30日 更新':'Updated 30 Oct 2026'}</time></p>
 <ul class="dated">{now.map(([d,t]) => <li>{d ? <time datetime={d}>{fmt(d)}</time> : <span></span>}<span>{t}</span></li>)}</ul>
 <a href={`${B}/${lang}/now/`}>{ja?'くわしく →':'More on the Now page →'}</a></div>
 <div class="card"><h2>{ja?'最近の更新（GitHub）':'Latest on GitHub'}</h2>
@@ -73,6 +73,7 @@ const now = ja
 <section class="card hstrip" aria-label={ja?'わたしのエージェントチーム':'My team of agents'}><div class="mini"><a href={`${B}/${lang}/team/`}><span class="chw"><Blob fill="#F6CFD8" acc="study"/></span><span class="chw"><Blob fill="#D9E3F3" acc="github"/></span><span class="chw"><Blob fill="#FFF8EC" acc="site"/></span><span class="lk">{ja?'わたしのエージェントチーム →':'My team of agents →'}</span></a></div></section>
 </div>
 
-<section class="narrow" id="contact"><Chomp/><h2>{ja?'連絡先':'Say hello'}</h2>
-<Contact lang={lang}/></section>
+<div class="chompw"><Chomp/></div>
+<section class="narrow" id="contact"><h2>{ja?'連絡先':'Say hello'}</h2>
+<p>{ja?'メール、LinkedIn、GitHub、Topmateへのリンクは、どのページでもいちばん下にあります。':'My email, LinkedIn, GitHub and Topmate links are at the bottom of every page.'}</p></section>
 </Base>

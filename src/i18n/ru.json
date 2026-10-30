@@ -445,7 +445,6 @@
  "Friend illustration, Shiga Prefecture. Tap to read her comment": "Рисунок подруги, префектура Сига. Нажмите, чтобы прочитать её комментарий",
  "Friend illustration, Aichi Prefecture. Tap to read his comment": "Рисунок друга, префектура Айти. Нажмите, чтобы прочитать его комментарий",
  "His original comment (unchanged, in Japanese)": "Его исходный комментарий (без изменений, на японском)",
- "Lives in the countryside; his wife is a school teacher. Loves riding his motorcycle, camping, and going out to restaurants with his wife. Very friendly and kind, always ready to talk, and honest about how things really are.": "Живёт в сельской местности; его жена — школьная учительница. Любит ездить на мотоцикле, ходить в походы с палаткой и ужинать с женой в ресторанах. Очень дружелюбный и добрый, всегда готов поговорить и честно рассказывает, как всё обстоит на самом деле.",
  "I think the homepage is good because it shows Retro’s kind personality.": "Мне кажется, сайт хороший: в нём видна доброта Retro.",
  "At the top it says what you do, so it is easy to understand.": "В самом начале написано, чем ты занимаешься, поэтому всё понятно.",
  "v5.2: her comment added to Home, and an at-a-glance table on About": "v5.2: её комментарий на главной и краткая таблица на странице «Обо мне»",
@@ -461,5 +460,18 @@
  ": Looks after the Topmate page": ": Ведёт страницу на Topmate",
  ": Builds and checks this website": ": Создаёт и проверяет этот сайт",
  "English meaning (translation): I think the homepage is good because it shows Retro’s kind personality.": "Смысл по-русски (перевод): Мне кажется, сайт хороший: в нём видна доброта Retro.",
- "English meaning (translation): At the top it says what you do, so it is easy to understand.": "Смысл по-русски (перевод): В самом начале написано, чем ты занимаешься, поэтому всё понятно."
+ "English meaning (translation): At the top it says what you do, so it is easy to understand.": "Смысл по-русски (перевод): В самом начале написано, чем ты занимаешься, поэтому всё понятно.",
+ "Loves riding his motorcycle and camping. Kind, friendly, and honest about real life. Lives in the countryside.": "Любит ездить на мотоцикле и ходить в походы. Добрый, дружелюбный и честно говорит о реальной жизни. Живёт в сельской местности.",
+ "Very active, and always ready to answer my questions": "Очень активная и всегда готова ответить на мои вопросы",
+ "Tap his picture to change it.": "Нажмите на его рисунок, чтобы сменить его.",
+ "Updated 30 Oct 2026": "Обновлено 30 окт. 2026",
+ "My email, LinkedIn, GitHub and Topmate links are at the bottom of every page.": "Ссылки на почту, LinkedIn, GitHub и Topmate — внизу каждой страницы.",
+ "Built with agents": "Сделано с агентами",
+ "Friend feedback": "Отзывы друзей",
+ "One timeline: site versions built with my agents, and the changes my friends asked for. All times are IST. Friends are not named.": "Одна хронология: версии сайта, сделанные с моими агентами, и изменения по просьбам друзей. Время — IST. Имена друзей не указаны.",
+ "First commit 25 Oct 2026, 14:22 IST": "Первый коммит 25 окт. 2026, 14:22 IST",
+ "Site timeline (scrollable)": "Хронология сайта (прокручивается)",
+ "Agent board": "Панель агентов",
+ "Ready when I ask. I review every result.": "Готовы, когда я прошу. Я проверяю каждый результат.",
+ "(this version)": "(эта версия)"
 }

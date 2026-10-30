@@ -1,29 +1,31 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro'; import TeamDeck from '../../components/TeamDeck.astro';
-import { timeline, team } from '../../data/team';
+import { timeline } from '../../data/team';
 // Friend feedback timeline. Friends are unnamed (same labels as on the train).
 const FB = [
  { d:'2026-10-26', en:'Friend from Saitama Prefecture (日本人30歳女性)', ja:'埼玉県の友だち（日本人30歳女性）', chEn:['v5.2: her comment added to Home, and an at-a-glance table on About','v5.3: the comment train, with her as the first passenger','v6.1: her picture changes through life stages, and her window got a Saitama theme'], chJa:['v5.2：ホームに彼女のコメント、Aboutに一目でわかる表','v5.3：コメントの汽車。最初の乗客が彼女','v6.1：彼女の絵が人生の場面で変わるように。埼玉のテーマも'] },
  { d:'2026-10-26', en:'Friend from Shiga Prefecture (日本人女性)', ja:'滋賀県の友だち（日本人女性）', chEn:['v6.3: added to the train as a sleepy forest character with a Lake Biwa theme'], chJa:['v6.3：びわ湖のテーマで、ねむそうな森のキャラクターとして汽車に'] },
  { d:'2026-10-27', en:'Friend from Aichi Prefecture (日本人男性)', ja:'愛知県の友だち（日本人男性）', chEn:['v6.6: added to the train as a motorcycle rider, with his comments'], chJa:['v6.6：バイクに乗る人として、コメントといっしょに汽車に'] },
 ];
-const GROUPS = [...new Set(FB.map(f=>f.d))].sort().reverse().map(d=>[d, FB.filter(f=>f.d===d)]);
+// v6.7: ONE workflow timeline. Friend feedback + agent-built versions, newest first, grouped by date.
+const ENT = [...FB.map(f=>({d:f.d, k:'fb', f})), ...[...timeline].reverse().map(([v,t,en,jp])=>({d:'2026-10-25', k:'ag', v, t, en, jp}))];
+const GROUPS = [...new Set(ENT.map(e=>e.d))].sort().reverse().map(d=>[d, ENT.filter(e=>e.d===d)]);
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 const T = ja ? {
  title:'わたしのエージェントチーム', eb:'仕事の進め方', line:'すべて自分で決めて、ぜんぶ自分で確認しています。',
- hist:'このサイトの作り方', histNote:'git のタグと記録から作った、本当の更新の記録です。時間はすべてインド時間（IST）です。',
- facts:'最初のコミット：2026年10月25日 14:22（IST）。v4.10：2026年10月25日 23:27（IST）。', now:'この版',
+ hist:'このサイトの作り方', histNote:'ひとつの記録です：エージェントと作ったサイトの版と、友だちの感想で変えたこと。時間はインド時間（IST）。友だちの名前はのせていません。',
+ facts:'最初のコミット 2026年10月25日 14:22（IST）', ag:'エージェントと作った', fbT:'友だちの感想', scr:'サイトの記録（スクロールできます）', now:'この版',
  doH:'エージェントがすること', doL:['調べものと出典さがし','書類の下書き','勉強とまちがいの記録','コードを作ってテストする'],
- rolesH:'エージェントの役わり', fbH:'友だちの感想と、それで変わったこと', fbNote:'日付はインド時間です。友だちの名前はのせていません。',
+ 
  meH:'わたしがすること', meL:['決める','すべての内容を確認する','送るものは、すべて自分で送る'],
 } : {
  title:'My team of agents', eb:'How I work', line:'I decide and check everything myself.',
- hist:'How this site was built', histNote:'A real version history, taken from the git tags and commits. All times are IST.',
- facts:'First commit: 25 Oct 2026, 14:22 IST. v4.10: 25 Oct 2026, 23:27 IST.', now:'this version',
+ hist:'How this site was built', histNote:'One timeline: site versions built with my agents, and the changes my friends asked for. All times are IST. Friends are not named.',
+ facts:'First commit 25 Oct 2026, 14:22 IST', ag:'Built with agents', fbT:'Friend feedback', scr:'Site timeline (scrollable)', now:'this version',
  doH:'What agents do here', doL:['Research and sourcing','Drafting documents','Tracking study and mistakes','Building and testing code'],
- rolesH:'What each agent does', fbH:'Friend feedback and what changed', fbNote:'Dates are IST. Friends are not named.',
+ 
  meH:'What I do', meL:['Decide','Check every claim','Send everything myself'],
 };
 ---
@@ -34,13 +36,22 @@ const T = ja ? {
 <div class="card"><h2>{T.doH}</h2><ul>{T.doL.map(x => <li>{x}</li>)}</ul></div>
 <div class="card warm"><h2>{T.meH}</h2><ul>{T.meL.map(x => <li>{x}</li>)}</ul></div>
 </section>
-<section class="rolelist"><h2>{T.rolesH}</h2><ul>{team.map(t => <li><strong>{(ja?t.ja:t.en).name}</strong>: {(ja?t.ja:t.en).job}</li>)}</ul></section>
-<section id="feedback" class="hist"><h2>{T.fbH}</h2><p class="mut">{T.fbNote}</p>
-<div class="fbscroll" tabindex="0" role="region" aria-label={ja?'友だちの感想と変更の一覧（スクロールできます）':'Friend feedback list (scrollable)'}>{GROUPS.map(([d,items]) => <section class="fbgrp"><h3 class="fbd"><time datetime={d}>{ja?`${+d.slice(0,4)}年${+d.slice(5,7)}月${+d.slice(8)}日`:`${+d.slice(8)} Oct ${d.slice(0,4)}`}</time></h3><ol class="tl fbl">{items.map(f => <li><span><strong>{ja?f.ja:f.en}</strong><ul class="fbch">{(ja?f.chJa:f.chEn).map(c => <li>{c}</li>)}</ul></span></li>)}</ol></section>)}</div></section>
 <section id="history" class="hist"><h2>{T.hist}</h2>
 <p class="mut">{T.histNote}</p>
-<ol class="tl">{timeline.map(([v,t,en,jp]) => <li><span class="tv">{v}</span><span class="tt">{t ? <time datetime={`2026-10-25T${t}+05:30`}>{ja?`10月25日 ${t}`:`25 Oct, ${t}`}</time> : <span>{ja?`10月25日（${T.now}）`:`25 Oct (${T.now})`}</span>}</span><span>{ja?jp:en}</span></li>)}</ol>
-<p class="small mut">{T.facts}</p>
+<div class="wfs" tabindex="0" role="region" aria-label={T.scr}>{GROUPS.map(([d,items]) => <section class="wfg"><h3 class="wfd"><time datetime={d}>{ja?`${+d.slice(0,4)}年${+d.slice(5,7)}月${+d.slice(8)}日`:`${+d.slice(8)} Oct ${d.slice(0,4)}`}</time></h3><ol class="wfl">{items.map(e => e.k==='fb'
+ ? <li class="wfe fb"><span class="wtag">{T.fbT}</span><strong class="wt">{ja?e.f.ja:e.f.en}</strong><ul class="wch">{(ja?e.f.chJa:e.f.chEn).map(c => <li>{c}</li>)}</ul></li>
+ : <li class="wfe ag"><span class="wtag">{T.ag}</span><span class="wt"><strong>{e.v}</strong> {e.t ? <time class="mut" datetime={`2026-10-25T${e.t}+05:30`}>{e.t}</time> : <span class="mut">({T.now})</span>}</span><span class="wd">{ja?e.jp:e.en}</span></li>)}</ol></section>)}</div>
+<p class="wfact">{T.facts}</p>
 </section>
-<style>.fbscroll{max-height:24rem;overflow-y:auto;overscroll-behavior-y:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;border:1px solid color-mix(in srgb,currentColor 15%,transparent);border-radius:14px;padding:.4rem 1rem;background:color-mix(in srgb,var(--card,#fff) 70%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 1.2rem,#000 calc(100% - 1.2rem),transparent);mask-image:linear-gradient(transparent,#000 1.2rem,#000 calc(100% - 1.2rem),transparent)}.fbscroll:focus-visible{outline:3px solid var(--accent,#c0533a);outline-offset:3px}.fbd{font-size:.95rem;margin:1rem 0 .3rem;position:sticky;top:0;background:inherit}.fbl li{display:block}.fbl{margin:0}@media (prefers-reduced-motion:reduce){.fbscroll{scroll-behavior:auto}}.fbl .fbch{margin:.3rem 0 0;padding-left:1.1rem}.fbl .fbch li{display:list-item;list-style:disc;padding:.15rem 0;border:0}.fbl .fbch li::before{display:none}.rolelist ul{padding-left:1.1rem}.rolelist li{margin:.25rem 0}</style>
+<style>.wfs{max-height:28rem;overflow-y:auto;overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;padding:0 .8rem .8rem;background:var(--card);box-shadow:0 6px 18px rgba(20,30,50,.08)}
+.wfs:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wfg{margin:0}.wfd{position:sticky;top:0;z-index:2;margin:0 -.8rem;padding:.6rem .8rem .5rem;font-size:.95rem;background:var(--card);border-bottom:1px solid var(--line)}
+.wfl{list-style:none;padding:0;margin:.6rem 0 .4rem;display:flex;flex-direction:column;gap:.6rem}
+.wfe{display:block;position:relative;z-index:0;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--acc);border-bottom-width:3px;border-radius:12px;padding:.6rem .75rem}
+.wfe.fb{border-left-color:var(--warm)}
+.wtag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.02em;padding:.1rem .5rem;border-radius:999px;margin:0 0 .3rem;background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc)}
+.fb .wtag{background:color-mix(in srgb,var(--warm) 16%,transparent);color:var(--warm)}
+.wt{display:block}.wd{display:block;margin-top:.15rem}
+.wch{margin:.3rem 0 0;padding-left:1.1rem}.wch li{padding:.1rem 0}
+.wfact{font-size:.78rem;color:var(--mut);margin:.5rem 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}</style>
 </Base>

@@ -5,7 +5,7 @@ export type Passenger = {
   id: string; by: string; byEn: string; capEn: string; capJa: string; cabin: string;
   avatar?: { hair: string; top: string; prop: 'drum' | 'none' } | { kind: 'creature' | 'rider' }; // no avatar = carriage shows the emblem only
   emblem?: 'scissors';  // small icon in the window when there is no avatar
-  likesEn?: string; likesJa?: string;
+  likesEn?: string; snd?: 'box'|'pluck'; likesJa?: string;
   stages?: boolean; // life-stage animation (FriendAvatar stages)
   theme?: string;   // key in themes.ts, optional dialog background
   he?: boolean;     // pronoun for labels (default: her)
@@ -23,15 +23,15 @@ export const passengers: Passenger[] = [
     { ja:'ウェブサイトにアニメーションが使われていて、動きがあるのが見ていて楽しい！また、内容もしっかりしていて、読み応えがある。', en:'The website uses animation, and it is fun to watch things move! The content is also solid and worth reading.' },
    ] },
  // Shiga friend: approved quote, theme and character (2026-10-26). Original sleepy forest creature with 5 stages. Verbatim sentence, no personal details.
- { id:'f2', by:'日本人女性', byEn:'Japanese woman', capEn:'', capJa:'', cabin:'', emblem:'scissors', avatar:{ kind:'creature' }, stages:true, theme:'shiga', flag:'jp', prefEn:'Shiga Prefecture', prefJa:'滋賀県',
+ { id:'f2', by:'日本人女性', byEn:'Japanese woman', capEn:'Very active, and always ready to answer my questions', capJa:'とても活発で、わたしの質問にいつも答えてくれます', cabin:'', emblem:'scissors', snd:'box', avatar:{ kind:'creature' }, stages:true, theme:'shiga', flag:'jp', prefEn:'Shiga Prefecture', prefJa:'滋賀県',
    quotes:[
     { ja:'Retroが作ったWebサイト、可愛さがあってあなたの優しさが滲み出ていて、すばらしいのは理解できました。', en:'I could see that the website Retro made is wonderful: it is cute, and your kindness shines through.' },
    ] },
  // Aichi friend: feedback #3 (2026-10-27). Quotes and traits approved by the owner 2026-10-30. Face-free rider. Never add his employer.
- { id:'f3', by:'日本人男性・愛知県', byEn:'Japanese man, Aichi Prefecture', he:true, flag:'jp', prefEn:'Aichi Prefecture', prefJa:'愛知県',
+ { id:'f3', by:'日本人男性・愛知県', byEn:'Japanese man, Aichi Prefecture', he:true, stages:true, snd:'pluck', flag:'jp', prefEn:'Aichi Prefecture', prefJa:'愛知県',
    capEn:'Friend from Aichi Prefecture', capJa:'愛知県の友だち',
-   likesEn:'Lives in the countryside; his wife is a school teacher. Loves riding his motorcycle, camping, and going out to restaurants with his wife. Very friendly and kind, always ready to talk, and honest about how things really are.',
-   likesJa:'いなかに住んでいて、奥さんは学校の先生です。バイクに乗ること、キャンプ、奥さんとレストランに行くことが好きです。とてもフレンドリーでやさしく、いつでも話してくれて、本当のことを正直に教えてくれます。',
+   likesEn:'Loves riding his motorcycle and camping. Kind, friendly, and honest about real life. Lives in the countryside.',
+   likesJa:'バイクに乗ることとキャンプが大好きです。やさしくてフレンドリーで、ふだんの生活のことも正直に話してくれます。いなかに住んでいます。',
    cabin:'', avatar:{ kind:'rider' },
    quotes:[
     { ja:'ホームページはRetroさんの、優しい人柄が見えて良いと思います。', en:'I think the homepage is good because it shows Retro’s kind personality.' },

@@ -66,8 +66,8 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 {p.theme && themes[p.theme] && <div class="vbg" aria-hidden="true" set:html={themes[p.theme].svg}></div>}
 <div class="vdin">
 <button type="button" class="vx" data-close aria-label={ja?'閉じる':'Close'}>×</button>
-<div class="vdtop"><span class="dcapw">{p.avatar ? <button type="button" class="drumbtn" data-drum aria-label={ja?'友だちのイラスト。タップで変わります':'Friend illustration, tap to change'}>{('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button> : <span class="drumbtn emb"><Emblem/></span>}</span>
-<div><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3>{!ja && <p class="small mut">({p.byEn})</p>}{p.prefEn && !p.by.includes(p.prefJa??'@') && <p class="small vloc">{ja?p.prefJa:p.prefEn}</p>}{p.capEn && <p class="small vcap">{ja?p.capJa:p.capEn}</p>}{p.likesEn && <p class="small">{ja?p.likesJa:p.likesEn}</p>}{p.stages && <p class="small mut">{ja?'絵をタップすると、絵が変わります。':'Tap her picture to change it.'}</p>}</div></div>
+<div class="vdtop"><span class="dcapw">{p.avatar ? <button type="button" class="drumbtn" data-drum data-tone={p.snd} aria-label={ja?'友だちのイラスト。タップで変わります':'Friend illustration, tap to change'}>{('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button> : <span class="drumbtn emb"><Emblem/></span>}</span>
+<div><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3>{!ja && <p class="small mut">({p.byEn})</p>}{p.prefEn && !p.by.includes(p.prefJa??'@') && <p class="small vloc">{ja?p.prefJa:p.prefEn}</p>}{p.capEn && <p class="small vcap">{ja?p.capJa:p.capEn}</p>}{p.likesEn && <p class="small">{ja?p.likesJa:p.likesEn}</p>}{p.stages && <p class="small mut">{ja?'絵をタップすると、絵が変わります。':(p.he?'Tap his picture to change it.':'Tap her picture to change it.')}</p>}</div></div>
 <p class="small mut">{ja?'元のコメント（そのまま）':`${p.he?'His':'Her'} original comment (unchanged, in Japanese)`}</p>
 {p.quotes.map(q=><blockquote class="vq" lang="ja"><p>「{q.ja}」</p></blockquote>)}
 <button type="button" class="vtg" data-tr aria-expanded="false" aria-controls={`en-${p.id}`}>{ja?'英訳を見る':'Show English translation'}</button>
@@ -99,7 +99,9 @@ html[data-theme=dark] .car{fill:#A24C58}html[data-theme=dark] .cab,html[data-the
 .stk{transform-box:fill-box}.stk-l{transform-origin:0 0}.stk-r{transform-origin:100% 0}
 .hit .stk-l{animation:vhl .28s ease-out}.hit .stk-r{animation:vhr .28s ease-out .08s}
 @keyframes vhl{40%{transform:rotate(-28deg)}}@keyframes vhr{40%{transform:rotate(28deg)}}
-.vdlg{width:min(92vw,560px);max-height:88vh;overflow:auto;padding:0;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--fg);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.drumbtn{flex:0 0 auto;contain:layout size paint;overflow:hidden}.drumbtn>svg.fav{position:absolute;inset:0;width:100%;height:100%}.vdtop>div{min-width:0}
+.nodrum.hit{animation:vhop .45s ease}@keyframes vhop{40%{transform:translateY(-4px) scale(1.03)}}@media (prefers-reduced-motion:reduce){.nodrum.hit{animation:none}}
+.vdlg{width:min(92vw,560px);max-height:88vh;overflow:auto;scrollbar-gutter:stable;padding:0;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--fg);box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .vdlg::backdrop{background:rgba(20,23,27,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .vdin{position:relative;padding:1.2rem 1.1rem 1.1rem;border-top:6px solid #E9A3B0}
 .vdtop{display:flex;gap:.9rem;align-items:center;margin-bottom:.6rem}.vdtop h3{margin:0}.vdtop p{margin:.15rem 0}
@@ -151,7 +153,13 @@ if (sec) {
   const whistle = (tap = false) => { const c = ac(tap); if (!c) return; const t = c.currentTime, g = c.createGain(); g.gain.setValueAtTime(0, t);
     g.gain.linearRampToValueAtTime(.12, t + .08); g.gain.setValueAtTime(.12, t + .7); g.gain.linearRampToValueAtTime(0, t + 1); g.connect(c.destination);
     [587, 740, 880].forEach(fq => { const o = c.createOscillator(); o.type = 'triangle'; o.frequency.value = fq; o.connect(g); o.start(t); o.stop(t + 1.05); }); };
-  const hit = (svg: Element | null) => { if (!svg) return; svg.classList.remove('hit'); void (svg as HTMLElement).getBoundingClientRect(); svg.classList.add('hit'); if (!svg.classList.contains('nodrum')) drum(); };
+  // v6.7 gentle per-friend tones (self-synthesised, ~1.5 s, low volume, Sound toggle respected via ac()).
+  const box = () => { const c = ac(true); if (!c) return; const t = c.currentTime; [784, 988, 1175, 1568].forEach((fq, k) => { const o = c.createOscillator(), g = c.createGain(), s = t + k * .16;
+    o.type = 'sine'; o.frequency.value = fq; g.gain.setValueAtTime(0, s); g.gain.linearRampToValueAtTime(.05, s + .01); g.gain.exponentialRampToValueAtTime(.0008, s + .9); o.connect(g).connect(c.destination); o.start(s); o.stop(s + .95); }); };
+  const pluck = () => { const c = ac(true); if (!c) return; const t = c.currentTime; [196, 247, 294, 392].forEach((fq, k) => { const o = c.createOscillator(), f = c.createBiquadFilter(), g = c.createGain(), s = t + k * .05;
+    o.type = 'triangle'; o.frequency.value = fq; f.type = 'lowpass'; f.frequency.setValueAtTime(2400, s); f.frequency.exponentialRampToValueAtTime(400, s + .6);
+    g.gain.setValueAtTime(0, s); g.gain.linearRampToValueAtTime(.06, s + .005); g.gain.exponentialRampToValueAtTime(.0008, s + 1.4); o.connect(f).connect(g).connect(c.destination); o.start(s); o.stop(s + 1.45); }); };
+  const hit = (svg: Element | null, tone?: string) => { if (!svg) return; svg.classList.remove('hit'); void (svg as HTMLElement).getBoundingClientRect(); svg.classList.add('hit'); if (tone === 'box') box(); else if (tone === 'pluck') pluck(); else if (!svg.classList.contains('nodrum')) drum(); };
   let timer = 0, live = 0, first = true;
   sec.querySelector('[data-honk]')?.addEventListener('click', () => { whistle(true); if (rm) return; tr.classList.remove('honked'); void tr.offsetWidth; tr.classList.add('honked'); for (let i = 0; i < 3; i++) setTimeout(puff, i * 120); });
   const puff = () => { if (live > 6 || document.hidden) return; const s = document.createElement('span'); s.className = 'puff';
@@ -164,14 +172,14 @@ if (sec) {
   }, { threshold: .25 }).observe(train);
   let opener: HTMLElement | null = null;
   sec.querySelectorAll<HTMLButtonElement>('[data-pax]').forEach(b => b.addEventListener('click', () => {
-    const d = document.getElementById('dlg-' + b.dataset.pax) as HTMLDialogElement; opener = b; hit(b.querySelector('svg'));
+    const d = document.getElementById('dlg-' + b.dataset.pax) as HTMLDialogElement; opener = b; hit(b.querySelector('svg'), document.querySelector<HTMLElement>('#dlg-' + b.dataset.pax + ' [data-drum]')?.dataset.tone);
     setTimeout(() => { d.showModal(); d.querySelector<HTMLElement>('[data-close]')?.focus(); }, rm ? 0 : 260); }));
   sec.querySelectorAll<HTMLDialogElement>('.vdlg').forEach(d => {
     const close = () => d.close();
     d.addEventListener('close', () => { opener?.focus(); });
     d.addEventListener('click', e => { if (e.target === d) close(); });
     d.querySelectorAll('[data-close]').forEach(x => x.addEventListener('click', close));
-    d.querySelector('[data-drum]')?.addEventListener('click', e => hit((e.currentTarget as HTMLElement).querySelector('svg')));
+    d.querySelector('[data-drum]')?.addEventListener('click', e => { const el = e.currentTarget as HTMLElement; hit(el.querySelector('svg'), el.dataset.tone); });
     const t = d.querySelector<HTMLButtonElement>('[data-tr]')!, en = d.querySelector<HTMLElement>('.ven')!;
     t.addEventListener('click', () => { const o = en.hidden; en.hidden = !o; t.setAttribute('aria-expanded', String(o));
       t.textContent = o ? L.hide : L.show; });
@@ -190,8 +198,8 @@ if (vs) {
     const id = b.dataset.pax!, svgs = [b.querySelector('svg.stgs'), document.querySelector('#dlg-' + id + ' svg.stgs')].filter(Boolean) as SVGElement[];
     if (!svgs.length) return;
     const dlg = document.getElementById('dlg-' + id) as HTMLDialogElement, drumB = dlg.querySelector<HTMLButtonElement>('[data-drum]')!;
-    let i = 0, t = 0, seen = false;
-    const show = (n: number) => { i = n % 5; svgs.forEach(s => { s.classList.remove('st-0','st-1','st-2','st-3','st-4'); s.classList.add('st-' + i); s.classList.toggle('drumming', i === 0 && !rm); }); };
+    let i = 0, t = 0, seen = false; const N = Number(svgs[0].dataset.n) || 5;
+    const show = (n: number) => { i = n % N; svgs.forEach(s => { s.classList.remove('st-0','st-1','st-2','st-3','st-4'); s.classList.add('st-' + i); s.classList.toggle('drumming', i === 0 && !rm); }); };
     const stop = () => { clearTimeout(t); t = 0; };
     const run = () => { stop(); if (rm || !seen) return; t = window.setTimeout(() => { show(i + 1); run(); }, i === 0 ? 3000 : 2500); };
     show(0);

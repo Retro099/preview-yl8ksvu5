@@ -58,7 +58,7 @@ h2{font-size:1.3rem;margin:0 0 1rem;color:var(--acc)}h3{font-size:1.08rem;margin
 .btn{min-height:44px;display:inline-flex;align-items:center;padding:0 1.2rem;border-radius:8px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600}
 .btn:hover{background:#1f3a62}.tlink{min-height:44px;display:inline-flex;align-items:center}
 .grid3{display:grid;gap:1rem}@media (min-width:800px){.grid3{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.25rem;margin:0 0 1rem}
+.card{background:var(--card);border:1px solid var(--line);border-bottom:3px solid var(--line);border-radius:14px;box-shadow:0 4px 14px rgba(20,30,50,.06);padding:1.25rem;margin:0 0 1rem}
 .card:hover{border-color:var(--acc)}
 .door h3{color:var(--acc)}.door.warm{border-top:3px solid var(--warm)}.door.warm h3{color:var(--warm)}
 .door a{min-height:44px;display:inline-flex;align-items:center}
@@ -129,7 +129,8 @@ footer nav a{padding:0 .8rem 0 0}
 .langm ul{position:absolute;right:0;top:calc(100% + .3rem);z-index:50;margin:0;padding:.3rem;list-style:none;background:var(--card);border:1px solid var(--line);border-radius:.8rem;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:9.5rem}
 .langm li a{display:flex;align-items:center;min-height:44px;padding:0 .8rem;border-radius:.5rem;color:var(--fg);text-decoration:none}.langm li a[aria-current]{font-weight:700;color:var(--acc)}.langm li a:hover,.langm li a:focus-visible{background:var(--line)}
 /* v4.7 chomp */
-.chomp{max-width:340px;height:44px;margin:0 0 .5rem;cursor:pointer;-webkit-tap-highlight-color:transparent}.chomp svg{width:100%;height:44px;display:block}
+.chompw{max-width:var(--max,1100px);margin:2rem auto 0;padding:0 1rem;display:flex;justify-content:center}.chompw .chomp{width:min(100%,640px);margin:0 auto}
+.chomp{max-width:640px;height:44px;margin:0 0 .5rem;cursor:pointer;-webkit-tap-highlight-color:transparent}.chomp svg{width:100%;height:44px;display:block}
 .chomp .dot{fill:var(--warm);opacity:1}
 .chomp .cb{transform:translateX(150px)}
 .chomp.go .cb{animation:cbw 8s linear infinite paused}.chomp.go .dot{animation:cbe 8s linear infinite paused}.chomp.go .mouth{transform-box:fill-box;transform-origin:center;animation:cbm .5s ease-in-out infinite alternate paused}
@@ -333,5 +334,18 @@ g.addEventListener('touchstart',e=>{const c=[...g.children].find(x=>x.contains(e
 ['touchend','touchcancel','touchmove'].forEach(v=>g.addEventListener(v,off,{passive:true}));addEventListener('scroll',off,{passive:true});g.addEventListener('scroll',off,{passive:true});});
 const av=document.querySelector('.hero4 .av');if(av){let c=[];av.addEventListener('click',e=>{const n=performance.now();c=c.filter(x=>n-x<1800);c.push(n);if(c.length>=5){c=[];if(rm)return;av.classList.remove('yay');void av.offsetWidth;av.classList.add('yay');const r=av.getBoundingClientRect();for(let i=0;i<22;i++)setTimeout(()=>petal(r.left+Math.random()*r.width,r.top+Math.random()*r.height*.5,i%5===0,Math.random()*80-40,'egg'),i*35);}});}
 })();
+</script>
+<script is:inline>
+// v6.7 global reset: a tap/click elsewhere, any link click, a copy, or a touch scroll clears every transient card state.
+(()=>{const coarse=matchMedia('(pointer:coarse)').matches;
+const reset=keep=>{document.querySelectorAll('.fc.on').forEach(c=>{if(keep&&c.contains(keep))return;const u=c.querySelector('.unflip');u&&u.click();});
+document.querySelectorAll('.held').forEach(x=>x.classList.remove('held'));document.querySelectorAll('.spot.pressing').forEach(x=>x.classList.remove('pressing'));
+const a=document.activeElement;if(a&&a.closest&&a.closest('.spot,.deck')&&!(keep&&a.closest('.fc')?.contains(keep)))a.blur();};
+document.addEventListener('pointerdown',e=>{const fc=e.target.closest&&e.target.closest('.fc');reset(fc);},true);
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a)reset(null);
+ const b=e.target.closest&&e.target.closest('.fc.on .back');if(b&&!e.target.closest('a,button'))b.closest('.fc').querySelector('.unflip')?.click();});
+document.addEventListener('copy',()=>reset(null));
+if(coarse){let y=scrollY;addEventListener('scroll',()=>{if(Math.abs(scrollY-y)>24){y=scrollY;reset(null);}},{passive:true});
+ document.querySelectorAll('[data-deck]').forEach(d=>{let x=d.scrollLeft;d.addEventListener('scroll',()=>{if(Math.abs(d.scrollLeft-x)>40){x=d.scrollLeft;reset(null);}},{passive:true});});}})();
 </script>
 </body></html>
