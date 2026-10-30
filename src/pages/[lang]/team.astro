@@ -8,6 +8,7 @@ const FB = [
  { d:'2026-10-26', en:'Friend from Shiga Prefecture (日本人女性)', ja:'滋賀県の友だち（日本人女性）', chEn:['v6.3: added to the train as a sleepy forest character with a Lake Biwa theme'], chJa:['v6.3：びわ湖のテーマで、ねむそうな森のキャラクターとして汽車に'] },
  { d:'2026-10-27', en:'Friend from Aichi Prefecture (日本人男性)', ja:'愛知県の友だち（日本人男性）', chEn:['v6.6: added to the train as a motorcycle rider, with his comments'], chJa:['v6.6：バイクに乗る人として、コメントといっしょに汽車に'] },
 ];
+const GROUPS = [...new Set(FB.map(f=>f.d))].sort().reverse().map(d=>[d, FB.filter(f=>f.d===d)]);
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
 const T = ja ? {
@@ -35,11 +36,11 @@ const T = ja ? {
 </section>
 <section class="rolelist"><h2>{T.rolesH}</h2><ul>{team.map(t => <li><strong>{(ja?t.ja:t.en).name}</strong>: {(ja?t.ja:t.en).job}</li>)}</ul></section>
 <section id="feedback" class="hist"><h2>{T.fbH}</h2><p class="mut">{T.fbNote}</p>
-<ol class="tl fbl">{FB.map(f => <li><span class="tt">{f.d ? <time datetime={f.d}>{ja?`${+f.d.slice(5,7)}月${+f.d.slice(8)}日`:`${+f.d.slice(8)} Oct`}</time> : null}</span><span><strong>{ja?f.ja:f.en}</strong><ul class="fbch">{(ja?f.chJa:f.chEn).map(c => <li>{c}</li>)}</ul></span></li>)}</ol></section>
+<div class="fbscroll" tabindex="0" role="region" aria-label={ja?'友だちの感想と変更の一覧（スクロールできます）':'Friend feedback list (scrollable)'}>{GROUPS.map(([d,items]) => <section class="fbgrp"><h3 class="fbd"><time datetime={d}>{ja?`${+d.slice(0,4)}年${+d.slice(5,7)}月${+d.slice(8)}日`:`${+d.slice(8)} Oct ${d.slice(0,4)}`}</time></h3><ol class="tl fbl">{items.map(f => <li><span><strong>{ja?f.ja:f.en}</strong><ul class="fbch">{(ja?f.chJa:f.chEn).map(c => <li>{c}</li>)}</ul></span></li>)}</ol></section>)}</div></section>
 <section id="history" class="hist"><h2>{T.hist}</h2>
 <p class="mut">{T.histNote}</p>
 <ol class="tl">{timeline.map(([v,t,en,jp]) => <li><span class="tv">{v}</span><span class="tt">{t ? <time datetime={`2026-10-25T${t}+05:30`}>{ja?`10月25日 ${t}`:`25 Oct, ${t}`}</time> : <span>{ja?`10月25日（${T.now}）`:`25 Oct (${T.now})`}</span>}</span><span>{ja?jp:en}</span></li>)}</ol>
 <p class="small mut">{T.facts}</p>
 </section>
-<style>.fbl .fbch{margin:.3rem 0 0;padding-left:1.1rem}.fbl .fbch li{display:list-item;list-style:disc;padding:.15rem 0;border:0}.fbl .fbch li::before{display:none}.rolelist ul{padding-left:1.1rem}.rolelist li{margin:.25rem 0}</style>
+<style>.fbscroll{max-height:24rem;overflow-y:auto;overscroll-behavior-y:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;border:1px solid color-mix(in srgb,currentColor 15%,transparent);border-radius:14px;padding:.4rem 1rem;background:color-mix(in srgb,var(--card,#fff) 70%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 1.2rem,#000 calc(100% - 1.2rem),transparent);mask-image:linear-gradient(transparent,#000 1.2rem,#000 calc(100% - 1.2rem),transparent)}.fbscroll:focus-visible{outline:3px solid var(--accent,#c0533a);outline-offset:3px}.fbd{font-size:.95rem;margin:1rem 0 .3rem;position:sticky;top:0;background:inherit}.fbl li{display:block}.fbl{margin:0}@media (prefers-reduced-motion:reduce){.fbscroll{scroll-behavior:auto}}.fbl .fbch{margin:.3rem 0 0;padding-left:1.1rem}.fbl .fbch li{display:list-item;list-style:disc;padding:.15rem 0;border:0}.fbl .fbch li::before{display:none}.rolelist ul{padding-left:1.1rem}.rolelist li{margin:.25rem 0}</style>
 </Base>
