@@ -1,5 +1,10 @@
 [
   {
+    "name": "jp-meeting-to-crm-fields",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields",
+    "updated": "2026-10-30"
+  },
+  {
     "name": "japanese-rag-eval",
     "url": "https://github.com/Retro099/japanese-rag-eval",
     "updated": "2026-10-25"
@@ -13,10 +18,5 @@
     "name": "Retro099",
     "url": "https://github.com/Retro099/Retro099",
     "updated": "2026-10-25"
-  },
-  {
-    "name": "jp-meeting-to-crm-fields",
-    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields",
-    "updated": "2026-10-23"
   }
 ]

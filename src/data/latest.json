@@ -1,5 +1,23 @@
 [
   {
+    "repo": "jp-meeting-to-crm-fields",
+    "title": "LangGraph extract-validate-repair agent (optional path)",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/10",
+    "date": "2026-10-30"
+  },
+  {
+    "repo": "jp-meeting-to-crm-fields",
+    "title": "eval v2: manual spot-check result (20/20 agree)",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/12",
+    "date": "2026-10-30"
+  },
+  {
+    "repo": "jp-meeting-to-crm-fields",
+    "title": "Eval v2: old path vs LangGraph agent (same session, 3 runs)",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/11",
+    "date": "2026-10-30"
+  },
+  {
     "repo": "japanese-rag-eval",
     "title": "Add a 'no live demo' note and point README links to this repo",
     "url": "https://github.com/Retro099/japanese-rag-eval/pull/4",
@@ -10,23 +28,5 @@
     "title": "Point README links to this repo and label the demo link",
     "url": "https://github.com/Retro099/credit-card-fraud-detection/pull/4",
     "date": "2026-10-25"
-  },
-  {
-    "repo": "jp-meeting-to-crm-fields",
-    "title": "docs: remove outdated English screenshot (demo GIF covers it)",
-    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/9",
-    "date": "2026-10-12"
-  },
-  {
-    "repo": "credit-card-fraud-detection",
-    "title": "docs: final README polish",
-    "url": "https://github.com/Retro099/credit-card-fraud-detection/pull/3",
-    "date": "2026-10-12"
-  },
-  {
-    "repo": "japanese-rag-eval",
-    "title": "docs: final README polish",
-    "url": "https://github.com/Retro099/japanese-rag-eval/pull/3",
-    "date": "2026-10-12"
   }
 ]
