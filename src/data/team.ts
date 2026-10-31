@@ -34,4 +34,6 @@ export const timeline = [
  ['v5.0','—','Work with me page, this Team page, a link for each Topmate card','仕事の依頼ページ、このチームのページ、Topmateのカードごとのリンク'],
  ['v6.8','10:04','Built with agents: recruiter page in English and Japanese, site name Prithvi, new CRM numbers','エージェントと作成：英語と日本語の採用担当者向けページ、サイト名をPrithviに、CRMの新しい数字','2026-10-31'],
  ['v6.9','','Built with agents: recruiter page redesign with work timeline, affiliations, logos and a step animation','エージェントと作成：採用担当者向けページを作り直し（職歴の記録、関わりのある組織、ロゴ、流れのアニメーション）','2026-10-31'],
+ ['v6.10','','Built with agents: advisors, project logos and a cleaner organisations row','エージェントと作成：指導者、プロジェクトのロゴ、組織の並びを整理','2026-10-31'],
+ ['v6.11','','Built with agents: privacy-friendly visitor counter and a weekly visitor panel','エージェントと作成：プライバシーに配慮した訪問者カウンターと週ごとの訪問者表示','2026-10-31'],
 ];

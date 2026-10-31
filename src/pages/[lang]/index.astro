@@ -1,4 +1,5 @@
 ---
+import { GOATCOUNTER } from '../../config';
 import { SITE_NAME } from '../../config';
 import Voices from '../../components/Voices.astro';
 import Blob from '../../components/Blob.astro';
@@ -75,6 +76,9 @@ const now = ja
 </div>
 
 <div class="chompw"><Chomp/></div>
+<section class="card hstrip vis" aria-label={ja?'訪問者の数':'Visitors'} data-gc={GOATCOUNTER}><p><span class="vis0 mut">{ja?'訪問者の数はまもなく表示されます。':'Visitor numbers will appear soon.'}</span><span class="vis1" hidden>{ja?'過去7日間の訪問者：':'Last 7 days: '}<b data-n></b>{ja?'人':' visitors'}</span></p></section>
+<script is:inline>(function(){var el=document.querySelector('.vis');if(!el||!el.dataset.gc)return;fetch('https://'+el.dataset.gc+'.goatcounter.com/counter/TOTAL.json?start=week').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){var c=j&&j.count;if(c==null||!/^[\d,. ]+$/.test(String(c)))return;el.querySelector('[data-n]').textContent=c;el.querySelector('.vis0').hidden=true;el.querySelector('.vis1').hidden=false}).catch(function(){})})();</script>
+<style>.vis p{margin:0;min-height:1.6em}</style>
 <section class="narrow" id="contact"><h2>{ja?'連絡先':'Say hello'}</h2>
 <p>{ja?'メール、LinkedIn、GitHub、Topmateへのリンクは、どのページでもいちばん下にあります。':'My email, LinkedIn, GitHub and Topmate links are at the bottom of every page.'}</p></section>
 </Base>
