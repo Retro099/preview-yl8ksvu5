@@ -112,7 +112,7 @@ const P = [
 ---
 <Base lang={lang} page="recruiter" title={ja?'ソフトウェア・データ・AI/MLエンジニア':'Software, data and AI/ML engineer'} description={`${T.h1} ${T.h1b} ${T.top}`} footerContact={false}>
 <div class="rec" data-i18n-skip lang={L}>
-<div class="rsw" role="group" aria-label={T.sw}><a href={`${B}/en/recruiter/`} data-rl="en" aria-current={L==='en'?'true':undefined}>EN</a><a href={`${B}/ja/recruiter/`} data-rl="ja" lang="ja" aria-current={L==='ja'?'true':undefined}>日本語</a></div>
+<div class="rsw" role="group" aria-label={T.sw}>{[["en","EN"],["ja","日本語"],["fr","FR"],["ru","RU"]].map(([c,t]) => <a href={`${B}/${c}/recruiter/`} data-rl={c} lang={c==="en"?undefined:c} aria-current={lang===c?"true":undefined}>{t}</a>)}</div>
 <h1 class="dsp">{T.h1}{T.h1b && <span class="h1b"> {T.h1b}</span>}</h1>
 <p class="lead">{T.top}</p>
 <p class="intent">{T.intent}</p>

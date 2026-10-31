@@ -21,7 +21,7 @@ for (const f of walk(path.join(D,'en'))) {
   for (const l of ['ja','fr','ru']) {
     const g = f.replace(`${path.sep}en${path.sep}`, `${path.sep}${l}${path.sep}`); if (!fs.existsSync(g)) { bad.push(`page missing: ${g}`); continue; }
     const other = texts(dropLangEn(fs.readFileSync(g,'utf8')));
-    for (const t of other) if (en.has(t) && !ALLOW.has(t) && !(l==='fr'&&fr[t]===t) && !(l==='ru'&&ru[t]===t) && !/^[\w.-]+ · Prithvi$/.test(t)) bad.push(`${l}: untranslated "${t.slice(0,80)}" in ${path.relative(D,g)}`);
+    for (const t of other) if (en.has(t) && !ALLOW.has(t) && !(l==='fr'&&fr[t]===t) && !(l==='ru'&&ru[t]===t) && !/^[\w.-]+ · Prithivi$/.test(t)) bad.push(`${l}: untranslated "${t.slice(0,80)}" in ${path.relative(D,g)}`);
   }
 }
 const M = JSON.parse(fs.readFileSync('src/data/metrics.json')), vals = [];

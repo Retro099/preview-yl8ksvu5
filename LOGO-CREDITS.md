@@ -1,6 +1,6 @@
 # Logo and font credits
 
-All logos below are trademarks of their respective owners. They are used only to identify where Prithvi has worked and the organizations he is affiliated with. No endorsement is implied. Files were downloaded on 31 Oct 2026 (IST) from each owner's official website and stored locally in `public/logos/`.
+All logos below are trademarks of their respective owners. They are used only to identify where Prithivi has worked and the organizations he is affiliated with. No endorsement is implied. Files were downloaded on 31 Oct 2026 (IST) from each owner's official website and stored locally in `public/logos/`.
 
 | File | Owner | Source URL |
 |---|---|---|

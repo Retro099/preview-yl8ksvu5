@@ -10,5 +10,5 @@ export const GOATCOUNTER = import.meta.env.PUBLIC_GOATCOUNTER_CODE || 'prithivi'
 export const CONTACT = { email:'retro099@protonmail.com', gmail:'godfathertrictric@gmail.com', github:'https://github.com/Retro099', linkedin:'https://www.linkedin.com/in/retro099', topmate:'https://topmate.io/prithivi_raj_mohanta' };
 
 // Site name (v6.8): one constant for header, titles, meta and footer.
-export const SITE_NAME = 'Prithvi';
-export const SITE_NAME_JA = 'プリトヴィ';
+export const SITE_NAME = 'Prithivi';
+export const SITE_NAME_JA = 'プリティヴィ';
