@@ -38,4 +38,5 @@ export const timeline = [
  ['v6.11','','Built with agents: privacy-friendly visitor counter and a weekly visitor panel','エージェントと作成：プライバシーに配慮した訪問者カウンターと週ごとの訪問者表示','2026-10-31'],
  ['v6.12','','Built with agents: clear “For recruiters” entry on the home page and in the menu, owner-supplied logos','エージェントと作成：ホームとメニューに「採用担当の方へ」の入口、本人提供のロゴ','2026-10-31'],
  ['v6.13','','Built with agents: recruiter page in French and Russian, site name Prithvi everywhere, facts checked across all pages','エージェントと作成：採用担当者向けページのフランス語・ロシア語版、サイト名をPrithviに統一、全ページの情報をそろえる','2026-10-31'],
+ ['v6.14','','Built with agents: recruiter About section made global in all four languages, new newspaper-collage LinkedIn cover','エージェントと作成：採用担当者向けページの自己紹介を4言語で国を問わない内容に、新聞コラージュ風のLinkedInカバー','2026-10-31'],
 ];
