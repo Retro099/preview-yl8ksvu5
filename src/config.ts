@@ -8,3 +8,7 @@ export const SHOW_WRITING_IN_NAV = true;
 export const GOATCOUNTER = import.meta.env.PUBLIC_GOATCOUNTER_CODE || '';
 // Public contact (source: Notion apply email / signature; LinkedIn from Social bot files).
 export const CONTACT = { email:'retro099@protonmail.com', gmail:'godfathertrictric@gmail.com', github:'https://github.com/Retro099', linkedin:'https://www.linkedin.com/in/retro099', topmate:'https://topmate.io/prithivi_raj_mohanta' };
+
+// Site name (v6.8): one constant for header, titles, meta and footer.
+export const SITE_NAME = 'Prithvi';
+export const SITE_NAME_JA = 'プリトヴィ';

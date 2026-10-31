@@ -1,12 +1,14 @@
 {
   "crm": {
-    "exact_match": "60.0%",
-    "exact_hits": 90,
+    "exact_match": "59.8%",
     "exact_total": 150,
     "notes": 30,
-    "attack_before": "45%",
-    "attack_after": "6.7%",
-    "attacks": 40
+    "runs": 3,
+    "attack_before": "30%",
+    "attack_after": "8.3%",
+    "attacks": 20,
+    "judge_agree": 20,
+    "judge_total": 20
   },
   "rag": {
     "hit5": "0.98",

@@ -1,4 +1,5 @@
 ---
+import { SITE_NAME } from '../../config';
 import Voices from '../../components/Voices.astro';
 import Blob from '../../components/Blob.astro';
 import Base from '../../layouts/Base.astro';
@@ -22,8 +23,8 @@ const nums = [
    ja:['不正の検出率 / 警告の正しさ', `不正が${m.fraud.fraud_rate}しかない公開データでの結果`] },
 ];
 const now = ja
- ? [['2026-10-25','毎日日本語を勉強しています。'],['2026-10-25','CRMプロジェクト：テストを増やした大きな評価を実行中です。終わったら結果をのせます。'],['','このサイトを作っています。']]
- : [['2026-10-25','I study Japanese every day.'],['2026-10-25','CRM project: a larger evaluation run with more tests is in progress. Results will be added when it is done.'],['','Building this site.']];
+ ? [['2026-10-31','毎日日本語を勉強しています。'],['2026-10-31','CRMプロジェクト：完成しました。READMEと測った数字があります。次の中心になるプロジェクトを探しています。'],['','このサイトを作っています。']]
+ : [['2026-10-31','I study Japanese every day.'],['2026-10-31','CRM project: finished, with a README and measured numbers. Looking for the next anchor project.'],['','Building this site.']];
 ---
 <style>.start{margin:.7rem 0 0;padding:.55rem .8rem;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.startb{font:inherit;font-weight:700;min-height:44px;padding:0 .2rem;border:0;background:none;color:var(--acc);text-decoration:underline;cursor:pointer}.startb:focus-visible{outline:3px solid var(--acc);outline-offset:2px}</style>
 <Base lang={lang} title={ja?'AI/MLエンジニア':'AI/ML engineer'}>
@@ -33,13 +34,13 @@ const now = ja
 <div>
 {ja ? <>
 <p class="hi">こんにちは。</p>
-<h1>プリティヴィ・ラージ・モハンタ</h1>
+<h1>{SITE_NAME}</h1>
 <p class="title">AI/MLエンジニア。ソフトウェアの仕事は約4年、そのうち約2.5年はAIとLLMの仕事です。</p>
 <p class="lead">仕事で使うAIを作り、テストしています。日本語の文書、AIの評価、セキュリティのテストです。</p>
 <p class="start">ここはわたしのウェブ上の拠点です。仕事、プロジェクト、相談の案内をまとめています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
-<h1>Prithivi Raj Mohanta</h1>
+<h1>{SITE_NAME}</h1>
 <p class="title">AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work.</p>
 <p class="lead">I build and test AI for real work: Japanese documents, evaluation and security testing.</p>
 <p class="start"><span>This is my home on the web: my work, projects and guidance. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
@@ -52,7 +53,7 @@ const now = ja
 
 <section class="split" id="now">
 <div class="card"><h2>{ja?'いま':'Now'}</h2>
-<p class="mut"><time datetime="2026-10-30">{ja?'2026年10月30日 更新':'Updated 30 Oct 2026'}</time></p>
+<p class="mut"><time datetime="2026-10-31">{ja?'2026年10月31日 更新':'Updated 31 Oct 2026'}</time></p>
 <ul class="dated">{now.map(([d,t]) => <li>{d ? <time datetime={d}>{fmt(d)}</time> : <span></span>}<span>{t}</span></li>)}</ul>
 <a href={`${B}/${lang}/now/`}>{ja?'くわしく →':'More on the Now page →'}</a></div>
 <div class="card"><h2>{ja?'最近の更新（GitHub）':'Latest on GitHub'}</h2>
@@ -61,11 +62,11 @@ const now = ja
 <a href={C.github}>{ja?'GitHubで見る →':'All activity on GitHub →'}</a></div>
 </section>
 
-<section class="doors"><div class="grid3">
-<div class="card door"><h3>{ja?'採用担当の方へ':'For recruiters'}</h3><p>{ja?'数字つきのプロジェクト、わたしの話、連絡先。':'Projects with measured results, my story and how to reach me.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About me'}</a></div>
+<section class="doors"><div class="grid2">
 <div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'日本で働くまでの記録と、日本語の勉強。':'My path toward work in Japan, and how I study Japanese.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/now/`}>{ja?'いまの様子':'What I\'m doing now'}</a><a class="btn ghost dbtn" href={`${B}/${lang}/talk/`}>{ja?'日本での就職について相談する':'Book a 1:1 chat about Japan'}</a></div>
 <div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a class="btn ghost dbtn" href={C.github}>GitHub</a></div>
 </div></section>
+<p class="reclink"><a href={`${B}/${lang==='ja'?'ja':'en'}/recruiter/?ref=home`}>{ja?'採用担当の方へ →':'For recruiters →'}</a></p>
 
 <Voices lang={lang}/>
 <div class="hrow">

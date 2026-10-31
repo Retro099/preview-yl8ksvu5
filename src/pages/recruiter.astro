@@ -1,0 +1,10 @@
+---
+import { SITE_NAME } from '../config';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script is:inline define:vars={{B}}>(function(){var l;try{l=localStorage.getItem('rlang')}catch(e){}
+if(l!=='en'&&l!=='ja'){l='en';var n=navigator.languages||[navigator.language||''];for(var i=0;i<n.length;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(c==='ja'){l='ja';break}if(c==='en'||c==='fr'||c==='ru')break}}
+location.replace(B+'/'+l+'/recruiter/'+location.search+location.hash)})();</script>
+<title>{`AI/ML engineer · ${SITE_NAME}`}</title></head>
+<body><noscript><ul><li><a href={`${B}/en/recruiter/`}>English</a></li><li><a href={`${B}/ja/recruiter/`} lang="ja">日本語</a></li></ul></noscript></body></html>

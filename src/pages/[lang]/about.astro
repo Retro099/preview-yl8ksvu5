@@ -1,4 +1,5 @@
 ---
+import { SITE_NAME } from '../../config';
 import Base from '../../layouts/Base.astro'; import J from '../../components/J.astro';
 export { paths as getStaticPaths } from '../../data/paths';
 import Contact from '../../components/Contact.astro'; import PageHead from '../../components/PageHead.astro'; import Avatar from '../../components/Avatar.astro'; import latest from '../../data/latest.json';
@@ -12,13 +13,13 @@ const { lang } = Astro.params; const ja = lang==='ja';
 <PageHead eyebrow={ja?'プロフィール':'Who I am'} title={ja?'自己紹介':'About me'} intro={ja?'AIと機械学習のエンジニアです。始まりはゲーム開発でした。':'An AI and machine learning engineer who started in game development.'}/>
 <dl class="glance" aria-label={ja?'ひと目でわかる自己紹介':'At a glance'}>
 {(ja?[
- ['名前','プリティヴィ・ラージ・モハンタ'],
+ ['名前',SITE_NAME],
  ['拠点','インド'],
  ['いまの仕事','Outlier AI'],
  ['言葉','ヒンディー語、英語、ベンガル語、オディア語。日本語は勉強中'],
  ['主な道具','Python、LangGraph、RAGと検索（bge-m3、BM25、ChromaDB）、LLMによる情報抽出（Qwen）、LLMの評価、AIのセキュリティテスト、機械学習（XGBoost、SHAP）、FastAPI、Streamlit、Docker、自動テスト（CI）、Unreal Engine 4とC++、ウェブ制作（Astro、アニメーション）、コーチングとサポート'],
 ]:[
- ['Name','Prithivi Raj Mohanta'],
+ ['Name',SITE_NAME],
  ['Based','India'],
  ['Current work','Outlier AI'],
  ['Languages','Hindi, English, Bengali, Odia. Studying Japanese'],
@@ -26,14 +27,14 @@ const { lang } = Astro.params; const ja = lang==='ja';
 ]).map(([k,v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
 </dl>
 {ja ? <>
-<J en="Hi, I'm Prithivi Raj Mohanta, an engineer based in India.">こんにちは、プリティヴィ・ラージ・モハンタです。インドを拠点にしているエンジニアです。</J>
+<J en="Hi, I'm Prithvi, an engineer based in India.">こんにちは、Prithviです。インドを拠点にしているエンジニアです。</J>
 <J en="I started in game development. As a child I loved Tekken, and that love for games took me to my first job: working full time on games in Unreal Engine and C++, as part of a team.">始まりはゲーム開発でした。子どものころから「鉄拳」が大好きで、そのゲームへの思いが最初の仕事につながりました。正社員として、チームでUnreal EngineとC++を使ってゲームを作っていました。</J>
 <J en="Then I moved into AI and machine learning. I taught myself deep learning and neural networks. My hardware was limited, and LLMs and open source models were not common yet, so I built the foundation step by step.">そのあと、AIと機械学習の道に進みました。ディープラーニングとニューラルネットワークは独学です。使えるパソコンの性能は限られていて、LLMやオープンソースのモデルもまだ一般的ではありませんでした。だから、基礎を一歩ずつ積み上げました。</J>
 <J en="Now I have about 4 years in software, and I currently work at Outlier AI. In my own time I build AI tools for Japanese text and publish how I tested them.">いまはソフトウェアの仕事が約4年になり、Outlier AIで働いています。個人では、日本語の文書を扱うAIツールを作り、テストの方法を公開しています。</J>
 <J en="Along the way I made friends around the world. Anime got me interested in Japan's towns and culture, and I respect the care for others and the punctuality I see in Japan.">その中で、世界中に友だちができました。アニメを見て日本の町や文化に興味を持ち、日本で見る、相手を大切にする心や時間を守る姿勢を尊敬しています。</J>
 <J en="I study Japanese every day, and I speak Hindi, English, Bengali and Odia.">毎日日本語を勉強しています。ヒンディー語、英語、ベンガル語、オディア語を話します。</J>
 </> : <>
-<p>Hi, I'm Prithivi Raj Mohanta, an engineer based in India.</p>
+<p>Hi, I'm Prithvi, an engineer based in India.</p>
 <p>I started in game development. As a child I loved Tekken, and that love for games took me to my first job: working full time on games in Unreal Engine and C++, as part of a team.</p>
 <p>Then I moved into AI and machine learning. I taught myself deep learning and neural networks. My hardware was limited, and LLMs and open source models were not common yet, so I built the foundation step by step.</p>
 <p>Now I have about 4 years in software, and I currently work at Outlier AI. In my own time I build AI tools for Japanese text and publish how I tested them.</p>

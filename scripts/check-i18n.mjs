@@ -20,14 +20,15 @@ for (const f of walk(path.join(D,'en'))) {
   const en = texts(fs.readFileSync(f,'utf8'));
   for (const l of ['ja','fr','ru']) {
     const g = f.replace(`${path.sep}en${path.sep}`, `${path.sep}${l}${path.sep}`); if (!fs.existsSync(g)) { bad.push(`page missing: ${g}`); continue; }
+    if (l!=='ja' && g.includes(`${path.sep}recruiter${path.sep}`)) continue; // v6.8: /recruiter is EN+JA only; FR/RU fall back to EN by design
     const other = texts(dropLangEn(fs.readFileSync(g,'utf8')));
-    for (const t of other) if (en.has(t) && !ALLOW.has(t) && !(l==='fr'&&fr[t]===t) && !(l==='ru'&&ru[t]===t) && !/^[\w.-]+ · Prithivi Raj Mohanta$/.test(t)) bad.push(`${l}: untranslated "${t.slice(0,80)}" in ${path.relative(D,g)}`);
+    for (const t of other) if (en.has(t) && !ALLOW.has(t) && !(l==='fr'&&fr[t]===t) && !(l==='ru'&&ru[t]===t) && !/^[\w.-]+ · Prithvi$/.test(t)) bad.push(`${l}: untranslated "${t.slice(0,80)}" in ${path.relative(D,g)}`);
   }
 }
 const M = JSON.parse(fs.readFileSync('src/data/metrics.json')), vals = [];
 const flat = (o) => Object.values(o).forEach(v => typeof v === 'object' ? flat(v) : vals.push(String(v)));
 flat(M); const distinct = vals.filter(v => /[.%]/.test(v)); // decimals and percents are distinctive enough to search for
 for (const f of [...walk('src/pages'), ...fs.readdirSync('src/pages',{recursive:true}).filter(x=>x.endsWith('.astro')).map(x=>path.join('src/pages',x)), ...fs.readdirSync('src/components').map(x=>path.join('src/components',x))])
-  { if (!/\.(astro|ts|md)$/.test(f)) continue; const s = fs.readFileSync(f,'utf8'); for (const v of distinct) if (s.includes(v)) bad.push(`metrics: "${v}" typed by hand in ${f} (use metrics.json)`); }
+  { if (!/\.(astro|ts|md)$/.test(f)) continue; const s = fs.readFileSync(f,'utf8'); for (const v of distinct) if (new RegExp('(^|[^\\d.:])'+v.replace(/[.%]/g,'\\$&')+'(?![\\d])').test(s)) bad.push(`metrics: "${v}" typed by hand in ${f} (use metrics.json)`); }
 if (bad.length) { console.error([...new Set(bad)].join('\n')); console.error(`check:i18n FAILED (${new Set(bad).size})`); process.exit(1); }
 console.log('check:i18n OK');

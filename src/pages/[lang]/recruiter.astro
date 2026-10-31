@@ -1,0 +1,137 @@
+---
+import Base from '../../layouts/Base.astro';
+export { paths as getStaticPaths } from '../../data/paths';
+import { CONTACT as C } from '../../config';
+import m from '../../data/metrics.json';
+const { lang } = Astro.params; const L = lang==='ja' ? 'ja' : 'en'; const ja = L==='ja';
+const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
+const c=m.crm, r=m.rag, f=m.fraud;
+const ref=(u)=>u+(u.includes('?')?'&':'?')+'ref=recruiter';
+const GH='https://github.com/Retro099/';
+const T = {
+ en:{ top:'AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work. I test AI answers so companies can trust them, and my goal is to work in Japan.',
+  getsH:'What a company gets',
+  gets:[['AI answers checked before people rely on them','I find where an AI tool is wrong or unsafe, explain why, and build a test set so the team can see if a change really helped.'],['Tools for Japanese business text','Turning Japanese notes and documents into structured data and search, with the results measured.'],['Clear, honest reports','Each project says what was tested, how many cases, and what is still unknown.']],
+  projH:'Projects', st:'Status', what:'What it does', who:'Who it helps', steps:'See the steps', links:'Links',
+  jobH:'My current job in 20 seconds',
+  jobO:'Outlier (Scale AI) is a platform where companies hire remote specialists to test and improve AI models. I do this as remote contract work from India.',
+  job:'Companies use AI to answer customers and staff. I test those AI answers before people rely on them. I write hard questions, find where the AI is wrong or unsafe, explain why, and check the code behind it. A company gets fewer wrong answers and a test set that shows if a change really made the AI better.',
+  typesH:'Types of projects', types:[['Checking AI answers against written rules','Rubric evaluation, error rating, clear written explanations'],['Image and chart questions that make AI fail','Computer vision, reading line graphs and charts, adversarial question writing, written critique'],['Checking the AI judges','LLM-as-judge, consistent grading, attention to detail'],['Code and speed checks behind the answers','Python, reading code, performance tuning'],['Building test sets','Dataset building, prompt writing, quality checks']],
+  bgH:'About me',
+  bg:['My strength is helping a team do careful, reliable work. On my current client team I train new members: I explain the guidelines, walk through real examples with them, and keep giving feedback until they can work alone. At a game studio I mentored interns and junior developers every day and reviewed their work.','I like working with others. At college I was on the core team of the tech festival and co-organised coding and bug-finding events, and from 2020 to 2021 I led weekly sessions for junior students. At school I was Vice Captain.','I try to stay humble and keep learning. I practise my weakest skill, speaking, on purpose, and I am studying Japanese. I also speak English, Hindi, Odia and Bengali.','I grew up moving often and studied with classmates from many states and languages, so I adapt quickly and know how much a patient colleague helps.'],
+  q1:'I want students to feel it is okay to get it wrong. A mistake just means someone tried.',
+  q2:'I want to be part of the community, not just a visitor.', q2n:'In Japan I plan to learn the local rules, such as garbage sorting and quiet hours, greet my neighbours first, and speak politely to earn trust. I am planning for the long term.',
+  refH:'Advised by', refs:'References available on request.',
+  coH:'Where I have worked', cos:[['GodSpeed Games','G'],['Bunny Park','B'],['Self-employed: Mercor','M'],['Self-employed: Turing','T'],['Outlier (current remote contract work)','O'],['Topmate','T']],
+  sub:'Open to AI/ML engineer and software engineer roles', slow:'May be slow when the model provider is busy.',
+  typesNote:'These are descriptive names, not the original project names.', sk:'Skills',
+  ctH:'Contact', em:'Email', li:'LinkedIn', sw:'Language' },
+ ja:{ top:'AI/MLエンジニアです。ソフトウェアの仕事は約4年、そのうち直近の2.5年はAIとLLMの仕事です。AIの答えをテストして、会社が安心して使えるようにしています。日本で働くことが目標です。',
+  getsH:'会社にとってのメリット',
+  gets:[['使う前にAIの答えを確認','AIツールのまちがいや危ない答えを見つけて理由を説明し、変更で本当に良くなったかを確かめるテストを作ります。'],['日本語のビジネス文書のためのツール','日本語のメモや文書を、決まった形のデータや検索に変えます。結果は数字で測ります。'],['分かりやすく正直な報告','何を、何件テストしたか、まだ分からないことは何かを、プロジェクトごとに書いています。']],
+  projH:'プロジェクト', st:'状況', what:'できること', who:'役に立つ人', steps:'流れを見る', links:'リンク',
+  jobH:'いまの仕事を20秒で',
+  jobO:'Outlier（Scale AI）は、企業がリモートの専門家に頼んでAIモデルをテストし、改善するためのプラットフォームです。私はインドからリモートの業務委託として働いています。',
+  job:'会社はAIを使ってお客さんや社員に答えます。私はそのAIの答えをテストします。難しい質問を作って、まちがいや危ない答えを見つけ、理由を説明し、裏のコードもチェックします。会社はまちがいが減り、変更で本当に良くなったかを確かめられます。',
+  typesH:'案件の種類', types:[['ルールに沿ったAIの答えの確認','ルーブリック評価、誤りの評価、分かりやすい説明文'],['AIがまちがえる画像・グラフの問題づくり','画像認識、折れ線グラフ・図表の読み取り、敵対的な質問づくり、講評'],['AIの採点者（AIジャッジ）の確認','LLM-as-judge、ぶれない採点、細部への注意'],['答えの裏のコードと速さのチェック','Python、コードの読解、性能改善'],['テストセットの作成','データセット作成、プロンプト作成、品質チェック']],
+  bgH:'自己PR',
+  bg:['私の強みは、チームが正確で信頼できる仕事をできるよう支えることです。いまのクライアントのチームでは新しいメンバーの指導を担当し、ガイドラインを説明して実例を一緒に確認し、ひとりで作業できるまでフィードバックを続けています。ゲーム会社でも、インターンや若手開発者を毎日指導し、作業を確認していました。','人と協力して進める仕事が好きです。大学では技術祭の中心メンバーとして、プログラミングやバグ探しのイベントを共同で運営し、2020〜2021年には後輩向けの勉強会を毎週開きました。学校では副キャプテンを務めました。','謙虚に学び続けることを大切にしています。いちばん苦手な「話す」力をあえて練習し、日本語も勉強中です。英語・ヒンディー語・オディア語・ベンガル語を話します。','引っ越しが多く、いろいろな州や言語の同級生と学んできたので、新しい環境にすぐなじめます。辛抱強い仲間のありがたさもよく知っています。'],
+  q1:'まちがえても大丈夫だと、生徒に感じてほしいです。まちがいは、挑戦したしるしです。',
+  q2:'ただの訪問者ではなく、地域の一員になりたいです。', q2n:'日本では、ごみの分別や静かにする時間などの地域のルールを学び、自分から近所の人にあいさつし、ていねいな言葉で信頼をきずきたいと考えています。長く住むつもりです。',
+  refH:'指導', refs:'推薦者の情報はご依頼があればお伝えします。',
+  coH:'これまでの仕事先', cos:[['GodSpeed Games','G'],['Bunny Park','B'],['個人事業主：Mercor','M'],['個人事業主：Turing','T'],['Outlier（現在のリモート業務委託）','O'],['Topmate','T']],
+  sub:'AI/MLエンジニア・ソフトウェアエンジニアの仕事を探しています', slow:'モデル提供元が混雑している時は、遅くなることがあります。',
+  typesNote:'内容を表す名前で、実際の案件名ではありません。', sk:'必要なスキル',
+  ctH:'連絡先', em:'メール', li:'LinkedIn', sw:'言語' } }[L];
+const P = [
+ { main:true, repo:'jp-meeting-to-crm-fields',
+   en:{ t:'Japanese meeting notes to CRM fields', st:'Finished, stable on main, CI green (30 Oct 2026)', what:'Turns Japanese meeting notes into five CRM fields: contact, company, deadline, next action, risk.', who:'Sales and account teams in Japanese companies.',
+     num:`${c.exact_match} exact match across ${c.exact_total} fields (${c.notes} synthetic notes x 5 fields), mean of ${c.runs} runs, temperature 0.`,
+     extra:[`Attack success rate, lower is better: ${c.attack_before} to ${c.attack_after} with defenses on (held-out ${c.attacks} attacks, small test).`,`${c.judge_agree} of ${c.judge_total} sampled judge grades agreed with the judge (small sample).`],
+     steps:['Paste a Japanese meeting note.','The model extracts the 5 fields as JSON.','Optional checks: security defenses, validate and repair.','A person reviews and edits the fields.','Copy or download the JSON for the CRM.'] },
+   ja:{ t:'日本語の商談メモからCRM項目へ', st:'完成。mainで安定、CIは成功（2026年10月30日）', what:'日本語の商談メモから CRM の 5 項目（相手・会社名・期限・次アクション・リスク）を取り出します。', who:'日本企業の営業・アカウント担当。',
+     num:`完全一致 ${c.exact_match}（${c.exact_total}項目＝テスト用メモ${c.notes}件×5項目、${c.runs}回の平均、temperature 0）`,
+     extra:[`攻撃成功率（低いほど良い）：対策ありで${c.attack_before}から${c.attack_after}（未使用の攻撃${c.attacks}件、小規模なテスト）`,`抽出した評価${c.judge_total}件のうち${c.judge_agree}件で、判定が一致しました（小規模な確認）。`],
+     steps:['商談メモを貼り付ける','モデルが 5 項目を JSON で抽出','任意で確認（セキュリティ防御・確認と修正）','担当者が確認・修正','JSON をコピー／ダウンロードして CRM へ'] },
+   links:[['Repo / リポジトリ',GH+'jp-meeting-to-crm-fields'],['README (EN)',GH+'jp-meeting-to-crm-fields/blob/main/README.md'],['README (日本語)',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'],[ja?'動くアプリ':'Live app','https://retro-jp-meeting-to-crm-fields.streamlit.app/']] },
+ { repo:'japanese-rag-eval',
+   en:{ t:'Japanese document search evaluation', st:'Finished (one evaluation report)', what:'Tests whether AI search finds the right passage in a long Japanese government report.', who:'Teams building AI search over Japanese documents.',
+     num:`Right passage in the top 5: ${Math.round(+r.hit5*100)}%, MRR ${r.mrr}, on ${r.questions} questions (${r.hand_checked} hand-checked).`, extra:[],
+     steps:['Ask a question in Japanese.','Search finds candidate passages.','The top 5 passages are ranked.','Score: is the right passage in the top 5?'] },
+   ja:{ t:'日本語の文書検索の評価', st:'完成（評価レポート1件）', what:'長い日本語の政府報告書から、AI検索が正しい部分を見つけられるかをテストします。', who:'日本語の文書でAI検索を作るチーム。',
+     num:`${r.questions}問で、上位5件に正解 ${Math.round(+r.hit5*100)}%、MRR ${r.mrr}（うち${r.hand_checked}問は手で確認）`, extra:[],
+     steps:['日本語で質問する','検索が候補の部分を探す','上位5件を並べる','正解が上位5件に入ったかを採点'] },
+   links:[['Repo / README',GH+'japanese-rag-eval']] },
+ { repo:'credit-card-fraud',
+   en:{ t:'Credit-card fraud detection', st:'Finished (one public dataset, not yet tested on newer data)', what:'Flags card payments that may be fraud and shows why.', who:'Fraud and risk teams at payment companies.',
+     num:`Recall ${f.recall}, precision ${f.precision}, on the public Kaggle ULB dataset (${f.fraud_rate} of payments are fraud).`, extra:[],
+     steps:['Card payment data comes in.','A model scores each payment.','Likely fraud is flagged.','An explanation shows which details drove the score.'] },
+   ja:{ t:'クレジットカードの不正検出', st:'完成（公開データ1つ、新しいデータでは未検証）', what:'不正かもしれないカードの支払いを見つけ、その理由を示します。', who:'決済会社の不正対策・リスク担当チーム。',
+     num:`公開データ（Kaggle ULB、不正は${f.fraud_rate}）で、再現率 ${f.recall}、適合率 ${f.precision}`, extra:[],
+     steps:['カードの支払いデータが入る','モデルが支払いごとに点数をつける','不正の可能性が高いものに印をつける','どの情報が点数に効いたかを説明'] },
+   links:[['Repo / README',GH+'credit-card-fraud']] } ];
+const other = L==='ja'?'en':'ja';
+---
+<Base lang={lang} page="recruiter" title="AI/ML engineer">
+<div class="rec" data-i18n-skip lang={L}>
+<div class="rsw" role="group" aria-label={T.sw}><a href={`${B}/en/recruiter/`} data-rl="en" aria-current={L==='en'?'true':undefined}>EN</a><a href={`${B}/ja/recruiter/`} data-rl="ja" lang="ja" aria-current={L==='ja'?'true':undefined}>日本語</a></div>
+<h1>AI/ML engineer</h1>
+<p class="sub">{T.sub}</p>
+<p class="lead">{T.top}</p>
+
+<h2>{T.getsH}</h2>
+<div class="rg3">{T.gets.map(([h,p])=> <div class="card"><h3>{h}</h3><p>{p}</p></div>)}</div>
+
+<h2>{T.projH}</h2>
+{P.map(p=>{const x=p[L]; return <article class={p.main?'card pj main':'card pj'}>
+ <h3>{x.t}</h3>
+ <p class="st"><span class="dot" aria-hidden="true"></span>{T.st}: {x.st}</p>
+ <p><b>{T.what}:</b> {x.what}</p><p><b>{T.who}:</b> {x.who}</p>
+ <p class="num">{x.num}</p>
+ {x.extra.map(e=> <p class="mut">{e}</p>)}
+ <details class="stp"><summary>{T.steps}</summary><ol>{x.steps.map((s,i)=> <li style={`--i:${i}`}>{s}</li>)}</ol></details>
+ <p class="lk">{p.links.map(([n,u])=> <a href={ref(u)}>{n}</a>)}</p>{p.main && <p class="mut note">{T.slow}</p>}
+</article>})}
+
+<h2>{T.jobH}</h2>
+<div class="card"><p>{T.job}</p><p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,k])=> <li><b>{n}</b><span>{T.sk}: {k}</span></li>)}</ul></div>
+
+<h2>{T.bgH}</h2>
+<div class="card">{T.bg.map(b=> <p>{b}</p>)}<blockquote>“{T.q1}”</blockquote><blockquote>“{T.q2}”</blockquote><p>{T.q2n}</p></div>
+
+<h2>{T.refH}</h2>
+<p>{T.refs}</p>
+
+<h2>{T.coH}</h2>
+<ul class="chips cos">{T.cos.map(([n,i])=> <li><span class="ini" aria-hidden="true">{i}</span>{n}</li>)}</ul>
+
+
+<h2>{T.ctH}</h2>
+<p class="btns"><a class="btn ghost" href={`mailto:${C.email}`}>{T.em}: {C.email}</a><a class="btn ghost" href={ref(C.linkedin)}>{T.li}</a><a class="btn ghost" href={ref(C.github)}>GitHub</a><a class="btn ghost" href={ref(C.topmate)}>Topmate</a></p>
+</div>
+<script is:inline>document.addEventListener('pointerdown',e=>{document.querySelectorAll('.stp[open]').forEach(d=>{if(!d.contains(e.target))d.open=false})},true);document.querySelectorAll('.rsw a').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('rlang',a.dataset.rl)}catch(e){}}));</script>
+</Base>
+<style>
+.rec{max-width:46rem;margin:0 auto}.sub{font-weight:600;margin:-.25rem 0 .75rem}.note{font-size:.9rem;margin:.25rem 0}.types{list-style:none;padding:0;display:grid;gap:.6rem}.types li{display:flex;flex-direction:column;gap:.15rem;border-left:3px solid var(--line);padding-left:.7rem}.types span{opacity:.85;font-size:.95rem}.cos li{display:inline-flex;align-items:center;gap:.45rem}.ini{width:1.6em;height:1.6em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;font-weight:700;font-size:.8em}
+.rsw{display:flex;gap:.4rem;justify-content:flex-end;margin:.5rem 0}
+.rsw a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 .8rem;border:1px solid var(--line);border-radius:8px;text-decoration:none}
+.rsw a[aria-current]{background:var(--acc);color:#fff;border-color:var(--acc)}
+.lead{font-size:1.1rem;line-height:1.6}
+.rg3{display:grid;gap:.75rem}@media (min-width:800px){.rg3{grid-template-columns:repeat(3,1fr)}}
+.rg3 .card{margin:0}
+.pj.main{border-bottom-color:var(--acc)}
+.st{font-weight:600;display:flex;gap:.5rem;align-items:baseline}
+.dot{width:.6em;height:.6em;border-radius:50%;background:#2e9e5b;flex:none}
+.num{font-weight:600;font-size:1.05rem}
+.mut{opacity:.85}
+.stp summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:600;color:var(--acc);touch-action:manipulation}
+.stp ol{margin:.25rem 0 .5rem;padding-left:1.4rem}
+.stp[open] li{animation:rin .35s ease both;animation-delay:calc(var(--i) * .25s)}
+@keyframes rin{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.stp[open] li{animation:none}}
+.lk{display:flex;flex-wrap:wrap;gap:.4rem 1rem}.lk a{min-height:44px;display:inline-flex;align-items:center}
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem;background:var(--card)}
+blockquote{margin:.75rem 0;padding-left:.9rem;border-left:3px solid var(--warm);font-style:italic}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem}.btns .btn{overflow-wrap:anywhere}
+</style>
