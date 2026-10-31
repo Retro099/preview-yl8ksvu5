@@ -31,5 +31,7 @@ export const timeline = [
  ['v4.8','22:24','Talk page with 3 featured Topmate cards','相談ページに、Topmateの3つのカード'],
  ['v4.9','22:37','Desktop layout, touch petals, background, card spotlight, theme button, 404 page','パソコンのレイアウト、タッチの花びら、背景、カードの強調、テーマのボタン、404ページ'],
  ['v4.10','23:27','Touch petal trail no longer stops','タッチの花びらが止まらないように修正'],
- ['v5.0','','Work with me page, this Team page, a link for each Topmate card','仕事の依頼ページ、このチームのページ、Topmateのカードごとのリンク'],
+ ['v5.0','—','Work with me page, this Team page, a link for each Topmate card','仕事の依頼ページ、このチームのページ、Topmateのカードごとのリンク'],
+ ['v6.8','10:04','Built with agents: recruiter page in English and Japanese, site name Prithvi, new CRM numbers','エージェントと作成：英語と日本語の採用担当者向けページ、サイト名をPrithviに、CRMの新しい数字','2026-10-31'],
+ ['v6.9','','Built with agents: recruiter page redesign with work timeline, affiliations, logos and a step animation','エージェントと作成：採用担当者向けページを作り直し（職歴の記録、関わりのある組織、ロゴ、流れのアニメーション）','2026-10-31'],
 ];

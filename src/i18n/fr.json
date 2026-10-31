@@ -484,5 +484,8 @@
  "Turn Japanese meeting notes into CRM fields instead of typing them by hand. In the CRM project, exact match was 59.8% across 150 fields (30 test notes, mean of 3 runs).": "Transformer des notes de réunion en japonais en champs CRM, au lieu de tout taper à la main. Dans le projet CRM, la correspondance exacte était de 59,8 % sur 150 champs (30 notes de test, moyenne de 3 exécutions).",
  "Updated 31 Oct 2026": "Mis à jour le 31 oct. 2026",
  "attack success rate with defenses on (lower is better)": "taux de réussite des attaques avec défenses (plus bas = mieux)",
- "Data-science and data-cleaning projects through Turing and Mercor.": "Projets d'analyse et de nettoyage de données via Turing et Mercor."
+ "Data-science and data-cleaning projects through Turing and Mercor.": "Projets d'analyse et de nettoyage de données via Turing et Mercor.",
+ "Try it": "Essayer",
+ "Built with agents: recruiter page in English and Japanese, site name Prithvi, new CRM numbers": "Créé avec des agents : page recruteurs en anglais et en japonais, nom du site Prithvi, nouveaux chiffres CRM",
+ "Built with agents: recruiter page redesign with work timeline, affiliations, logos and a step animation": "Créé avec des agents : nouvelle page recruteurs avec parcours, organisations, logos et animation des étapes"
 }

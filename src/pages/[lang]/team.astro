@@ -9,7 +9,7 @@ const FB = [
  { d:'2026-10-27', en:'Friend from Aichi Prefecture (日本人男性)', ja:'愛知県の友だち（日本人男性）', chEn:['v6.6: added to the train as a motorcycle rider, with his comments'], chJa:['v6.6：バイクに乗る人として、コメントといっしょに汽車に'] },
 ];
 // v6.7: ONE workflow timeline. Friend feedback + agent-built versions, newest first, grouped by date.
-const ENT = [...FB.map(f=>({d:f.d, k:'fb', f})), ...[...timeline].reverse().map(([v,t,en,jp])=>({d:'2026-10-25', k:'ag', v, t, en, jp}))];
+const ENT = [...FB.map(f=>({d:f.d, k:'fb', f})), ...[...timeline].reverse().map(([v,t,en,jp,d])=>({d:d||'2026-10-25', k:'ag', v, t, en, jp}))];
 const GROUPS = [...new Set(ENT.map(e=>e.d))].sort().reverse().map(d=>[d, ENT.filter(e=>e.d===d)]);
 export { paths as getStaticPaths } from '../../data/paths';
 const { lang } = Astro.params; const ja = lang==='ja';
@@ -40,7 +40,7 @@ const T = ja ? {
 <p class="mut">{T.histNote}</p>
 <div class="wfs" tabindex="0" role="region" aria-label={T.scr}>{GROUPS.map(([d,items]) => <section class="wfg"><h3 class="wfd"><time datetime={d}>{ja?`${+d.slice(0,4)}年${+d.slice(5,7)}月${+d.slice(8)}日`:`${+d.slice(8)} Oct ${d.slice(0,4)}`}</time></h3><ol class="wfl">{items.map(e => e.k==='fb'
  ? <li class="wfe fb"><span class="wtag">{T.fbT}</span><strong class="wt">{ja?e.f.ja:e.f.en}</strong><ul class="wch">{(ja?e.f.chJa:e.f.chEn).map(c => <li>{c}</li>)}</ul></li>
- : <li class="wfe ag"><span class="wtag">{T.ag}</span><span class="wt"><strong>{e.v}</strong> {e.t ? <time class="mut" datetime={`2026-10-25T${e.t}+05:30`}>{e.t}</time> : <span class="mut">({T.now})</span>}</span><span class="wd">{ja?e.jp:e.en}</span></li>)}</ol></section>)}</div>
+ : <li class="wfe ag"><span class="wtag">{T.ag}</span><span class="wt"><strong>{e.v}</strong> {e.t==='—' ? null : e.t ? <time class="mut" datetime={`2026-10-25T${e.t}+05:30`}>{e.t}</time> : <span class="mut">({T.now})</span>}</span><span class="wd">{ja?e.jp:e.en}</span></li>)}</ol></section>)}</div>
 <p class="wfact">{T.facts}</p>
 </section>
 <style>.wfs{max-height:28rem;overflow-y:auto;overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;padding:0 .8rem .8rem;background:var(--card);box-shadow:0 6px 18px rgba(20,30,50,.08)}

@@ -3,7 +3,7 @@ import Contact from '../components/Contact.astro';
 import Guide from '../components/Guide.astro';
 import Avatar from '../components/Avatar.astro';
 import { SHOW_RUBY_ON_RECRUITER_PAGES, GOATCOUNTER, SHOW_WRITING_IN_NAV, SITE_NAME } from '../config';
-const { lang, page = '', title, recruiter = true } = Astro.props;
+const { lang, page = '', title, recruiter = true, footerContact = true } = Astro.props;
 const noruby = recruiter && !SHOW_RUBY_ON_RECRUITER_PAGES;
 const built = new Date().toISOString().slice(0,10);
 const ja = lang === 'ja';
@@ -22,6 +22,7 @@ const nav = [['projects', ja?'プロジェクト':'Projects'],...(SHOW_WRITING_I
 <meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{pageTitle}</title>
 <meta name="description" content={desc}>
+{page==='recruiter' && <link rel="preload" href={`${B}/fonts/fraunces-latin.woff2`} as="font" type="font/woff2" crossorigin>}
 <link rel="icon" href={`${B}/favicon.svg`} type="image/svg+xml"><link rel="icon" href={`${B}/favicon-32.png`} sizes="32x32"><link rel="apple-touch-icon" href={`${B}/apple-touch-icon.png`}>
 <meta property="og:type" content="website"><meta property="og:site_name" content={SITE_NAME}><meta property="og:title" content={pageTitle}><meta property="og:description" content={desc}><meta property="og:url" content={`${site}/${lang}/${slug}`}><meta property="og:locale" content={({ja:'ja_JP',fr:'fr_FR',ru:'ru_RU'})[lang] ?? 'en_US'}>
 <meta property="og:image" content={`${site}/og-${lang}.png`}><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content={ja?'Prithvi（AI / MLエンジニア）':'Prithvi, AI / ML engineer'}>
@@ -305,7 +306,7 @@ header nav a,header nav .navhelp{min-height:48px;width:100%;padding:0 .4rem;font
 <main class="wrap"><slot/></main>
 <footer><div class="wrap">
 <nav aria-label="Footer"><a href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a href={`${B}/${lang}/now/`}>{ja?'いま':'Now'}</a><a href={`${B}/${lang}/writing/`}>{ja?'記事':'Writing'}</a><a href={`${B}/${lang}/about/`}>{ja?'自己紹介':'About'}</a><a href={`${B}/${lang}/work/`}>{ja?'仕事の依頼':'Work with me'}</a><a href={`${B}/${lang}/team/`}>{ja?'わたしのエージェントチーム':'My team of agents'}</a></nav>
-<Contact lang={lang} compact/>
+{footerContact && <Contact lang={lang} compact/>}
 <p>{ja?'更新日':'Updated'} <time datetime={built}>{built}</time> · {ja?'Astroで作成、GitHub Pagesで公開':'Built with Astro, hosted on GitHub Pages'}</p>
 <p>© 2026 {SITE_NAME} · <button type="button" class="helpb" data-guide-open><svg class="gico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>{({en:'Site guide',ja:'サイトガイド',fr:'Visite guidée',ru:'Путеводитель по сайту'} as any)[lang] ?? 'Site guide'}</button></p>
 </div></footer>

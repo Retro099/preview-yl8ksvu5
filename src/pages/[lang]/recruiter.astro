@@ -1,50 +1,75 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Contact from '../../components/Contact.astro';
 export { paths as getStaticPaths } from '../../data/paths';
-import { CONTACT as C } from '../../config';
 import m from '../../data/metrics.json';
 const { lang } = Astro.params; const L = lang==='ja' ? 'ja' : 'en'; const ja = L==='ja';
 const _b = import.meta.env.BASE_URL; const B = _b.endsWith('/') ? _b.slice(0, -1) : _b;
 const c=m.crm, r=m.rag, f=m.fraud;
 const ref=(u)=>u+(u.includes('?')?'&':'?')+'ref=recruiter';
 const GH='https://github.com/Retro099/';
+const LG=(n)=>`${B}/logos/${n}`;
+// Advisors: fill when real names arrive. { name, email, role, roleJa, inst, instJa }. No quotes.
+const ADVISORS = [];
 const T = {
- en:{ top:'AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work. I test AI answers so companies can trust them, and my goal is to work in Japan.',
-  getsH:'What a company gets',
-  gets:[['AI answers checked before people rely on them','I find where an AI tool is wrong or unsafe, explain why, and build a test set so the team can see if a change really helped.'],['Tools for Japanese business text','Turning Japanese notes and documents into structured data and search, with the results measured.'],['Clear, honest reports','Each project says what was tested, how many cases, and what is still unknown.']],
-  projH:'Projects', st:'Status', what:'What it does', who:'Who it helps', steps:'See the steps', links:'Links',
-  jobH:'My current job in 20 seconds',
-  jobO:'Outlier (Scale AI) is a platform where companies hire remote specialists to test and improve AI models. I do this as remote contract work from India.',
-  job:'Companies use AI to answer customers and staff. I test those AI answers before people rely on them. I write hard questions, find where the AI is wrong or unsafe, explain why, and check the code behind it. A company gets fewer wrong answers and a test set that shows if a change really made the AI better.',
+ en:{ h1:'Software, data and AI/ML engineer', h1b:'(Python, LLM evaluation)',
+  top:'Based in India, open to relocating, including overseas, with visa sponsorship and relocation support. Japan is my main goal.',
+  intent:'Looking for roles with work-visa sponsorship, Japan first. I’ll relocate after an offer and visa approval. Studying Japanese daily.',
+  nav:['Projects','Work','Contact'], getsH:'What a company gets',
+  gets:[['Checking AI answers against written rules','LLM evaluation: I check AI answers against a company’s written rules, find where they are wrong or unsafe, explain why, and build test sets that show whether a change helped.'],
+   ['Working systems in Python','Data and ML pipelines that run: Japanese meeting notes to CRM fields (with a live app), a Japanese document search (RAG) evaluation, and credit-card fraud detection. Each reports what was tested and on how many cases.'],
+   ['Game development','At GodSpeed Games I worked on Bunny Park (Xbox, PS4, PC) in Unreal Engine 4 and C++: localization, testing on handheld devices, and porting to handheld devices, including touch controls.'],
+   ['This website, end to end','Built with Astro and TypeScript, in 4 languages (English, Japanese, French, Russian), checked at phone and desktop widths in light and dark mode, and deployed to GitHub Pages.'],
+   ['A private local agent pipeline','I built a private local pipeline of AI agents. The site versions in the “How this site was built” timeline were built with it. The repository is not public.'],
+   ['Remote work in international teams','Since Jun 2024 I have worked remotely with international teams across time zones, and I report problems early.']],
+  projH:'Projects', st:'Status', what:'What it does', who:'Who it helps', steps:'See the steps', gh:'View on GitHub', live:'Try live app', docs:'Docs', docsN:'same README in two languages', onreq:'Repository available on request',
+  jobH:'What I do: checking AI answers against written rules',
+  job:['Companies use AI to answer customers and staff.','I test those answers before people rely on them: I write hard questions, find where the AI is wrong or unsafe, explain why, and check the code behind it.','The company gets fewer wrong answers, and a test set that shows whether a change really made the AI better.'],
+  jobO:'Outlier AI is a platform operated by Scale AI where companies hire remote specialists to test and improve AI models. I do this as remote contract work from India.',
   typesH:'Types of projects', types:[['Checking AI answers against written rules','Rubric evaluation, error rating, clear written explanations'],['Image and chart questions that make AI fail','Computer vision, reading line graphs and charts, adversarial question writing, written critique'],['Checking the AI judges','LLM-as-judge, consistent grading, attention to detail'],['Code and speed checks behind the answers','Python, reading code, performance tuning'],['Building test sets','Dataset building, prompt writing, quality checks']],
+  typesNote:'These are descriptive names, not the original project names.', sk:'Skills',
   bgH:'About me',
-  bg:['My strength is helping a team do careful, reliable work. On my current client team I train new members: I explain the guidelines, walk through real examples with them, and keep giving feedback until they can work alone. At a game studio I mentored interns and junior developers every day and reviewed their work.','I like working with others. At college I was on the core team of the tech festival and co-organised coding and bug-finding events, and from 2020 to 2021 I led weekly sessions for junior students. At school I was Vice Captain.','I try to stay humble and keep learning. I practise my weakest skill, speaking, on purpose, and I am studying Japanese. I also speak English, Hindi, Odia and Bengali.','I grew up moving often and studied with classmates from many states and languages, so I adapt quickly and know how much a patient colleague helps.'],
+  bg:['My strength is helping a team do careful, reliable work. On my current client team I train new members: I explain the guidelines, walk through real examples with them, and keep giving feedback until they can work alone. At a game studio I mentored interns and junior developers every day and reviewed their work.','I like working with others. At college I was on the core team of the tech festival and co-organised coding and bug-finding events, and from 2020 to 2021 I led weekly sessions for junior students. At school I was Vice Captain.','I try to stay humble and keep learning. I practise my weakest skill, speaking, on purpose, and I am studying Japanese. I also speak English, Hindi, Odia and Bengali.',
+   'Impact: I catch where AI answers break the written rules before customers see them, and write it up so the team can fix it. Since Jun 2024 I have worked remotely with international teams on Outlier, across time zones. I have studied Japanese every day since Aug 2025 and have talked with friends in Japan on HelloTalk since Mar 2024. I report problems early, while they are still easy to fix.'],
   q1:'I want students to feel it is okay to get it wrong. A mistake just means someone tried.',
   q2:'I want to be part of the community, not just a visitor.', q2n:'In Japan I plan to learn the local rules, such as garbage sorting and quiet hours, greet my neighbours first, and speak politely to earn trust. I am planning for the long term.',
   refH:'Advised by', refs:'References available on request.',
-  coH:'Where I have worked', cos:[['GodSpeed Games','G'],['Bunny Park','B'],['Self-employed: Mercor','M'],['Self-employed: Turing','T'],['Outlier (current remote contract work)','O'],['Topmate','T']],
-  sub:'Open to AI/ML engineer and software engineer roles', slow:'May be slow when the model provider is busy.',
-  typesNote:'These are descriptive names, not the original project names.', sk:'Skills',
-  ctH:'Contact', em:'Email', li:'LinkedIn', sw:'Language' },
- ja:{ top:'AI/MLエンジニアです。ソフトウェアの仕事は約4年、そのうち直近の2.5年はAIとLLMの仕事です。AIの答えをテストして、会社が安心して使えるようにしています。日本で働くことが目標です。',
-  getsH:'会社にとってのメリット',
-  gets:[['使う前にAIの答えを確認','AIツールのまちがいや危ない答えを見つけて理由を説明し、変更で本当に良くなったかを確かめるテストを作ります。'],['日本語のビジネス文書のためのツール','日本語のメモや文書を、決まった形のデータや検索に変えます。結果は数字で測ります。'],['分かりやすく正直な報告','何を、何件テストしたか、まだ分からないことは何かを、プロジェクトごとに書いています。']],
-  projH:'プロジェクト', st:'状況', what:'できること', who:'役に立つ人', steps:'流れを見る', links:'リンク',
-  jobH:'いまの仕事を20秒で',
-  jobO:'Outlier（Scale AI）は、企業がリモートの専門家に頼んでAIモデルをテストし、改善するためのプラットフォームです。私はインドからリモートの業務委託として働いています。',
-  job:'会社はAIを使ってお客さんや社員に答えます。私はそのAIの答えをテストします。難しい質問を作って、まちがいや危ない答えを見つけ、理由を説明し、裏のコードもチェックします。会社はまちがいが減り、変更で本当に良くなったかを確かめられます。',
+  coH:'Where I have worked', coScr:'Work history (scrollable)', now:'present',
+  work:[{l:['outlier.svg','scale.svg'],n:'Outlier AI, a Scale AI platform',y:'Jun 2024 – present',d:'Remote. LLM evaluation, including safety testing and multimodal tasks.'},
+   {l:['mercor.svg','turing.webp'],n:'Self-employed: Mercor and Turing',y:'Jul 2023 – May 2024',d:'Data-science and data-cleaning projects.'},
+   {l:['godspeed.webp'],n:'GodSpeed Games',s:'Project: Bunny Park',y:'Jun 2022 – Jun 2023',d:'Remote, full-time. Unreal Engine 4 and C++: localization, handheld testing and porting, touch controls.'}],
+  afH:'Organizations and firms I’m affiliated with', afN:'Logos are trademarks of their owners.',
+  ctH:'Contact', sw:'Language' },
+ ja:{ h1:'ソフトウェア・データ・AI/MLのエンジニアです。', h1b:'',
+  top:'インド在住で、ビザサポートのある海外での就業にも前向きで、特に日本で働きたいと考えています。',
+  intent:'ビザサポートのある企業で働きたいと考えています（日本を第一希望）。内定後、ビザ申請と引っ越しの準備を進めます。毎日日本語を勉強しています。',
+  nav:['プロジェクト','職歴','連絡先'], getsH:'会社にとってのメリット',
+  gets:[['書かれたルールに照らしたAIの回答の確認','LLMの評価：会社のルールに照らしてAIの回答を確認し、まちがいや危ない答えを見つけて理由を説明し、変更で本当に良くなったかを確かめるテストを作ります。'],
+   ['Pythonで動くシステム','実際に動くデータ・MLのパイプライン：日本語の商談メモからCRM項目へ（動くアプリあり）、日本語の文書検索（RAG）の評価、クレジットカードの不正検出。何を何件テストしたかを、それぞれ書いています。'],
+   ['ゲーム開発','GodSpeed Gamesで、Unreal Engine 4とC++を使い「Bunny Park」（Xbox、PS4、PC）を担当しました。ローカライズ、携帯機でのテスト、携帯機への移植（タッチ操作も）をしました。'],
+   ['このサイトを最初から最後まで','AstroとTypeScriptで作り、4言語（英語・日本語・フランス語・ロシア語）に対応。スマホとパソコンの幅、ライトとダークで確認し、GitHub Pagesで公開しています。'],
+   ['自分で作ったローカルのエージェントの仕組み','AIエージェントを使う、非公開のローカルの仕組みを作りました。「このサイトの作り方」の記録にある版は、これで作りました。リポジトリは公開していません。'],
+   ['海外のチームとのリモートの仕事','2024年6月から、時差のある海外のチームとリモートで働いています。問題は早めに報告します。']],
+  projH:'プロジェクト', st:'状況', what:'できること', who:'役に立つ人', steps:'流れを見る', gh:'GitHubで見る', live:'動くアプリを試す', docs:'資料', docsN:'同じREADMEの英語版と日本語版', onreq:'リポジトリはご依頼があればお見せします',
+  jobH:'私の仕事：AIの回答を、書かれたルールに照らして確認する',
+  job:['会社はAIを使ってお客さんや社員に答えます。','私はその答えを、人が使う前にテストします。難しい質問を作り、まちがいや危ない答えを見つけて理由を説明し、裏のコードもチェックします。','会社はまちがいが減り、変更で本当に良くなったかを確かめられます。'],
+  jobO:'Outlier AIは、Scale AIが運営するプラットフォームで、企業がリモートの専門家に頼んでAIモデルをテストし、改善します。私はインドからリモートの業務委託として働いています。',
   typesH:'案件の種類', types:[['ルールに沿ったAIの答えの確認','ルーブリック評価、誤りの評価、分かりやすい説明文'],['AIがまちがえる画像・グラフの問題づくり','画像認識、折れ線グラフ・図表の読み取り、敵対的な質問づくり、講評'],['AIの採点者（AIジャッジ）の確認','LLM-as-judge、ぶれない採点、細部への注意'],['答えの裏のコードと速さのチェック','Python、コードの読解、性能改善'],['テストセットの作成','データセット作成、プロンプト作成、品質チェック']],
+  typesNote:'内容を表す名前で、実際の案件名ではありません。', sk:'必要なスキル',
   bgH:'自己PR',
-  bg:['私の強みは、チームが正確で信頼できる仕事をできるよう支えることです。いまのクライアントのチームでは新しいメンバーの指導を担当し、ガイドラインを説明して実例を一緒に確認し、ひとりで作業できるまでフィードバックを続けています。ゲーム会社でも、インターンや若手開発者を毎日指導し、作業を確認していました。','人と協力して進める仕事が好きです。大学では技術祭の中心メンバーとして、プログラミングやバグ探しのイベントを共同で運営し、2020〜2021年には後輩向けの勉強会を毎週開きました。学校では副キャプテンを務めました。','謙虚に学び続けることを大切にしています。いちばん苦手な「話す」力をあえて練習し、日本語も勉強中です。英語・ヒンディー語・オディア語・ベンガル語を話します。','引っ越しが多く、いろいろな州や言語の同級生と学んできたので、新しい環境にすぐなじめます。辛抱強い仲間のありがたさもよく知っています。'],
+  bg:['私の強みは、チームが正確で信頼できる仕事をできるよう支えることです。いまのクライアントのチームでは新しいメンバーの指導を担当し、ガイドラインを説明して実例を一緒に確認し、ひとりで作業できるまでフィードバックを続けています。ゲーム会社でも、インターンや若手開発者を毎日指導し、作業を確認していました。','人と協力して進める仕事が好きです。大学では技術祭の中心メンバーとして、プログラミングやバグ探しのイベントを共同で運営し、2020〜2021年には後輩向けの勉強会を毎週開きました。学校では副キャプテンを務めました。','謙虚に学び続けることを大切にしています。いちばん苦手な「話す」力をあえて練習し、日本語も勉強中です。英語・ヒンディー語・オディア語・ベンガル語を話します。'],
   q1:'まちがえても大丈夫だと、生徒に感じてほしいです。まちがいは、挑戦したしるしです。',
   q2:'ただの訪問者ではなく、地域の一員になりたいです。', q2n:'日本では、ごみの分別や静かにする時間などの地域のルールを学び、自分から近所の人にあいさつし、ていねいな言葉で信頼をきずきたいと考えています。長く住むつもりです。',
   refH:'指導', refs:'推薦者の情報はご依頼があればお伝えします。',
-  coH:'これまでの仕事先', cos:[['GodSpeed Games','G'],['Bunny Park','B'],['個人事業主：Mercor','M'],['個人事業主：Turing','T'],['Outlier（現在のリモート業務委託）','O'],['Topmate','T']],
-  sub:'AI/MLエンジニア・ソフトウェアエンジニアの仕事を探しています', slow:'モデル提供元が混雑している時は、遅くなることがあります。',
-  typesNote:'内容を表す名前で、実際の案件名ではありません。', sk:'必要なスキル',
-  ctH:'連絡先', em:'メール', li:'LinkedIn', sw:'言語' } }[L];
+  coH:'これまでの仕事先', coScr:'職歴（スクロールできます）', now:'現在',
+  work:[{l:['outlier.svg','scale.svg'],n:'Outlier AI（Scale AIのプラットフォーム）',y:'2024年6月〜現在',d:'リモート。LLMの回答の評価（安全性テスト、マルチモーダルを含む）。'},
+   {l:['mercor.svg','turing.webp'],n:'個人事業主：MercorとTuring',y:'2023年7月〜2024年5月',d:'データ分析とデータ整理の案件。'},
+   {l:['godspeed.webp'],n:'GodSpeed Games',s:'プロジェクト：Bunny Park',y:'2022年6月〜2023年6月',d:'リモート、正社員。Unreal Engine 4とC++で、ローカライズ、携帯機でのテストと移植、タッチ操作。'}],
+  afH:'関わりのある組織・企業', afN:'ロゴは各社の商標です。',
+  ctH:'連絡先', sw:'言語' } }[L];
+const AF = [['Outlier AI','outlier.svg'],['Scale AI','scale.svg'],['Mercor','mercor.svg'],['Turing','turing.webp'],['GodSpeed Games','godspeed.webp'],['DocMed',null],['Topmate',null]];
 const P = [
- { main:true, repo:'jp-meeting-to-crm-fields',
+ { main:true, gh:GH+'jp-meeting-to-crm-fields', live:'https://retro-jp-meeting-to-crm-fields.streamlit.app/', docs:[GH+'jp-meeting-to-crm-fields/blob/main/README.md',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'], vis:['note','json','check','person','copy'],
    en:{ t:'Japanese meeting notes to CRM fields', st:'Finished, stable on main, CI green (30 Oct 2026)', what:'Turns Japanese meeting notes into five CRM fields: contact, company, deadline, next action, risk.', who:'Sales and account teams in Japanese companies.',
      num:`${c.exact_match} exact match across ${c.exact_total} fields (${c.notes} synthetic notes x 5 fields), mean of ${c.runs} runs, temperature 0.`,
      extra:[`Attack success rate, lower is better: ${c.attack_before} to ${c.attack_after} with defenses on (held-out ${c.attacks} attacks, small test).`,`${c.judge_agree} of ${c.judge_total} sampled judge grades agreed with the judge (small sample).`],
@@ -52,86 +77,142 @@ const P = [
    ja:{ t:'日本語の商談メモからCRM項目へ', st:'完成。mainで安定、CIは成功（2026年10月30日）', what:'日本語の商談メモから CRM の 5 項目（相手・会社名・期限・次アクション・リスク）を取り出します。', who:'日本企業の営業・アカウント担当。',
      num:`完全一致 ${c.exact_match}（${c.exact_total}項目＝テスト用メモ${c.notes}件×5項目、${c.runs}回の平均、temperature 0）`,
      extra:[`攻撃成功率（低いほど良い）：対策ありで${c.attack_before}から${c.attack_after}（未使用の攻撃${c.attacks}件、小規模なテスト）`,`抽出した評価${c.judge_total}件のうち${c.judge_agree}件で、判定が一致しました（小規模な確認）。`],
-     steps:['商談メモを貼り付ける','モデルが 5 項目を JSON で抽出','任意で確認（セキュリティ防御・確認と修正）','担当者が確認・修正','JSON をコピー／ダウンロードして CRM へ'] },
-   links:[['Repo / リポジトリ',GH+'jp-meeting-to-crm-fields'],['README (EN)',GH+'jp-meeting-to-crm-fields/blob/main/README.md'],['README (日本語)',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'],[ja?'動くアプリ':'Live app','https://retro-jp-meeting-to-crm-fields.streamlit.app/']] },
- { repo:'japanese-rag-eval',
+     steps:['商談メモを貼り付ける','モデルが 5 項目を JSON で抽出','任意で確認（セキュリティ防御・確認と修正）','担当者が確認・修正','JSON をコピー／ダウンロードして CRM へ'] } },
+ { gh:GH+'japanese-rag-eval', docs:[GH+'japanese-rag-eval#readme'], vis:['note','bars','bars','check'],
    en:{ t:'Japanese document search evaluation', st:'Finished (one evaluation report)', what:'Tests whether AI search finds the right passage in a long Japanese government report.', who:'Teams building AI search over Japanese documents.',
      num:`Right passage in the top 5: ${Math.round(+r.hit5*100)}%, MRR ${r.mrr}, on ${r.questions} questions (${r.hand_checked} hand-checked).`, extra:[],
      steps:['Ask a question in Japanese.','Search finds candidate passages.','The top 5 passages are ranked.','Score: is the right passage in the top 5?'] },
    ja:{ t:'日本語の文書検索の評価', st:'完成（評価レポート1件）', what:'長い日本語の政府報告書から、AI検索が正しい部分を見つけられるかをテストします。', who:'日本語の文書でAI検索を作るチーム。',
      num:`${r.questions}問で、上位5件に正解 ${Math.round(+r.hit5*100)}%、MRR ${r.mrr}（うち${r.hand_checked}問は手で確認）`, extra:[],
-     steps:['日本語で質問する','検索が候補の部分を探す','上位5件を並べる','正解が上位5件に入ったかを採点'] },
-   links:[['Repo / README',GH+'japanese-rag-eval']] },
- { repo:'credit-card-fraud',
-   en:{ t:'Credit-card fraud detection', st:'Finished (one public dataset, not yet tested on newer data)', what:'Flags card payments that may be fraud and shows why.', who:'Fraud and risk teams at payment companies.',
+     steps:['日本語で質問する','検索が候補の部分を探す','上位5件を並べる','正解が上位5件に入ったかを採点'] } },
+ { gh:GH+'credit-card-fraud', docs:[GH+'credit-card-fraud#readme'], vis:['json','bars','check','note'],
+   en:{ t:'Credit card fraud detection', st:'Finished (one public dataset, not yet tested on newer data)', what:'Flags card payments that may be fraud and shows why.', who:'Fraud and risk teams at payment companies.',
      num:`Recall ${f.recall}, precision ${f.precision}, on the public Kaggle ULB dataset (${f.fraud_rate} of payments are fraud).`, extra:[],
      steps:['Card payment data comes in.','A model scores each payment.','Likely fraud is flagged.','An explanation shows which details drove the score.'] },
    ja:{ t:'クレジットカードの不正検出', st:'完成（公開データ1つ、新しいデータでは未検証）', what:'不正かもしれないカードの支払いを見つけ、その理由を示します。', who:'決済会社の不正対策・リスク担当チーム。',
      num:`公開データ（Kaggle ULB、不正は${f.fraud_rate}）で、再現率 ${f.recall}、適合率 ${f.precision}`, extra:[],
-     steps:['カードの支払いデータが入る','モデルが支払いごとに点数をつける','不正の可能性が高いものに印をつける','どの情報が点数に効いたかを説明'] },
-   links:[['Repo / README',GH+'credit-card-fraud']] } ];
-const other = L==='ja'?'en':'ja';
+     steps:['カードの支払いデータが入る','モデルが支払いごとに点数をつける','不正の可能性が高いものに印をつける','どの情報が点数に効いたかを説明'] } },
+ { gh:GH+'preview-yl8ksvu5', docs:[], vis:['note','json','check','person','copy'],
+   en:{ t:'This website', st:'Finished (v6.9, 31 Oct 2026)', what:'This site, in 4 languages, showing my projects with measured numbers.', who:'Recruiters and teams who want to check my work quickly.',
+     num:'4 languages; every release checked at 360, 390, 430 and 1440 px wide, in light and dark mode.', extra:[],
+     steps:['Write the page in English and Japanese.','Build it with Astro and TypeScript.','Automatic checks: translations and numbers.','Test at phone and desktop widths.','Deploy to GitHub Pages.'] },
+   ja:{ t:'このサイト', st:'完成（v6.9、2026年10月31日）', what:'4言語のこのサイトで、プロジェクトを測った数字とともに紹介しています。', who:'私の仕事をすばやく確認したい採用担当者やチーム。',
+     num:'4言語。毎回の公開で、幅360・390・430・1440px、ライトとダークで確認しています。', extra:[],
+     steps:['英語と日本語でページを書く','AstroとTypeScriptで作る','自動チェック：翻訳と数字','スマホとパソコンの幅でテスト','GitHub Pagesで公開'] } },
+ { gh:null, docs:[], vis:['note','json','check','check','copy'],
+   en:{ t:'Site translation pipeline', st:'Finished (used for every release of this site)', what:'Keeps 4 language versions in step: English and Japanese written by hand, French and Russian from a dictionary script, and a build check for untranslated text.', who:'Teams shipping a product in several languages.',
+     num:'The build stops if any English text has no French or Russian translation.', extra:[],
+     steps:['Write the English and Japanese text.','A script builds the French and Russian dictionaries.','The build check looks for untranslated text.','The build stops until it is fixed.','The site is deployed in 4 languages.'] },
+   ja:{ t:'サイトの翻訳の仕組み', st:'完成（このサイトの毎回の公開で使用）', what:'4言語をそろえます。英語と日本語は自分で書き、フランス語とロシア語は辞書のスクリプトで作り、未翻訳の文がないかをビルドで確認します。', who:'いくつもの言語で製品を出すチーム。',
+     num:'英語の文にフランス語かロシア語の訳がないと、ビルドが止まります。', extra:[],
+     steps:['英語と日本語の文を書く','スクリプトがフランス語とロシア語の辞書を作る','ビルドで未翻訳の文を確認','直るまでビルドを止める','4言語でサイトを公開'] } } ];
 ---
-<Base lang={lang} page="recruiter" title="AI/ML engineer">
+<Base lang={lang} page="recruiter" title={ja?'ソフトウェア・データ・AI/MLエンジニア':'Software, data and AI/ML engineer'} description={`${T.h1} ${T.h1b} ${T.top}`} footerContact={false}>
 <div class="rec" data-i18n-skip lang={L}>
 <div class="rsw" role="group" aria-label={T.sw}><a href={`${B}/en/recruiter/`} data-rl="en" aria-current={L==='en'?'true':undefined}>EN</a><a href={`${B}/ja/recruiter/`} data-rl="ja" lang="ja" aria-current={L==='ja'?'true':undefined}>日本語</a></div>
-<h1>AI/ML engineer</h1>
-<p class="sub">{T.sub}</p>
+<h1 class="dsp">{T.h1}{T.h1b && <span class="h1b"> {T.h1b}</span>}</h1>
 <p class="lead">{T.top}</p>
+<p class="intent">{T.intent}</p>
+<nav class="rnav" aria-label={ja?'このページ':'On this page'}><a href="#projects">{T.nav[0]}</a><a href="#work">{T.nav[1]}</a><a href="#contact">{T.nav[2]}</a></nav>
 
-<h2>{T.getsH}</h2>
+<h2 class="dsp">{T.getsH}</h2>
 <div class="rg3">{T.gets.map(([h,p])=> <div class="card"><h3>{h}</h3><p>{p}</p></div>)}</div>
 
-<h2>{T.projH}</h2>
-{P.map(p=>{const x=p[L]; return <article class={p.main?'card pj main':'card pj'}>
- <h3>{x.t}</h3>
+<h2 class="dsp" id="projects">{T.projH}</h2>
+{P.map(p=>{const x=p[L]; const n=x.steps.length; return <article class={p.main?'card pj main':'card pj'}>
+ <h3 class="pn dsp">{x.t}</h3>
  <p class="st"><span class="dot" aria-hidden="true"></span>{T.st}: {x.st}</p>
  <p><b>{T.what}:</b> {x.what}</p><p><b>{T.who}:</b> {x.who}</p>
  <p class="num">{x.num}</p>
  {x.extra.map(e=> <p class="mut">{e}</p>)}
- <details class="stp"><summary>{T.steps}</summary><ol>{x.steps.map((s,i)=> <li style={`--i:${i}`}>{s}</li>)}</ol></details>
- <p class="lk">{p.links.map(([n,u])=> <a href={ref(u)}>{n}</a>)}</p>{p.main && <p class="mut note">{T.slow}</p>}
+ <details class="stp" style={`--n:${n}`}><summary>{T.steps}</summary><ol>{x.steps.map((s,i)=> <li style={`--i:${i}`}><span class={`vz v-${p.vis[i]}`} aria-hidden="true"><i></i><i></i><i></i></span><span>{s}</span></li>)}</ol></details>
+ <div class="lk">{p.gh ? <a class="btn" href={ref(p.gh)}>{T.gh}</a> : <span class="mut onreq">{T.onreq}</span>}{p.live && <a class="btn ghost" href={ref(p.live)}>{T.live}</a>}</div>
+ {p.docs.length===2 && <p class="docs">{T.docs}: README <a href={ref(p.docs[0])}>EN</a> | <a href={ref(p.docs[1])} lang="ja">日本語</a> <span class="mut">({T.docsN})</span></p>}
+ {p.docs.length===1 && <p class="docs">{T.docs}: <a href={ref(p.docs[0])}>README (EN)</a></p>}
+ {p.live && <p class="mut note">{T.slow ?? (ja?'モデル提供元が混雑している時は、遅くなることがあります。':'May be slow when the model provider is busy.')}</p>}
 </article>})}
 
-<h2>{T.jobH}</h2>
-<div class="card"><p>{T.job}</p><p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,k])=> <li><b>{n}</b><span>{T.sk}: {k}</span></li>)}</ul></div>
+<section class="band"><h2 class="dsp">{T.jobH}</h2></section>
+<div class="card">{T.job.map(j=> <p>{j}</p>)}<p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,k])=> <li><b>{n}</b><span>{T.sk}: {k}</span></li>)}</ul></div>
 
-<h2>{T.bgH}</h2>
+<h2 class="dsp" id="work">{T.coH}</h2>
+<ol class="wbox" tabindex="0" role="region" aria-label={T.coScr}>{T.work.map(w=> <li class="wr"><span class="wl">{w.l.map(l=> <img src={LG(l)} alt="" width="28" height="28" decoding="async"/>)}</span><span class="wx"><b class="wn">{w.n}</b>{w.s && <span class="ws">{w.s}</span>}<span class="wy">{w.y}</span><span class="wd">{w.d}</span></span></li>)}</ol>
+
+<h2 class="dsp">{T.afH}</h2>
+<div class="tk" tabindex="0" role="region" aria-label={T.afH}><ul>{[0,1,2,3].map(k=> AF.map(([n,l])=> <li aria-hidden={k>0?'true':undefined}>{l ? <img src={LG(l)} alt="" width="24" height="24" decoding="async"/> : <span class="nm" aria-hidden="true">{n[0]}</span>}<span>{n}</span></li>))}</ul></div>
+<p class="mut note">{T.afN}</p>
+
+<h2 class="dsp">{T.bgH}</h2>
 <div class="card">{T.bg.map(b=> <p>{b}</p>)}<blockquote>“{T.q1}”</blockquote><blockquote>“{T.q2}”</blockquote><p>{T.q2n}</p></div>
 
-<h2>{T.refH}</h2>
-<p>{T.refs}</p>
+<h2 class="dsp">{T.refH}</h2>
+{ADVISORS.length ? <ul class="adv">{ADVISORS.map(a=> <li><span class="advl">{T.refH}</span> <a class="advn" href={`mailto:${a.email}`}>{a.name}</a><span class="mut">{ja?a.roleJa:a.role}, {ja?a.instJa:a.inst}</span></li>)}</ul> : <p>{T.refs}</p>}
 
-<h2>{T.coH}</h2>
-<ul class="chips cos">{T.cos.map(([n,i])=> <li><span class="ini" aria-hidden="true">{i}</span>{n}</li>)}</ul>
-
-
-<h2>{T.ctH}</h2>
-<p class="btns"><a class="btn ghost" href={`mailto:${C.email}`}>{T.em}: {C.email}</a><a class="btn ghost" href={ref(C.linkedin)}>{T.li}</a><a class="btn ghost" href={ref(C.github)}>GitHub</a><a class="btn ghost" href={ref(C.topmate)}>Topmate</a></p>
+<section id="contact" class="ct"><h2 class="dsp">{T.ctH}</h2><Contact lang={L}/></section>
 </div>
-<script is:inline>document.addEventListener('pointerdown',e=>{document.querySelectorAll('.stp[open]').forEach(d=>{if(!d.contains(e.target))d.open=false})},true);document.querySelectorAll('.rsw a').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('rlang',a.dataset.rl)}catch(e){}}));</script>
+<script is:inline>(function(){var tk=document.querySelector('.tk');document.addEventListener('pointerdown',function(e){document.querySelectorAll('.stp[open]').forEach(function(d){if(!d.contains(e.target))d.open=false});if(tk){if(tk.contains(e.target))tk.classList.toggle('pz');else tk.classList.remove('pz')}},true);document.querySelectorAll('.rsw a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('rlang',a.dataset.rl)}catch(e){}})})})();</script>
 </Base>
 <style>
-.rec{max-width:46rem;margin:0 auto}.sub{font-weight:600;margin:-.25rem 0 .75rem}.note{font-size:.9rem;margin:.25rem 0}.types{list-style:none;padding:0;display:grid;gap:.6rem}.types li{display:flex;flex-direction:column;gap:.15rem;border-left:3px solid var(--line);padding-left:.7rem}.types span{opacity:.85;font-size:.95rem}.cos li{display:inline-flex;align-items:center;gap:.45rem}.ini{width:1.6em;height:1.6em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;font-weight:700;font-size:.8em}
+@font-face{font-family:'Fraunces';src:url('/preview-yl8ksvu5/fonts/fraunces-latin.woff2') format('woff2');font-weight:100 900;font-display:optional;unicode-range:U+0020-007E,U+00A0-00FF,U+2013-2014,U+2018-201D,U+2026,U+2192}
+.rec{max-width:48rem;margin:0 auto}
+.dsp{font-family:'Fraunces',Georgia,'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;letter-spacing:-.01em}
+.rec h2.dsp{font-size:1.6rem;font-weight:700;margin:2.2rem 0 .8rem;padding-bottom:.35rem;border-bottom:2px solid color-mix(in srgb,var(--acc) 35%,transparent)}
+h1.dsp{font-size:clamp(1.7rem,5.2vw,2.5rem);line-height:1.2;font-weight:750;margin:.4rem 0 .6rem}.h1b{font-weight:500;color:var(--acc);font-size:.7em;white-space:nowrap}
+.note{font-size:.9rem;margin:.25rem 0}.mut{opacity:.85}
+.lead{font-size:1.1rem;line-height:1.6;margin:.2rem 0 .8rem}
+.intent{border-left:4px solid var(--acc);background:color-mix(in srgb,var(--acc) 9%,var(--card));padding:.7rem .9rem;border-radius:10px;font-weight:600;line-height:1.55}
+.rnav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0}.rnav a{min-height:44px;display:inline-flex;align-items:center;padding:0 1rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:var(--card)}
 .rsw{display:flex;gap:.4rem;justify-content:flex-end;margin:.5rem 0}
 .rsw a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 .8rem;border:1px solid var(--line);border-radius:8px;text-decoration:none}
 .rsw a[aria-current]{background:var(--acc);color:#fff;border-color:var(--acc)}
-.lead{font-size:1.1rem;line-height:1.6}
-.rg3{display:grid;gap:.75rem}@media (min-width:800px){.rg3{grid-template-columns:repeat(3,1fr)}}
-.rg3 .card{margin:0}
-.pj.main{border-bottom-color:var(--acc)}
+.rg3{display:grid;gap:.75rem}@media (min-width:800px){.rg3{grid-template-columns:repeat(2,1fr)}}
+.rg3 .card{margin:0;border-top:3px solid var(--acc)}.rg3 h3{margin:.1rem 0 .4rem;font-size:1.05rem}.rg3 p{margin:0;line-height:1.55}
+.pj{margin:0 0 1rem}.pj.main{border-bottom-color:var(--acc)}
+.pn{text-align:center;font-size:clamp(1.3rem,4.4vw,1.65rem);font-weight:750;line-height:1.25;margin:.3rem 0 .8rem;color:var(--ink,inherit)}
 .st{font-weight:600;display:flex;gap:.5rem;align-items:baseline}
 .dot{width:.6em;height:.6em;border-radius:50%;background:#2e9e5b;flex:none}
 .num{font-weight:600;font-size:1.05rem}
-.mut{opacity:.85}
 .stp summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:600;color:var(--acc);touch-action:manipulation}
-.stp ol{margin:.25rem 0 .5rem;padding-left:1.4rem}
-.stp[open] li{animation:rin .35s ease both;animation-delay:calc(var(--i) * .25s)}
-@keyframes rin{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.stp[open] li{animation:none}}
-.lk{display:flex;flex-wrap:wrap;gap:.4rem 1rem}.lk a{min-height:44px;display:inline-flex;align-items:center}
-.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
-.chips li{border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem;background:var(--card)}
+.stp ol{list-style:none;margin:.3rem 0 .6rem;padding:0 0 0 1.6rem;position:relative;display:grid;gap:.45rem;counter-reset:s}
+.stp ol::before{content:'';position:absolute;left:.55rem;top:.3rem;bottom:.3rem;width:3px;border-radius:3px;background:var(--line)}
+.stp ol::after{content:'';position:absolute;left:.55rem;top:.3rem;width:3px;border-radius:3px;background:var(--acc);height:calc(100% - .6rem);transform-origin:top;transform:scaleY(0)}
+.stp[open] ol::after{animation:bar calc(var(--n) * .7s) linear forwards}
+@keyframes bar{to{transform:scaleY(1)}}
+.stp li{display:flex;align-items:center;gap:.6rem;padding:.45rem .6rem;border:1px solid var(--line);border-radius:10px;background:var(--card);opacity:.45;position:relative}
+.stp li::before{counter-increment:s;content:counter(s);position:absolute;left:-1.55rem;width:1.3rem;height:1.3rem;border-radius:50%;background:var(--card);border:2px solid var(--line);font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+.stp[open] li{animation:lit .5s ease forwards;animation-delay:calc(var(--i) * .7s)}
+.stp[open] li::before{animation:litd .5s ease forwards;animation-delay:calc(var(--i) * .7s)}
+@keyframes lit{0%{opacity:.45}60%{box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 32%,transparent)}100%{opacity:1;border-color:var(--acc);box-shadow:none}}
+@keyframes litd{to{background:var(--acc);border-color:var(--acc);color:#fff}}
+.vz{flex:none;width:2.2rem;height:1.6rem;border-radius:6px;background:color-mix(in srgb,var(--acc) 10%,transparent);position:relative;display:flex;align-items:center;justify-content:center;gap:2px}
+.vz i{display:block;background:var(--acc);border-radius:2px}
+.v-note i{width:1.3rem;height:2px;position:absolute;left:.45rem}.v-note i:nth-child(1){top:.4rem}.v-note i:nth-child(2){top:.75rem;width:1rem}.v-note i:nth-child(3){top:1.1rem;width:.7rem}
+.v-json i{width:.45rem;height:.45rem;border-radius:2px;opacity:0}
+.stp[open] .v-json i{animation:pop .3s ease forwards}.stp[open] li .v-json i:nth-child(1){animation-delay:calc(var(--i)*.7s + .1s)}.stp[open] li .v-json i:nth-child(2){animation-delay:calc(var(--i)*.7s + .3s)}.stp[open] li .v-json i:nth-child(3){animation-delay:calc(var(--i)*.7s + .5s)}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+.v-check i{display:none}.v-check::after{content:'';width:.75rem;height:.4rem;border-left:3px solid var(--acc);border-bottom:3px solid var(--acc);transform:rotate(-45deg) translate(1px,-2px)}
+.v-person i{display:none}.v-person::before{content:'';position:absolute;top:.25rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--acc)}.v-person::after{content:'';position:absolute;bottom:.2rem;width:1rem;height:.45rem;border-radius:.5rem .5rem 0 0;background:var(--acc)}
+.v-copy i{display:none}.v-copy::before,.v-copy::after{content:'';position:absolute;width:.7rem;height:.8rem;border:2px solid var(--acc);border-radius:2px}.v-copy::before{left:.6rem;top:.25rem}.v-copy::after{left:.9rem;top:.5rem;background:var(--card)}
+.v-bars{align-items:flex-end;padding-bottom:.3rem}.v-bars i{width:.3rem}.v-bars i:nth-child(1){height:.9rem}.v-bars i:nth-child(2){height:.6rem}.v-bars i:nth-child(3){height:.35rem}
+@media (prefers-reduced-motion:reduce){.stp[open] li,.stp[open] li::before,.stp[open] ol::after,.stp[open] .v-json i{animation:none}.stp li{opacity:1}.stp[open] ol::after{transform:none}.v-json i{opacity:1}}
+.lk{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.6rem 0 .3rem}.lk .btn{min-height:44px}.onreq{font-weight:600}
+.docs{font-size:.9rem;margin:.3rem 0}.docs a{display:inline-flex;align-items:center;min-height:44px;padding:0 .25rem}
+.band{margin:2.2rem 0 .8rem;padding:1.2rem 1.1rem;border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 16%,var(--card)),color-mix(in srgb,var(--warm) 10%,var(--card)));border:1px solid color-mix(in srgb,var(--acc) 32%,transparent)}
+.rec .band h2.dsp{margin:0;border:0;padding:0;font-size:clamp(1.35rem,4.6vw,1.9rem);line-height:1.3}
+.types{list-style:none;padding:0;display:grid;gap:.6rem}.types li{display:flex;flex-direction:column;gap:.15rem;border-left:3px solid var(--line);padding-left:.7rem}.types span{opacity:.85;font-size:.95rem}
+.wbox{list-style:none;margin:0;padding:.3rem .7rem;max-height:15rem;overflow-y:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 6px 18px rgba(20,30,50,.08)}
+.wbox:focus-visible,.tk:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wr{display:flex;gap:.75rem;align-items:flex-start;padding:.7rem 0;border-bottom:1px solid var(--line)}.wr:last-child{border-bottom:0}
+.wl{display:flex;gap:.25rem;flex:none;min-width:3.6rem}.wl img,.tk img{background:#fff;border-radius:6px;padding:2px;box-sizing:border-box;object-fit:contain}
+.wx{display:flex;flex-direction:column;gap:.1rem;min-width:0}.wn{font-size:1.02rem}.ws{font-size:.88rem;color:var(--acc);font-weight:600}.wy{font-size:.85rem;opacity:.8}.wd{font-size:.92rem}
+.tk{overflow:hidden;width:100%;padding:.5rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.tk ul{list-style:none;margin:0;padding:0;display:flex;gap:.8rem;width:max-content;animation:tk 60s linear infinite}
+.tk:hover ul,.tk:focus-within ul,.tk.pz ul{animation-play-state:paused}
+@keyframes tk{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.tk li{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--card);white-space:nowrap;font-weight:600}
+.nm{width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--acc) 18%,var(--card));color:var(--acc);font-weight:800;font-size:.8rem}
+@media (prefers-reduced-motion:reduce){.tk{-webkit-mask-image:none;mask-image:none}.tk ul{animation:none;width:auto;flex-wrap:wrap;justify-content:center}.tk li[aria-hidden]{display:none}}
 blockquote{margin:.75rem 0;padding-left:.9rem;border-left:3px solid var(--warm);font-style:italic}
-.btns{display:flex;flex-wrap:wrap;gap:.5rem}.btns .btn{overflow-wrap:anywhere}
+.adv{list-style:none;padding:0}.adv li{display:flex;flex-wrap:wrap;gap:.3rem .6rem;align-items:baseline}.advl{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;opacity:.75}.advn{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.1rem;min-height:44px;display:inline-flex;align-items:center}
+.ct{scroll-margin-top:5rem}#projects,#work{scroll-margin-top:5rem}
 </style>

@@ -25,7 +25,7 @@ const strip = (h) => h.replace(/<rt>.*?<\/rt>/g,'').replace(/<[^>]+>/g,'');
 {ja ? <p class="jp" set:html={p.ja.line}/> : <p>{p.en.line}</p>}
 <ul class="kn">{rows.map(([a,b,c]) => <li><strong>{b}</strong> {a} <span class="mut">({c})</span></li>)}</ul>
 <p class="bt">{ja?'弱い点':'Where it falls short'}</p><p class="lim">{t.limit}</p>
-<p class="fl"><a href={`${B}/${lang}/projects/${p.slug}/`}>{ja?'くわしく見る':'Full details'} →</a><a href={`https://github.com/Retro099/${p.repo}`}>GitHub</a>{p.demo && <a href={p.demo}>{ja?'デモ':'Demo'}</a>}</p>
+<p class="fl"><a href={`${B}/${lang}/projects/${p.slug}/`}>{ja?'くわしく見る':'Full details'} →</a><a href={`https://github.com/Retro099/${p.repo}`}>GitHub</a>{p.demo && <a href={p.demo}>{ja?'試してみる':'Try it'}</a>}</p>
 <button type="button" class="unflip" aria-pressed="true" aria-label={ja?`${name}：表にもどす`:`${name}: flip back to front`}>{ja?'↺ 表にもどす':'↺ Front'}</button>
 </div>
 </div></div>)})}
