@@ -10,10 +10,19 @@ All logos below are trademarks of their respective owners. They are used only to
 | turing.webp | Turing | https://www.turing.com/favicon.ico (48 px frame, converted to WebP) |
 | godspeed.webp | GodSpeed Games Pvt Ltd | https://www.godspeedgames.com/wp-content/uploads/2024/12/cropped-Favicon-192x192.png (resized to 96 px WebP) |
 
-Not found (a plain name mark is shown instead): DocMed (official site not confirmed), Topmate (site blocks automated download), Bunny Park (no official logo found).
+Not found: DocMed (official site not confirmed; shown as a text wordmark). Topmate and Bunny Park were added in v6.10, see below.
 
 Relationship check: "Outlier is a platform operated by Scale AI" — https://outlier.ai/faq (read 31 Oct 2026).
 
 ## Font
 
 `public/fonts/fraunces-latin.woff2`: Fraunces by Undercase Type (Phaedra Charles, Flavia Zimbardi), SIL Open Font License 1.1. Subset to Latin, self-hosted; no external font requests. https://github.com/undercasetype/Fraunces
+
+## Added in v6.10 (31 Oct 2026 IST)
+
+| File | Owner | Source URL |
+|---|---|---|
+| bunnypark.webp | Bunny Park artwork © its publisher (Steam lists Cozy Bee Games as developer and publisher) | https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1208600/capsule_231x87.jpg (Steam store page https://store.steampowered.com/app/1208600/) |
+| topmate.webp | Topmate | https://www.google.com/s2/favicons?domain=topmate.io&sz=128 (topmate.io's own site icon via Google's public favicon service; topmate.io blocks direct downloads) |
+
+The Bunny Park artwork is used only to identify the game project he worked on at GodSpeed Games. DocMed still has no logo; it is shown as a text wordmark.

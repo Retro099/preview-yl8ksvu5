@@ -10,7 +10,10 @@ const ref=(u)=>u+(u.includes('?')?'&':'?')+'ref=recruiter';
 const GH='https://github.com/Retro099/';
 const LG=(n)=>`${B}/logos/${n}`;
 // Advisors: fill when real names arrive. { name, email, role, roleJa, inst, instJa }. No quotes.
-const ADVISORS = [];
+// Roles unknown (letters unreadable): add role:'…', roleJa:'…' here later and it renders after the name.
+const ADVISORS = [
+ { name:'Manisha Devi', email:'manisha.devi@gift.edu.in', inst:'GIFT Autonomous College, Bhubaneswar', instJa:'GIFT Autonomous College（ブバネーシュワル）' },
+ { name:'Nibedita Sahoo', email:'nibedita.sahoo@galgotiasuniversity.edu.in', inst:'Galgotias University, Greater Noida', instJa:'Galgotias University（グレーター・ノイダ）' } ];
 const T = {
  en:{ h1:'Software, data and AI/ML engineer', h1b:'(Python, LLM evaluation)',
   top:'Based in India, open to relocating, including overseas, with visa sponsorship and relocation support. Japan is my main goal.',
@@ -37,7 +40,7 @@ const T = {
   coH:'Where I have worked', coScr:'Work history (scrollable)', now:'present',
   work:[{l:['outlier.svg','scale.svg'],n:'Outlier AI, a Scale AI platform',y:'Jun 2024 – present',d:'Remote. LLM evaluation, including safety testing and multimodal tasks.'},
    {l:['mercor.svg','turing.webp'],n:'Self-employed: Mercor and Turing',y:'Jul 2023 – May 2024',d:'Data-science and data-cleaning projects.'},
-   {l:['godspeed.webp'],n:'GodSpeed Games',s:'Project: Bunny Park',y:'Jun 2022 – Jun 2023',d:'Remote, full-time. Unreal Engine 4 and C++: localization, handheld testing and porting, touch controls.'}],
+   {l:['godspeed.webp'],n:'GodSpeed Games',s:'Project: Bunny Park',pi:'bunnypark.webp',y:'Jun 2022 – Jun 2023',d:'Remote, full-time. Unreal Engine 4 and C++: localization, handheld testing and porting, touch controls.'}],
   afH:'Organizations and firms I’m affiliated with', afN:'Logos are trademarks of their owners.',
   ctH:'Contact', sw:'Language' },
  ja:{ h1:'ソフトウェア・データ・AI/MLのエンジニアです。', h1b:'',
@@ -64,10 +67,10 @@ const T = {
   coH:'これまでの仕事先', coScr:'職歴（スクロールできます）', now:'現在',
   work:[{l:['outlier.svg','scale.svg'],n:'Outlier AI（Scale AIのプラットフォーム）',y:'2024年6月〜現在',d:'リモート。LLMの回答の評価（安全性テスト、マルチモーダルを含む）。'},
    {l:['mercor.svg','turing.webp'],n:'個人事業主：MercorとTuring',y:'2023年7月〜2024年5月',d:'データ分析とデータ整理の案件。'},
-   {l:['godspeed.webp'],n:'GodSpeed Games',s:'プロジェクト：Bunny Park',y:'2022年6月〜2023年6月',d:'リモート、正社員。Unreal Engine 4とC++で、ローカライズ、携帯機でのテストと移植、タッチ操作。'}],
+   {l:['godspeed.webp'],n:'GodSpeed Games',s:'プロジェクト：Bunny Park',pi:'bunnypark.webp',y:'2022年6月〜2023年6月',d:'リモート、正社員。Unreal Engine 4とC++で、ローカライズ、携帯機でのテストと移植、タッチ操作。'}],
   afH:'関わりのある組織・企業', afN:'ロゴは各社の商標です。',
   ctH:'連絡先', sw:'言語' } }[L];
-const AF = [['Outlier AI','outlier.svg'],['Scale AI','scale.svg'],['Mercor','mercor.svg'],['Turing','turing.webp'],['GodSpeed Games','godspeed.webp'],['DocMed',null],['Topmate',null]];
+const AF = [['Outlier AI','outlier.svg'],['Scale AI','scale.svg'],['Mercor','mercor.svg'],['Turing','turing.webp'],['GodSpeed Games','godspeed.webp'],['DocMed',null],['Topmate','topmate.webp']];
 const P = [
  { main:true, gh:GH+'jp-meeting-to-crm-fields', live:'https://retro-jp-meeting-to-crm-fields.streamlit.app/', docs:[GH+'jp-meeting-to-crm-fields/blob/main/README.md',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'], vis:['note','json','check','person','copy'],
    en:{ t:'Japanese meeting notes to CRM fields', st:'Finished, stable on main, CI green (30 Oct 2026)', what:'Turns Japanese meeting notes into five CRM fields: contact, company, deadline, next action, risk.', who:'Sales and account teams in Japanese companies.',
@@ -136,17 +139,17 @@ const P = [
 <div class="card">{T.job.map(j=> <p>{j}</p>)}<p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,k])=> <li><b>{n}</b><span>{T.sk}: {k}</span></li>)}</ul></div>
 
 <h2 class="dsp" id="work">{T.coH}</h2>
-<ol class="wbox" tabindex="0" role="region" aria-label={T.coScr}>{T.work.map(w=> <li class="wr"><span class="wl">{w.l.map(l=> <img src={LG(l)} alt="" width="28" height="28" decoding="async"/>)}</span><span class="wx"><b class="wn">{w.n}</b>{w.s && <span class="ws">{w.s}</span>}<span class="wy">{w.y}</span><span class="wd">{w.d}</span></span></li>)}</ol>
+<ol class="wbox" tabindex="0" role="region" aria-label={T.coScr}>{T.work.map(w=> <li class="wr"><span class="wl">{w.l.map(l=> <img src={LG(l)} alt="" width="28" height="28" decoding="async"/>)}</span><span class="wx"><b class="wn">{w.n}</b>{w.s && <span class="ws">{w.pi && <img class="pth" src={LG(w.pi)} alt="Bunny Park" width="92" height="35" decoding="async"/>}{w.s}</span>}<span class="wy">{w.y}</span><span class="wd">{w.d}</span></span></li>)}</ol>
 
 <h2 class="dsp">{T.afH}</h2>
-<div class="tk" tabindex="0" role="region" aria-label={T.afH}><ul>{[0,1,2,3].map(k=> AF.map(([n,l])=> <li aria-hidden={k>0?'true':undefined}>{l ? <img src={LG(l)} alt="" width="24" height="24" decoding="async"/> : <span class="nm" aria-hidden="true">{n[0]}</span>}<span>{n}</span></li>))}</ul></div>
+<div class="tk" tabindex="0" role="region" aria-label={T.afH}><ul>{[0,1,2,3].map(k=> AF.map(([n,l])=> <li aria-hidden={k>0?'true':undefined}>{l ? <img src={LG(l)} alt="" width="24" height="24" decoding="async"/> : null}<span class={l?undefined:"wm"}>{n}</span></li>))}</ul></div>
 <p class="mut note">{T.afN}</p>
 
 <h2 class="dsp">{T.bgH}</h2>
 <div class="card">{T.bg.map(b=> <p>{b}</p>)}<blockquote>“{T.q1}”</blockquote><blockquote>“{T.q2}”</blockquote><p>{T.q2n}</p></div>
 
 <h2 class="dsp">{T.refH}</h2>
-{ADVISORS.length ? <ul class="adv">{ADVISORS.map(a=> <li><span class="advl">{T.refH}</span> <a class="advn" href={`mailto:${a.email}`}>{a.name}</a><span class="mut">{ja?a.roleJa:a.role}, {ja?a.instJa:a.inst}</span></li>)}</ul> : <p>{T.refs}</p>}
+{ADVISORS.length ? <ul class="adv">{ADVISORS.map(a=> <li class="card"><span class="advl">{T.refH}</span><a class="advn" href={`mailto:${a.email}`}>{a.name}</a>{a.role && <span class="mut">{ja?a.roleJa:a.role}</span>}<span class="advi">{ja?a.instJa:a.inst}</span><span class="adve">{a.email}</span></li>)}</ul> : <p>{T.refs}</p>}
 
 <section id="contact" class="ct"><h2 class="dsp">{T.ctH}</h2><Contact lang={L}/></section>
 </div>
@@ -213,6 +216,7 @@ h1.dsp{font-size:clamp(1.7rem,5.2vw,2.5rem);line-height:1.2;font-weight:750;marg
 .nm{width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--acc) 18%,var(--card));color:var(--acc);font-weight:800;font-size:.8rem}
 @media (prefers-reduced-motion:reduce){.tk{-webkit-mask-image:none;mask-image:none}.tk ul{animation:none;width:auto;flex-wrap:wrap;justify-content:center}.tk li[aria-hidden]{display:none}}
 blockquote{margin:.75rem 0;padding-left:.9rem;border-left:3px solid var(--warm);font-style:italic}
-.adv{list-style:none;padding:0}.adv li{display:flex;flex-wrap:wrap;gap:.3rem .6rem;align-items:baseline}.advl{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;opacity:.75}.advn{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.1rem;min-height:44px;display:inline-flex;align-items:center}
+.adv{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}@media (min-width:700px){.adv{grid-template-columns:1fr 1fr}}.adv li{margin:0;display:flex;flex-direction:column;gap:.15rem;border-top:3px solid var(--acc);min-width:0}.advi{font-weight:600}.adve{font-size:.85rem;opacity:.8;overflow-wrap:anywhere}.advl{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;opacity:.75}.advn{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.25rem;min-height:44px;display:inline-flex;align-items:center;color:var(--acc);text-decoration-thickness:2px;text-underline-offset:3px;align-self:flex-start}
+.pth{display:block;border-radius:6px;margin:.2rem 0 .15rem;border:1px solid var(--line)}.wm{font-family:'Fraunces',Georgia,serif;font-weight:800;letter-spacing:.01em;line-height:24px}
 .ct{scroll-margin-top:5rem}#projects,#work{scroll-margin-top:5rem}
 </style>
