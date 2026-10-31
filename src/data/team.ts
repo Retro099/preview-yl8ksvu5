@@ -36,6 +36,6 @@ export const timeline = [
  ['v6.9','','Built with agents: recruiter page redesign with work timeline, affiliations, logos and a step animation','エージェントと作成：採用担当者向けページを作り直し（職歴の記録、関わりのある組織、ロゴ、流れのアニメーション）','2026-10-31'],
  ['v6.10','','Built with agents: advisors, project logos and a cleaner organisations row','エージェントと作成：指導者、プロジェクトのロゴ、組織の並びを整理','2026-10-31'],
  ['v6.11','','Built with agents: privacy-friendly visitor counter and a weekly visitor panel','エージェントと作成：プライバシーに配慮した訪問者カウンターと週ごとの訪問者表示','2026-10-31'],
- ['v6.12','','Built with agents: clear “For recruiters” entry on the home page and in the menu, owner-supplied logos, DocMed removed','エージェントと作成：ホームとメニューに「採用担当の方へ」の入口、本人提供のロゴ、DocMedを削除','2026-10-31'],
+ ['v6.12','','Built with agents: clear “For recruiters” entry on the home page and in the menu, owner-supplied logos','エージェントと作成：ホームとメニューに「採用担当の方へ」の入口、本人提供のロゴ','2026-10-31'],
  ['v6.13','','Built with agents: recruiter page in French and Russian, site name Prithvi everywhere, facts checked across all pages','エージェントと作成：採用担当者向けページのフランス語・ロシア語版、サイト名をPrithviに統一、全ページの情報をそろえる','2026-10-31'],
 ];
