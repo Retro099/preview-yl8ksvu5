@@ -46,7 +46,7 @@ const { lang } = Astro.params; const ja = lang==='ja';
 </div>
 <aside class="side" aria-label={ja?'サイドの情報':'Side notes'}>
 <Avatar size={96}/>
-<div class="mnote"><h2>{ja?'いま（2026年10月25日）':'Now (25 Oct 2026)'}</h2><ul>{(ja?['毎日日本語を勉強しています。','CRMプロジェクトの大きな評価を実行中です。']:['I study Japanese every day.','CRM project: a larger evaluation run is in progress.']).map(t => <li>{t}</li>)}</ul></div>
+<div class="mnote"><h2>{ja?'いま（2026年10月31日）':'Now (31 Oct 2026)'}</h2><ul>{(ja?['毎日日本語を勉強しています。','CRMプロジェクトは完成しました。最終的な数字はプロジェクトのページにあります。']:['I study Japanese every day.','CRM project: finished. The final numbers are on the project page.']).map(t => <li>{t}</li>)}</ul></div>
 <div class="gh"><h2>{ja?'最近のGitHubの更新':'Recent GitHub activity'}</h2>
 <svg viewBox="0 0 140 40" role="img" aria-label={ja?`${span[0][0]}から${span[13][0]}までに、公開された更新が${latest.length}件あります。`:`${latest.length} public updates between ${span[0][0]} and ${span[13][0]}.`}>{span.map(([d,n],i)=><rect x={i*10+1} y={n?36-30*n/mx:34} width="8" height={n?30*n/mx:2} rx="1.5" fill={n?'var(--acc)':'var(--line)'}><title>{d}: {n}</title></rect>)}</svg>
 <p>{ja?`最近の${latest.length}件（日ごと、${span[13][0]}まで）`:`Last ${latest.length} public updates, by day (to ${span[13][0]})`} · <a href="https://github.com/Retro099">GitHub</a></p></div>

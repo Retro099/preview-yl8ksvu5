@@ -20,7 +20,6 @@ for (const f of walk(path.join(D,'en'))) {
   const en = texts(fs.readFileSync(f,'utf8'));
   for (const l of ['ja','fr','ru']) {
     const g = f.replace(`${path.sep}en${path.sep}`, `${path.sep}${l}${path.sep}`); if (!fs.existsSync(g)) { bad.push(`page missing: ${g}`); continue; }
-    if (l!=='ja' && g.includes(`${path.sep}recruiter${path.sep}`)) continue; // v6.8: /recruiter is EN+JA only; FR/RU fall back to EN by design
     const other = texts(dropLangEn(fs.readFileSync(g,'utf8')));
     for (const t of other) if (en.has(t) && !ALLOW.has(t) && !(l==='fr'&&fr[t]===t) && !(l==='ru'&&ru[t]===t) && !/^[\w.-]+ · Prithvi$/.test(t)) bad.push(`${l}: untranslated "${t.slice(0,80)}" in ${path.relative(D,g)}`);
   }
