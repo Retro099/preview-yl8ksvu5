@@ -40,7 +40,7 @@ const T = {
   coH:'Where I have worked', coScr:'Work history (scrollable)', now:'present',
   work:[{l:['outlier.svg','scale.svg'],n:'Outlier AI, a Scale AI platform',y:'Jun 2024 – present',d:'Remote. LLM evaluation, including safety testing and multimodal tasks.'},
    {l:['mercor.svg','turing.webp'],n:'Self-employed: Mercor and Turing',y:'Jul 2023 – May 2024',d:'Data-science and data-cleaning projects.'},
-   {l:['godspeed.webp'],n:'GodSpeed Games',s:'Project: Bunny Park',pi:'bunnypark.webp',y:'Jun 2022 – Jun 2023',d:'Remote, full-time. Unreal Engine 4 and C++: localization, handheld testing and porting, touch controls.'}],
+   {l:['godspeed.webp'],n:'GodSpeed Games',s:'Project: Bunny Park',pi:'bunnypark-banner.webp',y:'Jun 2022 – Jun 2023',d:'Remote, full-time. Unreal Engine 4 and C++: localization, handheld testing and porting, touch controls.'}],
   afH:'Organizations and firms I’m affiliated with', afN:'Logos are trademarks of their owners.',
   ctH:'Contact', sw:'Language' },
  ja:{ h1:'ソフトウェア・データ・AI/MLのエンジニアです。', h1b:'',
@@ -67,10 +67,10 @@ const T = {
   coH:'これまでの仕事先', coScr:'職歴（スクロールできます）', now:'現在',
   work:[{l:['outlier.svg','scale.svg'],n:'Outlier AI（Scale AIのプラットフォーム）',y:'2024年6月〜現在',d:'リモート。LLMの回答の評価（安全性テスト、マルチモーダルを含む）。'},
    {l:['mercor.svg','turing.webp'],n:'個人事業主：MercorとTuring',y:'2023年7月〜2024年5月',d:'データ分析とデータ整理の案件。'},
-   {l:['godspeed.webp'],n:'GodSpeed Games',s:'プロジェクト：Bunny Park',pi:'bunnypark.webp',y:'2022年6月〜2023年6月',d:'リモート、正社員。Unreal Engine 4とC++で、ローカライズ、携帯機でのテストと移植、タッチ操作。'}],
+   {l:['godspeed.webp'],n:'GodSpeed Games',s:'プロジェクト：Bunny Park',pi:'bunnypark-banner.webp',y:'2022年6月〜2023年6月',d:'リモート、正社員。Unreal Engine 4とC++で、ローカライズ、携帯機でのテストと移植、タッチ操作。'}],
   afH:'関わりのある組織・企業', afN:'ロゴは各社の商標です。',
   ctH:'連絡先', sw:'言語' } }[L];
-const AF = [['Outlier AI','outlier.svg'],['Scale AI','scale.svg'],['Mercor','mercor.svg'],['Turing','turing.webp'],['GodSpeed Games','godspeed.webp'],['DocMed',null],['Topmate','topmate.webp']];
+const AF = [['Outlier AI','outlier.svg'],['Scale AI','scale.svg'],['Mercor','mercor.svg'],['Turing','turing.webp'],['GodSpeed Games','godspeed.webp'],['Topmate','topmate-wordmark.png',1]];
 const P = [
  { main:true, gh:GH+'jp-meeting-to-crm-fields', live:'https://retro-jp-meeting-to-crm-fields.streamlit.app/', docs:[GH+'jp-meeting-to-crm-fields/blob/main/README.md',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'], vis:['note','json','check','person','copy'],
    en:{ t:'Japanese meeting notes to CRM fields', st:'Finished, stable on main, CI green (30 Oct 2026)', what:'Turns Japanese meeting notes into five CRM fields: contact, company, deadline, next action, risk.', who:'Sales and account teams in Japanese companies.',
@@ -88,7 +88,7 @@ const P = [
    ja:{ t:'日本語の文書検索の評価', st:'完成（評価レポート1件）', what:'長い日本語の政府報告書から、AI検索が正しい部分を見つけられるかをテストします。', who:'日本語の文書でAI検索を作るチーム。',
      num:`${r.questions}問で、上位5件に正解 ${Math.round(+r.hit5*100)}%、MRR ${r.mrr}（うち${r.hand_checked}問は手で確認）`, extra:[],
      steps:['日本語で質問する','検索が候補の部分を探す','上位5件を並べる','正解が上位5件に入ったかを採点'] } },
- { gh:GH+'credit-card-fraud', docs:[GH+'credit-card-fraud#readme'], vis:['json','bars','check','note'],
+ { gh:GH+'credit-card-fraud-detection', docs:[GH+'credit-card-fraud-detection#readme'], vis:['json','bars','check','note'],
    en:{ t:'Credit card fraud detection', st:'Finished (one public dataset, not yet tested on newer data)', what:'Flags card payments that may be fraud and shows why.', who:'Fraud and risk teams at payment companies.',
      num:`Recall ${f.recall}, precision ${f.precision}, on the public Kaggle ULB dataset (${f.fraud_rate} of payments are fraud).`, extra:[],
      steps:['Card payment data comes in.','A model scores each payment.','Likely fraud is flagged.','An explanation shows which details drove the score.'] },
@@ -139,10 +139,10 @@ const P = [
 <div class="card">{T.job.map(j=> <p>{j}</p>)}<p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,k])=> <li><b>{n}</b><span>{T.sk}: {k}</span></li>)}</ul></div>
 
 <h2 class="dsp" id="work">{T.coH}</h2>
-<ol class="wbox" tabindex="0" role="region" aria-label={T.coScr}>{T.work.map(w=> <li class="wr"><span class="wl">{w.l.map(l=> <img src={LG(l)} alt="" width="28" height="28" decoding="async"/>)}</span><span class="wx"><b class="wn">{w.n}</b>{w.s && <span class="ws">{w.pi && <img class="pth" src={LG(w.pi)} alt="Bunny Park" width="92" height="35" decoding="async"/>}{w.s}</span>}<span class="wy">{w.y}</span><span class="wd">{w.d}</span></span></li>)}</ol>
+<ol class="wbox" tabindex="0" role="region" aria-label={T.coScr}>{T.work.map(w=> <li class="wr"><span class="wl">{w.l.map(l=> <img src={LG(l)} alt="" width="28" height="28" decoding="async"/>)}</span><span class="wx"><b class="wn">{w.n}</b>{w.s && <span class="ws">{w.pi && <img class="pth" src={LG(w.pi)} alt="Bunny Park" width="120" height="56" decoding="async"/>}{w.s}</span>}<span class="wy">{w.y}</span><span class="wd">{w.d}</span></span></li>)}</ol>
 
 <h2 class="dsp">{T.afH}</h2>
-<div class="tk" tabindex="0" role="region" aria-label={T.afH}><ul>{[0,1,2,3].map(k=> AF.map(([n,l])=> <li aria-hidden={k>0?'true':undefined}>{l ? <img src={LG(l)} alt="" width="24" height="24" decoding="async"/> : null}<span class={l?undefined:"wm"}>{n}</span></li>))}</ul></div>
+<div class="tk" tabindex="0" role="region" aria-label={T.afH}><ul>{[0,1,2,3].map(k=> AF.map(([n,l,w])=> <li aria-hidden={k>0?'true':undefined}>{w ? <img class="tkw" src={LG(l)} alt={n} width="124" height="24" decoding="async"/> : <>{l ? <img src={LG(l)} alt="" width="24" height="24" decoding="async"/> : null}<span class={l?undefined:"wm"}>{n}</span></>}</li>))}</ul></div>
 <p class="mut note">{T.afN}</p>
 
 <h2 class="dsp">{T.bgH}</h2>
@@ -206,7 +206,7 @@ h1.dsp{font-size:clamp(1.7rem,5.2vw,2.5rem);line-height:1.2;font-weight:750;marg
 .wbox{list-style:none;margin:0;padding:.3rem .7rem;max-height:15rem;overflow-y:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 6px 18px rgba(20,30,50,.08)}
 .wbox:focus-visible,.tk:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
 .wr{display:flex;gap:.75rem;align-items:flex-start;padding:.7rem 0;border-bottom:1px solid var(--line)}.wr:last-child{border-bottom:0}
-.wl{display:flex;gap:.25rem;flex:none;min-width:3.6rem}.wl img,.tk img{background:#fff;border-radius:6px;padding:2px;box-sizing:border-box;object-fit:contain}
+.wl{display:flex;gap:.25rem;flex:none;min-width:3.6rem}.wl img,.tk img.tkw{padding:2px 6px}.tk img{background:#fff;border-radius:6px;padding:2px;box-sizing:border-box;object-fit:contain}
 .wx{display:flex;flex-direction:column;gap:.1rem;min-width:0}.wn{font-size:1.02rem}.ws{font-size:.88rem;color:var(--acc);font-weight:600}.wy{font-size:.85rem;opacity:.8}.wd{font-size:.92rem}
 .tk{overflow:hidden;width:100%;padding:.5rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .tk ul{list-style:none;margin:0;padding:0;display:flex;gap:.8rem;width:max-content;animation:tk 60s linear infinite}

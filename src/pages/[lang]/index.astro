@@ -36,13 +36,15 @@ const now = ja
 {ja ? <>
 <p class="hi">こんにちは。</p>
 <h1>{SITE_NAME}</h1>
-<p class="title">AI/MLエンジニア。ソフトウェアの仕事は約4年、そのうち約2.5年はAIとLLMの仕事です。</p>
+<p class="title">AI/MLエンジニア。AIとLLMの仕事をしています。</p>
+<a class="reccard" href={`${B}/${lang==='ja'?'ja':'en'}/recruiter/?ref=home`}><span class="rck">{ja?'採用担当の方へ':'For recruiters'}</span><span class="rct">{ja?'30秒でわかる概要':'30-second summary'}</span><span class="rca" aria-hidden="true">→</span></a>
 <p class="lead">仕事で使うAIを作り、テストしています。日本語の文書、AIの評価、セキュリティのテストです。</p>
 <p class="start">ここはわたしのウェブ上の拠点です。仕事、プロジェクト、相談の案内をまとめています。どこから見ればいいか迷ったら、<button type="button" class="startb" data-guide-open>サイトガイド</button>をタップしてください。</p>
 </> : <>
 <p class="hi">Hello, I'm</p>
 <h1>{SITE_NAME}</h1>
-<p class="title">AI/ML engineer. About 4 years in software, the last 2.5 in AI and LLM work.</p>
+<p class="title">AI/ML engineer, happily working with AI and LLMs.</p>
+<a class="reccard" href={`${B}/${lang==='ja'?'ja':'en'}/recruiter/?ref=home`}><span class="rck">{ja?'採用担当の方へ':'For recruiters'}</span><span class="rct">{ja?'30秒でわかる概要':'30-second summary'}</span><span class="rca" aria-hidden="true">→</span></a>
 <p class="lead">I build and test AI for real work: Japanese documents, evaluation and security testing.</p>
 <p class="start"><span>This is my home on the web: my work, projects and guidance. Not sure where to start?</span> <button type="button" class="startb" data-guide-open>Tap Site guide</button></p>
 {(lang==='fr'||lang==='ru') && <p class="small mut i18nnote">{lang==='fr'?'Ceci est une première traduction. Vos remarques sur le français sont les bienvenues.':'Это первый вариант перевода. Буду рад замечаниям по тексту.'}</p>}
@@ -67,7 +69,6 @@ const now = ja
 <div class="card door warm"><h3>{ja?'これから挑戦する方へ':'For learners'}</h3><p>{ja?'日本で働くまでの記録と、日本語の勉強。':'My path toward work in Japan, and how I study Japanese.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/now/`}>{ja?'いまの様子':'What I\'m doing now'}</a><a class="btn ghost dbtn" href={`${B}/${lang}/talk/`}>{ja?'日本での就職について相談する':'Book a 1:1 chat about Japan'}</a></div>
 <div class="card door"><h3>{ja?'エンジニアの方へ':'For engineers'}</h3><p>{ja?'評価の方法、テストの件数、コード。':'How each system was tested, with test sizes and code.'}</p><a class="btn ghost dbtn" href={`${B}/${lang}/projects/`}>{ja?'プロジェクト':'Projects'}</a><a class="btn ghost dbtn" href={C.github}>GitHub</a></div>
 </div></section>
-<p class="reclink"><a href={`${B}/${lang==='ja'?'ja':'en'}/recruiter/?ref=home`}>{ja?'採用担当の方へ →':'For recruiters →'}</a></p>
 
 <Voices lang={lang}/>
 <div class="hrow">

@@ -495,5 +495,8 @@
  "Built with agents: advisors, project logos and a cleaner organisations row": "Сделано с агентами: наставники, логотипы проектов и более аккуратный ряд организаций",
  "Built with agents: privacy-friendly visitor counter and a weekly visitor panel": "Сделано с агентами: счётчик посещений без слежки и еженедельная панель посетителей",
  "Last 7 days:": "За 7 дней:",
- "visitors": "посетителей"
+ "visitors": "посетителей",
+ "AI/ML engineer, happily working with AI and LLMs.": "Инженер AI/ML, с удовольствием работаю с ИИ и LLM.",
+ "AI/ML engineer, happily working with AI and LLMs: Japanese documents, evaluation and security testing. Each project shows how it was tested.": "Инженер AI/ML, с удовольствием работаю с ИИ и LLM: японские документы, оценка и тестирование безопасности. В каждом проекте показано, как он проверялся.",
+ "30-second summary": "Краткое резюме за 30 секунд"
 }
