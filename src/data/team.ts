@@ -40,4 +40,5 @@ export const timeline = [
  ['v6.13','','Built with agents: recruiter page in French and Russian, site name Prithivi everywhere, facts checked across all pages','エージェントと作成：採用担当者向けページのフランス語・ロシア語版、サイト名をPrithiviに統一、全ページの情報をそろえる','2026-10-31'],
  ['v6.14','','Built with agents: recruiter About section made global in all four languages, new newspaper-collage LinkedIn cover','エージェントと作成：採用担当者向けページの自己紹介を4言語で国を問わない内容に、新聞コラージュ風のLinkedInカバー','2026-10-31'],
  ['v6.14.1','','Built with agents: name spelling corrected to Prithivi, recruiter language switch shows all four languages','エージェントと作成：名前の表記をPrithivi（プリティヴィ）に修正、採用担当者向けページの言語切り替えを4言語に','2026-10-31'],
+ ['v6.15','','Built with agents: French friend on the comment train, and the train now moves along (pause, swipe)','エージェントと作成：フランスの友だちをコメントの汽車に、汽車が動くように（止める・スワイプ）','2026-11-03'],
 ];

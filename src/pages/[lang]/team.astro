@@ -7,6 +7,7 @@ const FB = [
  { d:'2026-10-26', en:'Friend from Saitama Prefecture (日本人30歳女性)', ja:'埼玉県の友だち（日本人30歳女性）', chEn:['v5.2: her comment added to Home, and an at-a-glance table on About','v5.3: the comment train, with her as the first passenger','v6.1: her picture changes through life stages, and her window got a Saitama theme'], chJa:['v5.2：ホームに彼女のコメント、Aboutに一目でわかる表','v5.3：コメントの汽車。最初の乗客が彼女','v6.1：彼女の絵が人生の場面で変わるように。埼玉のテーマも'] },
  { d:'2026-10-26', en:'Friend from Shiga Prefecture (日本人女性)', ja:'滋賀県の友だち（日本人女性）', chEn:['v6.3: added to the train as a sleepy forest character with a Lake Biwa theme'], chJa:['v6.3：びわ湖のテーマで、ねむそうな森のキャラクターとして汽車に'] },
  { d:'2026-10-27', en:'Friend from Aichi Prefecture (日本人男性)', ja:'愛知県の友だち（日本人男性）', chEn:['v6.6: added to the train as a motorcycle rider, with his comments'], chJa:['v6.6：バイクに乗る人として、コメントといっしょに汽車に'] },
+ { d:'2026-11-03', en:'Friend from the Paris suburbs, France', ja:'フランス・パリ近郊の友だち', chEn:['v6.15: added to the train with her comment in French; the train now moves along so every friend can be seen'], chJa:['v6.15：フランス語のコメントといっしょに汽車に。全員が見えるように、汽車が動くように'] },
 ];
 // v6.7: ONE workflow timeline. Friend feedback + agent-built versions, newest first, grouped by date.
 const ENT = [...FB.map(f=>({d:f.d, k:'fb', f})), ...[...timeline].reverse().map(([v,t,en,jp,d])=>({d:d||'2026-10-25', k:'ag', v, t, en, jp}))];

@@ -1,5 +1,5 @@
 ---
-import { passengers, voices } from '../data/voices';
+import { passengers, voices, origOf } from '../data/voices';
 import FriendAvatar from './FriendAvatar.astro';
 import { themes } from '../data/themes';
 import Emblem from './Emblem.astro';
@@ -7,8 +7,13 @@ import CreatureAvatar from './CreatureAvatar.astro';
 import RiderAvatar from './RiderAvatar.astro';
 import FlagBadge from './FlagBadge.astro';
 const CAP:any = {en:['School band','College, law','Online with friends','Teaching Japanese','Now, with her dog'],ja:['学校のバンド','大学で法律','オンラインで友だちと','日本語の先生','いま、愛犬と'],fr:["Groupe de l'école",'Université, droit','En ligne avec des amis','Professeure de japonais','Aujourd’hui, avec son chien'],ru:['Школьная группа','Университет, право','Онлайн с друзьями','Учит японскому','Сейчас, со своей собакой']};
-const { lang } = Astro.props; const ja = lang==='ja'; const caps = JSON.stringify(CAP[lang]??CAP.en);
+const { lang } = Astro.props;
+// v6.15: comment written in another language (e.g. French). Shown in the original; translation for this page language, never as her words.
+const trOf = (q:any) => !q.src ? q.en : lang===q.src ? '' : lang==='ja' ? q.ja : lang==='ru' ? (q.ru ?? q.en) : q.en;
+const trLbl = lang==='ja' ? '日本語訳（翻訳）：' : lang==='ru' ? 'Перевод на русский:' : 'English meaning (translation):';
+const LN:any = {ja:'Japanese',fr:'French'}; const ja = lang==='ja'; const caps = JSON.stringify(CAP[lang]??CAP.en);
 const thCss = Object.entries(themes).map(([k,t])=>`.vdlg.th-${k}{${Object.entries(t.light).map(([a,b])=>a+':'+b).join(';')}}html[data-theme=dark] .vdlg.th-${k}{${Object.entries(t.dark).map(([a,b])=>a+':'+b).join(';')}}`).join('');
+const BOOK = '<svg class="emb-i" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M4 12q10-6 20 0v28q-10-6-20 0z" fill="#FFF8EC" stroke="#2B4C7E" stroke-width="2"/><path d="M44 12q-10-6-20 0v28q10-6 20 0z" fill="#F4E6C8" stroke="#2B4C7E" stroke-width="2"/><path d="M9 18q6-3 11 0M9 24q6-3 11 0M28 18q6-3 11 0M28 24q6-3 11 0" stroke="#7FB3D5" stroke-width="1.6" fill="none"/></svg>';
 const N = passengers.length, X = 20 + N*330 + 10, W = X + 410, H = 240;
 const pc = (v:number, t:number) => (v/t*100).toFixed(2)+'%';
 const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[、。！？「」\s]/g,'');
@@ -21,13 +26,13 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 
 <div class="vfall" data-vfall><div class="vgrid">{voices.map(v => <figure class="vnote">
 <span class="hanko" aria-hidden="true">声</span>
-<blockquote lang="ja"><p>「{v.ja}」</p></blockquote>
-{!ja && <p class="vtr small"><span class="mut">English meaning (translation):</span> {v.en}</p>}
+<blockquote lang={origOf(v).lang}><p>「{origOf(v).text}」</p></blockquote>
+{(v.src ? trOf(v) : !ja) && <p class="vtr small"><span class="mut">{v.src ? trLbl : 'English meaning (translation):'}</span> {trOf(v)}</p>}
 <figcaption lang="ja">{v.by}{!ja && <span lang="en" class="mut"> ({v.byEn})</span>}</figcaption>
 </figure>)}</div></div>
 
 <div class="trwrap" data-train hidden>
-<div class="trclip" style={`aspect-ratio:${W}/${H}`}><div class="tr">
+<div class="trclip" data-trclip><div class="tr" style={`aspect-ratio:${W}/${H}`}>
 <svg class="trsvg" viewBox={`0 0 ${W} ${H}`} aria-hidden="true" focusable="false">
 <g class="rail"><rect x="0" y="222" width={W} height="4" rx="2"/>{Array.from({length:Math.ceil(W/40)},(_,i)=><rect x={i*40+6} y="226" width="22" height="6" rx="2" class="slp"/>)}</g>
 <g class="body">
@@ -36,7 +41,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
  <rect x={x} y="40" width="290" height="160" rx="18" class="car"/>
  <rect x={x+18} y="70" width="70" height="60" rx="10" class="win"/>
  <rect x={x+140} y="55" width="120" height="100" rx="14" class="win"/>
- {p.emblem ? <g transform={`translate(${x+14} 160) scale(.6)`}><rect x="4" y="30" width="40" height="8" rx="2" fill="#7FB3D5"/><circle cx="13" cy="10" r="5" fill="none" stroke="#FFF3D6" stroke-width="2.6"/><circle cx="13" cy="24" r="5" fill="none" stroke="#FFF3D6" stroke-width="2.6"/><path d="M17 12L40 22M17 22L40 12" stroke="#FFF3D6" stroke-width="2.8" stroke-linecap="round"/></g> : <circle cx={x+30} cy="175" r="7" class="ume"/>}
+ {p.emblem==='book' ? <g transform={`translate(${x+14} 160) scale(.6)`}><path d="M4 12q10-5 20 0v26q-10-5-20 0z" fill="#FFF3D6"/><path d="M44 12q-10-5-20 0v26q10-5 20 0z" fill="#E9D8B4"/><path d="M24 12v26" stroke="#5E2A33" stroke-width="2"/></g> : p.emblem ? <g transform={`translate(${x+14} 160) scale(.6)`}><rect x="4" y="30" width="40" height="8" rx="2" fill="#7FB3D5"/><circle cx="13" cy="10" r="5" fill="none" stroke="#FFF3D6" stroke-width="2.6"/><circle cx="13" cy="24" r="5" fill="none" stroke="#FFF3D6" stroke-width="2.6"/><path d="M17 12L40 22M17 22L40 12" stroke="#FFF3D6" stroke-width="2.8" stroke-linecap="round"/></g> : <circle cx={x+30} cy="175" r="7" class="ume"/>}
  <rect x={x+290} y="176" width="50" height="8" rx="3" class="cpl"/>
 </g>})}
 <rect x={X+10} y="45" width="126" height="16" rx="6" class="roof"/>
@@ -54,33 +59,36 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 </svg>
 {passengers.map((p,i)=><button type="button" class="pax" data-pax={p.id} aria-haspopup="dialog"
  style={`left:${pc(20+i*330+140,W)};top:${pc(55,H)};width:${pc(120,W)};height:${pc(100,H)}`}
- aria-label={p.avatar?(ja?'友だちのイラスト。タップするとコメントが読めます':`Friend illustration${p.prefEn?', '+p.prefEn:''}. Tap to read ${p.he?'his':'her'} comment`):(ja?'はさみとくしの窓。タップするとコメントが読めます':'Window with scissors and comb. Tap to read her comment')}>
- {!p.avatar ? <Emblem/> : ('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button>)}
+ aria-label={p.avatar?(ja?'友だちのイラスト。タップするとコメントが読めます':`Friend illustration${p.prefEn?', '+p.prefEn:''}. Tap to read ${p.he?'his':'her'} comment`):(p.emblem==='book' ? (ja?'本の窓。タップするとコメントが読めます':`Window with a book${p.prefEn?', '+p.prefEn:''}. Tap to read her comment`) : (ja?'はさみとくしの窓。タップするとコメントが読めます':'Window with scissors and comb. Tap to read her comment'))}>
+ {!p.avatar ? (p.emblem==='book' ? <Fragment set:html={BOOK}/> : <Emblem/>) : ('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button>)}
 <div class="smoke" data-smoke aria-hidden="true" style={`left:${pc(X+307,W)};top:${pc(40,H)}`}></div>
 </div></div>
-<span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="3" rx="1" fill="#D9A441"/><path d="M8.5 6h7l-.8 11h-5.4z" fill="#E3B85C" stroke="#8a5a2b" stroke-width=".8"/><rect x="10.5" y="9" width="3" height="1.4" fill="#8a5a2b"/><rect x="7" y="17" width="10" height="3" rx="1.5" fill="#D9A441"/><path d="M17 4q2 1 2.5 3M18.5 2.5q3 1.5 3.5 4.5" stroke="#E3B85C" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span>
-<div class="sr">{voices.map(v=><figure><blockquote lang="ja"><p>「{v.ja}」</p></blockquote>{!ja&&<p>English meaning (translation): {v.en}</p>}<figcaption lang="ja">{v.by}</figcaption></figure>)}</div>
+<span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="3" rx="1" fill="#D9A441"/><path d="M8.5 6h7l-.8 11h-5.4z" fill="#E3B85C" stroke="#8a5a2b" stroke-width=".8"/><rect x="10.5" y="9" width="3" height="1.4" fill="#8a5a2b"/><rect x="7" y="17" width="10" height="3" rx="1.5" fill="#D9A441"/><path d="M17 4q2 1 2.5 3M18.5 2.5q3 1.5 3.5 4.5" stroke="#E3B85C" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-run hidden aria-pressed="true">{ja?'汽車を止める':'Pause the train'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span>
+<div class="sr">{voices.map(v=><figure><blockquote lang={origOf(v).lang}><p>「{origOf(v).text}」</p></blockquote>{(v.src ? trOf(v) : !ja)&&<p>{v.src ? trLbl : 'English meaning (translation):'} {trOf(v)}</p>}<figcaption lang="ja">{v.by}</figcaption></figure>)}</div>
 </div>
 
 {passengers.map(p=><dialog class={`vdlg${p.theme?' th-'+p.theme:''}`} id={`dlg-${p.id}`} aria-modal="true" aria-labelledby={`dt-${p.id}`}>
 {p.theme && themes[p.theme] && <div class="vbg" aria-hidden="true" set:html={themes[p.theme].svg}></div>}
 <div class="vdin">
 <button type="button" class="vx" data-close aria-label={ja?'閉じる':'Close'}>×</button>
-<div class="vdtop"><span class="dcapw">{p.avatar ? <button type="button" class="drumbtn" data-drum data-tone={p.snd} aria-label={ja?'友だちのイラスト。タップで変わります':'Friend illustration, tap to change'}>{('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button> : <span class="drumbtn emb"><Emblem/></span>}</span>
-<div><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3>{!ja && <p class="small mut">({p.byEn})</p>}{p.prefEn && !p.by.includes(p.prefJa??'@') && <p class="small vloc">{ja?p.prefJa:p.prefEn}</p>}{p.capEn && <p class="small vcap">{ja?p.capJa:p.capEn}</p>}{p.likesEn && <p class="small">{ja?p.likesJa:p.likesEn}</p>}{p.stages && <p class="small mut">{ja?'絵をタップすると、絵が変わります。':(p.he?'Tap his picture to change it.':'Tap her picture to change it.')}</p>}</div></div>
-<p class="small mut">{ja?'元のコメント（そのまま）':`${p.he?'His':'Her'} original comment (unchanged, in Japanese)`}</p>
-{p.quotes.map(q=><blockquote class="vq" lang="ja"><p>「{q.ja}」</p></blockquote>)}
+<div class="vdtop"><span class="dcapw">{p.avatar ? <button type="button" class="drumbtn" data-drum data-tone={p.snd} aria-label={ja?'友だちのイラスト。タップで変わります':'Friend illustration, tap to change'}>{('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button> : <span class="drumbtn emb">{p.emblem==='book' ? <Fragment set:html={BOOK}/> : <Emblem/>}</span>}</span>
+<div>{p.quotes[0].src && !ja ? <h3 id={`dt-${p.id}`} lang="en">{p.byEn}</h3> : <><h3 id={`dt-${p.id}`} lang="ja">{p.by}</h3>{!ja && <p class="small mut">({p.byEn})</p>}</>}{p.prefEn && !p.by.includes(p.prefJa??'@') && <p class="small vloc">{ja?p.prefJa:p.prefEn}</p>}{p.capEn && <p class="small vcap">{ja?p.capJa:p.capEn}</p>}{p.likesEn && <p class="small">{ja?p.likesJa:p.likesEn}</p>}{p.stages && <p class="small mut">{ja?'絵をタップすると、絵が変わります。':(p.he?'Tap his picture to change it.':'Tap her picture to change it.')}</p>}</div></div>
+{(()=>{ const fs = p.quotes[0].src; const tr = p.quotes.map(trOf).filter(Boolean); return <>
+<p class="small mut">{ja?(fs?'元のコメント（フランス語のまま）':'元のコメント（そのまま）'):`${p.he?'His':'Her'} original comment (unchanged, in ${LN[fs??'ja']})`}</p>
+{p.quotes.map(q=><blockquote class="vq" lang={origOf(q).lang}><p>「{origOf(q).text}」</p></blockquote>)}
+{tr.length>0 && (fs ? <div class="ven vsrc" lang={lang==='ja'?'ja':lang==='ru'?'ru':'en'}><p class="small"><strong>{trLbl}</strong></p>{tr.map(t=><p>{t}</p>)}</div> : <>
 <button type="button" class="vtg" data-tr aria-expanded="false" aria-controls={`en-${p.id}`}>{ja?'英訳を見る':'Show English translation'}</button>
-<div id={`en-${p.id}`} class="ven" hidden lang="en"><p class="small"><strong>{ja?'英訳（翻訳）':'English meaning (translation)'}</strong></p>{p.quotes.map(q=><p>{q.en}</p>)}</div>
+<div id={`en-${p.id}`} class="ven" hidden lang="en"><p class="small"><strong>{ja?'英訳（翻訳）':'English meaning (translation)'}</strong></p>{p.quotes.map(q=><p>{q.en}</p>)}</div></>)}
+</>; })()}
 <button type="button" class="vclose" data-close>{ja?'閉じる':'Close'}</button>
 </div></dialog>)}
 </section>
 
 <style is:global>
 .voices{margin:2rem 0}.vhead{display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
-.sndrow{display:flex;gap:.5rem;justify-content:center;margin-top:.6rem;padding:.35rem;border-radius:999px;width:max-content;max-width:100%;margin-inline:auto;background:#2B2F36;border:2px solid #D9A441}.snd{display:inline-flex;align-items:center;gap:.35rem;font:inherit;font-size:.88rem;font-weight:700;min-height:44px;padding:.3rem 1rem;border:1.5px dashed #E3B85C;border-radius:999px;background:#8C3A45;color:#FFF3D6;cursor:pointer;letter-spacing:.02em}.snd:hover{background:#A24C58}.snd:focus-visible{outline:3px solid #E3B85C;outline-offset:2px}.snd[aria-pressed=false]{background:#4A515C}
-.trwrap{margin-top:5.5rem}@media (max-width:600px){.trwrap{margin-top:6.5rem}}.trclip{position:relative;width:100%;clip-path:inset(-96px 0 -12px 0)}
-.tr{position:absolute;inset:0}.trsvg{display:block;width:100%;height:100%;overflow:visible}
+.sndrow{display:flex;gap:.5rem;justify-content:center;margin-top:.6rem;padding:.35rem;border-radius:999px;width:max-content;max-width:100%;margin-inline:auto;background:#2B2F36;border:2px solid #D9A441}.snd{display:inline-flex;align-items:center;gap:.35rem;font:inherit;font-size:.88rem;font-weight:700;min-height:44px;padding:.3rem 1rem;border:1.5px dashed #E3B85C;border-radius:999px;background:#8C3A45;color:#FFF3D6;cursor:pointer;letter-spacing:.02em}.snd[hidden]{display:none}.snd{white-space:nowrap;flex:none}@media (max-width:479px){.sndrow{flex-wrap:wrap;justify-content:center;border-radius:24px}.snd{padding:.3rem .75rem;font-size:.84rem}}.snd:hover{background:#A24C58}.snd:focus-visible{outline:3px solid #E3B85C;outline-offset:2px}.snd[aria-pressed=false]{background:#4A515C}
+.trwrap{margin-top:5.5rem}@media (max-width:600px){.trwrap{margin-top:6.5rem}}.trclip{position:relative;width:100%;overflow-x:auto;overflow-y:hidden;padding-top:96px;margin-top:-96px;padding-bottom:10px;overscroll-behavior-x:contain;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.tr{position:relative;height:clamp(150px,24vw,230px);width:auto}.trsvg{display:block;width:100%;height:100%;overflow:visible}
 .rail rect{fill:var(--mut)}.rail .slp{fill:var(--line)}
 .car{fill:#8C3A45}.roof{fill:#5E2A33}.win{fill:#FFF3D6;stroke:#5E2A33;stroke-width:3}
 .plate{fill:#FFF8EC;stroke:#5E2A33;stroke-width:1.5}.plt{font:700 14px sans-serif;fill:#5E2A33}.ume{fill:#E9A3B0}
@@ -170,6 +178,21 @@ if (sec) {
       if (first) { first = false; requestAnimationFrame(() => { tr.classList.add('go'); tr.classList.remove('pre'); }); puff(); } }
     else { sec.classList.remove('run'); clearInterval(timer); }
   }, { threshold: .25 }).observe(train);
+  // v6.15 moving train: the view glides along the whole train and back, so every friend is seen. Tap/swipe pauses; Pause button; no auto-move with reduced motion.
+  const clip = sec.querySelector<HTMLElement>('[data-trclip]')!, runB = sec.querySelector<HTMLButtonElement>('[data-run]')!;
+  const RL = ({ja:['汽車を止める','汽車を動かす'],fr:['Arrêter le train','Faire rouler le train'],ru:['Остановить поезд','Запустить поезд']} as any)[document.documentElement.lang] ?? ['Pause the train','Start the train'];
+  let userPause = false, idleUntil = 0, dir = -1, vis = false, last = 0, pos = -1;
+  const max = () => clip.scrollWidth - clip.clientWidth;
+  const setRun = () => { runB.setAttribute('aria-pressed', String(!userPause)); runB.textContent = userPause ? RL[1] : RL[0]; };
+  if (!rm) { runB.hidden = false; setRun(); runB.addEventListener('click', () => { userPause = !userPause; setRun(); }); }
+  const hold = () => { idleUntil = performance.now() + 5000; pos = -1; };
+  ['pointerdown','wheel','touchstart','keydown','focusin'].forEach(ev => clip.addEventListener(ev, hold, { passive: true }));
+  const step = (t: number) => { const dt = last ? Math.min(t - last, 50) : 0; last = t; const m = max();
+    if (vis && !userPause && t > idleUntil && m > 4 && !document.querySelector('dialog[open]')) {
+      if (pos < 0) pos = clip.scrollLeft; pos += dir * dt * .045; if (pos <= 0) { pos = 0; dir = 1; idleUntil = t + 1500; } else if (pos >= m) { pos = m; dir = -1; idleUntil = t + 1500; }
+      clip.scrollLeft = pos; }
+    requestAnimationFrame(step); };
+  if (!rm) { clip.scrollLeft = max(); new IntersectionObserver(([e]) => { vis = e.isIntersecting; }, { threshold: .25 }).observe(clip); requestAnimationFrame(step); }
   let opener: HTMLElement | null = null;
   sec.querySelectorAll<HTMLButtonElement>('[data-pax]').forEach(b => b.addEventListener('click', () => {
     const d = document.getElementById('dlg-' + b.dataset.pax) as HTMLDialogElement; opener = b; hit(b.querySelector('svg'), document.querySelector<HTMLElement>('#dlg-' + b.dataset.pax + ' [data-drum]')?.dataset.tone);
@@ -180,9 +203,9 @@ if (sec) {
     d.addEventListener('click', e => { if (e.target === d) close(); });
     d.querySelectorAll('[data-close]').forEach(x => x.addEventListener('click', close));
     d.querySelector('[data-drum]')?.addEventListener('click', e => { const el = e.currentTarget as HTMLElement; hit(el.querySelector('svg'), el.dataset.tone); });
-    const t = d.querySelector<HTMLButtonElement>('[data-tr]')!, en = d.querySelector<HTMLElement>('.ven')!;
-    t.addEventListener('click', () => { const o = en.hidden; en.hidden = !o; t.setAttribute('aria-expanded', String(o));
-      t.textContent = o ? L.hide : L.show; });
+    const t = d.querySelector<HTMLButtonElement>('[data-tr]'), en = d.querySelector<HTMLElement>('.ven')!;
+    t?.addEventListener('click', () => { const o = en.hidden; en.hidden = !o; t!.setAttribute('aria-expanded', String(o));
+      t!.textContent = o ? L.hide : L.show; });
     d.addEventListener('keydown', e => { if (e.key !== 'Tab') return; const f = Array.from(d.querySelectorAll<HTMLElement>('button:not([hidden])')).filter(x => !x.closest('[hidden]'));
       const a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } });
   });
