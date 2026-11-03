@@ -14,11 +14,14 @@
     "hit5": "0.98",
     "mrr": "0.87",
     "questions": 42,
-    "hand_checked": 15
+    "hand_checked": 15,
+    "missed_question": 12
   },
   "fraud": {
     "recall": "0.84",
     "precision": "0.88",
-    "fraud_rate": "0.172%"
+    "fraud_rate": "0.172%",
+    "test_rows": "56,962",
+    "test_frauds": 98
   }
 }
