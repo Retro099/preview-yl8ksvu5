@@ -621,14 +621,9 @@
  "Built with agents: recruiter About section made global in all four languages, new newspaper-collage LinkedIn cover": "Сделано с агентами: раздел «Обо мне» на странице для рекрутеров стал международным на всех четырёх языках, новая обложка LinkedIn в виде газетного коллажа",
  "Built with agents: name spelling corrected to Prithivi, recruiter language switch shows all four languages": "Сделано с агентами: написание имени исправлено на Prithivi, переключатель языка на странице для рекрутеров показывает все четыре языка",
  "Pause the train": "Остановить поезд",
- "Friend, Paris suburbs, France": "Подруга, пригород Парижа, Франция",
- "(Friend, Paris suburbs, France)": "(Подруга, пригород Парижа, Франция)",
- "Paris suburbs, France": "Пригород Парижа, Франция",
  "Very kind, and always ready to help": "Очень добрая и всегда готова помочь",
  "She loves reading books": "Она очень любит читать книги",
  "Her original comment (unchanged, in French)": "Её исходный комментарий (без изменений, на французском)",
- "Window with a book, Paris suburbs, France. Tap to read her comment": "Окно с книгой, пригород Парижа, Франция. Нажмите, чтобы прочитать её комментарий",
- "Friend from the Paris suburbs, France": "Подруга из пригорода Парижа, Франция",
  "v6.15: added to the train with her comment in French; the train now moves along so every friend can be seen": "v6.15: добавлена в поезд со своим комментарием на французском; теперь поезд едет, чтобы были видны все друзья",
  "Built with agents: French friend on the comment train, and the train now moves along (pause, swipe)": "Создано с агентами: подруга из Франции в поезде комментариев, и теперь поезд едет (пауза, свайп)",
  "A very serious site. I recommend it.": "Очень серьёзный сайт. Рекомендую.",
@@ -654,5 +649,12 @@
  "Sharing what I know comes naturally. In my current job, while working on projects, I often explain technical points to my clients, such as how to tell whether an AI judge's grades can be trusted. At the game studio I guided junior developers on how technology differs between handheld devices and gaming setups, so the game mechanics didn't clash.": "Делиться знаниями для меня естественно. На текущей работе, в ходе проектов, я часто объясняю клиентам технические моменты, например как понять, можно ли доверять оценкам ИИ-судьи. В игровой студии я подсказывал младшим разработчикам, чем технологии портативных устройств отличаются от игровых систем, чтобы игровые механики не конфликтовали.",
  "I like sharing my knowledge and learning from people with different backgrounds. I work well remotely across time zones, though I miss working side by side with colleagues in an office.": "Мне нравится делиться знаниями и учиться у людей с разным опытом. Я хорошо работаю удалённо в разных часовых поясах, хотя мне не хватает работы бок о бок с коллегами в офисе.",
  "I'm passionate about cultures. I have been part of different cultures my whole life, and I enjoy learning how other people live and work.": "Я увлекаюсь культурами. Всю жизнь я был частью разных культур, и мне интересно узнавать, как живут и работают другие люди.",
- "Built with agents: rewrote the “About me” on the recruiter page so it describes how I work and who I am, in all four languages": "Сделано с агентами: раздел «Обо мне» на странице для рекрутеров переписан, чтобы показать, как я работаю и какой я человек, на всех четырёх языках"
+ "Built with agents: rewrote the “About me” on the recruiter page so it describes how I work and who I am, in all four languages": "Сделано с агентами: раздел «Обо мне» на странице для рекрутеров переписан, чтобы показать, как я работаю и какой я человек, на всех четырёх языках",
+ "Friend, Paris": "Подруга, Париж",
+ "(Friend, Paris)": "(Подруга, Париж)",
+ "Paris": "Париж",
+ "Window with a book, Paris. Tap to read her comment": "Окно с книгой, Париж. Нажмите, чтобы прочитать её комментарий",
+ "Friend illustration, Paris. Tap to read her comment": "Иллюстрация подруги, Париж. Нажмите, чтобы прочитать её комментарий",
+ "Friend from Paris": "Подруга из Парижа",
+ "Built with agents: the Paris friend now has her own illustrated picture on the comment train, and her location shows Paris": "Сделано с агентами: у подруги из Парижа теперь своя иллюстрация в поезде с комментариями, а место указано как Париж"
 }

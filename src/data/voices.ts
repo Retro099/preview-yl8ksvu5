@@ -3,7 +3,7 @@
 // Never add a real name, company or workplace.
 export type Passenger = {
   id: string; by: string; byEn: string; capEn: string; capJa: string; cabin: string;
-  avatar?: { hair: string; top: string; prop: 'drum' | 'none' } | { kind: 'creature' | 'rider' }; // no avatar = carriage shows the emblem only
+  avatar?: { hair: string; top: string; prop: 'drum' | 'none' } | { kind: 'creature' | 'rider' | 'reader' }; // no avatar = carriage shows the emblem only
   emblem?: 'scissors' | 'book';  // small icon in the window when there is no avatar
   likesEn?: string; snd?: 'box'|'pluck'; likesJa?: string;
   stages?: boolean; // life-stage animation (FriendAvatar stages)
@@ -38,8 +38,8 @@ export const passengers: Passenger[] = [
     { ja:'冒頭で何をやっている人か書いて有り理解できます。', en:'At the top it says what you do, so it is easy to understand.' },
    ] },
  // French friend: feedback 2026-11-02 on v6.14.1, permission given. Label = location only. Never add her name, employer or age.
- { id:'f4', by:'フランス・パリ近郊の友だち', byEn:'Friend, Paris suburbs, France', capEn:'Very kind, and always ready to help', capJa:'とてもやさしくて、いつも力になってくれます',
-   likesEn:'She loves reading books', likesJa:'本を読むのが大好きです', cabin:'', emblem:'book', flag:'fr', prefEn:'Paris suburbs, France', prefJa:'フランス・パリ近郊',
+ { id:'f4', by:'パリの友だち', byEn:'Friend, Paris', capEn:'Very kind, and always ready to help', capJa:'とてもやさしくて、いつも力になってくれます',
+   likesEn:'She loves reading books', likesJa:'本を読むのが大好きです', cabin:'', emblem:'book', avatar:{ kind:'reader' }, flag:'fr', prefEn:'Paris', prefJa:'パリ',
    quotes:[
     { src:'fr', orig:'Site très sérieux. Je recommande', ja:'とてもしっかりしたサイトです。おすすめします。', en:'A very serious site. I recommend it.', ru:'Очень серьёзный сайт. Рекомендую.' },
    ] },

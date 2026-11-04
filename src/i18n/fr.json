@@ -621,14 +621,9 @@
  "Built with agents: recruiter About section made global in all four languages, new newspaper-collage LinkedIn cover": "Fait avec des agents : section « À propos » de la page recruteurs rendue internationale dans les quatre langues, nouvelle bannière LinkedIn en collage de journaux",
  "Built with agents: name spelling corrected to Prithivi, recruiter language switch shows all four languages": "Fait avec des agents : orthographe du nom corrigée en Prithivi, le sélecteur de langue de la page recruteurs affiche les quatre langues",
  "Pause the train": "Arrêter le train",
- "Friend, Paris suburbs, France": "Amie, banlieue parisienne, France",
- "(Friend, Paris suburbs, France)": "(Amie, banlieue parisienne, France)",
- "Paris suburbs, France": "Banlieue parisienne, France",
  "Very kind, and always ready to help": "Très gentille, et toujours prête à aider",
  "She loves reading books": "Elle adore lire",
  "Her original comment (unchanged, in French)": "Son commentaire original (inchangé, en français)",
- "Window with a book, Paris suburbs, France. Tap to read her comment": "Fenêtre avec un livre, banlieue parisienne, France. Touchez pour lire son commentaire",
- "Friend from the Paris suburbs, France": "Amie de la banlieue parisienne, France",
  "v6.15: added to the train with her comment in French; the train now moves along so every friend can be seen": "v6.15 : ajoutée au train avec son commentaire en français ; le train avance maintenant pour que chaque ami soit visible",
  "Built with agents: French friend on the comment train, and the train now moves along (pause, swipe)": "Créé avec des agents : l’amie française dans le train des commentaires, et le train avance maintenant (pause, glisser)",
  "A very serious site. I recommend it.": "Site très sérieux. Je recommande",
@@ -654,5 +649,12 @@
  "Sharing what I know comes naturally. In my current job, while working on projects, I often explain technical points to my clients, such as how to tell whether an AI judge's grades can be trusted. At the game studio I guided junior developers on how technology differs between handheld devices and gaming setups, so the game mechanics didn't clash.": "Partager ce que je sais m'est naturel. Dans mon travail actuel, au fil des projets, j'explique souvent des points techniques à mes clients, par exemple comment savoir si les notes d'un juge IA sont fiables. Au studio de jeux, j'ai guidé des développeurs juniors sur les différences techniques entre les appareils portables et les configurations de jeu, pour que les mécaniques du jeu ne se contredisent pas.",
  "I like sharing my knowledge and learning from people with different backgrounds. I work well remotely across time zones, though I miss working side by side with colleagues in an office.": "J'aime partager mes connaissances et apprendre de personnes aux parcours différents. Je travaille bien à distance, sur plusieurs fuseaux horaires, même si travailler aux côtés de collègues dans un bureau me manque.",
  "I'm passionate about cultures. I have been part of different cultures my whole life, and I enjoy learning how other people live and work.": "Les cultures me passionnent. J'ai vécu entre différentes cultures toute ma vie, et j'aime découvrir comment les autres vivent et travaillent.",
- "Built with agents: rewrote the “About me” on the recruiter page so it describes how I work and who I am, in all four languages": "Créé avec des agents : réécriture de « À propos » sur la page recruteurs pour décrire ma façon de travailler et qui je suis, dans les quatre langues"
+ "Built with agents: rewrote the “About me” on the recruiter page so it describes how I work and who I am, in all four languages": "Créé avec des agents : réécriture de « À propos » sur la page recruteurs pour décrire ma façon de travailler et qui je suis, dans les quatre langues",
+ "Friend, Paris": "Amie, Paris",
+ "(Friend, Paris)": "(Amie, Paris)",
+ "Paris": "Paris",
+ "Window with a book, Paris. Tap to read her comment": "Fenêtre avec un livre, Paris. Touchez pour lire son commentaire",
+ "Friend illustration, Paris. Tap to read her comment": "Illustration de l’amie, Paris. Touchez pour lire son commentaire",
+ "Friend from Paris": "Amie de Paris",
+ "Built with agents: the Paris friend now has her own illustrated picture on the comment train, and her location shows Paris": "Créé avec des agents : l’amie de Paris a maintenant sa propre illustration dans le train des commentaires, et son lieu indique Paris"
 }

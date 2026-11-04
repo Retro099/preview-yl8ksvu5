@@ -1,5 +1,10 @@
 [
   {
+    "name": "jp-meeting-to-crm-fields",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields",
+    "updated": "2026-11-04"
+  },
+  {
     "name": "credit-card-fraud-detection",
     "url": "https://github.com/Retro099/credit-card-fraud-detection",
     "updated": "2026-11-03"
@@ -8,11 +13,6 @@
     "name": "japanese-rag-eval",
     "url": "https://github.com/Retro099/japanese-rag-eval",
     "updated": "2026-11-03"
-  },
-  {
-    "name": "jp-meeting-to-crm-fields",
-    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields",
-    "updated": "2026-10-30"
   },
   {
     "name": "Retro099",
