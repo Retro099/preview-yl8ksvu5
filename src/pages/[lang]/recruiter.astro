@@ -16,8 +16,8 @@ const ADVISORS = [
  { name:'Nibedita Sahoo', email:'nibedita.sahoo@galgotiasuniversity.edu.in', inst:'Galgotias University, Greater Noida', instJa:'Galgotias University（グレーター・ノイダ）' } ];
 const T = {
  en:{ h1:'Software, data and AI/ML engineer', h1b:'(Python, LLM evaluation)',
-  top:'Based in India, open to relocating, including overseas, with visa sponsorship and relocation support. Japan is my main goal.',
-  intent:'Looking for roles with work-visa sponsorship, Japan first. I’ll relocate after an offer and visa approval. Studying Japanese daily.',
+  top:'',
+  intent:"Based in India, open to relocating with visa sponsorship and relocation support. I will move after an offer and visa approval. I adapt easily to new communities, and to prepare, I'm studying Japanese daily so I can be part of the society and not just work in it.",
   nav:['Projects','Work','Contact'], getsH:'What a company gets',
   gets:[['Checking AI answers against written rules','LLM evaluation: I check AI answers against a company’s written rules, find where they are wrong or unsafe, explain why, and build test sets that show whether a change helped.'],
    ['Working systems in Python','Data and ML pipelines that run: Japanese meeting notes to CRM fields (with a live app), a Japanese document search (RAG) evaluation, and credit-card fraud detection. Each reports what was tested and on how many cases.'],
@@ -29,7 +29,7 @@ const T = {
   jobH:'What I do: checking AI answers against written rules',
   job:['Companies use AI to answer customers and staff.','I test those answers before people rely on them: I write hard questions, find where the AI is wrong or unsafe, explain why, and check the code behind it.','The company gets fewer wrong answers, and a test set that shows whether a change really made the AI better.'],
   jobO:'Outlier AI is a platform operated by Scale AI where companies hire remote specialists to test and improve AI models. I do this as remote contract work from India.',
-  typesH:'Types of projects', types:[['Checking AI answers against written rules','Rubric evaluation, error rating, clear written explanations'],['Image and chart questions that make AI fail','Computer vision, reading line graphs and charts, adversarial question writing, written critique'],['Checking the AI judges','LLM-as-judge, consistent grading, attention to detail'],['Code and speed checks behind the answers','Python, reading code, performance tuning'],['Building test sets','Dataset building, prompt writing, quality checks']],
+  typesH:'Types of projects', types:[['Checking AI answers against written rules','I read an AI model’s answer, compare it with the written rules for the task, decide how serious each error is, and explain in plain writing what is wrong and why, so the team can fix it.','Rubric evaluation, error rating, clear written explanations'],['Image and chart questions that make AI fail','I write questions about images, line graphs and charts that the AI gets wrong, then write a critique of its answer. This shows the team where the model misreads visual information.','Computer vision, reading line graphs and charts, adversarial question writing, written critique'],['Checking the AI judges','Some AI models grade other models’ answers (LLM-as-judge). I check whether those grades are fair and consistent, and point out where the judge is wrong, because a bad judge makes every result unreliable.','LLM-as-judge, consistent grading, attention to detail'],['Code and speed checks behind the answers','When an answer contains Python code, I read it, check that it really works, and look for ways to make it faster.','Python, reading code, performance tuning'],['Building test sets','I write prompts and test cases and check their quality, so a team can measure whether a model change actually helped.','Dataset building, prompt writing, quality checks']],
   typesNote:'These are descriptive names, not the original project names.', sk:'Skills',
   bgH:'About me',
   bg:['My strength is helping a team do careful, reliable work. On my current client team I train new members: I explain the guidelines, walk through real examples with them, and keep giving feedback until they can work alone. At a game studio I mentored interns and junior developers every day and reviewed their work.','I like working with others. At college I was on the core team of the tech festival and co-organised coding and bug-finding events, and from 2020 to 2021 I led weekly sessions for junior students. At school I was Vice Captain.','I try to stay humble and keep learning. I practise my weakest skill, speaking, on purpose, and I am studying Japanese. I also speak English, Hindi, Odia and Bengali.',
@@ -44,8 +44,8 @@ const T = {
   afH:'Organizations and firms I’m affiliated with', afN:'Logos are trademarks of their owners.',
   ctH:'Contact', sw:'Language' },
  ja:{ h1:'ソフトウェア・データ・AI/MLのエンジニアです。', h1b:'',
-  top:'インド在住で、ビザサポートのある海外での就業にも前向きで、特に日本で働きたいと考えています。',
-  intent:'ビザサポートのある企業で働きたいと考えています（日本を第一希望）。内定後、ビザ申請と引っ越しの準備を進めます。毎日日本語を勉強しています。',
+  top:'',
+  intent:'インド在住です。日本で働くことを強く希望しており、就労ビザと引っ越しのサポートをいただける企業への転居に前向きです。内定とビザの許可をいただいた後に来日します。新しい環境にもすぐになじめるよう、毎日日本語を勉強しています。働くだけでなく、地域社会の一員として暮らしていきたいと考えています。',
   nav:['プロジェクト','職歴','連絡先'], getsH:'会社にとってのメリット',
   gets:[['書かれたルールに照らしたAIの回答の確認','LLMの評価：会社のルールに照らしてAIの回答を確認し、まちがいや危ない答えを見つけて理由を説明し、変更で本当に良くなったかを確かめるテストを作ります。'],
    ['Pythonで動くシステム','実際に動くデータ・MLのパイプライン：日本語の商談メモからCRM項目へ（動くアプリあり）、日本語の文書検索（RAG）の評価、クレジットカードの不正検出。何を何件テストしたかを、それぞれ書いています。'],
@@ -57,7 +57,7 @@ const T = {
   jobH:'私の仕事：AIの回答を、書かれたルールに照らして確認する',
   job:['会社はAIを使ってお客さんや社員に答えます。','私はその答えを、人が使う前にテストします。難しい質問を作り、まちがいや危ない答えを見つけて理由を説明し、裏のコードもチェックします。','会社はまちがいが減り、変更で本当に良くなったかを確かめられます。'],
   jobO:'Outlier AIは、Scale AIが運営するプラットフォームで、企業がリモートの専門家に頼んでAIモデルをテストし、改善します。私はインドからリモートの業務委託として働いています。',
-  typesH:'案件の種類', types:[['ルールに沿ったAIの答えの確認','ルーブリック評価、誤りの評価、分かりやすい説明文'],['AIがまちがえる画像・グラフの問題づくり','画像認識、折れ線グラフ・図表の読み取り、敵対的な質問づくり、講評'],['AIの採点者（AIジャッジ）の確認','LLM-as-judge、ぶれない採点、細部への注意'],['答えの裏のコードと速さのチェック','Python、コードの読解、性能改善'],['テストセットの作成','データセット作成、プロンプト作成、品質チェック']],
+  typesH:'案件の種類', types:[['ルールに沿ったAIの答えの確認','AIモデルの答えを読み、案件の書かれたルールと照らし合わせて、誤りの重さを判断します。何がなぜまちがっているのかを分かりやすく文章で説明し、チームが直せるようにします。','ルーブリック評価、誤りの評価、分かりやすい説明文'],['AIがまちがえる画像・グラフの問題づくり','AIがまちがえるような、画像・折れ線グラフ・図表についての質問を作り、AIの答えを講評します。モデルが画像の情報をどこで読みまちがえるかが分かります。','画像認識、折れ線グラフ・図表の読み取り、敵対的な質問づくり、講評'],['AIの採点者（AIジャッジ）の確認','AIがほかのAIの答えを採点することがあります（LLM-as-judge）。その採点が公平でぶれていないかを確認し、まちがいを指摘します。採点者がまちがうと、すべての結果が信用できなくなるからです。','LLM-as-judge、ぶれない採点、細部への注意'],['答えの裏のコードと速さのチェック','答えにPythonのコードがあるときは、コードを読んで本当に動くかを確かめ、もっと速くできる方法を探します。','Python、コードの読解、性能改善'],['テストセットの作成','プロンプトとテストケースを作り、品質を確認します。モデルの変更で本当に良くなったかを、チームが測れるようにします。','データセット作成、プロンプト作成、品質チェック']],
   typesNote:'内容を表す名前で、実際の案件名ではありません。', sk:'必要なスキル',
   bgH:'自己PR',
   bg:['私の強みは、チームが正確で信頼できる仕事をできるよう支えることです。いまのクライアントのチームでは新しいメンバーの指導を担当し、ガイドラインを説明して実例を一緒に確認し、ひとりで作業できるまでフィードバックを続けています。ゲーム会社でも、インターンや若手開発者を毎日指導し、作業を確認していました。','人と協力して進める仕事が好きです。大学では技術祭の中心メンバーとして、プログラミングやバグ探しのイベントを共同で運営し、2020〜2021年には後輩向けの勉強会を毎週開きました。学校では副キャプテンを務めました。','謙虚に学び続けることを大切にしています。いちばん苦手な「話す」力をあえて練習し、日本語も勉強中です。英語・ヒンディー語・オディア語・ベンガル語を話します。世界のどこでも、仕事と移住の機会に前向きです。'],
@@ -75,11 +75,11 @@ const P = [
  { main:true, gh:GH+'jp-meeting-to-crm-fields', live:'https://retro-jp-meeting-to-crm-fields.streamlit.app/', docs:[GH+'jp-meeting-to-crm-fields/blob/main/README.md',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'], vis:['note','json','check','person','copy'],
    en:{ t:'Japanese meeting notes to CRM fields', st:'Finished, stable on main, CI green (30 Oct 2026)', what:'Turns Japanese meeting notes into five CRM fields: contact, company, deadline, next action, risk.', who:'Sales and account teams in Japanese companies.',
      num:`${c.exact_match} exact match across ${c.exact_total} fields (${c.notes} synthetic notes x 5 fields), mean of ${c.runs} runs, temperature 0.`,
-     extra:[`Attack success rate, lower is better: ${c.attack_before} to ${c.attack_after} with defenses on (held-out ${c.attacks} attacks, small test).`,`${c.judge_agree} of ${c.judge_total} sampled judge grades agreed with the judge (small sample).`],
+     extra:[`Attack success rate, lower is better: ${c.attack_before} to ${c.attack_after} with defenses on (${c.attacks} held-out attacks).`,`${c.judge_agree} of ${c.judge_total} checked judge grades agreed with the judge.`],
      steps:['Paste a Japanese meeting note.','The model extracts the 5 fields as JSON.','Optional checks: security defenses, validate and repair.','A person reviews and edits the fields.','Copy or download the JSON for the CRM.'] },
    ja:{ t:'日本語の商談メモからCRM項目へ', st:'完成。mainで安定、CIは成功（2026年10月30日）', what:'日本語の商談メモから CRM の 5 項目（相手・会社名・期限・次アクション・リスク）を取り出します。', who:'日本企業の営業・アカウント担当。',
      num:`完全一致 ${c.exact_match}（${c.exact_total}項目＝テスト用メモ${c.notes}件×5項目、${c.runs}回の平均、temperature 0）`,
-     extra:[`攻撃成功率（低いほど良い）：対策ありで${c.attack_before}から${c.attack_after}（未使用の攻撃${c.attacks}件、小規模なテスト）`,`抽出した評価${c.judge_total}件のうち${c.judge_agree}件で、判定が一致しました（小規模な確認）。`],
+     extra:[`攻撃成功率（低いほど良い）：対策ありで${c.attack_before}から${c.attack_after}（未使用の攻撃${c.attacks}件）`,`抽出した評価${c.judge_total}件のうち${c.judge_agree}件で、判定が一致しました。`],
      steps:['商談メモを貼り付ける','モデルが 5 項目を JSON で抽出','任意で確認（セキュリティ防御・確認と修正）','担当者が確認・修正','JSON をコピー／ダウンロードして CRM へ'] } },
  { gh:GH+'japanese-rag-eval', docs:[GH+'japanese-rag-eval#readme'], vis:['note','bars','bars','check'],
    en:{ t:'Japanese document search evaluation', st:'Finished (one evaluation report)', what:'Tests whether AI search finds the right passage in a long Japanese government report.', who:'Teams building AI search over Japanese documents.',
@@ -112,9 +112,8 @@ const P = [
 ---
 <Base lang={lang} page="recruiter" title={ja?'ソフトウェア・データ・AI/MLエンジニア':'Software, data and AI/ML engineer'} description={`${T.h1} ${T.h1b} ${T.top}`} footerContact={false}>
 <div class="rec" data-i18n-skip lang={L}>
-<div class="rsw" role="group" aria-label={T.sw}>{[["en","EN"],["ja","日本語"],["fr","FR"],["ru","RU"]].map(([c,t]) => <a href={`${B}/${c}/recruiter/`} data-rl={c} lang={c==="en"?undefined:c} aria-current={lang===c?"true":undefined}>{t}</a>)}</div>
 <h1 class="dsp">{T.h1}{T.h1b && <span class="h1b"> {T.h1b}</span>}</h1>
-<p class="lead">{T.top}</p>
+{T.top && <p class="lead">{T.top}</p>}
 <p class="intent">{T.intent}</p>
 <nav class="rnav" aria-label={ja?'このページ':'On this page'}><a href="#projects">{T.nav[0]}</a><a href="#work">{T.nav[1]}</a><a href="#contact">{T.nav[2]}</a></nav>
 
@@ -136,7 +135,7 @@ const P = [
 </article>})}
 
 <section class="band"><h2 class="dsp">{T.jobH}</h2></section>
-<div class="card">{T.job.map(j=> <p>{j}</p>)}<p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,k])=> <li><b>{n}</b><span>{T.sk}: {k}</span></li>)}</ul></div>
+<div class="card">{T.job.map(j=> <p>{j}</p>)}<p class="mut">{T.jobO}</p><h3>{T.typesH}</h3><p class="mut note">{T.typesNote}</p><ul class="types">{T.types.map(([n,d,k])=> <li><b>{n}</b><span>{d}</span><span>{T.sk}: {k}</span></li>)}</ul></div>
 
 <h2 class="dsp" id="work">{T.coH}</h2>
 <ol class="wbox" tabindex="0" role="region" aria-label={T.coScr}>{T.work.map(w=> <li class="wr"><span class="wl">{w.l.map(l=> <img src={LG(l)} alt="" width="28" height="28" decoding="async"/>)}</span><span class="wx"><b class="wn">{w.n}</b>{w.s && <span class="ws">{w.pi && <img class="pth" src={LG(w.pi)} alt="Bunny Park" width="120" height="56" decoding="async"/>}{w.s}</span>}<span class="wy">{w.y}</span><span class="wd">{w.d}</span></span></li>)}</ol>
@@ -153,7 +152,7 @@ const P = [
 
 <section id="contact" class="ct"><h2 class="dsp">{T.ctH}</h2><Contact lang={L}/></section>
 </div>
-<script is:inline>(function(){var tk=document.querySelector('.tk');document.addEventListener('pointerdown',function(e){document.querySelectorAll('.stp[open]').forEach(function(d){if(!d.contains(e.target))d.open=false});if(tk){if(tk.contains(e.target))tk.classList.toggle('pz');else tk.classList.remove('pz')}},true);document.querySelectorAll('.rsw a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('rlang',a.dataset.rl)}catch(e){}})})})();</script>
+<script is:inline>(function(){var tk=document.querySelector('.tk');document.addEventListener('pointerdown',function(e){document.querySelectorAll('.stp[open]').forEach(function(d){if(!d.contains(e.target))d.open=false});if(tk){if(tk.contains(e.target))tk.classList.toggle('pz');else tk.classList.remove('pz')}},true);document.querySelectorAll('.langm a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('rlang',a.dataset.lang)}catch(e){}})})})();</script>
 </Base>
 <style>
 @font-face{font-family:'Fraunces';src:url('/preview-yl8ksvu5/fonts/fraunces-latin.woff2') format('woff2');font-weight:100 900;font-display:optional;unicode-range:U+0020-007E,U+00A0-00FF,U+2013-2014,U+2018-201D,U+2026,U+2192}
@@ -165,9 +164,6 @@ h1.dsp{font-size:clamp(1.7rem,5.2vw,2.5rem);line-height:1.2;font-weight:750;marg
 .lead{font-size:1.1rem;line-height:1.6;margin:.2rem 0 .8rem}
 .intent{border-left:4px solid var(--acc);background:color-mix(in srgb,var(--acc) 9%,var(--card));padding:.7rem .9rem;border-radius:10px;font-weight:600;line-height:1.55}
 .rnav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0}.rnav a{min-height:44px;display:inline-flex;align-items:center;padding:0 1rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:var(--card)}
-.rsw{display:flex;gap:.4rem;justify-content:flex-end;margin:.5rem 0}
-.rsw a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 .8rem;border:1px solid var(--line);border-radius:8px;text-decoration:none}
-.rsw a[aria-current]{background:var(--acc);color:#fff;border-color:var(--acc)}
 .rg3{display:grid;gap:.75rem}@media (min-width:800px){.rg3{grid-template-columns:repeat(2,1fr)}}
 .rg3 .card{margin:0;border-top:3px solid var(--acc)}.rg3 h3{margin:.1rem 0 .4rem;font-size:1.05rem}.rg3 p{margin:0;line-height:1.55}
 .pj{margin:0 0 1rem}.pj.main{border-bottom-color:var(--acc)}

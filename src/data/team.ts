@@ -42,4 +42,5 @@ export const timeline = [
  ['v6.14.1','','Built with agents: name spelling corrected to Prithivi, recruiter language switch shows all four languages','エージェントと作成：名前の表記をPrithivi（プリティヴィ）に修正、採用担当者向けページの言語切り替えを4言語に','2026-10-31'],
  ['v6.15','','Built with agents: French friend on the comment train, and the train now moves along (pause, swipe)','エージェントと作成：フランスの友だちをコメントの汽車に、汽車が動くように（止める・スワイプ）','2026-11-03'],
  ['v6.15.1','','Built with agents: RAG and fraud project cards updated to match their READMEs, framed as evaluation work','エージェントと作成：RAGと不正検知のプロジェクトカードをREADMEに合わせて更新、評価の仕事として説明','2026-11-03'],
+ ['v6.16','','Built with agents: recruiter page wording written for each language (relocation support kept), clearer descriptions of my AI evaluation work, duplicate language switch removed, the word “small” removed across the site','エージェントと作成：採用担当者向けページの文章を言語ごとに調整（転居のサポートも明記）、AI評価の仕事の説明を分かりやすく、重複した言語切り替えを削除、テストの説明から規模を表す不要な言葉を削除','2026-11-04'],
 ];
