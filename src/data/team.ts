@@ -45,4 +45,5 @@ export const timeline = [
  ['v6.16','','Built with agents: recruiter page wording written for each language (relocation support kept), clearer descriptions of my AI evaluation work, duplicate language switch removed, the word “small” removed across the site','エージェントと作成：採用担当者向けページの文章を言語ごとに調整（転居のサポートも明記）、AI評価の仕事の説明を分かりやすく、重複した言語切り替えを削除、テストの説明から規模を表す不要な言葉を削除','2026-11-04'],
  ['v6.17','','Built with agents: rewrote the “About me” on the recruiter page so it describes how I work and who I am, in all four languages','エージェントと作成：採用担当者向けページの「自己PR」を、仕事への姿勢と人柄が伝わる内容に書き直し（4言語）','2026-11-04'],
  ['v6.18','','Built with agents: the Paris friend now has her own illustrated picture on the comment train, and her location shows Paris','エージェントと作成：パリの友だちにイラストの絵を追加、場所の表示を「パリ」に','2026-11-04'],
+ ['v6.19','','Built with agents: added my new main project, a live Japanese meeting-notes service, to the home page and recruiter page, marked “In progress” with planned results','エージェントと作成：新しい中心プロジェクト（日本語の商談メモのAPIサービス）をホームと採用担当者向けページに追加。「進行中」の表示と目標を掲載','2026-11-04'],
 ];

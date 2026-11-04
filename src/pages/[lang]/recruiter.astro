@@ -69,6 +69,39 @@ const T = {
    {l:['godspeed.webp'],n:'GodSpeed Games',s:'プロジェクト：Bunny Park',pi:'bunnypark-banner.webp',y:'2022年6月〜2023年6月',d:'リモート、正社員。Unreal Engine 4とC++で、ローカライズ、携帯機でのテストと移植、タッチ操作。'}],
   afH:'関わりのある組織・企業', afN:'ロゴは各社の商標です。',
   ctH:'連絡先', sw:'言語' } }[L];
+const NP = {
+ en:{ t:'Live Japanese meeting-notes service: CRM fields through an API', badge:'In progress', newp:'Newest main project',
+  lead:'This is how the service will work when it is finished. Parts that are not done yet are marked “In progress”, and I will update the numbers here as I measure them.',
+  plan:'Planned build time: about 10 to 14 days (a plan, not a measured figure).',
+  sec:[['The idea','My finished project, Japanese meeting notes to CRM fields, proves the extraction works on a fixed test set. The question a company asks next is: can it run as a real service, safely, at a known cost, and stay just as good after every change? This project answers that question.'],
+   ['What it is','A live web service (API). A sales tool sends a Japanese meeting note and gets back five CRM fields as JSON: contact, company, deadline, next action and risk. It is built on top of the finished core project, which stays unchanged at v1.0.0.']],
+  howH:'How it will work',
+  how:['An API handler receives the note, calls the model and returns checked JSON.','It runs on AWS (Lambda or a similar service).','Protection: an access key, rate limits, a daily cap, a budget alert, and secrets kept in the AWS secret store.','Every call logs its response time, tokens and cost.','GitHub Actions connects to AWS with short-lived credentials (OIDC), so no long-lived keys are stored.'],
+  sec2:[['How it is checked and kept safe','Every change runs through GitHub Actions: lint, tests and an evaluation gate. The gate fails the change if exact match drops below the baseline, or if the attack success rate on held-out attacks rises above the baseline. So a change cannot quietly make the service worse or less safe. Results that fail are reported in the README, not hidden.'],
+   ['What comes with it','A threat model, a list of failure modes, an architecture diagram, a README in English and Japanese, and a short walkthrough video in case the live link is down.']],
+  baseH:'Starting point (measured in the finished core project)',
+  base:[`Exact match: ${c.exact_match} across ${c.exact_total} fields (${c.notes} synthetic notes x 5 fields), single call.`,`Attack success rate on ${c.attacks} held-out attacks, with defenses on: ${c.attack_before} to ${c.attack_after} (single call) and ${c.attack_before} to 10% (agent).`,'Model cost: about Rs 0.022 per note.'],
+  resH:'Planned results and how they will be measured', cols:['Measure','Target','Result'],
+  res:[['Exact match on the frozen test set','At or above the baseline; the CI gate enforces it'],['Attack success on the held-out attacks','At or below the baseline; the CI gate enforces it'],['Response time per call','Logged on every call'],['Cost per call','Logged on every call, with a daily cap and a budget alert'],['Uptime of the live link','Checked after launch, with the walkthrough video as backup']],
+  tbm:'To be measured',
+  data:'All test data is synthetic. No real customer notes are used.',
+  core:'Core project on GitHub', svc:'Code (in progress)' },
+ ja:{ t:'日本語の商談メモをCRM項目に変換するAPIサービス（本番運用版）', badge:'進行中', newp:'いちばん新しい中心プロジェクト',
+  lead:'完成時の姿をここでご紹介しています。まだ終わっていない部分には「進行中」と表示し、数字は測定でき次第、このページで更新します。',
+  plan:'予定の開発期間：約10〜14日（計画であり、実績ではありません）',
+  sec:[['きっかけ','完成済みのプロジェクト「日本語の商談メモからCRM項目へ」で、決まったテストセットでは抽出がうまくいくことを確かめました。企業が次に気にされるのは、「実際のサービスとして安全に動くのか」「費用は分かるのか」「変更を重ねても品質が落ちないのか」という点だと考えました。このプロジェクトは、その問いに一つずつ答えるためのものです。'],
+   ['どんなものか','営業ツールから日本語の商談メモを送ると、CRMの5項目（相手・会社名・期限・次アクション・リスク）がJSONで返ってくるAPIサービスです。完成済みの中核プロジェクト（v1.0.0）はそのまま残し、その上に作ります。']],
+  howH:'しくみ',
+  how:['APIのハンドラーがメモを受け取り、モデルを呼び出し、確認済みのJSONを返します。','AWS（Lambdaなど）の上で動かします。','守り：アクセスキー、回数制限、1日の上限、予算アラートを設け、秘密情報はAWSのシークレット管理に保管します。','呼び出しごとに、応答時間・トークン数・費用を記録します。','GitHub ActionsからAWSへは短時間だけ有効な認証（OIDC）で接続し、長期間使える鍵は保存しません。'],
+  sec2:[['品質と安全の確かめ方','変更のたびに、GitHub Actionsでリント、テスト、評価のチェックを自動で行います。完全一致率が基準を下回ったり、未使用の攻撃の成功率が基準を上回ったりした場合は、その変更を通しません。気づかないうちに品質や安全性が下がることを防ぐためです。うまくいかなかった結果も隠さず、READMEに記載します。'],
+   ['あわせて用意するもの','脅威モデル、想定される障害の一覧、構成図、英語と日本語のREADME、そして公開リンクが使えないときのための短い解説動画です。']],
+  baseH:'出発点（完成済みの中核プロジェクトで測った数字）',
+  base:[`完全一致 ${c.exact_match}（${c.exact_total}項目＝テスト用の架空メモ${c.notes}件×5項目、1回の呼び出し）`,`未使用の攻撃${c.attacks}件での攻撃成功率：対策ありで${c.attack_before}から${c.attack_after}（1回の呼び出し）、${c.attack_before}から10%（エージェント）`,'モデルの費用：メモ1件あたり約0.022ルピー'],
+  resH:'目標と測り方', cols:['項目','目標','結果'],
+  res:[['固定したテストセットでの完全一致率','基準以上（CIで自動チェック）'],['未使用の攻撃での攻撃成功率','基準以下（CIで自動チェック）'],['1回あたりの応答時間','呼び出しごとに記録'],['1回あたりの費用','呼び出しごとに記録。1日の上限と予算アラートあり'],['公開リンクの稼働率','公開後に確認。予備として解説動画']],
+  tbm:'測定予定',
+  data:'テストデータはすべて架空のものです。実在のお客様のメモは使いません。',
+  core:'中核プロジェクトをGitHubで見る', svc:'コード（進行中）' } }[L];
 const AF = [['Outlier AI','outlier.svg'],['Scale AI','scale.svg'],['Mercor','mercor.svg'],['Turing','turing.webp'],['GodSpeed Games','godspeed.webp'],['Topmate','topmate-wordmark.png',1]];
 const P = [
  { main:true, gh:GH+'jp-meeting-to-crm-fields', live:'https://retro-jp-meeting-to-crm-fields.streamlit.app/', docs:[GH+'jp-meeting-to-crm-fields/blob/main/README.md',GH+'jp-meeting-to-crm-fields/blob/main/README.ja.md'], vis:['note','json','check','person','copy'],
@@ -120,6 +153,22 @@ const P = [
 <div class="rg3">{T.gets.map(([h,p])=> <div class="card"><h3>{h}</h3><p>{p}</p></div>)}</div>
 
 <h2 class="dsp" id="projects">{T.projH}</h2>
+<article class="card pj main np" id="live-service">
+ <p class="npk"><span class="badge ip">{NP.badge}</span> <span class="mut">{NP.newp}</span></p>
+ <h3 class="pn dsp">{NP.t}</h3>
+ <p>{NP.lead}</p>
+ <p class="mut">{NP.plan}</p>
+ {NP.sec.map(([h,p])=> <><h4>{h}</h4><p>{p}</p></>)}
+ <h4>{NP.howH}</h4>
+ <ul class="nph">{NP.how.map(h=> <li><span>{h}</span> <span class="badge ip sm">{NP.badge}</span></li>)}</ul>
+ {NP.sec2.map(([h,p])=> <><h4>{h}</h4><p>{p}</p></>)}
+ <h4>{NP.baseH}</h4>
+ <ul class="npb">{NP.base.map(b=> <li>{b}</li>)}</ul>
+ <h4>{NP.resH}</h4>
+ <div class="npt"><table><thead><tr>{NP.cols.map(h=> <th>{h}</th>)}</tr></thead><tbody>{NP.res.map(([a,b])=> <tr><td>{a}</td><td>{b}</td><td><span class="badge tbm">{NP.tbm}</span></td></tr>)}</tbody></table></div>
+ <p class="mut note">{NP.data}</p>
+ <div class="lk"><a class="btn" href={ref(GH+'jp-meeting-to-crm-fields')}>{NP.core}</a><a class="btn ghost" href={ref(GH+'jp-meeting-extraction-service')}>{NP.svc}</a></div>
+</article>
 {P.map(p=>{const x=p[L]; const n=x.steps.length; return <article class={p.main?'card pj main':'card pj'}>
  <h3 class="pn dsp">{x.t}</h3>
  <p class="st"><span class="dot" aria-hidden="true"></span>{T.st}: {x.st}</p>
@@ -214,4 +263,9 @@ blockquote{margin:.75rem 0;padding-left:.9rem;border-left:3px solid var(--warm);
 .adv{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}@media (min-width:700px){.adv{grid-template-columns:1fr 1fr}}.adv li{margin:0;display:flex;flex-direction:column;gap:.15rem;border-top:3px solid var(--acc);min-width:0}.advi{font-weight:600}.adve{font-size:.85rem;opacity:.8;overflow-wrap:anywhere}.advl{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;opacity:.75}.advn{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.25rem;min-height:44px;display:inline-flex;align-items:center;color:var(--acc);text-decoration-thickness:2px;text-underline-offset:3px;align-self:flex-start}
 .pth{display:block;border-radius:6px;margin:.2rem 0 .15rem;border:1px solid var(--line)}.wm{font-family:'Fraunces',Georgia,serif;font-weight:800;letter-spacing:.01em;line-height:24px}
 .ct{scroll-margin-top:5rem}#projects,#work{scroll-margin-top:5rem}
+.badge{display:inline-flex;align-items:center;gap:.35em;padding:.15rem .6rem;border-radius:999px;font-size:.8rem;font-weight:700;white-space:nowrap;vertical-align:middle}
+.badge.ip{background:#fbe9c8;color:#7a4b00;border:1px solid #e0a63a}.badge.ip::before{content:'';width:.5em;height:.5em;border-radius:50%;background:#e08a00}
+.badge.tbm{background:color-mix(in srgb,var(--acc) 12%,var(--card));border:1px dashed var(--acc)}.badge.sm{font-size:.72rem}
+.np h4{margin:1rem 0 .3rem;font-size:1.02rem}.npk{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center;margin:0}
+.nph,.npb{padding-left:1.1rem;display:grid;gap:.35rem}.npt{overflow-x:auto}.npt table{width:100%;border-collapse:collapse;font-size:.92rem}.npt th,.npt td{text-align:left;padding:.4rem;border-bottom:1px solid var(--line);vertical-align:top}
 </style>

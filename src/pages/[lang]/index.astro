@@ -24,8 +24,8 @@ const nums = [
    ja:['不正の検出率 / 警告の正しさ', `不正が${m.fraud.fraud_rate}しかない公開データでの結果`] },
 ];
 const now = ja
- ? [['2026-10-31','毎日日本語を勉強しています。'],['2026-10-31','CRMプロジェクト：完成しました。READMEと測った数字があります。次の中心になるプロジェクトを探しています。'],['2026-10-31','サイトv6.14：採用担当者向けページの自己紹介を国を問わない内容にし、新聞コラージュ風のLinkedInカバーを作りました。']]
- : [['2026-10-31','I study Japanese every day.'],['2026-10-31','CRM project: finished, with a README and measured numbers. Next, I’m choosing my next main project.'],['2026-10-31','Website v6.14: the recruiter page’s About section now reads for any country, and I made a new newspaper-collage LinkedIn cover.']];
+ ? [['2026-10-31','毎日日本語を勉強しています。'],['2026-11-04','次の中心プロジェクトを決めました。完成済みのCRMプロジェクトをもとにした、日本語の商談メモのAPIサービスです。いまは進行中です。'],['2026-10-31','サイトv6.14：採用担当者向けページの自己紹介を国を問わない内容にし、新聞コラージュ風のLinkedInカバーを作りました。']]
+ : [['2026-10-31','I study Japanese every day.'],['2026-11-04','New main project chosen: a live Japanese meeting-notes service built on my finished CRM project. It is in progress.'],['2026-10-31','Website v6.14: the recruiter page’s About section now reads for any country, and I made a new newspaper-collage LinkedIn cover.']];
 ---
 <style>.start{margin:.7rem 0 0;padding:.55rem .8rem;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.startb{font:inherit;font-weight:700;min-height:44px;padding:0 .2rem;border:0;background:none;color:var(--acc);text-decoration:underline;cursor:pointer}.startb:focus-visible{outline:3px solid var(--acc);outline-offset:2px}</style>
 <Base lang={lang} title={ja?'AI/MLエンジニア':'AI/ML engineer'}>
@@ -51,12 +51,14 @@ const now = ja
 </>}
 </div></div>
 
+<section class="card npc" aria-labelledby="np-h"><p class="npk"><span class="badge ip">{ja?'進行中':'In progress'}</span> <span class="mut">{ja?'新しいプロジェクト':'New project'}</span></p><h2 id="np-h">{ja?'日本語の商談メモのAPIサービス（本番運用版）':'Live Japanese meeting-notes service'}</h2><p>{ja?'日本語の商談メモをCRM項目に変換するAPIを公開し、変更のたびに品質と安全性を自動でチェックします。完成済みのCRMプロジェクトの上に作っています。':'A live API that turns Japanese meeting notes into CRM fields, with an automatic quality and safety gate on every change. Built on my finished CRM project.'}</p><p class="mut small">{ja?'数字は、測定できるまで「測定予定」と表示します。':'Results are marked “to be measured” until I measure them.'}</p><a class="btn" href={`${B}/${lang}/recruiter/?ref=home#live-service`}>{ja?'採用担当者向けページで詳しく見る →':'See the full plan →'}</a> <a class="btn ghost" href="https://github.com/Retro099/jp-meeting-extraction-service">{ja?'コード（進行中）':'Code (in progress)'}</a></section>
+<style>.npc{border-top:3px solid #e08a00;margin:1.2rem 0}.npc h2{margin:.4rem 0}.npk{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:0}.badge{display:inline-flex;align-items:center;gap:.35em;padding:.15rem .6rem;border-radius:999px;font-size:.8rem;font-weight:700;white-space:nowrap}.badge.ip{background:#fbe9c8;color:#7a4b00;border:1px solid #e0a63a}.badge.ip::before{content:'';width:.5em;height:.5em;border-radius:50%;background:#e08a00}</style>
 <section id="projects" aria-labelledby="pj-h"><h2 id="pj-h">{ja?'プロジェクト：それぞれが示すこと':'Projects: what each one shows'}</h2><p class="mut">{ja?'どのプロジェクトも、わたしの仕事の進め方を示しています。テストのしかた、数字での確認、弱い点の見つけ方です。':'Each project shows how I work: how I test, how I measure, and how I find the weak spots.'}</p><FlashDeck lang={lang}/></section>
 <p class="mut small">{ja?'どれも決まった条件でのテストの数字です。条件と弱い点は各プロジェクトのページに書いています。':'These numbers come from focused tests. Each project page explains the setup and the weak spots.'}</p>
 
 <section class="split" id="now">
 <div class="card"><h2>{ja?'いま':'Now'}</h2>
-<p class="mut"><time datetime="2026-10-31">{ja?'2026年10月31日 更新':'Updated 31 Oct 2026'}</time></p>
+<p class="mut"><time datetime="2026-11-04">{ja?'2026年11月4日 更新':'Updated 4 Nov 2026'}</time></p>
 <ul class="dated">{now.map(([d,t]) => <li>{d ? <time datetime={d}>{fmt(d)}</time> : <span></span>}<span>{t}</span></li>)}</ul>
 <a href={`${B}/${lang}/now/`}>{ja?'くわしく →':'More on the Now page →'}</a></div>
 <div class="card"><h2>{ja?'最近の更新（GitHub）':'Latest on GitHub'}</h2>
