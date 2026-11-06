@@ -1,5 +1,10 @@
 [
   {
+    "name": "jp-meeting-extraction-service",
+    "url": "https://github.com/Retro099/jp-meeting-extraction-service",
+    "updated": "2026-11-06"
+  },
+  {
     "name": "jp-meeting-to-crm-fields",
     "url": "https://github.com/Retro099/jp-meeting-to-crm-fields",
     "updated": "2026-11-04"

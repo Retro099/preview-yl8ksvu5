@@ -46,4 +46,5 @@ export const timeline = [
  ['v6.17','','Built with agents: rewrote the “About me” on the recruiter page so it describes how I work and who I am, in all four languages','エージェントと作成：採用担当者向けページの「自己PR」を、仕事への姿勢と人柄が伝わる内容に書き直し（4言語）','2026-11-04'],
  ['v6.18','','Built with agents: the Paris friend now has her own illustrated picture on the comment train, and her location shows Paris','エージェントと作成：パリの友だちにイラストの絵を追加、場所の表示を「パリ」に','2026-11-04'],
  ['v6.19','','Built with agents: added my new main project, a live Japanese meeting-notes service, to the home page and recruiter page, marked “In progress” with planned results','エージェントと作成：新しい中心プロジェクト（日本語の商談メモのAPIサービス）をホームと採用担当者向けページに追加。「進行中」の表示と目標を掲載','2026-11-04'],
+ ['v6.20','','Built with agents: the comment train is now one long carriage where my friends chat with each other, tapping a friend shows a note that rides with the train, the GooGooGaaGaa avatar says hello when tapped, and clearer “About me” and project wording','エージェントと作成：コメントの汽車を1両の長い車両にして、友だち同士がおしゃべりする動きを追加。友だちをタップすると汽車と一緒に動くメモが出ます。GooGooGaaGaaのアバターをタップすると声が出るように。「自己PR」とプロジェクトの説明も分かりやすく','2026-11-06'],
 ];

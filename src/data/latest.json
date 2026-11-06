@@ -1,5 +1,11 @@
 [
   {
+    "repo": "jp-meeting-to-crm-fields",
+    "title": "Verified headline numbers, README screenshot, guardrails for H004 and H019",
+    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/13",
+    "date": "2026-11-04"
+  },
+  {
     "repo": "credit-card-fraud-detection",
     "title": "docs: README evaluation-work upgrade",
     "url": "https://github.com/Retro099/credit-card-fraud-detection/pull/5",
@@ -21,12 +27,6 @@
     "repo": "jp-meeting-to-crm-fields",
     "title": "eval v2: manual spot-check result (20/20 agree)",
     "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/12",
-    "date": "2026-10-30"
-  },
-  {
-    "repo": "jp-meeting-to-crm-fields",
-    "title": "Eval v2: old path vs LangGraph agent (same session, 3 runs)",
-    "url": "https://github.com/Retro099/jp-meeting-to-crm-fields/pull/11",
     "date": "2026-10-30"
   }
 ]

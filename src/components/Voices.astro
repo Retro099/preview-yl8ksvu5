@@ -15,7 +15,8 @@ const trLbl = lang==='ja' ? '日本語訳（翻訳）：' : lang==='ru' ? 'Пе�
 const LN:any = {ja:'Japanese',fr:'French'}; const ja = lang==='ja'; const caps = JSON.stringify(CAP[lang]??CAP.en);
 const thCss = Object.entries(themes).map(([k,t])=>`.vdlg.th-${k}{${Object.entries(t.light).map(([a,b])=>a+':'+b).join(';')}}html[data-theme=dark] .vdlg.th-${k}{${Object.entries(t.dark).map(([a,b])=>a+':'+b).join(';')}}`).join('');
 const BOOK = '<svg class="emb-i" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M4 12q10-6 20 0v28q-10-6-20 0z" fill="#FFF8EC" stroke="#2B4C7E" stroke-width="2"/><path d="M44 12q-10-6-20 0v28q10-6 20 0z" fill="#F4E6C8" stroke="#2B4C7E" stroke-width="2"/><path d="M9 18q6-3 11 0M9 24q6-3 11 0M28 18q6-3 11 0M28 24q6-3 11 0" stroke="#7FB3D5" stroke-width="1.6" fill="none"/></svg>';
-const N = passengers.length, X = 20 + N*330 + 10, W = X + 410, H = 240;
+const N = passengers.length, SEAT = 260, CW = 40 + N*SEAT, X = 20 + CW + 10, W = X + 410, H = 240;
+const wx = (i:number) => 20 + 30 + (N-1-i)*SEAT; // v6.20 one long car: seat 1 (first feedback) next to the engine, later friends behind
 const pc = (v:number, t:number) => (v/t*100).toFixed(2)+'%';
 const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[、。！？「」\s]/g,'');
 ---
@@ -23,7 +24,7 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 <style set:html={thCss}></style>
 <div class="vhead"><h2 id="vh">{ja?'友だちからのコメント':'Comments from my friends'}</h2>
 </div>
-<p class="mut small">{ja?'ご本人たちの許可を得てのせています。':'Shared with their permission.'}{' '}<span class="trhint" hidden>{ja?'窓をタップすると、コメントが読めます。':'Tap a window to read a comment.'}</span></p>
+<p class="mut small">{ja?'ご本人たちの許可を得てのせています。':'Shared with their permission.'}{' '}<span class="trhint" hidden>{ja?'友だちか車両をタップすると、メモが出ます。メモをタップするとコメントが読めます。':'Tap a friend or the car for a note, then tap the note to read the comment.'}</span></p>
 
 <div class="vfall" data-vfall><div class="vgrid">{voices.map(v => <figure class="vnote">
 <span class="hanko" aria-hidden="true">声</span>
@@ -37,14 +38,14 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 <svg class="trsvg" viewBox={`0 0 ${W} ${H}`} aria-hidden="true" focusable="false">
 <g class="rail"><rect x="0" y="222" width={W} height="4" rx="2"/>{Array.from({length:Math.ceil(W/40)},(_,i)=><rect x={i*40+6} y="226" width="22" height="6" rx="2" class="slp"/>)}</g>
 <g class="body">
-{passengers.map((p,i)=>{const x=20+i*330; return <g>
- <rect x={x+6} y="28" width="278" height="18" rx="9" class="roof"/>
- <rect x={x} y="40" width="290" height="160" rx="18" class="car"/>
- <rect x={x+18} y="70" width="70" height="60" rx="10" class="win"/>
- <rect x={x+140} y="55" width="120" height="100" rx="14" class="win"/>
- {p.emblem==='book' ? <g transform={`translate(${x+14} 160) scale(.6)`}><path d="M4 12q10-5 20 0v26q-10-5-20 0z" fill="#FFF3D6"/><path d="M44 12q-10-5-20 0v26q10-5 20 0z" fill="#E9D8B4"/><path d="M24 12v26" stroke="#5E2A33" stroke-width="2"/></g> : p.emblem ? <g transform={`translate(${x+14} 160) scale(.6)`}><rect x="4" y="30" width="40" height="8" rx="2" fill="#7FB3D5"/><circle cx="13" cy="10" r="5" fill="none" stroke="#FFF3D6" stroke-width="2.6"/><circle cx="13" cy="24" r="5" fill="none" stroke="#FFF3D6" stroke-width="2.6"/><path d="M17 12L40 22M17 22L40 12" stroke="#FFF3D6" stroke-width="2.8" stroke-linecap="round"/></g> : <circle cx={x+30} cy="175" r="7" class="ume"/>}
- <rect x={x+290} y="176" width="50" height="8" rx="3" class="cpl"/>
+<rect x="26" y="28" width={CW-12} height="18" rx="9" class="roof"/>
+<rect x="20" y="40" width={CW} height="160" rx="18" class="car"/>
+<rect x="20" y="168" width={CW} height="6" class="belt"/>
+{passengers.map((p,i)=>{const x=wx(i); return <g>
+ <rect x={x} y="52" width="200" height="108" rx="14" class="win"/>
+ {i>0 && <rect x={x+212} y="70" width="24" height="98" rx="6" class="door"/>}
 </g>})}
+<rect x={20+CW} y="176" width="10" height="8" rx="3" class="cpl"/>
 <rect x={X+10} y="45" width="126" height="16" rx="6" class="roof"/>
 <rect x={X+16} y="55" width="112" height="140" rx="12" class="cab"/>
 <rect x={X+36} y="75" width="60" height="46" rx="8" class="win"/>
@@ -55,13 +56,14 @@ const letters = passengers.flatMap(p=>p.quotes.map(q=>q.ja)).join('').replace(/[
 <circle cx={X+372} cy="92" r="11" class="lamp"/>
 <path d={`M${X+370} 186L${X+404} 214H${X+356}Z`} class="cow"/>
 </g>
-{[[X+56,18],...passengers.flatMap((_,i)=>[[20+i*330+60,17],[20+i*330+230,17]]),[X+160,25],[X+235,25],[X+310,25]].map(([cx,r])=><g class="whl" style={`transform-origin:${cx}px ${210-r}px`}><circle cx={cx} cy={210-r} r={r} class="wh"/><path d={`M${cx-r+3} ${210-r}H${cx+r-3}M${cx} ${210-2*r+3}V${207}`} class="spk"/><circle cx={cx} cy={210-r} r="4" class="hub"/></g>)}
+{[[X+56,18],...[60,140,CW-100,CW-20].map(x=>[x,17]),[X+160,25],[X+235,25],[X+310,25]].map(([cx,r])=><g class="whl" style={`transform-origin:${cx}px ${210-r}px`}><circle cx={cx} cy={210-r} r={r} class="wh"/><path d={`M${cx-r+3} ${210-r}H${cx+r-3}M${cx} ${210-2*r+3}V${207}`} class="spk"/><circle cx={cx} cy={210-r} r="4" class="hub"/></g>)}
 <rect x={X+150} y="181" width="176" height="6" rx="3" class="rod"/>
 </svg>
 {passengers.map((p,i)=><button type="button" class="pax" data-pax={p.id} aria-haspopup="dialog"
- style={`left:${pc(20+i*330+140,W)};top:${pc(55,H)};width:${pc(120,W)};height:${pc(100,H)}`}
+ style={`left:${pc(wx(i)+30,W)};top:${pc(56,H)};width:${pc(140,W)};height:${pc(104,H)}`} data-i={i}
  aria-label={p.avatar?(ja?'友だちのイラスト。タップするとコメントが読めます':`Friend illustration${p.prefEn?', '+p.prefEn:''}. Tap to read ${p.he?'his':'her'} comment`):(p.emblem==='book' ? (ja?'本の窓。タップするとコメントが読めます':`Window with a book${p.prefEn?', '+p.prefEn:''}. Tap to read her comment`) : (ja?'はさみとくしの窓。タップするとコメントが読めます':'Window with scissors and comb. Tap to read her comment'))}>
- {!p.avatar ? (p.emblem==='book' ? <Fragment set:html={BOOK}/> : <Emblem/>) : ('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : p.avatar.kind==='reader' ? <ReaderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</button>)}
+ <span class={`sin ${i%2?"tr-r":"tr-l"} who-${p.id}`}>{!p.avatar ? (p.emblem==='book' ? <Fragment set:html={BOOK}/> : <Emblem/>) : ('kind' in p.avatar) ? (p.avatar.kind==='rider' ? <RiderAvatar/> : p.avatar.kind==='reader' ? <ReaderAvatar/> : <CreatureAvatar/>) : <FriendAvatar hair={p.avatar.hair} top={p.avatar.top} prop={p.avatar.prop} stages={p.stages}/>}{p.flag && <FlagBadge code={p.flag}/>}</span><span class={`chat ${i%2?"cb":"ca"}`} aria-hidden="true"><i></i><i></i><i></i></span></button>)}
+{passengers.map((p,i)=><button type="button" class="vpop" data-pop={p.id} hidden style={`left:${pc(wx(i)+100,W)}`}><strong>{p.prefEn ? (ja?p.prefJa:p.prefEn) : (ja?p.by:p.byEn)}</strong><span>{ja?'タップするとコメントが読めます':`Tap to read ${p.he?'his':'her'} comment`}</span></button>)}
 <div class="smoke" data-smoke aria-hidden="true" style={`left:${pc(X+307,W)};top:${pc(40,H)}`}></div>
 </div></div>
 <span class="sndrow"><button type="button" class="snd honk" data-honk aria-label={ja?'汽笛を鳴らす':'Honk the train whistle'}><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="3" rx="1" fill="#D9A441"/><path d="M8.5 6h7l-.8 11h-5.4z" fill="#E3B85C" stroke="#8a5a2b" stroke-width=".8"/><rect x="10.5" y="9" width="3" height="1.4" fill="#8a5a2b"/><rect x="7" y="17" width="10" height="3" rx="1.5" fill="#D9A441"/><path d="M17 4q2 1 2.5 3M18.5 2.5q3 1.5 3.5 4.5" stroke="#E3B85C" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg> {ja?'ポーッ':'Honk'}</button><button type="button" class="snd" data-run hidden aria-pressed="true">{ja?'汽車を止める':'Pause the train'}</button><button type="button" class="snd" data-snd hidden aria-pressed="true">{ja?'音':'Sound'}: <span data-sndl>{ja?'オン':'on'}</span></button></span>
@@ -134,6 +136,30 @@ html[data-theme=dark] .car{fill:#A24C58}html[data-theme=dark] .cab,html[data-the
 .pax .flagb{right:3%;bottom:5%;width:22%;min-width:8px}@media (max-width:600px){.pax .flagb{width:30%;box-shadow:0 0 0 1px #fff,0 1px 2px rgba(0,0,0,.25)}}.drumbtn{position:relative}.drumbtn .flagb{width:24px;right:5px;bottom:5px}.vloc{margin:.1rem 0}
 /* v6.6 phone fix: the passenger stays inside its window (no 44px minimum that made it spill out); a larger invisible tap area keeps it easy to tap. */
 @media (max-width:600px){.pax{min-width:0;min-height:0;overflow:visible}.pax>svg.fav{clip-path:inset(0 round 6px)}.pax::after{content:'';position:absolute;inset:-14px -10px}}
+/* v6.20 one long car, floating notes, friends chatting with each other */
+.belt{fill:#5E2A33;opacity:.55}.door{fill:#7A303B;stroke:#5E2A33;stroke-width:2}.trsvg{cursor:pointer}
+.trclip.moving{overflow:hidden}
+.sin{position:relative;display:grid;place-items:end center;width:100%;height:100%}.sin>svg{width:92%;height:100%}
+.vpop{position:absolute;bottom:calc(100% - 14%);transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;gap:.1rem;max-width:min(62vw,220px);padding:.45rem .7rem;font:inherit;font-size:.82rem;line-height:1.35;text-align:left;color:var(--fg);background:var(--card);border:1.5px solid var(--line);border-top:4px solid #E9A3B0;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.18);cursor:pointer;animation:vpopin .25s ease-out}
+.vpop[hidden]{display:none}.vpop strong{color:var(--acc)}.vpop span{color:var(--mut);font-size:.78rem}.vpop::after{content:'';position:absolute;left:50%;bottom:-8px;width:12px;height:12px;background:var(--card);border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+.vpop:focus-visible{outline:3px solid var(--acc);outline-offset:2px}@keyframes vpopin{from{opacity:0;transform:translate(-50%,6px)}}
+.chat{position:absolute;top:2%;display:flex;gap:2px;padding:3px 5px;background:#fff;border:1.5px solid #5E2A33;border-radius:10px;opacity:0;pointer-events:none;z-index:2}
+.chat i{width:4px;height:4px;border-radius:50%;background:#8C3A45}.chat.ca{left:2%}.chat.cb{right:2%}
+.sin{transform-origin:50% 95%}
+.voices.run .sin.tr-l{animation:vtalkA 8s ease-in-out infinite}.voices.run .sin.tr-r{animation:vtalkB 8s ease-in-out infinite}
+.voices.run .chat.ca{animation:vbubA 8s ease-in-out infinite}.voices.run .chat.cb{animation:vbubB 8s ease-in-out infinite}
+.voices.run .chat i{animation:vdot .9s ease-in-out infinite}.voices.run .chat i:nth-child(2){animation-delay:.15s}.voices.run .chat i:nth-child(3){animation-delay:.3s}
+.voices.run [data-i="2"] .sin,.voices.run [data-i="3"] .sin,.voices.run [data-i="2"] .chat,.voices.run [data-i="3"] .chat{animation-delay:-4s}
+@keyframes vtalkA{0%,100%{transform:none}6%,29%{transform:translateX(-4%) rotate(-5deg)}12%,24%{transform:translateX(-4%) rotate(-5deg) translateY(2%)}18%{transform:translateX(-4%) rotate(-3deg)}36%,50%{transform:translateX(-3%) rotate(-3deg)}56%,64%{transform:translateX(-3%) rotate(-4deg) translateY(-5%)}60%{transform:translateX(-3%) rotate(-2deg) translateY(0)}72%{transform:none}}
+@keyframes vtalkB{0%,100%{transform:none}6%,29%{transform:translateX(3%) rotate(3deg)}36%,50%{transform:translateX(4%) rotate(5deg)}40%,46%{transform:translateX(4%) rotate(5deg) translateY(2%)}43%{transform:translateX(4%) rotate(3deg)}56%,64%{transform:translateX(3%) rotate(4deg) translateY(-5%)}60%{transform:translateX(3%) rotate(2deg) translateY(0)}72%{transform:none}}
+@keyframes vbubA{0%,5%,31%,100%{opacity:0;transform:scale(.6)}8%,28%{opacity:1;transform:none}55%,64%{opacity:0}}
+@keyframes vbubB{0%,33%,52%,100%{opacity:0;transform:scale(.6)}36%,49%{opacity:1;transform:none}}
+@keyframes vdot{50%{transform:translateY(-2px);opacity:.5}}
+.voices.run .who-f2>svg{transform-origin:50% 90%;animation:vsway 2.8s ease-in-out infinite}@keyframes vsway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2.5deg)}}
+.voices.run .who-f3>svg{transform-origin:50% 85%;animation:vlook 3.6s ease-in-out infinite}@keyframes vlook{0%,100%{transform:none}29%,45%{transform:rotate(4deg) translateX(2%)}}
+.voices.run .who-f4>svg{animation:vread 2.6s ease-in-out infinite}@keyframes vread{50%{transform:translateY(2%)}}
+@media (prefers-reduced-motion:reduce){.voices .sin,.voices .chat,.voices .chat i,.voices .sin>svg{animation:none!important}.vpop{animation:none}}
+@media (max-width:600px){.chat{padding:2px 3px;border-width:1px}.chat i{width:3px;height:3px}}
 </style>
 
 <script>
@@ -147,7 +173,7 @@ if (sec) {
   const L = ({ja:{on:'オン',off:'オフ',show:'英訳を見る',hide:'英訳をかくす'},fr:{on:'activé',off:'coupé',show:'Voir la traduction en français',hide:'Masquer la traduction en français'},ru:{on:'вкл.',off:'выкл.',show:'Показать перевод на русский',hide:'Скрыть перевод на русский'}} as any)[document.documentElement.lang] ?? {on:'on',off:'off',show:'Show English translation',hide:'Hide English translation'};
   const letters = Array.from(sec.dataset.letters || '');
   train.hidden = false; fall.hidden = true; sec.querySelector<HTMLElement>('.trhint')!.hidden = false;
-  sndBtn.hidden = false; if (!rm) { tr.classList.add('pre'); }
+  sndBtn.hidden = false;
   let muted = localStorage.getItem('sound') === 'off', ctx: AudioContext | null = null;
   const setSnd = () => { sndBtn.setAttribute('aria-pressed', String(!muted)); sndL.textContent = muted ? (L.off) : (L.on); };
   setSnd();
@@ -176,28 +202,39 @@ if (sec) {
     live++; s.addEventListener('animationend', () => { s.remove(); live--; }); smoke.appendChild(s); };
   new IntersectionObserver(([e]) => {
     if (e.isIntersecting) { if (rm) return; sec.classList.add('run'); timer = window.setInterval(puff, 900);
-      if (first) { first = false; requestAnimationFrame(() => { tr.classList.add('go'); tr.classList.remove('pre'); }); puff(); } }
+      if (first) { first = false; puff(); } }
     else { sec.classList.remove('run'); clearInterval(timer); }
   }, { threshold: .25 }).observe(train);
-  // v6.15 moving train: the view glides along the whole train and back, so every friend is seen. Tap/swipe pauses; Pause button; no auto-move with reduced motion.
+  // v6.20 one long car: enters at normal speed, slows while on screen so friends can be tapped, then leaves and loops. Pause button; no travel with reduced motion.
   const clip = sec.querySelector<HTMLElement>('[data-trclip]')!, runB = sec.querySelector<HTMLButtonElement>('[data-run]')!;
   const RL = ({ja:['汽車を止める','汽車を動かす'],fr:['Arrêter le train','Faire rouler le train'],ru:['Остановить поезд','Запустить поезд']} as any)[document.documentElement.lang] ?? ['Pause the train','Start the train'];
-  let userPause = false, idleUntil = 0, dir = -1, vis = false, last = 0, pos = -1;
-  const max = () => clip.scrollWidth - clip.clientWidth;
+  let userPause = false, holdUntil = 0, vis = false, last = 0, x = NaN, waitUntil = 0;
   const setRun = () => { runB.setAttribute('aria-pressed', String(!userPause)); runB.textContent = userPause ? RL[1] : RL[0]; };
-  if (!rm) { runB.hidden = false; setRun(); runB.addEventListener('click', () => { userPause = !userPause; setRun(); }); }
-  const hold = () => { idleUntil = performance.now() + 5000; pos = -1; };
-  ['pointerdown','wheel','touchstart','keydown','focusin'].forEach(ev => clip.addEventListener(ev, hold, { passive: true }));
-  const step = (t: number) => { const dt = last ? Math.min(t - last, 50) : 0; last = t; const m = max();
-    if (vis && !userPause && t > idleUntil && m > 4 && !document.querySelector('dialog[open]')) {
-      if (pos < 0) pos = clip.scrollLeft; pos += dir * dt * .045; if (pos <= 0) { pos = 0; dir = 1; idleUntil = t + 1500; } else if (pos >= m) { pos = m; dir = -1; idleUntil = t + 1500; }
-      clip.scrollLeft = pos; }
+  const pops = Array.from(sec.querySelectorAll<HTMLButtonElement>('[data-pop]'));
+  const hidePops = () => pops.forEach(p => p.hidden = true);
+  if (!rm) { clip.classList.add('moving'); runB.hidden = false; setRun(); runB.addEventListener('click', () => { userPause = !userPause; setRun(); }); }
+  else { clip.scrollLeft = clip.scrollWidth; }
+  const step = (t: number) => { const dt = last ? Math.min(t - last, 50) : 0; last = t;
+    const tw = tr.offsetWidth, cw = clip.clientWidth;
+    if (isNaN(x)) x = -tw;
+    if (vis && !userPause && t > holdUntil && t > waitUntil && !document.querySelector('dialog[open]')) {
+      const slow = x + tw > cw * .9 && x < cw * .25; // friends on screen: crawl so they can be tapped
+      x += dt * (slow ? Math.max(.03, cw / 14000) : Math.max(.3, cw / 2500));
+      if (x > cw + 20) { x = -tw; hidePops(); waitUntil = t + 1800; }
+      tr.style.transform = `translateX(${x}px)`; }
     requestAnimationFrame(step); };
-  if (!rm) { clip.scrollLeft = max(); new IntersectionObserver(([e]) => { vis = e.isIntersecting; }, { threshold: .25 }).observe(clip); requestAnimationFrame(step); }
+  if (!rm) { new IntersectionObserver(([e]) => { vis = e.isIntersecting; }, { threshold: .2 }).observe(clip); requestAnimationFrame(step); }
   let opener: HTMLElement | null = null;
-  sec.querySelectorAll<HTMLButtonElement>('[data-pax]').forEach(b => b.addEventListener('click', () => {
-    const d = document.getElementById('dlg-' + b.dataset.pax) as HTMLDialogElement; opener = b; hit(b.querySelector('svg'), document.querySelector<HTMLElement>('#dlg-' + b.dataset.pax + ' [data-drum]')?.dataset.tone);
-    setTimeout(() => { d.showModal(); d.querySelector<HTMLElement>('[data-close]')?.focus(); }, rm ? 0 : 260); }));
+  const pax = Array.from(sec.querySelectorAll<HTMLButtonElement>('[data-pax]'));
+  const showPop = (b: HTMLButtonElement) => { const p = sec.querySelector<HTMLButtonElement>('[data-pop="' + b.dataset.pax + '"]')!; const o = p.hidden; hidePops(); p.hidden = !o;
+    b.setAttribute('aria-expanded', String(o)); holdUntil = performance.now() + 4000;
+    hit(b.querySelector('svg'), document.querySelector<HTMLElement>('#dlg-' + b.dataset.pax + ' [data-drum]')?.dataset.tone); };
+  pax.forEach(b => b.addEventListener('click', () => showPop(b)));
+  // Tap the car itself: note for the friend nearest the tap.
+  sec.querySelector('.trsvg')?.addEventListener('click', e => { const cx = (e as MouseEvent).clientX; let best = pax[0], d = 1e9;
+    pax.forEach(b => { const r = b.getBoundingClientRect(), k = Math.abs(r.left + r.width / 2 - cx); if (k < d) { d = k; best = b; } }); showPop(best); });
+  pops.forEach(p => p.addEventListener('click', () => { const d = document.getElementById('dlg-' + p.dataset.pop) as HTMLDialogElement;
+    opener = sec.querySelector<HTMLElement>('[data-pax="' + p.dataset.pop + '"]'); p.hidden = true; d.showModal(); d.querySelector<HTMLElement>('[data-close]')?.focus(); }));
   sec.querySelectorAll<HTMLDialogElement>('.vdlg').forEach(d => {
     const close = () => d.close();
     d.addEventListener('close', () => { opener?.focus(); });

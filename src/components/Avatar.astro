@@ -37,7 +37,8 @@ const story=['plane','book','torii'];let si=0,cur='blob',busy=false,back=0;
 function show(n){cur=n;shapes.forEach(g=>{const on=g.dataset.s===n;g.style.display=on?'':'none';if(on){const[x,y,k]=g.dataset.f.split(' ').map(Number);face.setAttribute('transform',`translate(${60+x} ${70+y}) scale(${k}) translate(-60 -70)`)}})}
 let squ=0;
 function morph(n){if(rm){show(n);return}if(busy)return;busy=true;squ=1;setTimeout(()=>{show(n);setTimeout(()=>{squ=0;busy=false},60)},260)}
-s.parentNode.addEventListener('click',()=>{const n=cur==='blob'?story[si++%3]:'blob';if(rm){show(n);return}if(busy)return;clearTimeout(back);morph(n);if(n!=='blob')back=setTimeout(()=>morph('blob'),2600)});
+let au=null;const goo=()=>{try{if(localStorage.getItem('sound')==='off')return;au||=new Audio('/preview-yl8ksvu5/sounds/googoogaagaa-tap.mp3');au.volume=.6;au.currentTime=0;au.play().catch(()=>{})}catch(e){}};
+s.parentNode.addEventListener('click',()=>{goo();const n=cur==='blob'?story[si++%3]:'blob';if(rm){show(n);return}if(busy)return;clearTimeout(back);morph(n);if(n!=='blob')back=setTimeout(()=>morph('blob'),2600)});
 s.parentNode.style.cursor='pointer';if(rm)return;
 let tx=0,ty=0,ux=0,uy=0,last=-1e9,lid=0,blinkAt=performance.now()+2000,sighAt=performance.now()+9000,sq=0;
 const mv=e=>{const r=s.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height*.58),d=Math.hypot(dx,dy)||1,k=Math.min(1,d/260);tx=dx/d*k;ty=dy/d*k;last=performance.now()};
